@@ -850,28 +850,28 @@ const myexp = ((request, response) => {
             return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
         }
 
-        //if( !percent )
-        //{
-        //    if(type =='ไวน์คูลเลอร์' || type =='เบียร์'){
-        //        percent = 5 ;
-        //    }
-        //    else if(type =='ไวน์' || type =='สุราพื้นเมือง'){
-        //        percent = 13 ;
-        //    }
-        //    else if(type =='เครื่องดื่มอื่นๆ'){
-        //        percent = 40 ;
-        //    }
-        //    if(type == 'สุราสี' ){
-        //        percent = 37 ;
-        //    }
-        //}
+        if( !percent )
+        {
+            if(type =='ไวน์คูลเลอร์' || type =='เบียร์'){
+                percent = 5 ;
+            }
+            else if(type =='ไวน์' || type =='สุราพื้นเมือง'){
+                percent = 13 ;
+            }
+            else if(type =='เครื่องดื่มอื่นๆ'){
+                percent = 40 ;
+            }
+            if(type == 'สุราสี' ){
+                percent = 37 ;
+            }
+        }
         
-        //if (!container) {
-        //    agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มในแต่ละวันได้ดีที่สุดนะคะ`);
-        //    return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
-        //} else if (!numberOfDrinks) {
-        //    return agent.add(`ดื่มประมาณกี่${container}คะ`);
-        //}
+        if (!container) {
+            agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มในแต่ละวันได้ดีที่สุดนะคะ`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
+        } else if (!numberOfDrinks) {
+            return agent.add(`ดื่มประมาณกี่${container}คะ`);
+        }
 
 
 
