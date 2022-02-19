@@ -831,8 +831,7 @@ const myexp = ((request, response) => {
         agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
         agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
 
-        let {  weight ,  gender , type , container } = agent.parameters ;   //volume เติมทีหลังด้วยอีสัส
-        var percent , numberOfDrinks ;
+        let {  weight ,  gender , type , container , percent , numberOfDrinks , volume } = agent.parameters ;  
 
         console.log('type:' , type);
         console.log('percent:' , percent);
@@ -857,21 +856,6 @@ const myexp = ((request, response) => {
             return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
         }
 
-        if( !percent )
-        {
-            if(type =='ไวน์คูลเลอร์' || type =='เบียร์'){
-                percent = 5 ;
-            }
-            else if(type =='ไวน์' || type =='สุราพื้นเมือง'){
-                percent = 13 ;
-            }
-            else if(type =='เครื่องดื่มอื่นๆ'){
-                percent = 40 ;
-            }
-            if(type == 'สุราสี' ){
-                percent = 37 ;
-            }
-        }
         
         if (!container) {
             agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มในแต่ละวันได้ดีที่สุดนะคะ`);
@@ -880,6 +864,22 @@ const myexp = ((request, response) => {
             return agent.add(`ดื่มประมาณกี่${container}คะ`);
         }
 
+
+        if( !percent )
+                {
+                    if(type =='ไวน์คูลเลอร์' || type =='เบียร์'){
+                        percent = 5 ;
+                    }
+                    else if(type =='ไวน์' || type =='สุราพื้นเมือง'){
+                        percent = 13 ;
+                    }
+                    else if(type =='เครื่องดื่มอื่นๆ'){
+                        percent = 40 ;
+                    }
+                    if(type == 'สุราสี' ){
+                        percent = 37 ;
+                    }
+                }
 
 
     }
