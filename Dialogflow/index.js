@@ -842,12 +842,12 @@ const myexp = ((request, response) => {
         }
         if( !weight )
         {
-            agent.add("ระบุน้ำหนัก") ;
+            return agent.add("ระบุน้ำหนัก") ;
         }
 
         if (!type) {
             agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
-            agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); //ลบ return ออกไป
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
         }
 
         //if( !percent )
