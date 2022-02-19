@@ -837,7 +837,8 @@ const myexp = ((request, response) => {
         console.log('type:' , type);
         console.log('percent:' , percent);
         console.log('container:' , container);
-        console.log('volume:' , volume);
+        console.log('weight:' , weight);
+        console.log('gender:', gender);
 
         if( !gender )
         {
