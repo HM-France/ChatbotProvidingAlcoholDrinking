@@ -1,8 +1,8 @@
 const config = {
   //Line_Bot
-  CHANNEL_SECRET: "b883c7a93a2bae0d32b689bd864d4073",
+  CHANNEL_SECRET: "f05e5aa1504a39d47ca21c5718ccec89",
   CHANNEL_ACCESS_TOKEN:
-    "VBCSDfRipCSb5Op+ATkjY/8RjqbTl4Ph23elEinH+jvcljMtTUeKBqfQN6eiPOZOInIWegylUKV6WHWm8WfoXOrOlIo7GWTt+iRn/Lb+Zo5fCFo2FN2tF+rBg8D6q98m6UEzk3OmYh8SEsQRQJ8LegdB04t89/1O/w1cDnyilFU=",
+    "I9SflZRbMc/mnSnKXUdW0PLkNDpJXbWOZmePKAVO02H2Onf4GILOZWNFi9djGQeEjcosNbaPqdKspukOVKN/jq+lN3dl4HwhJ65+55ZhKb3epUamnhihhBEdxqv5e+ZGEobRL0ZXuurFrophqNz7fQdB04t89/1O/w1cDnyilFU=",
   //Firebase
     SERVICE_ACCOUNT_JSON: JSON.stringify({
     type: "service_account",

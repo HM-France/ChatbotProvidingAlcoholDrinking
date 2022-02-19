@@ -82,9 +82,10 @@ const unfollow = async (userId) => {
 };
 
 const sentToDialogflow = (request) => {
-  request.headers.host = "dialogflow.cloud.google.com";
+  request.headers.host = "dialogflow.cloud.google.com"; // webhook URL
   return post(
-    "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/8ed7b138-6ad8-45e5-80e3-2b13996a42c6",
+    //"https://dialogflow.cloud.google.com/v1/integrations/line/webhook/8ed7b138-6ad8-45e5-80e3-2b13996a42c6" // ตัวเก่า 
+    "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/5c439291-fec7-4ab9-9e84-7f0993efd633",
     JSON.stringify(request.body),
     { headers: request.headers }
   );
