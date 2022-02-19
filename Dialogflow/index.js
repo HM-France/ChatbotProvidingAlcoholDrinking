@@ -831,7 +831,7 @@ const myexp = ((request, response) => {
         agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
         agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
 
-        let {  weight , volume ,  gender , type , container } = agent.parameters ;
+        let {  weight ,  gender , type , container } = agent.parameters ;   //volume เติมทีหลังด้วยอีสัส
         var percent , numberOfDrinks ;
         if( !gender )
         {
