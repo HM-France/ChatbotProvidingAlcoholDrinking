@@ -831,13 +831,16 @@ const myexp = ((request, response) => {
         agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
         agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
 
-        let {  weight ,  gender , type , container , percent , numberOfDrinks , volume } = agent.parameters ;  
-
+        let {  weight ,  gender , type , container , percent , volume } = agent.parameters ;  
+        var numberOfDrinks ;
         console.log('type:' , type);
         console.log('percent:' , percent);
         console.log('container:' , container);
         console.log('weight:' , weight);
         console.log('gender:', gender);
+        console.log('volume:' , volume);
+        console.log('number of drink:' , numberOfDrinks);
+        console.log('-------------------');
 
         if( !gender )
         {
@@ -848,38 +851,52 @@ const myexp = ((request, response) => {
         }
         if( !weight )
         {
-            return agent.add("ระบุน้ำหนัก") ;
+            return agent.add('ระบุน้ำหนัก') ;
         }
 
         if (!type) {
             agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
+        }else{
+            if(!percent)
+            {
+                if(type ==='ไวน์คูลเลอร์' || type ==='เบียร์'){
+                    percent = 5 ;
+                }
+                else if(type ==='ไวน์' || type ==='สุราพื้นเมือง'){
+                    percent = 13 ;
+                }
+                else if(type ==='เครื่องดื่มอื่นๆ'){
+                    percent = 40 ;
+                }
+                if(type === 'สุราสี' ){
+                    percent = 37 ;
+                }
+            }
         }
 
-        
         if (!container) {
-            agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มในแต่ละวันได้ดีที่สุดนะคะ`);
+            agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มได้ดีที่สุดนะคะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
         } else if (!numberOfDrinks) {
             return agent.add(`ดื่มประมาณกี่${container}คะ`);
         }
 
-
-        if( !percent )
-                {
-                    if(type =='ไวน์คูลเลอร์' || type =='เบียร์'){
-                        percent = 5 ;
-                    }
-                    else if(type =='ไวน์' || type =='สุราพื้นเมือง'){
-                        percent = 13 ;
-                    }
-                    else if(type =='เครื่องดื่มอื่นๆ'){
-                        percent = 40 ;
-                    }
-                    if(type == 'สุราสี' ){
-                        percent = 37 ;
-                    }
-                }
+        // if( !percent )
+        //         {
+        //             if(type =='ไวน์คูลเลอร์' || type =='เบียร์'){
+        //                 percent = 5 ;
+        //             }
+        //             else if(type =='ไวน์' || type =='สุราพื้นเมือง'){
+        //                 percent = 13 ;
+        //             }
+        //             else if(type =='เครื่องดื่มอื่นๆ'){
+        //                 percent = 40 ;
+        //             }
+        //             if(type == 'สุราสี' ){
+        //                 percent = 37 ;
+        //             }
+        //         }
 
 
     }
