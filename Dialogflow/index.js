@@ -845,10 +845,10 @@ const myexp = ((request, response) => {
             agent.add("ระบุน้ำหนัก") ;
         }
 
-        //if (!type) {
-        //    agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
-        //    return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
-        //}
+        if (!type) {
+            agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+        }
 
         //if( !percent )
         //{
