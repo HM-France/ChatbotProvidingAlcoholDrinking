@@ -1,3 +1,4 @@
+const { generateKey } = require('crypto');
 const { WebhookClient, Payload } = require('dialogflow-fulfillment');
 const { userDB } = require('../firebase');
 const  imageCarousels = require('./imageCarousels');
@@ -829,11 +830,64 @@ const myexp = ((request, response) => {
         agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
         agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
         agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
+
+        let {  weight , volume ,  gender , type , container } = agent.parameters ;
+        var percent , numberOfDrinks ;
+        if( !gender )
+        {
+            agent.add(createQuickReply(
+                'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
+                ["ชาย", "หญิง"]
+            ));
+        }
+        if( !weight )
+        {
+            agent.add("ระบุน้ำหนัก") ;
+        }
+
+        if (!type) {
+            agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+        }
+
+        if( !percent )
+        {
+            if(type =='ไวน์คูลเลอร์' || type =='เบียร์'){
+                percent = 5 ;
+            }
+            else if(type =='ไวน์' || type =='สุราพื้นเมือง'){
+                percent = 13 ;
+            }
+            else if(type =='เครื่องดื่มอื่นๆ'){
+                percent = 40 ;
+            }
+            if(type == 'สุราสี' ){
+                percent = 37 ;
+            }
+        }
+        
+        if (!container) {
+            agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มในแต่ละวันได้ดีที่สุดนะคะ`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
+        } else if (!numberOfDrinks) {
+            return agent.add(`ดื่มประมาณกี่${container}คะ`);
+        }
+
+
+
     }
 
     const measureAlcohalInBloodCalculate = async () => {
         agent.add(`กำลังคำนวณให้ รอซักครู่นะคะ`) ;
-        let {weight, volume , gender } = agent.parameters;
+
+        let {  weight , volume ,  gender , type , container } = agent.parameters ;
+        var percent , numberOfDrinks ;
+
+        agent.add(`${weight} - ${volume} - ${gender} - ${type} - ${container} - ${percent} - ${numberOfDrinks}`);
+        
+/*
+        Value = percent * volume*0.79/100)/ weight * gender
+
         if( gender == 'ชาย')
         {
             gender = 0.68 ;
@@ -850,7 +904,8 @@ const myexp = ((request, response) => {
 
         agent.add(`ปริมาณแอลกอฮอล์ในเลือดของคุณตอนนี้คือ ${alcoholResult.toFixed(2)} ml%`);
         agent.add(`และคาดว่าใช้เวลาประมาณ ${RemainingTime.toFixed(1)} ชั่วโมง ในการขับออกจากร่างกายค่ะ`);
-      }
+    */  
+    }
 
       const Test = async () => {
           agent.add("Ping ! ->") ;
