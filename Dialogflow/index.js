@@ -833,6 +833,12 @@ const myexp = ((request, response) => {
 
         let {  weight ,  gender , type , container } = agent.parameters ;   //volume เติมทีหลังด้วยอีสัส
         var percent , numberOfDrinks ;
+
+        console.log('type:' , type);
+        console.log('percent:' , percent);
+        console.log('container:' , container);
+        console.log('volume:' , volume);
+
         if( !gender )
         {
             return agent.add(createQuickReply(
