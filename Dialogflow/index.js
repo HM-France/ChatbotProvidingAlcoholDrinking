@@ -847,7 +847,7 @@ const myexp = ((request, response) => {
 
         if (!type) {
             agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
-            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+            agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); //ลบ return ออกไป
         }
 
         //if( !percent )
