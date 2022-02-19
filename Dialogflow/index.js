@@ -835,7 +835,7 @@ const myexp = ((request, response) => {
         var percent , numberOfDrinks ;
         if( !gender )
         {
-            agent.add(createQuickReply(
+            return agent.add(createQuickReply(
                 'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
                 ["ชาย", "หญิง"]
             ));
