@@ -833,16 +833,6 @@ const myexp = ((request, response) => {
 
         let {  weight ,  gender , type , container , percent , volume } = agent.parameters ;  
         var numberOfDrinks ;
-        console.log('type:' , type);
-        console.log('percent:' , percent);
-        console.log('container:' , container);
-        console.log('weight:' , weight);
-        console.log('gender:', gender);
-        console.log('volume:' , volume);
-        console.log('number of drink:' , numberOfDrinks);
-        console.log('-------------------');
-
-        agent.add(`types คือ : ${types}`);
 
         if( !gender )
         {
