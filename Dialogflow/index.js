@@ -827,9 +827,9 @@ const myexp = ((request, response) => {
     }
 
     const measureAlcohalInBlood = async () => {
-        // agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
-        // agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
-        // agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
+        agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
+        agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
+        agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
 
         let {  weight ,  gender , type , container , percent , volume } = agent.parameters ;  
         var numberOfDrinks ;
@@ -856,7 +856,7 @@ const myexp = ((request, response) => {
 
         if (!type) {
             agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
-            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
+            // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
         }else{
             if(!percent)
             {
