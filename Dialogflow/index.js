@@ -827,12 +827,14 @@ const myexp = ((request, response) => {
     }
 
     const measureAlcohalInBlood = async () => {
-        // agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
-        // agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
-        // agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
+        agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
+        agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
+        agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
+    }
 
+    const measureAlcohalInBlood_custom  = async () => {
+        
         let {  gender , weight , types , container , volume , numberOfDrinks , percent } = agent.parameters ;  
-
 
         if( !gender )
         {
@@ -852,14 +854,14 @@ const myexp = ((request, response) => {
             if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์')
             {
                 percent = 5 ;
-            }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง')
-            {
+            }
+            else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
                 percent = 13 ;
-            }else if(types ==='เครื่องดื่มอื่นๆ')
-            {
+            }
+            else if(types ==='เครื่องดื่มอื่นๆ'){
                 percent = 40 ;
-            }else if(types === 'สุราสี' )
-            {
+            }
+            else if(types === 'สุราสี' ){
                 percent = 37 ;
             }
             
@@ -946,7 +948,8 @@ const myexp = ((request, response) => {
     intentMap.set('RISK_ASSESSMENT_RESULT - risk', riskAssessmentResultRisk);
     intentMap.set('ASSESS_MOTIVATION', assessMotivation);
     intentMap.set('ASSESS_MOTIVATION - result', assessMotivationResult);
-    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD', measureAlcohalInBlood)
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD', measureAlcohalInBlood);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD - custom', measureAlcohalInBlood_custom);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD - custom - yes', measureAlcohalInBloodCalculate);
     intentMap.set('ResponseTest', Test);
     agent.handleRequest(intentMap);
