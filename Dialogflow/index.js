@@ -831,7 +831,7 @@ const myexp = ((request, response) => {
         // agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
         // agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
 
-        let {  weight ,  gender , type , container , percent , volume } = agent.parameters ;  
+        let {  weight ,  gender , types , container , percent , volume } = agent.parameters ;  
         var numberOfDrinks ;
 
         if( !gender )
@@ -846,23 +846,23 @@ const myexp = ((request, response) => {
             return agent.add(`ระบุน้ำหนัก`) ;
         }
 
-        if (!type) {
+        if (!types) {
             agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
             // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
         }
         
         if(!percent)
         {
-            if(type ==='ไวน์คูลเลอร์' || type ==='เบียร์'){
+            if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
                 percent = 5 ;
             }
-            else if(type ==='ไวน์' || type ==='สุราพื้นเมือง'){
+            else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
                 percent = 13 ;
             }
-            else if(type ==='เครื่องดื่มอื่นๆ'){
+            else if(types ==='เครื่องดื่มอื่นๆ'){
                 percent = 40 ;
             }
-            if(type === 'สุราสี' ){
+            if(types === 'สุราสี' ){
                 percent = 37 ;
             }
             
@@ -897,7 +897,7 @@ const myexp = ((request, response) => {
     const measureAlcohalInBloodCalculate = async () => {
         agent.add(`กำลังคำนวณให้ รอซักครู่นะคะ`) ;
 
-        let {  weight , volume ,  gender , type , container } = agent.parameters ;
+        let {  weight , volume ,  gender , types , container } = agent.parameters ;
         var percent , numberOfDrinks ;
 
         agent.add(`${weight} - ${volume} - ${gender} - ${type} - ${container} - ${percent} - ${numberOfDrinks}`);
