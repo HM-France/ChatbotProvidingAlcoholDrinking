@@ -836,10 +836,11 @@ const myexp = ((request, response) => {
 
         if( !gender )
         {
-            return agent.add(createQuickReply(
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
+            /*return agent.add(createQuickReply(
                 'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
                 ['ชาย', 'หญิง']
-            ));
+            ));*/
         }else if ( !weight )
         {
             return agent.add('น้ำหนักของคุณประมาณเท่าไหร่คะ');
