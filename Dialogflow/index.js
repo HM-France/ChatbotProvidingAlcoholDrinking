@@ -827,16 +827,14 @@ const myexp = ((request, response) => {
     }
 
     const measureAlcohalInBlood = async () => {
-        agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
-        agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
-        agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
-
+        
         let {  gender , weight , types , container , volume , numberOfDrinks , percent } = agent.parameters ;  
-
-        agent.add(`${weight} - ${volume} - ${gender} - ${types} - ${container} - ${percent} - ${numberOfDrinks}`);
 
         if( !gender )
         {
+            agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
+            agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
+            agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
             return agent.add(createQuickReply(
                 'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
                 ['ชาย', 'หญิง']
@@ -846,8 +844,8 @@ const myexp = ((request, response) => {
             return agent.add('น้ำหนักของคุณประมาณเท่าไหร่คะ');
         }
         else if ( !types ){
-            return agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
-            // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
+            agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
         }
         else if( !percent ){
             if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์')
