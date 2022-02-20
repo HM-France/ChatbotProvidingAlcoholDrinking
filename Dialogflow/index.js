@@ -840,16 +840,13 @@ const myexp = ((request, response) => {
                 'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
                 ['ชาย', 'หญิง']
             ));
-        } 
-        else if (!weight)
+        }else if (!weight)
         {
             return agent.add('น้ำหนักของคุณประมาณเท่าไหร่คะ');
-        }
-        else if (!types) 
+        }else if (!types) 
         {
             return agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
             // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
-        
         }else if(!percent)
         {
             if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์')
@@ -868,13 +865,11 @@ const myexp = ((request, response) => {
                 percent = 37 ;
             }
             
-        }
-        else if (!container) 
+        }else if (!container) 
         {
             agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มได้ดีที่สุดนะคะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
-        } 
-        else if (!numberOfDrinks) 
+        }else if (!numberOfDrinks) 
         {
             return agent.add(`ดื่มประมาณกี่${container}คะ`);
         }
