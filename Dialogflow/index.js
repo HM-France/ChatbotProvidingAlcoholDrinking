@@ -849,22 +849,23 @@ const myexp = ((request, response) => {
         if (!type) {
             agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
             // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
-        }else{
-            if(!percent)
-            {
-                if(type ==='ไวน์คูลเลอร์' || type ==='เบียร์'){
-                    percent = 5 ;
-                }
-                else if(type ==='ไวน์' || type ==='สุราพื้นเมือง'){
-                    percent = 13 ;
-                }
-                else if(type ==='เครื่องดื่มอื่นๆ'){
-                    percent = 40 ;
-                }
-                if(type === 'สุราสี' ){
-                    percent = 37 ;
-                }
+        }
+        
+        if(!percent)
+        {
+            if(type ==='ไวน์คูลเลอร์' || type ==='เบียร์'){
+                percent = 5 ;
             }
+            else if(type ==='ไวน์' || type ==='สุราพื้นเมือง'){
+                percent = 13 ;
+            }
+            else if(type ==='เครื่องดื่มอื่นๆ'){
+                percent = 40 ;
+            }
+            if(type === 'สุราสี' ){
+                percent = 37 ;
+            }
+            
         }
 
         if (!container) {
