@@ -900,7 +900,7 @@ const myexp = ((request, response) => {
         let {  weight , volume ,  gender , types , container } = agent.parameters ;
         var percent , numberOfDrinks ;
 
-        agent.add(`${weight} - ${volume} - ${gender} - ${type} - ${container} - ${percent} - ${numberOfDrinks}`);
+        agent.add(`${weight} - ${volume} - ${gender} - ${types} - ${container} - ${percent} - ${numberOfDrinks}`);
         
 /*
         Value = percent * volume*0.79/100)/ weight * gender
