@@ -833,8 +833,10 @@ const myexp = ((request, response) => {
     }
 
     const measureAlcohalInBlood_custom  = async () => {
-        
+
         let {  gender , weight , types , container , volume , numberOfDrinks , percent } = agent.parameters ;  
+        
+        agent.add(`${weight} - ${volume} - ${gender} - ${types} - ${container} - ${percent} - ${numberOfDrinks}`);
 
         if( !gender )
         {
