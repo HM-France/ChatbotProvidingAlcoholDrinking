@@ -834,6 +834,8 @@ const myexp = ((request, response) => {
         let {  weight ,  gender , types , container , percent , volume } = agent.parameters ;  
         var numberOfDrinks ;
 
+        agent.add(`${weight} - ${volume} - ${gender} - ${types} - ${container} - ${percent} - ${numberOfDrinks}`);
+        
         if( !gender )
         {
             return agent.add(createQuickReply(
