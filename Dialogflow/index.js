@@ -827,9 +827,9 @@ const myexp = ((request, response) => {
     }
 
     const measureAlcohalInBlood = async () => {
-        agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
-        agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
-        agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
+        // agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
+        // agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
+        // agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
 
         let {  weight ,  gender , type , container , percent , volume } = agent.parameters ;  
         var numberOfDrinks ;
@@ -842,16 +842,18 @@ const myexp = ((request, response) => {
         console.log('number of drink:' , numberOfDrinks);
         console.log('-------------------');
 
+        agent.add(`types คือ : ${types}`);
+
         if( !gender )
         {
             return agent.add(createQuickReply(
                 'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
-                ["ชาย", "หญิง"]
+                ['ชาย', 'หญิง']
             ));
         }
         if( !weight )
         {
-            return agent.add('ระบุน้ำหนัก') ;
+            return agent.add(`ระบุน้ำหนัก`) ;
         }
 
         if (!type) {
