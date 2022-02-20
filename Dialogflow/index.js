@@ -843,19 +843,16 @@ const myexp = ((request, response) => {
                 ['ชาย', 'หญิง']
             ));
         }
-        agent.add(`ข้อมูลที่รับมา : ${gender}`) ;
 
         if( !weight )
         {
-            return agent.add(`ระบุน้ำหนัก`) ;
+            agent.add(`ระบุน้ำหนัก`) ;
         }
-        agent.add(`ข้อมูลที่รับมา : ${weight}`) ;
 
         if (!types) {
             return agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
             // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
         }
-        agent.add(`ข้อมูลที่รับมา : ${types}`) ;
 
         if(!percent)
         {
@@ -873,7 +870,6 @@ const myexp = ((request, response) => {
             }
             
         }
-        agent.add(`ข้อมูลที่รับมา : ${percent}`) ;
 
         if (!container) {
             agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มได้ดีที่สุดนะคะ`);
@@ -881,7 +877,8 @@ const myexp = ((request, response) => {
         } else if (!numberOfDrinks) {
             return agent.add(`ดื่มประมาณกี่${container}คะ`);
         }
-        agent.add(`ข้อมูลที่รับมา : ${container}`) ;
+
+        agent.add(`${weight} - ${volume} - ${gender} - ${types} - ${container} - ${percent} - ${numberOfDrinks}`);
 
         // if( !percent )
         //         {
