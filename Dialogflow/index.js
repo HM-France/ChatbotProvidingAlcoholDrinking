@@ -836,42 +836,39 @@ const myexp = ((request, response) => {
 
         if( !gender )
         {
-            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
-            /*return agent.add(createQuickReply(
+            return agent.add(createQuickReply(
                 'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
                 ['ชาย', 'หญิง']
-            ));*/
-        }else if ( !weight )
-        {
+            ));
+        }
+        else if ( !weight ){
             return agent.add('น้ำหนักของคุณประมาณเท่าไหร่คะ');
-        }else if ( !types ) 
-        {
+        }
+        else if ( !types ){
             return agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
             // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
-        }else if( !percent )
-        {
+        }
+        else if( !percent ){
             if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์')
             {
                 percent = 5 ;
-            }
-            else if(types ==='ไวน์' || types ==='สุราพื้นเมือง')
+            }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง')
             {
                 percent = 13 ;
-            }
-            else if(types ==='เครื่องดื่มอื่นๆ')
+            }else if(types ==='เครื่องดื่มอื่นๆ')
             {
                 percent = 40 ;
-            }
-            if(types === 'สุราสี' ){
+            }else if(types === 'สุราสี' )
+            {
                 percent = 37 ;
             }
             
-        }else if ( !container ) 
-        {
+        }
+        else if ( !container ){
             agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มได้ดีที่สุดนะคะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
-        }else if ( !numberOfDrinks ) 
-        {
+        }
+        else if ( !numberOfDrinks ) {
             return agent.add(`ดื่มประมาณกี่${container}คะ`);
         }
 
@@ -892,7 +889,6 @@ const myexp = ((request, response) => {
         //                 percent = 37 ;
         //             }
         //         }
-
 
     }
 
