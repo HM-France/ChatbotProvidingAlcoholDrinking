@@ -831,10 +831,8 @@ const myexp = ((request, response) => {
         // agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
         // agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
 
-        let {  weight ,  gender , types , container , percent , volume } = agent.parameters ;  
-        var numberOfDrinks ;
+        let {  gender , weight , types , container , volume , numberOfDrinks , percent } = agent.parameters ;  
 
-        agent.add(`${weight} - ${volume} - ${gender} - ${types} - ${container} - ${percent} - ${numberOfDrinks}`);
 
         if( !gender )
         {
@@ -842,27 +840,28 @@ const myexp = ((request, response) => {
                 'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
                 ['ชาย', 'หญิง']
             ));
-        }
-
-        if( !weight )
+        } 
+        else if (!weight)
         {
-            agent.add(`ระบุน้ำหนัก`) ;
+            return agent.add('น้ำหนักของคุณประมาณเท่าไหร่คะ');
         }
-
-        if (!types) {
+        else if (!types) 
+        {
             return agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
             // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
-        }
-
-        if(!percent)
+        
+        }else if(!percent)
         {
-            if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
+            if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์')
+            {
                 percent = 5 ;
             }
-            else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
+            else if(types ==='ไวน์' || types ==='สุราพื้นเมือง')
+            {
                 percent = 13 ;
             }
-            else if(types ==='เครื่องดื่มอื่นๆ'){
+            else if(types ==='เครื่องดื่มอื่นๆ')
+            {
                 percent = 40 ;
             }
             if(types === 'สุราสี' ){
@@ -870,11 +869,13 @@ const myexp = ((request, response) => {
             }
             
         }
-
-        if (!container) {
+        else if (!container) 
+        {
             agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มได้ดีที่สุดนะคะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
-        } else if (!numberOfDrinks) {
+        } 
+        else if (!numberOfDrinks) 
+        {
             return agent.add(`ดื่มประมาณกี่${container}คะ`);
         }
 
