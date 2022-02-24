@@ -832,12 +832,12 @@ const myexp = ((request, response) => {
 
         agent.add(`คุณกำลังอยู่ในฟังก์ชั่นการวัดแอลกอฮอล์ในเลือด`);
         agent.add(`ค่า Gender : ${gender} `) ;
-
+/*
         if(!gender)
         {
             agent.add("กรุณาระบุเพศด้วยนะคะ") ;
         }
-
+*/
         
     }
 
