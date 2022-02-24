@@ -873,7 +873,7 @@ const myexp = ((request, response) => {
     intentMap.set('ASSESS_MOTIVATION', assessMotivation);
     intentMap.set('ASSESS_MOTIVATION - result', assessMotivationResult);
     intentMap.set('ResponseTest', Test);
-    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
+    // intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
