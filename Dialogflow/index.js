@@ -826,30 +826,30 @@ const myexp = ((request, response) => {
         ))
     }
 
-    // const measureAlcohalInBlood = async () => {
+    const measureAlcohalInBlood = async () => {
 
-    //     let {gender,weight,type,container,numberOfDrinks,volume} = agent.parameters;
+        let {gender,weight,type,container,numberOfDrinks,volume} = agent.parameters;
 
-    //     if(!gender){
-    //         return agent.add(createQuickReply(
-    //             'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
-    //             ['ชาย', 'หญิง']
-    //         ));
-    //     }else if(!weight){
-    //         return agent.add('น้ำหนักของคุณประมาณเท่าไหร่คะ');
-    //     }else if (!type){
-    //         return agent.add('ระบุ type');
-    //     }else if (!container){
-    //         return agent.add('ระบุ container');
-    //     }else if (!numberOfDrinks){
-    //         return agent.add('ระบุ จำนวนการดื่ม');
-    //     }
-    //     volume === 1;
-    //     return agent.add('ขอบคุณค่ะ');
-    // }
+        if(!gender){
+            return agent.add(createQuickReply(
+                'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
+                ['ชาย', 'หญิง']
+            ));
+        }else if(!weight){
+            return agent.add('น้ำหนักของคุณประมาณเท่าไหร่คะ');
+        }else if (!type){
+            return agent.add('ระบุ type');
+        }else if (!container){
+            return agent.add('ระบุ container');
+        }else if (!numberOfDrinks){
+            return agent.add('ระบุ จำนวนการดื่ม');
+        }
+        volume === 1;
+        return agent.add('ขอบคุณค่ะ');
+    }
 
 
-    
+
     
       const Test = async () => {
           agent.add("Ping ! ->") ;
@@ -876,7 +876,7 @@ const myexp = ((request, response) => {
     intentMap.set('ASSESS_MOTIVATION', assessMotivation);
     intentMap.set('ASSESS_MOTIVATION - result', assessMotivationResult);
     intentMap.set('ResponseTest', Test);
-    // intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
