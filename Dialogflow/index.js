@@ -826,6 +826,17 @@ const myexp = ((request, response) => {
         ))
     }
 
+    const measureAlcohalInBlood = async () => {
+
+        let {gender,weight,type,container,numberOfDrinks,volume} = agent.parameters;
+
+        if(!gender){
+            return agent.add(createQuickReply(
+                'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
+                ['ชาย', 'หญิง']
+            ));
+        }
+    }
 
       const Test = async () => {
           agent.add("Ping ! ->") ;
@@ -852,6 +863,7 @@ const myexp = ((request, response) => {
     intentMap.set('ASSESS_MOTIVATION', assessMotivation);
     intentMap.set('ASSESS_MOTIVATION - result', assessMotivationResult);
     intentMap.set('ResponseTest', Test);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
