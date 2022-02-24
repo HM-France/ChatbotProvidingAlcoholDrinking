@@ -828,7 +828,16 @@ const myexp = ((request, response) => {
 
     const measureAlcohalInBlood = async () => {
 
-        agent.add("คุณกำลังอยู่ในฟังกืชั่นการวัดแอลกอฮอล์ในเลือด");
+        let gender = agent.parameters ;
+
+        agent.add(`คุณกำลังอยู่ในฟังก์ชั่นการวัดแอลกอฮอล์ในเลือด`);
+        agent.add(`ค่า Gender : ${gender} `) ;
+
+        if(!gender)
+        {
+            agent.add("กรุณาระบุเพศด้วยนะคะ") ;
+        }
+
         
     }
 
