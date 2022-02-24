@@ -839,6 +839,7 @@ const myexp = ((request, response) => {
             agent.add(`ดื่มอะไรมาหรอคะ?`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
         }else if( !container ){
+            agent.add(`ปริมาณโดยคร่าวเท่าไรคะ?`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
         }else if( !numberofDrinks ){
             return agent.add(`ดื่มไปปริมาณกี่${contianer}คะ?`);
