@@ -828,14 +828,14 @@ const myexp = ((request, response) => {
 
     const measureAlcohalInBlood = async () => {
 
-        let {gender,weight,type,container,numberofDrinks,volume} = agent.parameters;
+        let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
 
-        agent.add(`PREPARE DATA : ${gender} - ${weight} - ${type} - ${container} - ${numberofDrinks} - ${volume}`);
+        agent.add(`PREPARE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
         if( !gender ){
             return agent.add(createQuickReply('ขอทราบเพศของคุณได้ไหมคะ?', ["ชาย", "หญิง"]));
         }else if( !weight ){
             return agent.add(`น้ำหนักเท่าไรคะ?`);
-        }else if( !type ){
+        }else if( !types ){
             agent.add(`ดื่มอะไรมาหรอคะ?`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
         }else if( !container ){
@@ -846,7 +846,7 @@ const myexp = ((request, response) => {
       }
         volume === 0;
         agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
-        agent.add(`STORE DATA : ${gender} - ${weight} - ${type} - ${container} - ${numberofDrinks} - ${volume}`);
+        agent.add(`STORE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
     }
 
 
