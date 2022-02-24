@@ -835,7 +835,17 @@ const myexp = ((request, response) => {
                 'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
                 ['ชาย', 'หญิง']
             ));
+        }else if(!weight){
+            return agent.add('น้ำหนักของคุณประมาณเท่าไหร่คะ');
+        }else if (!type){
+            return agent.add('ระบุ type');
+        }else if (!container){
+            return agent.add('ระบุ container');
+        }else if (!numberOfDrinks){
+            return agent.add('ระบุ จำนวนการดื่ม');
         }
+        volume === 1;
+        return agent.add('ขอบคุณค่ะ');
     }
 
       const Test = async () => {
