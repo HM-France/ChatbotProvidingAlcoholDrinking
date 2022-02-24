@@ -831,16 +831,16 @@ const myexp = ((request, response) => {
         let {gender,weight,type,container,numberofDrinks,volume} = agent.parameters;
 
         if( !gender ){
-            agent.add(createQuickReply('ขอทราบเพศของคุณได้ไหมคะ?', ["ชาย", "หญิง"]));
+            return agent.add(createQuickReply('ขอทราบเพศของคุณได้ไหมคะ?', ["ชาย", "หญิง"]));
         }else if( !weight ){
-            agent.add(`น้ำหนักเท่าไรคะ?`);
+            return agent.add(`น้ำหนักเท่าไรคะ?`);
         }else if( !type ){
             agent.add(`ดื่มอะไรมาหรอคะ?`);
-            agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
         }else if( !container ){
-            agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
         }else if( !numberofDrinks ){
-            agent.add(`ดื่มไปปริมาณกี่${contianer}คะ?`);
+            return agent.add(`ดื่มไปปริมาณกี่${contianer}คะ?`);
       }
         volume === 0;
         agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
