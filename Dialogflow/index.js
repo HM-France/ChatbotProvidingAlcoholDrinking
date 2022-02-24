@@ -831,7 +831,7 @@ const myexp = ((request, response) => {
         let gender = agent.parameters ;
 
         agent.add(`คุณกำลังอยู่ในฟังก์ชั่นการวัดแอลกอฮอล์ในเลือด`);
-        agent.add(`ค่า Gender : ${gender} `) ;
+        //agent.add(`ค่า Gender : ${gender} `) ;
 /*
         if(!gender)
         {
