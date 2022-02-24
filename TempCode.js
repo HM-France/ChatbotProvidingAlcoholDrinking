@@ -1,4 +1,4 @@
-
+/*
 const Survey = async () => {
     agent.add(`หากคุณพอใจในการใช้งานระบบของเรา กรุณาให้คะแนนกับระบบของเราด้วยนะคะ`) ว
     agent.add(`Google Survey : https://forms.gle/xRgpbMYYy1E5g7pk6 `);
@@ -7,3 +7,4 @@ const Survey = async () => {
 
 
 intentMap.set('Survey', DoSurvey);
+*/
