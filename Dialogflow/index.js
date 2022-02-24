@@ -827,67 +827,9 @@ const myexp = ((request, response) => {
     }
 
     const measureAlcohalInBlood = async () => {
-        
-        let {  gender , weight , types , container , volume , numberOfDrinks , percent } = agent.parameters ;  
 
-        if( !gender )
-        {
-            agent.add(`ในการคำนวณแอลกอฮอล์ในเลือด น้องตั้งใจต้องการทราบข้อมูลต่อไปนี้ค่ะ`);
-            agent.add(`ได้แก่ เพศ(ชายหรือหญิง) น้ำหนัก (หน่วยกิโลกรัม) และปริมาณเครื่องดื่มแอลกอฮอล์ที่ดื่มไป (หน่วยมิลลิกรัม) เพื่อใช้ในการคำนวณค่ะ`);
-            agent.add(`เช่น ฉันเป็นเพศหญิง น้ำหนัก 50 กิโลกรัม ดื่มไปประมาณ 300 มิลลิกรัม เป็นต้นค่ะ `);
-            return agent.add(createQuickReply(
-                'คุณเป็นผู้ชาย หรือผู้หญิงคะ',
-                ['ชาย', 'หญิง']
-            ));
-        }
-        else if ( !weight ){
-            return agent.add('น้ำหนักของคุณประมาณเท่าไหร่คะ');
-        }
-        else if ( !types ){
-            agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
-            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
-        }
-        else if( !percent ){
-            if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์')
-            {
-                percent = 5 ;
-            }
-            else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
-                percent = 13 ;
-            }
-            else if(types ==='เครื่องดื่มอื่นๆ'){
-                percent = 40 ;
-            }
-            else if(types === 'สุราสี' ){
-                percent = 37 ;
-            }
-            
-        }
-        else if ( !container ){
-            agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มได้ดีที่สุดนะคะ`);
-            return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
-        }
-        else if ( !numberOfDrinks ) {
-            return agent.add(`ดื่มประมาณกี่${container}คะ`);
-        }
-
-        agent.add(`${weight} - ${volume} - ${gender} - ${types} - ${container} - ${percent} - ${numberOfDrinks}`);
+        agent.add("คุณกำลังอยู่ในฟังกืชั่นการวัดแอลกอฮอล์ในเลือด");
         
-        // if( !percent )
-        //         {
-        //             if(type =='ไวน์คูลเลอร์' || type =='เบียร์'){
-        //                 percent = 5 ;
-        //             }
-        //             else if(type =='ไวน์' || type =='สุราพื้นเมือง'){
-        //                 percent = 13 ;
-        //             }
-        //             else if(type =='เครื่องดื่มอื่นๆ'){
-        //                 percent = 40 ;
-        //             }
-        //             if(type == 'สุราสี' ){
-        //                 percent = 37 ;
-        //             }
-        //         }
     }
 
     const measureAlcohalInBloodCalculate = async () => {
