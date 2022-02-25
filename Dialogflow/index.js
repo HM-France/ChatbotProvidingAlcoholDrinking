@@ -830,7 +830,14 @@ const myexp = ((request, response) => {
 
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
 
-        agent.add(`PREPARE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
+        console.log('gender:',gender);
+        console.log('weight:' , weight);
+        console.log('types:' , types);
+        console.log('container:' , container);      
+        console.log('number of drink:' , numberOfDrinks);
+        console.log('volume:' , volume);
+        console.log('-------------------');
+
         if( !gender ){
             return agent.add(createQuickReply('ขอทราบเพศของคุณได้ไหมคะ?', ["ชาย", "หญิง"]));
         }else if( !weight ){
