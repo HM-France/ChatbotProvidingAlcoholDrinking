@@ -836,8 +836,8 @@ const myexp = ((request, response) => {
         }else if( !weight ){
             return agent.add(`น้ำหนักเท่าไรคะ?`);
         }else if( !types ){
-            return agent.add(`ดื่มอะไรมาหรอคะ?`);
-            // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+            agent.add(`ดื่มอะไรมาหรอคะ?`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
         }else if( !container ){
             return agent.add(`ปริมาณโดยคร่าวเท่าไรคะ?`);
             // return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
