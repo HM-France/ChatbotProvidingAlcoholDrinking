@@ -830,14 +830,21 @@ const myexp = ((request, response) => {
 
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
 
-        agent.add(`PREPARE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
+        console.log('gender:',gender);
+        console.log('weight:' , weight);
+        console.log('types:' , types);
+        console.log('container:' , container);      
+        console.log('number of drink:' , numberofDrinks);
+        console.log('volume:' , volume);
+        console.log('-------------------');
+
         if( !gender ){
             return agent.add(createQuickReply('ขอทราบเพศของคุณได้ไหมคะ?', ["ชาย", "หญิง"]));
         }else if( !weight ){
             return agent.add(`น้ำหนักเท่าไรคะ?`);
         }else if( !types ){
-            return agent.add(`ดื่มอะไรมาหรอคะ?`);
-            // return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+            agent.add(`ดื่มอะไรมาหรอคะ?`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
         }else if( !container ){
             return agent.add(`เลือกภาชนะที่ใกล้เคียงที่สุดค่ะ`);
             // return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
