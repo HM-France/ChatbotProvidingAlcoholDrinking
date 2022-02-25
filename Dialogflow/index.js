@@ -834,7 +834,7 @@ const myexp = ((request, response) => {
         console.log('weight:' , weight);
         console.log('types:' , types);
         console.log('container:' , container);      
-        console.log('number of drink:' , numberOfDrinks);
+        console.log('number of drink:' , numberofDrinks);
         console.log('volume:' , volume);
         console.log('-------------------');
 
