@@ -845,7 +845,9 @@ const myexp = ((request, response) => {
         }else if( !types ){
             agent.add(`ดื่มอะไรมาหรอคะ?`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
-        }else if( !container ){
+        }
+        
+        if( !container ){
             agent.add(`เลือกภาชนะที่ใกล้เคียงที่สุดค่ะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
         }else if( !volume ){
