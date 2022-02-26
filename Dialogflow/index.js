@@ -869,7 +869,7 @@ const myexp = ((request, response) => {
                 imageSize: "cover",
                 imageBackgroundColor: "#FFFFFF",
                 title: "แบบประเมินความพึงพอใจ",
-                text: "",
+                text: " ",
                 defaultAction: {
                     type: "uri",
                     label: "กดที่นี่เพื่อทำแบบสอบถาม",
