@@ -2,7 +2,6 @@ const { generateKey } = require('crypto');
 const { WebhookClient, Payload } = require('dialogflow-fulfillment');
 const { userDB } = require('../firebase');
 const  imageCarousels = require('./imageCarousels');
-const imageBotton = require('./imageBotton') ;
 
 const myexp = ((request, response) => {
     //Create an instance
