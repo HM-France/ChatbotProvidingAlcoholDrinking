@@ -224,6 +224,16 @@ const myexp = ((request, response) => {
         }
 
         var points = parseInt(sixth) +parseInt(seventh);
+        var ASSIST_STATUS = ""
+        if ( points < 11 ){
+            var ASSIST_STATUS = "Lower risk" ;
+        }else if ( points > 10 && points < 27 ){
+            var ASSIST_STATUS = "Moderate risk" ;
+        }else{
+            var ASSIST_STATUS = "High risk" ;
+        }
+
+        await userDB.setASSIST_STATUS(userId, ASSIST_STATUS);
         await userDB.setAssistPoint(userId, points);
         agent.add('เพื่อให้น้องตั้งใจให้คำแนะนำปริมาณการดื่มที่เหมาะสมแก่คุณได้');
             agent.add('น้องตั้งใจอยากให้คุณนึกทบทวนการดื่มในช่วง 7 วันที่ผ่านมา');
