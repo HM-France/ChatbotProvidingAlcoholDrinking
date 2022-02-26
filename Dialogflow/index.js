@@ -209,6 +209,8 @@ const myexp = ((request, response) => {
 
     const riskAssessment_DontDrinkIn3Month = async () =>{
         let {sixth, seventh } = agent.parameters;
+        console.log('points :', points)
+        console.log('ASSIST_STATUS : ', ASSIST_STATUS);
         if (!sixth) {
             return agent.add(createQuickReply(
                 'เพื่อนฝูง ญาติ หรือคนอื่น เคยแสดงความกังวลหรือตักเตือนคุณเกี่ยวกับการดื่มเครื่องดื่มแอลกอฮอล์ของคุณบ้างไหม',
@@ -224,7 +226,7 @@ const myexp = ((request, response) => {
         }
 
         var points = parseInt(sixth) +parseInt(seventh);
-        var ASSIST_STATUS = "";
+        let ASSIST_STATUS = "";
         console.log('points :', points)
         console.log('ASSIST_STATUS : ', ASSIST_STATUS);
         if ( points < 11 ){
