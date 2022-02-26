@@ -2,7 +2,7 @@ const { generateKey } = require('crypto');
 const { WebhookClient, Payload } = require('dialogflow-fulfillment');
 const { userDB } = require('../firebase');
 const  imageCarousels = require('./imageCarousels');
-const imageBotton = require('./imagebotton') ;
+const imageBotton = require('./imageBotton') ;
 
 const myexp = ((request, response) => {
     //Create an instance
@@ -860,7 +860,7 @@ const myexp = ((request, response) => {
 
     const DoSurvey = async () => {
         agent.add(`ขอบคุณที่ทดลองใช้น้องตั้งใจนะคะ น้องตั้งใจอยากจะขอรบกวนเวลาคุณไม่นาน เพื่อทำแบบสอบถามความพึงพอใจในการใช้งานน้องตั้งใจค่ะ`);
-        agent.add(new Payload('LINE', imageBotton.DoSurvey().all , { sendAsMessage: true} ));
+        agent.add(new Payload('LINE', imageBotton.survey().all , { sendAsMessage: true} ));
     }
 
 
