@@ -840,19 +840,26 @@ const myexp = ((request, response) => {
 
         if( !gender ){
             return agent.add(createQuickReply('ขอทราบเพศของคุณได้ไหมคะ?', ["ชาย", "หญิง"]));
-        }else if( !weight ){
+        }
+        if( !weight ){
             return agent.add(`น้ำหนักเท่าไรคะ?`);
-        }else if( !types ){
+        }
+        if( !types ){
             agent.add(`ดื่มอะไรมาหรอคะ?`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
-        }else if( !container ){
-            agent.add(`เลือกภาชนะที่ใกล้เคียงที่สุดค่ะ`);
+        }
+        if( !container ){
+            return agent.add(`เลือกภาชนะที่ใกล้เคียงที่สุดค่ะ`);
+            // return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
+        }
+        if( !volume ){
+            agent.add(`ปริมาณโดยคร่าวเท่าไรคะ?`); 
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
-        }else if( !volume ){
-            return agent.add(`ปริมาณโดยคร่าวเท่าไรคะ?`); 
-        }else if( !numberofDrinks ){
+            
+        }
+        if( !numberofDrinks ){
             return agent.add(`ดื่มไปปริมาณกี่${contianer}คะ?`);
-      }
+    }
         agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
         agent.add(`STORE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
     }
