@@ -224,7 +224,7 @@ const myexp = ((request, response) => {
         }
 
         var points = parseInt(sixth) +parseInt(seventh);
-        var ASSIST_STATUS = ""
+        var ASSIST_STATUS = "";
         console.log("ASSIST_STATUS : ", ASSIST_STATUS);
         if ( points < 11 ){
             ASSIST_STATUS = "Lower risk" ;
