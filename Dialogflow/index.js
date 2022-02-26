@@ -227,11 +227,11 @@ const myexp = ((request, response) => {
         var ASSIST_STATUS = ""
         console.log("ASSIST_STATUS : ", ASSIST_STATUS);
         if ( points < 11 ){
-            var ASSIST_STATUS = "Lower risk" ;
+            ASSIST_STATUS = "Lower risk" ;
         }else if ( points > 10 && points < 27 ){
-            var ASSIST_STATUS = "Moderate risk" ;
+            ASSIST_STATUS = "Moderate risk" ;
         }else{
-            var ASSIST_STATUS = "High risk" ;
+            ASSIST_STATUS = "High risk" ;
         }
         console.log("ASSIST_STATUS : ", ASSIST_STATUS);
         await userDB.setASSIST_STATUS(userId, ASSIST_STATUS);
