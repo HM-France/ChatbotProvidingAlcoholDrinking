@@ -858,7 +858,8 @@ const myexp = ((request, response) => {
             
         }
         if( !numberofDrinks ){
-            return agent.add(`ดื่มไปปริมาณกี่${contianer}คะ?`);
+            // return agent.add(`ดื่มไปปริมาณกี่${contianer}คะ?`);
+            return agent.add(`ดื่มไปปริมาณกี่.....คะ?`);
     }
         agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
         agent.add(`STORE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
