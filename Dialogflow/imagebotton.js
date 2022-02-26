@@ -35,3 +35,4 @@ const survey = () => {
         }
       })
 }
+module.exports = {survey}
