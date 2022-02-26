@@ -54,6 +54,9 @@ const userColl = firestore.collection('Users');
     },
     async setDrinkingInWeek (userId, day, drinkingInDay) {
         return await userColl.doc(userId).update({ [`drinkingInWeek.${day}`]: drinkingInDay })
+    },
+    async setASSIST_STATUS (userId, ASSIST_STATUS) {
+        return await userColl.doc(userId).update({ASSIST_STATUS: ASSIST_STATUS});
     }
 };
 
