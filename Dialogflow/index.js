@@ -861,7 +861,7 @@ const myexp = ((request, response) => {
         agent.add(`ขอบคุณที่ทดลองใช้น้องตั้งใจนะคะ น้องตั้งใจอยากจะขอรบกวนเวลาคุณไม่นาน เพื่อทำแบบสอบถามความพึงพอใจในการใช้งานน้องตั้งใจค่ะ`);
         agent.add(new Payload('LINE', {            
             type: "template",
-            altText: "This is a buttons template",
+            altText: "แบบฟอร์มประเมินความพึงพอใจในการใช้งานระบบแชทบอท",
             template: {
                 type: "buttons",
                 thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%AA%E0%B8%AD%E0%B8%9A%E0%B8%96%E0%B8%B2%E0%B8%A1%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%9E%E0%B8%B6%E0%B8%87%E0%B8%9E%E0%B8%AD%E0%B9%83%E0%B8%88%2Fonline-survey.jpg?alt=media&token=57f00317-4844-4475-809c-8c72ad3ca717",
