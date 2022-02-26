@@ -2,6 +2,7 @@ const { generateKey } = require('crypto');
 const { WebhookClient, Payload } = require('dialogflow-fulfillment');
 const { userDB } = require('../firebase');
 const  imageCarousels = require('./imageCarousels');
+const imageBotton = require('./imagebotton') ;
 
 const myexp = ((request, response) => {
     //Create an instance
@@ -857,6 +858,10 @@ const myexp = ((request, response) => {
         agent.add(`STORE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
     }
 
+    const DoSurvey = async () => {
+        agent.add(`ขอบคุณที่ทดลองใช้น้องตั้งใจนะคะ น้องตั้งใจอยากจะขอรบกวนเวลาคุณไม่นาน เพื่อทำแบบสอบถามความพึงพอใจในการใช้งานน้องตั้งใจค่ะ`);
+        agent.add(new Payload('LINE', imageBotton.DoSurvey().all , { sendAsMessage: true} ));
+    }
 
 
     
@@ -884,6 +889,7 @@ const myexp = ((request, response) => {
     intentMap.set('RISK_ASSESSMENT_RESULT - risk', riskAssessmentResultRisk);
     intentMap.set('ASSESS_MOTIVATION', assessMotivation);
     intentMap.set('ASSESS_MOTIVATION - result', assessMotivationResult);
+    intentMap.set('Survey', DoSurvey);
     intentMap.set('ResponseTest', Test);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
     agent.handleRequest(intentMap);
