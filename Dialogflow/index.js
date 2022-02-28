@@ -872,13 +872,15 @@ const myexp = ((request, response) => {
         // }
         if( !numberofDrinks ){
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
-    }
-        agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
-        agent.add(`STORE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
+        }
+        
+        agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
+        agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
+        agent.add(createQuickReply('ข้อมูลนี้ถูกต้องมั๊ยคะ?', ["ถูกต้อง", "ไม่ถูกต้อง"]));
     }
 
     const measureAlcohalInBloodCalculated = async () => {
-
+        agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
 
         console.log('Enter function : measureAlcohalInBloodCalculated ') ;
