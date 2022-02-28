@@ -12,8 +12,9 @@ const myexp = ((request, response) => {
         agent.add('Success');
     }
 
-    const wait = async (timeInSec) => new Promise((resolve) => setTimeout(resolve, timeInSec * 1000));
-
+    const wait = async (timeInSec) => {
+        new Promise((resolve) => setTimeout(resolve, timeInSec * 1000));
+    }
     const createQuickReply = (text, options) => {
         if (options.length) {
             let items = options.map((option) => ({ type: "action", action: { type: "message", label: option, text: option } }))
