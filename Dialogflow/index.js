@@ -884,6 +884,14 @@ const myexp = ((request, response) => {
         agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
 
+        console.log('gender:',gender);
+        console.log('weight:' , weight);
+        console.log('types:' , types);
+        console.log('container:' , container);      
+        console.log('number of drink:' , numberofDrinks);
+        console.log('volume:' , volume);
+        console.log('-------------------');
+        
         let rho , value , percent ;
         // assign rho value
         if( gender === "ชาย" ){
