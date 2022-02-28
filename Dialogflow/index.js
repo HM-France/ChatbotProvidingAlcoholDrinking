@@ -869,13 +869,22 @@ const myexp = ((request, response) => {
         // if( !volume ){
         //     agent.add(`ปริมาณโดยคร่าวเท่าไรคะ?`); 
         //     return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
-            
         // }
         if( !numberofDrinks ){
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
     }
         agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
         agent.add(`STORE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
+    }
+
+    const measureAlcohalInBloodCalculated = async () => {
+
+        let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
+
+        console.log('Enter function : measureAlcohalInBloodCalculated ') ;
+        agent.add(`STORE DATA : ${gender} - ${weight} - ${types} - ${container} - ${numberofDrinks} - ${volume}`);
+
+
     }
 
     const DoSurvey = async () => {
@@ -936,6 +945,7 @@ const myexp = ((request, response) => {
     intentMap.set('Survey', DoSurvey);
     intentMap.set('ResponseTest', Test);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - yes',measureAlcohalInBloodCalculated);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
