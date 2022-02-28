@@ -926,9 +926,9 @@ const myexp = ((request, response) => {
     
       const Test = async () => {
           agent.add("กำลังทดสอบ DELAY") ;
-          wait(1);
+          await wait(1);
           agent.add("1");
-          wait(2);
+          await wait(2);
           agent.add("3");
           agent.add("สิ้นสุดการทดสอบ");
       }
