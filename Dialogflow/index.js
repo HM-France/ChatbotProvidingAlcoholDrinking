@@ -12,6 +12,8 @@ const myexp = ((request, response) => {
         agent.add('Success');
     }
 
+    const wait = async (timeInSec) => new Promise((resolve) => setTimeout(resolve, timeInSec * 1000));
+
     const createQuickReply = (text, options) => {
         if (options.length) {
             let items = options.map((option) => ({ type: "action", action: { type: "message", label: option, text: option } }))
@@ -922,8 +924,12 @@ const myexp = ((request, response) => {
 
     
       const Test = async () => {
-          agent.add("Ping ! ->") ;
-          agent.add("Pong !!") ;
+          agent.add("กำลังทดสอบ DELAY") ;
+          wait(1);
+          agent.add("1");
+          wait(2);
+          agent.add("3");
+          agent.add("สิ้นสุดการทดสอบ");
       }
 
     // Run the proper function handler based on the matched Dialogflow intent name
