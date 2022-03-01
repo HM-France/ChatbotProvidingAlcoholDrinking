@@ -916,7 +916,40 @@ const myexp = ((request, response) => {
         value = (((percent*(volume * numberofDrinks )*0.79) / 100) / weight * rho ) * 10 ;
         agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`);
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้"]));
+    }
 
+    const alcoholComposing = async () => {
+        let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
+        console.log('gender:',gender);
+        console.log('weight:' , weight);
+        console.log('types:' , types);
+        console.log('container:' , container);      
+        console.log('number of drink:' , numberofDrinks);
+        console.log('volume:' , volume);
+        console.log('-------------------');
+        let rho , value , percent ;
+        // assign rho value
+        if( gender === "ชาย" ){
+            rho = 0.68 ;
+            console.log("assign Gender conplete : ",rho);
+        }else if( gender === "หญิง"){
+            rho = 0.55 ;
+            console.log("assign Gender conplete : ",rho);
+        }
+        // assign percent
+        if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
+             percent = 5;
+        }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
+             percent = 13;
+        }else if(types ==='เครื่องดื่มอื่นๆ'){
+             percent = 40;
+        }else{
+            percent =  0 ;
+        }
+        value = (((percent*(volume * numberofDrinks )*0.79) / 100) / weight * rho ) * 10 ;
+        let timeResult = value/7 ;
+        agent.add(`ถ้าคุณเป็นผู้${gender} น้ำหนัก ${weight} กก. ดื่ม${type} ปริมาณ ${numberofdrinks} ${container} ต้องใช้เวลาอย่างน้อย ${timeResult} ชั่วโมง แอลกอฮอล์ในร่างกายถึงจะถูกขับออกไปได้หมด`);
+        return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าต้องใช้เวลารอนานแค่ไหน กว่าที่ระดับแอลกอฮอล์ในเลือดของคุณจะลดต่ำลงกว่า 50 มิลลิกรัมเปอร์เซ็นต์ ซึ่งหากไม่มีการดื่มเพิ่มระหว่างนั้นจะถือว่าเป็นระดับที่ไม่ผิดกฎหมายถ้าคุณขับขี่ และมีอายุเกิน 20 ปี', ["อยากรู้", "ไม่อยากรู้"]));
     }
 
     const DoSurvey = async () => {
@@ -980,6 +1013,7 @@ const myexp = ((request, response) => {
     intentMap.set('ResponseTest', Test);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - yes',measureAlcohalInBloodCalculated);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes',alcoholComposing);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
