@@ -732,7 +732,7 @@ const motivation = () => {
       })
 }
 
-const motivation = () => {
+const goal = () => {
     return({
         type: "template",
         altText: "this is a carousel template",
