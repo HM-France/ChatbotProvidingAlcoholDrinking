@@ -985,7 +985,7 @@ const myexp = ((request, response) => {
     
       const Test = async () => {
           agent.add("กำลังทดสอบ") ;
-          return agent.add({
+         agent.add(new Payload('LINE',{
             type: "template",
             altText: "this is a carousel template",
             template: {
@@ -1051,7 +1051,7 @@ const myexp = ((request, response) => {
                 imageAspectRatio: "rectangle",
                 imageSize: "cover"
             }
-        })
+        }, { sendAsMessage: true} ));
           agent.add("สิ้นสุดการทดสอบ");
       }
 
