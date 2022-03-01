@@ -905,7 +905,7 @@ const myexp = ((request, response) => {
         if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
              percent = 5;
         }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
-             percent = 13;
+             percent = 13;a
         }else if(types ==='เครื่องดื่มอื่นๆ'){
              percent = 40;
         }else{
@@ -947,7 +947,7 @@ const myexp = ((request, response) => {
             percent =  0 ;
         }
         value = (((percent*(volume * numberofDrinks )*0.79) / 100) / weight * rho ) * 10 ;
-        let timeResult = value/7 ;
+        let timeResult = value/7 ; 
         agent.add(`ถ้าคุณเป็นผู้${gender} น้ำหนัก ${weight} กก. ดื่ม${types} ปริมาณ ${numberofDrinks} ${container} ต้องใช้เวลาอย่างน้อย ${timeResult} ชั่วโมง แอลกอฮอล์ในร่างกายถึงจะถูกขับออกไปได้หมด`);
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าต้องใช้เวลารอนานแค่ไหน กว่าที่ระดับแอลกอฮอล์ในเลือดของคุณจะลดต่ำลงกว่า 50 มิลลิกรัมเปอร์เซ็นต์ ซึ่งหากไม่มีการดื่มเพิ่มระหว่างนั้นจะถือว่าเป็นระดับที่ไม่ผิดกฎหมายถ้าคุณขับขี่ และมีอายุเกิน 20 ปี', ["อยากรู้", "ไม่อยากรู้"]));
     }
@@ -985,8 +985,73 @@ const myexp = ((request, response) => {
     
       const Test = async () => {
           agent.add("กำลังทดสอบ") ;
-          agent.add("1");
-          agent.add("3");
+          return({
+            type: "template",
+            altText: "this is a carousel template",
+            template: {
+                type: "carousel",
+                columns: [
+                    {
+                        thumbnailImageUrl: "https://example.com/bot/images/item1.jpg",
+                        imageBackgroundColor: "#FFFFFF",
+                        title: "this is menu",
+                        text: "description",
+                        defaultAction: {
+                            type: "uri",
+                            label: "View detail",
+                            uri: "http://example.com/page/123"
+                        },
+                        actions: [
+                            {
+                                type: "postback",
+                                label: "Buy",
+                                data: "action=buy&itemid=111"
+                            },
+                            {
+                                type: "postback",
+                                label: "Add to cart",
+                                data: "action=add&itemid=111"
+                            },
+                            {
+                                type: "uri",
+                                label: "View detail",
+                                uri: "http://example.com/page/111"
+                            }
+                        ]
+                    },
+                    {
+                        thumbnailImageUrl: "https://example.com/bot/images/item2.jpg",
+                        imageBackgroundColor: "#000000",
+                        title: "this is menu",
+                        text: "description",
+                        defaultAction: {
+                            type: "uri",
+                            label: "View detail",
+                            uri: "http://example.com/page/222"
+                        },
+                        actions: [
+                            {
+                                type: "postback",
+                                label: "Buy",
+                                data: "action=buy&itemid=222"
+                            },
+                            {
+                                type: "postback",
+                                label: "Add to cart",
+                                data: "action=add&itemid=222"
+                            },
+                            {
+                                type: "uri",
+                                label: "View detail",
+                                uri: "http://example.com/page/222"
+                            }
+                        ]
+                    }
+                ],
+                imageAspectRatio: "rectangle",
+                imageSize: "cover"
+            }
+        })
           agent.add("สิ้นสุดการทดสอบ");
       }
 
