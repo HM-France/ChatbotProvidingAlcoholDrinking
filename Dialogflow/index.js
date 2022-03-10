@@ -176,11 +176,11 @@ const myexp = ((request, response) => {
         console.log('points :', points)
         console.log('ASSIST_STATUS : ', ASSIST_STATUS);
         if ( points < 11 ){
-            ASSIST_STATUS = "Lower risk" ;
+            ASSIST_STATUS = "ความเสี่ยงค่ำ" ;
         }else if ( points > 10 && points < 27 ){
-            ASSIST_STATUS = "Moderate risk" ;
+            ASSIST_STATUS = "ความเสี่ยงปานกลาง" ;
         }else{
-            ASSIST_STATUS = "High risk" ;
+            ASSIST_STATUS = "ความเสี่ยงสูง" ;
         }
         console.log('ASSIST_STATUS : ', ASSIST_STATUS);
         await userDB.setASSIST_STATUS(userId, ASSIST_STATUS);
@@ -617,16 +617,21 @@ const myexp = ((request, response) => {
         if (gender === 'หญิง' || age >= 66) {
             if (maxSdPoint > 3) {
                 result = 'เกิน';
+                await userDB.setDrinkingStandard(userId, result);
             } else {
                 result = 'ไม่เกิน';
+                await userDB.setDrinkingStandard(userId, result);
             }
         } else if (gender === 'ชาย') {
             if (maxSdPoint > 4) {
                 result = 'เกิน';
+                await userDB.setDrinkingStandard(userId, result);
             } else {
                 result = 'ไม่เกิน';
+                await userDB.setDrinkingStandard(userId, result);
             }
         }
+
 
         agent.add(`ในสัปดาห์นี้ วันที่คุณดื่มหนักที่สุดคือ${maxDay} ซึ่ง${result}ตามเกณฑ์แนะนำการดื่มปลอดภัยต่อวัน`)
         return agent.add(new Payload(
