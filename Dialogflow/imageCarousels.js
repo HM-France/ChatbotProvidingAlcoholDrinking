@@ -815,54 +815,6 @@ const test = () => {
                     label: "Yes",
                     text: "yes"
                   }
-                },
-                {
-                    imageUrl: "https://example.com/bot/images/item2.jpg",
-                    action: {
-                      type: "message",
-                      label: "Yes",
-                      text: "yes"
-                    }
-                },
-                {
-                    imageUrl: "https://example.com/bot/images/item2.jpg",
-                    action: {
-                      type: "message",
-                      label: "Yes",
-                      text: "yes"
-                    }
-                },
-                {
-                      imageUrl: "https://example.com/bot/images/item2.jpg",
-                      action: {
-                        type: "message",
-                        label: "Yes",
-                        text: "yes"
-                      }
-                },
-                {
-                    imageUrl: "https://example.com/bot/images/item2.jpg",
-                    action: {
-                      type: "message",
-                      label: "Yes",
-                      text: "yes"
-                    }
-                },
-                {
-                    imageUrl: "https://example.com/bot/images/item2.jpg",
-                    action: {
-                      type: "message",
-                      label: "Yes",
-                      text: "yes"
-                    }
-                },
-                {
-                      imageUrl: "https://example.com/bot/images/item2.jpg",
-                      action: {
-                        type: "message",
-                        label: "Yes",
-                        text: "yes"
-                      }
                 }
             ]
         }
