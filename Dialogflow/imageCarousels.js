@@ -732,7 +732,7 @@ const motivation = () => {
       })
 }
 
-const Goal = () => {
+const goal = () => {
     return ({
         type: "template",
         altText: "แรงจูงใจในการเลิกเหล้า",
