@@ -60,6 +60,12 @@ const userColl = firestore.collection('Users');
     },
     async setDrinkingStandard (userId, result) {
         return await userColl.doc(userId).update({IsStandard: result});
+    },
+    async setMotivation (userId, motivation) {
+        return await userColl.doc(userId).update({Motivation: motivation});
+    },
+    async setGoal (userId, goal) {
+        return await userColl.doc(userId).update({Goal: goal});
     }
 };
 
