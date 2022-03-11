@@ -766,7 +766,7 @@ const myexp = ((request, response) => {
     }
 
     const assessMotivationResult = async () => {
-        let motivation = agent.parameters;
+        var motivation = agent.parameters;
         console.log("motivation", motivation);
         if(motivation === "ไม่เห็นปัญหา"){
             agent.add("ตอนนี้ คุณยังไม่เห็นว่าการดื่มเช่นนี้จะก่อให้เกิดปัญหาใดๆ");
