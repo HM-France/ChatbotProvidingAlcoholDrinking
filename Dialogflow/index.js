@@ -768,24 +768,24 @@ const myexp = ((request, response) => {
     const assessMotivationResult = async () => {
         let motivation = agent.parameters;
         if(motivation == "ไม่เห็นปัญหา"){
-            agent.add('ตอนนี้ คุณยังไม่เห็นว่าการดื่มเช่นนี้จะก่อให้เกิดปัญหาใดๆ');
-            console.log(`motivation : `,motivation);
+            agent.add("ตอนนี้ คุณยังไม่เห็นว่าการดื่มเช่นนี้จะก่อให้เกิดปัญหาใดๆ");
+            console.log("motivation : ",motivation);
             await userDB.setMotivation(userId, motivation);
         }else if(motivation == "ลังเล"){
-            agent.add('เหมือนว่าคุณเริ่มรู้สึกลังเลเกี่ยวกับการดื่ม คุณอาจกังวลถึงผลเสียที่อาจจะเกิดขึ้น หากคุณยังคงดื่มเช่นนี้ต่อไป หรือคุณอาจกำลังคิดว่า อะไรๆน่าจะดีขึ้นถ้าคุณหยุดดื่มได้');
-            console.log(`motivation : `,motivation);
+            agent.add("เหมือนว่าคุณเริ่มรู้สึกลังเลเกี่ยวกับการดื่ม คุณอาจกังวลถึงผลเสียที่อาจจะเกิดขึ้น หากคุณยังคงดื่มเช่นนี้ต่อไป หรือคุณอาจกำลังคิดว่า อะไรๆน่าจะดีขึ้นถ้าคุณหยุดดื่มได้");
+            console.log("motivation : ",motivation);
             await userDB.setMotivation(userId, motivation);
         }else if(motivation == "ตัดสินใจ"){
-            agent.add('เหมือนคุณตัดสินใจแล้วว่าคุณอยากที่จะปรับเปลี่ยนตัวเองเกี่ยวกับเรื่องการดื่ม');
-            console.log(`motivation : `,motivation);
+            agent.add("เหมือนคุณตัดสินใจแล้วว่าคุณอยากที่จะปรับเปลี่ยนตัวเองเกี่ยวกับเรื่องการดื่ม");
+            console.log("motivation : ",motivation);
             await userDB.setMotivation(userId, motivation);
         }else if(motivation == "ลงมือ"){
-            agent.add('เยี่ยมมากค่ะ” “คุณกำลังจะลงมือทำอย่างจริงจังแล้ว');
-            console.log(`motivation : `,motivation);
+            agent.add("เยี่ยมมากค่ะ คุณกำลังจะลงมือทำอย่างจริงจังแล้ว");
+            console.log("motivation : ",motivation);
             await userDB.setMotivation(userId, motivation);
         }else if(motivation == "ทำต่อเนื่อง"){
-            agent.add('เยี่ยมมากค่ะ” “คุณลงมือเปลี่ยนแปลงตัวเองมาช่วงหนึ่งแล้ว');
-            console.log(`motivation : `,motivation);
+            agent.add("เยี่ยมมากค่ะ คุณลงมือเปลี่ยนแปลงตัวเองมาช่วงหนึ่งแล้ว");
+            console.log("motivation : ",motivation);
             await userDB.setMotivation(userId, motivation);
         }
 
