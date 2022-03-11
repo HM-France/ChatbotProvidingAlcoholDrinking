@@ -617,17 +617,21 @@ const myexp = ((request, response) => {
         if (gender === 'หญิง' || age >= 66) {
             if (maxSdPoint > 3) {
                 result = 'เกิน';
+                console.log("result : ",result);
                 await userDB.setDrinkingStandard(userId, result);
             } else {
                 result = 'ไม่เกิน';
+                console.log("result : ",result);
                 await userDB.setDrinkingStandard(userId, result);
             }
         } else if (gender === 'ชาย') {
             if (maxSdPoint > 4) {
                 result = 'เกิน';
+                console.log("result : ",result);
                 await userDB.setDrinkingStandard(userId, result);
             } else {
                 result = 'ไม่เกิน';
+                console.log("result : ",result);
                 await userDB.setDrinkingStandard(userId, result);
             }
         }

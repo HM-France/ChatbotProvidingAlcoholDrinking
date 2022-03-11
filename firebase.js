@@ -57,6 +57,9 @@ const userColl = firestore.collection('Users');
     },
     async setASSIST_STATUS (userId, ASSIST_STATUS) {
         return await userColl.doc(userId).update({ASSIST_STATUS: ASSIST_STATUS});
+    },
+    async setDrinkingStandard (userId, result) {
+        return await userColl.doc(userId).update({IsStandard: result});
     }
 };
 
