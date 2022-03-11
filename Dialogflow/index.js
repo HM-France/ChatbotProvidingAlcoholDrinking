@@ -799,7 +799,7 @@ const myexp = ((request, response) => {
                         {
                             "type": "action",
                             "action": {
-                                "type": "message",
+                                "type": "text",
                                 "text": `สุขภาพดีขึ้น`,
                                 "label": `สุขภาพดีขึ้น`
                             }
@@ -807,7 +807,7 @@ const myexp = ((request, response) => {
                         {
                             "type": "action",
                             "action": {
-                                "type": "message",
+                                "type": "text",
                                 "label": "การเรียนและการงานดีขึ้น",
                                 "text": `การเรียนและการงานดีขึ้น`
                             }
@@ -815,7 +815,7 @@ const myexp = ((request, response) => {
                         {
                             "type": "action",
                             "action": {
-                                "type": "message",
+                                "type": "text",
                                 "label": "การเงินดีขึ้น",
                                 "text": `การเงินดีขึ้น`
                             }
@@ -823,7 +823,7 @@ const myexp = ((request, response) => {
                         {
                             "type": "action",
                             "action": {
-                                "type": "message",
+                                "type": "text",
                                 "label": "ความสัมพันธ์ดีขึ้น",
                                 "text": `ความสัมพันธ์ดีขึ้น`
                             }
@@ -831,7 +831,7 @@ const myexp = ((request, response) => {
                         {
                             "type": "action",
                             "action": {
-                                "type": "message",
+                                "type": "text",
                                 "label": "ปัญหาทางกฎหมายลดลง",
                                 "text": `ปัญหาทางกฎหมายลดลง`
                             }
@@ -839,7 +839,7 @@ const myexp = ((request, response) => {
                         {
                             "type": "action",
                             "action": {
-                                "type": "message",
+                                "type": "text",
                                 "label": "อยากรู้สึกดีต่อตัวเอง",
                                 "text": `อยากรู้สึกดีต่อตัวเอง`
                             }
@@ -847,7 +847,7 @@ const myexp = ((request, response) => {
                         {
                             "type": "action",
                             "action": {
-                                "type": "message",
+                                "type": "text",
                                 "label": "เพื่อจิตใจที่สงบ",
                                 "text": `เพื่อจิตใจที่สงบ`
                             }
