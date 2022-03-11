@@ -1174,7 +1174,7 @@ const myexp = ((request, response) => {
     
       const Test = async () => {
           agent.add("กำลังทดสอบ") ;
-         agent.add(new Payload('LINE',{
+         /*agent.add(new Payload('LINE',{
             type: "template",
             altText: "แรงจูงใจในการเลิกเหล้า",
             template: {
@@ -1238,7 +1238,7 @@ const myexp = ((request, response) => {
                   },
               ]
             }
-          }, { sendAsMessage: true} ));
+          }, { sendAsMessage: true} ));*/
           agent.add("สิ้นสุดการทดสอบ");
       }
 
