@@ -800,4 +800,73 @@ const goal = () => {
       })
 }
 
-module.exports = {goal,motivation,alcohol}
+
+const test = () => {
+    return ({
+        type: "template",
+        altText: "this is a image carousel template",
+        template: {
+            type: "image_carousel",
+            columns: [
+                {
+                  imageUrl: "https://example.com/bot/images/item2.jpg",
+                  action: {
+                    type: "message",
+                    label: "Yes",
+                    text: "yes"
+                  }
+                },
+                {
+                    imageUrl: "https://example.com/bot/images/item2.jpg",
+                    action: {
+                      type: "message",
+                      label: "Yes",
+                      text: "yes"
+                    }
+                },
+                {
+                    imageUrl: "https://example.com/bot/images/item2.jpg",
+                    action: {
+                      type: "message",
+                      label: "Yes",
+                      text: "yes"
+                    }
+                },
+                {
+                      imageUrl: "https://example.com/bot/images/item2.jpg",
+                      action: {
+                        type: "message",
+                        label: "Yes",
+                        text: "yes"
+                      }
+                },
+                {
+                    imageUrl: "https://example.com/bot/images/item2.jpg",
+                    action: {
+                      type: "message",
+                      label: "Yes",
+                      text: "yes"
+                    }
+                },
+                {
+                    imageUrl: "https://example.com/bot/images/item2.jpg",
+                    action: {
+                      type: "message",
+                      label: "Yes",
+                      text: "yes"
+                    }
+                },
+                {
+                      imageUrl: "https://example.com/bot/images/item2.jpg",
+                      action: {
+                        type: "message",
+                        label: "Yes",
+                        text: "yes"
+                      }
+                }
+            ]
+        }
+      })
+}
+
+module.exports = {test,goal,motivation,alcohol}
