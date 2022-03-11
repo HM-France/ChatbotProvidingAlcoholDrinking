@@ -864,6 +864,12 @@ const myexp = ((request, response) => {
         await userDB.setMotivation(userId, goal);
         const { motivation , ASSIST_STATUS , IsStandard } = await userDB.get(userId);
 
+        console.log("Goal :",goal);
+        console.log("motivation: ",motivation);
+        console.log("ASSIST_STATUS: ",ASSIST_STATUS);
+        console.log("IsStandard: ",IsStandard);
+        console.log("================");
+        
         console.log("Enter assessGoal") ;
         if ( ASSIST_STATUS === "ความเสี่ยงต่ำ" ){
             if ( motivation === "ไม่เห็นปัญหา" ){
