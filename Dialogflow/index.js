@@ -861,7 +861,7 @@ const myexp = ((request, response) => {
 
     const assessGoal = async () => {
         let goal = agent.parameters ;
-        await userDB.setMotivation(userId, goal);
+        await userDB.setGoal(userId, goal);
         const { motivation , ASSIST_STATUS , IsStandard } = await userDB.get(userId);
 
         console.log("Goal :",goal);
