@@ -787,6 +787,8 @@ const myexp = ((request, response) => {
             agent.add("เยี่ยมมากค่ะ คุณลงมือเปลี่ยนแปลงตัวเองมาช่วงหนึ่งแล้ว");
             console.log("motivation : ",motivation);
             await userDB.setMotivation(userId, motivation);
+        }else{
+            agent.add(`พบปัญหาในการแสดงผล | motivation : ${motivation}`);
         }
 
         return agent.add(new Payload(
