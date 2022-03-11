@@ -866,7 +866,7 @@ const test = () => {
                 }
             ]
         }
-      })
+    })
 }
 
 module.exports = {test,goal,motivation,alcohol}
