@@ -65,7 +65,7 @@ const userColl = firestore.collection('Users');
         return await userColl.doc(userId).update({Motivation: motivation});
     },
     async setGoal (userId, goal) {
-        return await userColl.doc(userId).update({Goal: goal});
+        return await userColl.doc(userId).update({goal: goal});
     }
 };
 
