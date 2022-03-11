@@ -800,4 +800,4 @@ const goal = () => {
       })
 }
 
-module.exports = {motivation,alcohol}
+module.exports = {goal,motivation,alcohol}
