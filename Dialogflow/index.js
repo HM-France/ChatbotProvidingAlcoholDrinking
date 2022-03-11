@@ -767,25 +767,20 @@ const myexp = ((request, response) => {
 
     const assessMotivationResult = async () => {
         let motivation = agent.parameters;
-        if(motivation == 1){
+        if(motivation == "ไม่เห็นปัญหา"){
             agent.add('ตอนนี้ คุณยังไม่เห็นว่าการดื่มเช่นนี้จะก่อให้เกิดปัญหาใดๆ');
-            motivation = "ไม่เห็นปัญหา" ;
             await userDB.setMotivation(userId, motivation);
-        }else if(motivation == 2){
+        }else if(motivation == "ลังเล"){
             agent.add('เหมือนว่าคุณเริ่มรู้สึกลังเลเกี่ยวกับการดื่ม คุณอาจกังวลถึงผลเสียที่อาจจะเกิดขึ้น หากคุณยังคงดื่มเช่นนี้ต่อไป หรือคุณอาจกำลังคิดว่า อะไรๆน่าจะดีขึ้นถ้าคุณหยุดดื่มได้');
-            motivation = "ลังเล" ;
             await userDB.setMotivation(userId, motivation);
-        }else if(motivation == 3){
+        }else if(motivation == "ตัดสินใจ"){
             agent.add('เหมือนคุณตัดสินใจแล้วว่าคุณอยากที่จะปรับเปลี่ยนตัวเองเกี่ยวกับเรื่องการดื่ม');
-            motivation = "ตัดสินใจ" ;
             await userDB.setMotivation(userId, motivation);
-        }else if(motivation == 4){
+        }else if(motivation == "ลงมือ"){
             agent.add('เยี่ยมมากค่ะ” “คุณกำลังจะลงมือทำอย่างจริงจังแล้ว');
-            motivation = "ลงมือ" ;
             await userDB.setMotivation(userId, motivation);
-        }else if(motivation == 5){
+        }else if(motivation == "ทำต่อเนื่อง"){
             agent.add('เยี่ยมมากค่ะ” “คุณลงมือเปลี่ยนแปลงตัวเองมาช่วงหนึ่งแล้ว');
-            motivation = "ทำต่อเนื่อง" ;
             await userDB.setMotivation(userId, motivation);
         }
 
