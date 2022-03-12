@@ -794,73 +794,7 @@ const myexp = ((request, response) => {
 
         agent.add("ถ้าน้องตั้งใจพูดถึงสิ่งต่อไปนี้ คุณคิดว่าเรื่องไหนที่จะเป็นเป้าหมายของคุณในการปรับเปลี่ยนพฤติกรรมการดื่มคะ");
         
-        return agent.add(new Payload(
-            `LINE`,
-            {
-                "type": "text",
-                "text": "ถ้าน้องตั้งใจพูดถึงสิ่งต่อไปนี้ คุณคิดว่าเรื่องไหนที่จะเป็นเป้าหมายของคุณในการปรับเปลี่ยนพฤติกรรมการดื่มคะ",
-                "quickReply": {
-                    "items": [
-                        {
-                            "type": "action",
-                            "action": {
-                                "type": "message",
-                                "text": `สุขภาพดีขึ้น`,
-                                "label": `สุขภาพดีขึ้น`
-                            }
-                        },
-                        {
-                            "type": "action",
-                            "action": {
-                                "type": "message",
-                                "label": "การเรียนและการงานดีขึ้น",
-                                "text": `การเรียนและการงานดีขึ้น`
-                            }
-                        },
-                        {
-                            "type": "action",
-                            "action": {
-                                "type": "message",
-                                "label": "การเงินดีขึ้น",
-                                "text": `การเงินดีขึ้น`
-                            }
-                        },
-                        {
-                            "type": "action",
-                            "action": {
-                                "type": "message",
-                                "label": "ความสัมพันธ์ดีขึ้น",
-                                "text": `ความสัมพันธ์ดีขึ้น`
-                            }
-                        },
-                        {
-                            "type": "action",
-                            "action": {
-                                "type": "message",
-                                "label": "ปัญหาทางกฎหมายลดลง",
-                                "text": `ปัญหาทางกฎหมายลดลง`
-                            }
-                        },
-                        {
-                            "type": "action",
-                            "action": {
-                                "type": "message",
-                                "label": "อยากรู้สึกดีต่อตัวเอง",
-                                "text": `อยากรู้สึกดีต่อตัวเอง`
-                            }
-                        },
-                        {
-                            "type": "action",
-                            "action": {
-                                "type": "message",
-                                "label": "เพื่อจิตใจที่สงบ",
-                                "text": `เพื่อจิตใจที่สงบ`
-                            }
-                        },
-                    ]
-                },
-            },
-            { sendAsMessage: true }
+        return agent.add(new Payload(`LINE` , imageCarousels.goal() , { sendAsMessage: true }
         ))
     }
 
