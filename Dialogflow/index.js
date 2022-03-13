@@ -1028,7 +1028,7 @@ const myexp = ((request, response) => {
         if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
              percent = 5;
         }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
-             percent = 13;a
+             percent = 13;
         }else if(types ==='เครื่องดื่มอื่นๆ'){
              percent = 40;
         }else{
@@ -1037,7 +1037,7 @@ const myexp = ((request, response) => {
 
         // Response back data
         value = (((percent*(volume * numberofDrinks )*0.79) / 100) / weight * rho ) * 10 ;
-        await agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`);
+        agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`);
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้"]));
     }
 
