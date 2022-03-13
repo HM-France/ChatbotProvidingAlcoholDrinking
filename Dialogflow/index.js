@@ -3,6 +3,20 @@ const { WebhookClient, Payload } = require('dialogflow-fulfillment');
 const { userDB } = require('../firebase');
 const  imageCarousels = require('./imageCarousels');
 
+const delayReply = async (messages) => {
+    const delaytime = 2;
+    const messagesMapped = messages.map((message) => ({
+      type: "text",
+      text: message,
+    }));
+  
+    for (let index = 0; index < messagesMapped.length; index++) {
+      if (index === 0) await reply([messagesMapped[index]]);
+      else await push([messagesMapped[index]]);
+      await wait(delaytime);
+    }
+  };
+
 const myexp = ((request, response) => {
     //Create an instance
     const agent = new WebhookClient({ request, response });
@@ -1103,8 +1117,8 @@ const myexp = ((request, response) => {
 
         // Response back data
         value = (((percent*(volume * numberofDrinks )*0.79) / 100) / weight * rho ) * 10 ;
-        agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`);
-        return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้"]));
+        await delayReply (agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`));
+        return await delayReply (agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้"])));
     }
 
     const alcoholComposing = async () => {
