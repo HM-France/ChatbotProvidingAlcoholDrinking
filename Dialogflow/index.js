@@ -1027,8 +1027,8 @@ const myexp = ((request, response) => {
                         "type": "action",
                         "action": {
                             "type": "message",
-                            "text": `ถูกต้อง`,
-                            "label": `ถูกต้อง`
+                            "label": `ถูกต้อง`,
+                            "text": `ถูกต้อง`
                         }
                     },
                     {
