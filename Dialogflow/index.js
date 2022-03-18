@@ -1097,7 +1097,26 @@ const myexp = ((request, response) => {
         console.log('number of drink:' , numberofDrinks);
         console.log('volume:' , volume);
         console.log('-------------------');
-
+        let rho , value , percent ;
+        // assign rho value
+        if( gender === "ชาย" ){
+            rho = 0.68 ;
+            console.log("assign Gender conplete : ",rho);
+        }else if( gender === "หญิง"){
+            rho = 0.55 ;
+            console.log("assign Gender conplete : ",rho);
+        }
+        // assign percent
+        if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
+             percent = 5;
+        }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
+             percent = 13;
+        }else if(types ==='เครื่องดื่มอื่นๆ'){
+             percent = 40;
+        }else{
+            percent =  0 ;
+        }
+        value = (((percent*(volume * numberofDrinks )*0.79) / 100) / weight * rho ) * 10 ;
         let timeResult = (value - 40)/7 ;
         agent.add(`ต้องใช้เวลาอย่างน้อย ${timeResult} ชั่วโมงค่ะ ระดับแอลกอฮล์ในเลือดของคุณจึงน่าที่จะลดต่ำลงกว่าที่กฎหมายกำหนด`);
         agent.add(`อย่างไรก็ตาม น้องตั้งใจย้ำนะคะ ว่าค่าที่น้องตั้งใจคำนวณให้นี้ เป็นค่าโดยประมาณเท่านั้น`);
