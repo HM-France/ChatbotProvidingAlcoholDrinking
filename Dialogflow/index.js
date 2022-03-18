@@ -1075,6 +1075,27 @@ const myexp = ((request, response) => {
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าต้องใช้เวลารอนานแค่ไหน กว่าที่ระดับแอลกอฮอล์ในเลือดของคุณจะลดต่ำลงกว่า 50 มิลลิกรัมเปอร์เซ็นต์ ซึ่งหากไม่มีการดื่มเพิ่มระหว่างนั้นจะถือว่าเป็นระดับที่ไม่ผิดกฎหมายถ้าคุณขับขี่ และมีอายุเกิน 20 ปี', ["อยากรู้", "ไม่อยากรู้"]));
     }
 
+    const NOalcoholComposing = async () => {
+        let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
+        console.log('gender:',gender);
+        console.log('weight:' , weight);
+        console.log('types:' , types);
+        console.log('container:' , container);      
+        console.log('number of drink:' , numberofDrinks);
+        console.log('volume:' , volume);
+        console.log('-------------------');
+
+        return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าต้องใช้เวลารอนานแค่ไหน กว่าที่ระดับแอลกอฮอล์ในเลือดของคุณจะลดต่ำลงกว่า 50 มิลลิกรัมเปอร์เซ็นต์ ซึ่งหากไม่มีการดื่มเพิ่มระหว่างนั้นจะถือว่าเป็นระดับที่ไม่ผิดกฎหมายถ้าคุณขับขี่ และมีอายุเกิน 20 ปี', ["อยากรู้", "ไม่อยากรู้"]));
+    }
+
+    const alcoholLessThan = async() => {
+        
+    }
+
+    const contact = async() => {
+         
+    }
+
     const DoSurvey = async () => {
         agent.add(`ขอบคุณที่ทดลองใช้น้องตั้งใจนะคะ น้องตั้งใจอยากจะขอรบกวนเวลาคุณไม่นาน เพื่อทำแบบสอบถามความพึงพอใจในการใช้งานน้องตั้งใจค่ะ`);
         agent.add(new Payload('LINE', {            
@@ -1103,15 +1124,7 @@ const myexp = ((request, response) => {
             }
           } , { sendAsMessage: true} ));
     }
-
-    const alcoholLessThan = async() => {
-        
-    }
-
-    const contact = async() => {
-         
-    }
-    
+   
       const Test = async () => {
             agent.add("กำลังทดสอบ") ;
             return agent.add(new Payload('LINE', {
@@ -1182,10 +1195,6 @@ const myexp = ((request, response) => {
           agent.add("สิ้นสุดการทดสอบ");
       }
 
-    
-
-
-
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
     intentMap.set('check connect', checkConnect);
@@ -1211,7 +1220,7 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - yes',measureAlcohalInBloodCalculated);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes',alcoholComposing);
-    intentMap.set('contact',contact);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no', NOalcoholComposing);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
