@@ -998,7 +998,7 @@ const myexp = ((request, response) => {
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
         return agent.add(new Payload('LINE', {
             "type": "text",
-            "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+            "text": "ข้อมูลนี้ถูกต้องมั๊ยคะ",
             "quickReply": {
                 "items": [
                     {
@@ -1015,6 +1015,33 @@ const myexp = ((request, response) => {
                             "type": "message",
                             "label": "ไม่ถูกต้อง",
                             "text": `ไม่ถูกต้อง`
+                        }
+                    }
+                ]
+            },
+        } , { sendAsMessage: true }));
+    }
+
+    const alcoholEdit = async () => {
+        return agent.add(new Payload('LINE', {
+            "type": "text",
+            "text": "ต้องการกรอกข้อมูลใหม่ใช่มั๊ยคะ?",
+            "quickReply": {
+                "items": [
+                    {
+                        "type": "action",
+                        "action": {
+                            "type": "message",
+                            "label": `ต้องการแก้ไข`,
+                            "text": `แก้ไขข้อมูลแอลกอฮอล์`
+                        }
+                    },
+                    {
+                        "type": "action",
+                        "action": {
+                            "type": "message",
+                            "label": "ไม่ต้องการ",
+                            "text": `ยกเลิก`
                         }
                     }
                 ]
@@ -1226,6 +1253,7 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - yes', alcoholLessThan);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes - no', recommendMore);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - no', recommendMore);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - edit', alcoholEdit);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
