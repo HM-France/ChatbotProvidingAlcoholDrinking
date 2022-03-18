@@ -88,6 +88,7 @@ const myexp = ((request, response) => {
     }
 
     const SetUserPrepNext = async () => {
+        console.log("Enter SetUserPrepNext")
         return agent.add(new Payload('LINE', {
             "type": "text",
             "text": "ต่อไปจะขอสอบถามข้อมูลการดื่มเครื่องดื่มแอลกอฮอล์ของคุณเพื่อที่จะนำไปประเมินความเสี่ยงหน่อยนะคะ",
