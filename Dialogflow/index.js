@@ -98,8 +98,8 @@ const myexp = ((request, response) => {
                         "type": "action",
                         "action": {
                             "type": "message",
-                            "text": `ประเมินความเสี่ยง`,
-                            "label": `เริ่มทำการประเมินความเสี่ยง`
+                            "label": `เริ่มการประเมินความเสี่ยง`,
+                            "text": `ประเมินความเสี่ยง`
                         }
                     }
                 ]
