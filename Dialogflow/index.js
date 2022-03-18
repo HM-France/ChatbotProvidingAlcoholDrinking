@@ -1089,7 +1089,21 @@ const myexp = ((request, response) => {
     }
 
     const alcoholLessThan = async() => {
-        
+        let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
+        console.log('gender:',gender);
+        console.log('weight:' , weight);
+        console.log('types:' , types);
+        console.log('container:' , container);      
+        console.log('number of drink:' , numberofDrinks);
+        console.log('volume:' , volume);
+        console.log('-------------------');
+
+        let timeResult = (value - 40)/7 ;
+        agent.add(`ต้องใช้เวลาอย่างน้อย ${timeResult} ชั่วโมงค่ะ ระดับแอลกอฮล์ในเลือดของคุณจึงน่าที่จะลดต่ำลงกว่าที่กฎหมายกำหนด`);
+        agent.add(`อย่างไรก็ตาม น้องตั้งใจย้ำนะคะ ว่าค่าที่น้องตั้งใจคำนวณให้นี้ เป็นค่าโดยประมาณเท่านั้น`);
+        agent.add(`ไม่สามารถนำมาใช้อ้างอิงทางกฎหมายได้ ดังนั้นถ้าต้องขับขี่ น้องตั้งใจว่าไม่ดื่มเลยจะดีที่สุดแน่นอนค่ะ`);
+        return 
+                
     }
 
     const contact = async() => {
@@ -1221,6 +1235,8 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - yes',measureAlcohalInBloodCalculated);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes',alcoholComposing);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no', NOalcoholComposing);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes - yes', alcoholLessThan);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - yes', alcoholLessThan);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
