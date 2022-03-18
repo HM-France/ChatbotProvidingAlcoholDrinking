@@ -997,6 +997,8 @@ const myexp = ((request, response) => {
         console.log('volume:' , volume);
         console.log('-------------------');
 
+        
+
         if( !gender ){
             return agent.add(createQuickReply('ขอทราบเพศของคุณได้ไหมคะ?', ["ชาย", "หญิง"]));
         }
@@ -1013,6 +1015,14 @@ const myexp = ((request, response) => {
         }
         if( !numberofDrinks ){
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
+        }
+        
+        if( types === "เครื่องดื่มอื่นๆ")
+        {
+            console.log("TRUE") ;
+        }else
+        {
+            console.log("FALSE") ;
         }
         
         agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
