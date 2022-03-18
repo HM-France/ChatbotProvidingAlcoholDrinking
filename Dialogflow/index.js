@@ -989,10 +989,6 @@ const myexp = ((request, response) => {
             agent.add(`เลือกภาชนะที่ใกล้เคียงที่สุดค่ะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[types], { sendAsMessage: true }));
         }
-        // if( !volume ){
-        //     agent.add(`ปริมาณโดยคร่าวเท่าไรคะ?`); 
-        //     return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
-        // }
         if( !numberofDrinks ){
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
         }
@@ -1041,7 +1037,7 @@ const myexp = ((request, response) => {
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้"]));
     }
 
-    const alcoholComposing = async () => {
+    const alcoholComposing = async () => { //กรณีอยากรู้ปริมาณการขับออก
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
         console.log('gender:',gender);
         console.log('weight:' , weight);
@@ -1075,7 +1071,7 @@ const myexp = ((request, response) => {
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าต้องใช้เวลารอนานแค่ไหน กว่าที่ระดับแอลกอฮอล์ในเลือดของคุณจะลดต่ำลงกว่า 50 มิลลิกรัมเปอร์เซ็นต์ ซึ่งหากไม่มีการดื่มเพิ่มระหว่างนั้นจะถือว่าเป็นระดับที่ไม่ผิดกฎหมายถ้าคุณขับขี่ และมีอายุเกิน 20 ปี', ["อยากรู้", "ไม่อยากรู้"]));
     }
 
-    const NOalcoholComposing = async () => {
+    const NOalcoholComposing = async () => { //กรณีไม่อยากรู้ปริมาณการขับออก
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
         console.log('gender:',gender);
         console.log('weight:' , weight);
@@ -1088,7 +1084,7 @@ const myexp = ((request, response) => {
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าต้องใช้เวลารอนานแค่ไหน กว่าที่ระดับแอลกอฮอล์ในเลือดของคุณจะลดต่ำลงกว่า 50 มิลลิกรัมเปอร์เซ็นต์ ซึ่งหากไม่มีการดื่มเพิ่มระหว่างนั้นจะถือว่าเป็นระดับที่ไม่ผิดกฎหมายถ้าคุณขับขี่ และมีอายุเกิน 20 ปี', ["อยากรู้", "ไม่อยากรู้"]));
     }
 
-    const alcoholLessThan = async() => {
+    const alcoholLessThan = async() => { //กรณีอยากรู้ เวลาลดลงของแอลกอฮอล์
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
         console.log('gender:',gender);
         console.log('weight:' , weight);
@@ -1125,7 +1121,7 @@ const myexp = ((request, response) => {
                 
     }
 
-    const recommendMore = async() => {
+    const recommendMore = async() => { //กรณีไม่อยากรู้ เวลาลดลงของแอลกอฮอล์
         agent.add(`อย่างไรก็ตาม น้องตั้งใจย้ำนะคะ ว่าค่าที่น้องตั้งใจคำนวณให้นี้ เป็นค่าโดยประมาณเท่านั้น`);
         agent.add(`ไม่สามารถนำมาใช้อ้างอิงทางกฎหมายได้ ดังนั้นถ้าต้องขับขี่ น้องตั้งใจว่าไม่ดื่มเลยจะดีที่สุดแน่นอนค่ะ`);
         return agent.add(`ถ้ายังไงเชิญคุณเลือกใช้งานเมนูอื่นๆที่สนใจได้อีก จากเมนูเลยนะคะ :) `);
