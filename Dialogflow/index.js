@@ -474,7 +474,7 @@ const myexp = ((request, response) => {
                         aclPercent = 5;
                     }else if(type ==='ไวน์' || type ==='สุราพื้นเมือง'){
                         aclPercent = 13;
-                    }else if(type ==='แอลกอฮอล์'){
+                    }else if(type ==='เครื่องดื่มอื่นๆ'){
                         aclPercent = 40;
                     }
                     return agent.add(createQuickReply(
@@ -1100,7 +1100,7 @@ const myexp = ((request, response) => {
              percent = 0.05;
         }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
              percent = 0.13;
-        }else if(types ==='แอลกอฮอล์'){
+        }else if(types ==='เครื่องดื่มอื่นๆ'){
              percent = 0.40;
         }else{
             percent =  0 ;
@@ -1136,7 +1136,7 @@ const myexp = ((request, response) => {
              percent = 0.05;
         }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
              percent = 0.13;
-        }else if(types ==='แอลกอฮอล์'){
+        }else if(types ==='เครื่องดื่มอื่นๆ'){
              percent = 0.40;
         }else{
             percent =  0 ;
@@ -1184,7 +1184,7 @@ const myexp = ((request, response) => {
              percent = 0.05;
         }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
              percent = 0.13;
-        }else if(types ==='แอลกอฮอล์'){
+        }else if(types ==='เครื่องดื่มอื่นๆ'){
              percent = 0.40;
         }else{
             percent =  0 ;
