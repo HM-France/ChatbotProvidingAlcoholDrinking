@@ -1104,7 +1104,13 @@ const myexp = ((request, response) => {
           } , { sendAsMessage: true} ));
     }
 
+    const alcoholLessThan = async() => {
+        
+    }
 
+    const contact = async() => {
+         
+    }
     
       const Test = async () => {
             agent.add("กำลังทดสอบ") ;
@@ -1176,9 +1182,9 @@ const myexp = ((request, response) => {
           agent.add("สิ้นสุดการทดสอบ");
       }
 
-    const contact = async() => {
-        อิ๊   
-    }
+    
+
+
 
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
