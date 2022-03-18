@@ -1,7 +1,9 @@
 const { generateKey } = require('crypto');
 const { WebhookClient, Payload } = require('dialogflow-fulfillment');
+const { ADDRGETNETWORKPARAMS } = require('dns');
 const { userDB } = require('../firebase');
 const  imageCarousels = require('./imageCarousels');
+const knowladgeBase = require('./knowledgebase');
 
 const myexp = ((request, response) => {
     //Create an instance
@@ -1238,6 +1240,11 @@ const myexp = ((request, response) => {
             }
           } , { sendAsMessage: true} ));
     }
+
+    const knowladgeSection = async () => {
+        agent.add("หากต้องการทราบข้อมูลเพิ่มเติมสามารถเลือกหัวข้อได้เลยค่ะ") ;
+        return agent.add(`LINE`, knowladgeBase.general() , { sendAsMessage: true });
+    }
    
       const Test = async () => {
             agent.add("กำลังทดสอบ") ;          agent.add("สิ้นสุดการทดสอบ");
@@ -1275,6 +1282,7 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes - no', recommendMore);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - no', recommendMore);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - edit', alcoholEdit);
+    intentMap.set('knowladge', knowladgeSection);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
