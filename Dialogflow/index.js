@@ -103,7 +103,7 @@ const myexp = ((request, response) => {
                         }
                     }
                 ]
-            },
+            }
         } , { sendAsMessage: true }));
     }
 
