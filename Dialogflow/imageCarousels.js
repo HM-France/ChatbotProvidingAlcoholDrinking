@@ -619,7 +619,7 @@ const alcohol = () => {
                     ]
                 }
             },
-            แอลกอฮอล์: {
+            alcohol: {
                 type: "template",
                 altText: "เลือกภาชนะที่คุณมักจะใช้ดื่มค่ะ",
                 template: {
