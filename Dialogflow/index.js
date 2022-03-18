@@ -1126,10 +1126,10 @@ const myexp = ((request, response) => {
         agent.add(new Payload('LINE',
             {
                 type: "text",
-                text: "$ ถ้ายังไงเชิญคุณเลือกใช้งานเมนูอื่นๆที่สนใจได้อีก จากเมนูเลยนะคะ ",
+                text: "ถ้ายังไงเชิญคุณเลือกใช้งานเมนูอื่นๆที่สนใจได้อีก จากเมนูเลยนะคะ $",
                 emojis: [
                     {
-                        index: 0,
+                        index: 65,
                         productId: "5ac1bfd5040ab15980c9b435",
                         emojiId: "009"
                     }
