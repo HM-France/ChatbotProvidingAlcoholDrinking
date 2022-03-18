@@ -1014,10 +1014,10 @@ const myexp = ((request, response) => {
         let rho , value , percent ;
         // assign rho value
         if( gender === "ชาย" ){
-            rho = 0.68 ;
+            rho = 0.73 ;
             console.log("assign Gender conplete : ",rho);
         }else if( gender === "หญิง"){
-            rho = 0.55 ;
+            rho = 0.66 ;
             console.log("assign Gender conplete : ",rho);
         }
         // assign percent
