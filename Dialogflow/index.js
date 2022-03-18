@@ -87,6 +87,25 @@ const myexp = ((request, response) => {
         ));
     }
 
+    const SetUserPrepNext = async () => {
+        return agent.add(new Payload('LINE', {
+            "type": "text",
+            "text": "ต่อไปจะขอสอบถามข้อมูลการดื่มเครื่องดื่มแอลกอฮอล์ของคุณเพื่อที่จะนำไปประเมินความเสี่ยงหน่อยนะคะ",
+            "quickReply": {
+                "items": [
+                    {
+                        "type": "action",
+                        "action": {
+                            "type": "message",
+                            "text": `ประเมินความเสี่ยง`,
+                            "label": `เริ่มทำการประเมินความเสี่ยง`
+                        }
+                    }
+                ]
+            },
+        } , { sendAsMessage: true }));
+    }
+
     const checkUserDrinking = async () => {
         agent.add(new Payload(
             `LINE`,
@@ -1006,7 +1025,7 @@ const myexp = ((request, response) => {
                         "action": {
                             "type": "message",
                             "text": `ถูกต้อง`,
-                            "label": `ไม่ถูกต้อง`
+                            "label": `ถูกต้อง`
                         }
                     },
                     {
@@ -1227,6 +1246,7 @@ const myexp = ((request, response) => {
     let intentMap = new Map();
     intentMap.set('check connect', checkConnect);
     intentMap.set('SET_USER_PROFILE', setUserProfile);
+    intentMap.set('SET_USER_PROFILE - next', SetUserPrepNext ) ;
     intentMap.set('EDIT_USER_PROFILE', setUserProfile);
     intentMap.set('RISK_ASSESSMENT', checkUserDrinking); //ถามคำถาม assit ข้อ 1
     intentMap.set('RISK_ASSESSMENT - yes', checkUserDrinkingIn3Month); //รับคำตอบข้อ 1 กรณีตอบว่าเคยดื่ม จะถามคำถามข้อ 2 ของ assist 
