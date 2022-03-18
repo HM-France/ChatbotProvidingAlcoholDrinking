@@ -1066,7 +1066,7 @@ const myexp = ((request, response) => {
         }else{
             percent =  0 ;
         }
-        value = ( (volume*numberofDrinks) * percent  * 0.79 ) / ( rho * weight ) ;
+        value = ( (volume*numberofDrinks) * percent  * 0.79 ) ;
         console.log(value);
         let timeResult = value/7 ; 
         agent.add(`ถ้าคุณเป็นผู้${gender} น้ำหนัก ${weight} กก. ดื่ม${types} ปริมาณ ${numberofDrinks} ${container} ต้องใช้เวลาอย่างน้อย ${timeResult} ชั่วโมง แอลกอฮอล์ในร่างกายถึงจะถูกขับออกไปได้หมด`);
