@@ -61,11 +61,11 @@ const alcohol = () => {
                                 text: "ไวน์คูลเลอร์"
                             }
                         },{
-                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/ประเภทเครื่องดื่ม%2Fเครื่องดื่มอื่นๆ.png?alt=media&token=ce78acf3-4c55-4edc-a452-98525f6dfae2",
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/ประเภทเครื่องดื่ม%2Fแอลกอฮอล์.png?alt=media&token=ce78acf3-4c55-4edc-a452-98525f6dfae2",
                             action: {
                                 type: "message",
-                                label: "เครื่องดื่มอื่นๆ",
-                                text: "เครื่องดื่มอื่นๆ"
+                                label: "แอลกอฮอล์",
+                                text: "แอลกอฮอล์"
                             }
                         }
                     ]
@@ -619,7 +619,7 @@ const alcohol = () => {
                     ]
                 }
             },
-            เครื่องดื่มอื่นๆ: {
+            แอลกอฮอล์: {
                 type: "template",
                 altText: "เลือกภาชนะที่คุณมักจะใช้ดื่มค่ะ",
                 template: {
