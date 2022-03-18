@@ -1246,7 +1246,7 @@ const myexp = ((request, response) => {
 
     const knowladgeSection = async () => {
         agent.add("หากต้องการทราบข้อมูลเพิ่มเติมสามารถเลือกหัวข้อได้เลยค่ะ") ;
-        return agent.add(`LINE`, knowladgeBase.general() , { sendAsMessage: true });
+        return agent.add(new Payload(`LINE`, knowladgeBase.general() , { sendAsMessage: true }));
     }
    
       const Test = async () => {
