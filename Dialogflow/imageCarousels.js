@@ -661,8 +661,8 @@ const alcohol = () => {
                             imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%A7%E0%B9%80%E0%B8%9A%E0%B8%B5%E0%B8%A2%E0%B8%A3%E0%B9%8C%E0%B9%83%E0%B8%AB%E0%B9%83%E0%B8%8D%E0%B9%88165.png?alt=media&token=09931385-07af-4dc1-8bb1-e3618b791263",
                             action: {
                                 type: "message",
-                                label: "แก้วเบียร์ใหญ่ 165mL",
-                                text: "แก้วเบียร์ใหญ่ 165mL"
+                                label: "แก้วใหญ่ 165mL",
+                                text: "แก้วใหญ่ 165mL"
                             }
                         },
                         {
