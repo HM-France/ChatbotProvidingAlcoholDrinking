@@ -1125,8 +1125,10 @@ const myexp = ((request, response) => {
                 
     }
 
-    const contact = async() => {
-         
+    const recommendMore = async() => {
+        agent.add(`อย่างไรก็ตาม น้องตั้งใจย้ำนะคะ ว่าค่าที่น้องตั้งใจคำนวณให้นี้ เป็นค่าโดยประมาณเท่านั้น`);
+        agent.add(`ไม่สามารถนำมาใช้อ้างอิงทางกฎหมายได้ ดังนั้นถ้าต้องขับขี่ น้องตั้งใจว่าไม่ดื่มเลยจะดีที่สุดแน่นอนค่ะ`);
+        return agent.add(`ถ้ายังไงเชิญคุณเลือกใช้งานเมนูอื่นๆที่สนใจได้อีก จากเมนูเลยนะคะ :) `);
     }
 
     const DoSurvey = async () => {
@@ -1256,6 +1258,8 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no', NOalcoholComposing);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes - yes', alcoholLessThan);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - yes', alcoholLessThan);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes - no', recommendMore);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - no', recommendMore);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
