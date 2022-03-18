@@ -996,7 +996,30 @@ const myexp = ((request, response) => {
         agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
         agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
-        return agent.add(createQuickReply('ข้อมูลนี้ถูกต้องมั๊ยคะ?', ["ถูกต้อง", "ไม่ถูกต้อง"]));
+        return agent.add(new Payload('LINE', {
+            "type": "text",
+            "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+            "quickReply": {
+                "items": [
+                    {
+                        "type": "action",
+                        "action": {
+                            "type": "message",
+                            "text": `ถูกต้อง`,
+                            "label": `ไม่ถูกต้อง`
+                        }
+                    },
+                    {
+                        "type": "action",
+                        "action": {
+                            "type": "message",
+                            "label": "ไม่ถูกต้อง",
+                            "text": `ไม่ถูกต้อง`
+                        }
+                    }
+                ]
+            },
+        } , { sendAsMessage: true }));
     }
 
     const measureAlcohalInBloodCalculated = async () => {
@@ -1170,48 +1193,7 @@ const myexp = ((request, response) => {
     }
    
       const Test = async () => {
-            agent.add("กำลังทดสอบ") ;
-            return agent.add(new Payload('LINE', {
-                "type": "bubble",
-                "header": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "Header text"
-                    }
-                  ]
-                },
-                "hero": {
-                  "type": "image",
-                  "url": "https://example.com/flex/images/image.jpg"
-                },
-                "body": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "Body text"
-                    }
-                  ]
-                },
-                "footer": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "Footer text"
-                    }
-                  ]
-                },
-                "styles": {
-                  "comment": "See the example of a bubble style object"
-                }
-              } , { sendAsMessage: true }));
-          agent.add("สิ้นสุดการทดสอบ");
+            agent.add("กำลังทดสอบ") ;          agent.add("สิ้นสุดการทดสอบ");
       }
 
     // Run the proper function handler based on the matched Dialogflow intent name
