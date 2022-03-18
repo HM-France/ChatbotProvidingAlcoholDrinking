@@ -1129,7 +1129,7 @@ const myexp = ((request, response) => {
                 text: "ถ้ายังไงเชิญคุณเลือกใช้งานเมนูอื่นๆที่สนใจได้อีก จากเมนูเลยนะคะ $",
                 emojis: [
                     {
-                        index: 65,
+                        index: 66,
                         productId: "5ac1bfd5040ab15980c9b435",
                         emojiId: "009"
                     }
