@@ -1176,6 +1176,10 @@ const myexp = ((request, response) => {
           agent.add("สิ้นสุดการทดสอบ");
       }
 
+    const contact = async() => {
+        
+    }
+
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
     intentMap.set('check connect', checkConnect);
@@ -1201,6 +1205,7 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - yes',measureAlcohalInBloodCalculated);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes',alcoholComposing);
+    intentMap.set('contact',contact);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
