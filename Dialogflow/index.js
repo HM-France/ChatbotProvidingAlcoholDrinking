@@ -1058,11 +1058,11 @@ const myexp = ((request, response) => {
         }
         // assign percent
         if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
-             percent = 5;
+             percent = 0.05;
         }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
-             percent = 13;
+             percent = 0.13;
         }else if(types ==='เครื่องดื่มอื่นๆ'){
-             percent = 40;
+             percent = 0.40;
         }else{
             percent =  0 ;
         }
@@ -1105,11 +1105,11 @@ const myexp = ((request, response) => {
         }
         // assign percent
         if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
-             percent = 5;
+             percent = 0.05;
         }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
-             percent = 13;
+             percent = 0.13;
         }else if(types ==='เครื่องดื่มอื่นๆ'){
-             percent = 40;
+             percent = 0.40;
         }else{
             percent =  0 ;
         }
