@@ -1017,14 +1017,7 @@ const myexp = ((request, response) => {
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
         }
         
-        if( types === "เครื่องดื่มอื่นๆ")
-        {
-            console.log("TRUE") ;
-        }else
-        {
-            console.log("FALSE") ;
-        }
-        
+
         agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
         agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
@@ -1257,7 +1250,9 @@ const myexp = ((request, response) => {
     }
    
       const Test = async () => {
-            agent.add("กำลังทดสอบ") ;          agent.add("สิ้นสุดการทดสอบ");
+            agent.add("กำลังทดสอบ") ;
+            return agent.add(`LINE` , imageCarousels.containerSize[เครื่องดื่มอื่นๆ] , { sendAsMessage:true});
+            agent.add("สิ้นสุดการทดสอบ");
       }
 
     // Run the proper function handler based on the matched Dialogflow intent name
