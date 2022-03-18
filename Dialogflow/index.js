@@ -1032,7 +1032,7 @@ const myexp = ((request, response) => {
         }
 
         // Response back data
-        value = (((percent*(volume * numberofDrinks )*0.79) / 100) / weight * rho ) * 10 ;
+        value = ((((container*numberofDrinks) / 29.574 ) * percent * 5.14 ) / ( (weight / 0.454) * rho ) ) * 1000 ;
         agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`);
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้"]));
     }
@@ -1065,7 +1065,7 @@ const myexp = ((request, response) => {
         }else{
             percent =  0 ;
         }
-        value = (((percent*(volume * numberofDrinks )*0.79) / 100) / weight * rho ) * 10 ;
+        value = ( (container*numberofDrinks) * percent  * 0.79 ) / ( rho * weight ) ;
         let timeResult = value/7 ; 
         agent.add(`ถ้าคุณเป็นผู้${gender} น้ำหนัก ${weight} กก. ดื่ม${types} ปริมาณ ${numberofDrinks} ${container} ต้องใช้เวลาอย่างน้อย ${timeResult} ชั่วโมง แอลกอฮอล์ในร่างกายถึงจะถูกขับออกไปได้หมด`);
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าต้องใช้เวลารอนานแค่ไหน กว่าที่ระดับแอลกอฮอล์ในเลือดของคุณจะลดต่ำลงกว่า 50 มิลลิกรัมเปอร์เซ็นต์ ซึ่งหากไม่มีการดื่มเพิ่มระหว่างนั้นจะถือว่าเป็นระดับที่ไม่ผิดกฎหมายถ้าคุณขับขี่ และมีอายุเกิน 20 ปี', ["อยากรู้", "ไม่อยากรู้"]));
@@ -1096,10 +1096,10 @@ const myexp = ((request, response) => {
         let rho , value , percent ;
         // assign rho value
         if( gender === "ชาย" ){
-            rho = 0.68 ;
+            rho = 0.73 ;
             console.log("assign Gender conplete : ",rho);
         }else if( gender === "หญิง"){
-            rho = 0.55 ;
+            rho = 0.66 ;
             console.log("assign Gender conplete : ",rho);
         }
         // assign percent
@@ -1112,8 +1112,8 @@ const myexp = ((request, response) => {
         }else{
             percent =  0 ;
         }
-        value = (((percent*(volume * numberofDrinks )*0.79) / 100) / weight * rho ) * 10 ;
-        let timeResult = (value - 40)/7 ;
+        value = ((((container*numberofDrinks) / 29.574 ) * percent * 5.14 ) / ( (weight / 0.454) * rho ) ) * 1000 ;
+        timeResult = value - ( 0.015 * 3 * 1000 ) ;
         agent.add(`ต้องใช้เวลาอย่างน้อย ${timeResult} ชั่วโมงค่ะ ระดับแอลกอฮล์ในเลือดของคุณจึงน่าที่จะลดต่ำลงกว่าที่กฎหมายกำหนด`);
         agent.add(`อย่างไรก็ตาม น้องตั้งใจย้ำนะคะ ว่าค่าที่น้องตั้งใจคำนวณให้นี้ เป็นค่าโดยประมาณเท่านั้น`);
         agent.add(`ไม่สามารถนำมาใช้อ้างอิงทางกฎหมายได้ ดังนั้นถ้าต้องขับขี่ น้องตั้งใจว่าไม่ดื่มเลยจะดีที่สุดแน่นอนค่ะ`);
