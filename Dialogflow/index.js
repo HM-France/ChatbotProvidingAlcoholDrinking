@@ -1317,8 +1317,7 @@ const myexp = ((request, response) => {
     }
 
     const knowladgeSection = async () => {
-        agent.add("หากต้องการทราบข้อมูลเพิ่มเติมสามารถเลือกหัวข้อได้เลยค่ะ") ;
-        return agent.add(new Payload(`LINE`, knowladgeBase.general() , { sendAsMessage: true }));
+        agent.add("ฟังก์ชั่นนี้ยังไม่เปิดการใช้งาน ขออภัยค่ะ") ;
     }
 
     const drinkingStandardData = async () => {
