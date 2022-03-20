@@ -1328,7 +1328,7 @@ const myexp = ((request, response) => {
    
       const Test = async () => {
             agent.add("กำลังทดสอบ") ;
-            return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize["alcohol"], { sendAsMessage: true }));
+            agent.add("🤔🎉🥺🤭☺️😨🦎🥲🔷😆😁😃");
             agent.add("สิ้นสุดการทดสอบ");
       }
 
