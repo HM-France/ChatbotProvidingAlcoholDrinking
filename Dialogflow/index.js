@@ -1320,6 +1320,11 @@ const myexp = ((request, response) => {
         agent.add("หากต้องการทราบข้อมูลเพิ่มเติมสามารถเลือกหัวข้อได้เลยค่ะ") ;
         return agent.add(new Payload(`LINE`, knowladgeBase.general() , { sendAsMessage: true }));
     }
+
+    const drinkingStandardData = async () => {
+        agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`) ;
+        agent.add(createQuickReply("น้องตั้งใจจะนำคุณไปสู่ขั้นตอนถัดไปนะคะ","กรอกข้อมูลของวันนี้"));
+    }
    
       const Test = async () => {
             agent.add("กำลังทดสอบ") ;
@@ -1345,6 +1350,7 @@ const myexp = ((request, response) => {
     intentMap.set('RISK_ASSESSMENT_RESULT - week', riskAssessmentResultWeek);
     intentMap.set('RISK_ASSESSMENT_RESULT - day', riskAssessmentResultDay);
     intentMap.set('RISK_ASSESSMENT_RESULT - risk', riskAssessmentResultRisk);
+    intentMap.set('DRINK_STANDARD', drinkingStandardData);
     intentMap.set('ASSESS_MOTIVATION', assessMotivation);
     intentMap.set('ASSESS_MOTIVATION - result', assessMotivationResult);
     intentMap.set('ASSESS_MOTIVATION - goal',assessGoal);
