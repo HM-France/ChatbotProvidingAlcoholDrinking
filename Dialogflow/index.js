@@ -1138,16 +1138,14 @@ const myexp = ((request, response) => {
             percent = 0.05;
        }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
             percent = 0.13;
-       }else if(types ==='เครื่องดื่มอื่นๆ'){
+       }else if(types ==='เครื่องดื่มอื่นๆ' || types ==='สุราสี40'){
             percent = 0.40;
        }else if(types ==='สุราสี35'){
             percent = 0.35 ;
-       }else if(types ==='สุราสี40'){
-            percent = 0.40 ;
        }else{
-           percent =  0 ;
+            percent =  0 ;
        }
-
+       console.log('percent : ',percent);
         // Response back data
         value = ((((volume*numberofDrinks) / 29.574 ) * percent * 5.14 ) / ( (weight / 0.454) * rho ) ) * 1000 ;
         console.log("value :",value);
@@ -1228,14 +1226,12 @@ const myexp = ((request, response) => {
             percent = 0.05;
        }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
             percent = 0.13;
-       }else if(types ==='เครื่องดื่มอื่นๆ'){
+       }else if(types ==='เครื่องดื่มอื่นๆ' || types ==='สุราสี40'){
             percent = 0.40;
        }else if(types ==='สุราสี35'){
             percent = 0.35 ;
-       }else if(types ==='สุราสี40'){
-            percent = 0.40 ;
        }else{
-           percent =  0 ;
+            percent =  0 ;
        }
 
         if( !time ){
