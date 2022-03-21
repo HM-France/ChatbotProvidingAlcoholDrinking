@@ -1121,6 +1121,7 @@ const myexp = ((request, response) => {
         console.log('container:' , container);      
         console.log('number of drink:' , numberofDrinks);
         console.log('volume:' , volume);
+        console.log('percent : ',percent);
         console.log('-------------------');
 
         let rho , value , percent ;
