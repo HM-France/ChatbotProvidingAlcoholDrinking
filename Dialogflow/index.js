@@ -1134,14 +1134,18 @@ const myexp = ((request, response) => {
         }
         // assign percent
         if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
-             percent = 0.05;
-        }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
-             percent = 0.13;
-        }else if(types ==='เครื่องดื่มอื่นๆ'){
-             percent = 0.40;
-        }else{
-            percent =  0 ;
-        }
+            percent = 0.05;
+       }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
+            percent = 0.13;
+       }else if(types ==='เครื่องดื่มอื่นๆ'){
+            percent = 0.40;
+       }else if(types ==='สุราสี35'){
+            percent = 0.35 ;
+       }else if(types ==='สุราสี40'){
+            percent = 0.40 ;
+       }else{
+           percent =  0 ;
+       }
 
         // Response back data
         value = ((((volume*numberofDrinks) / 29.574 ) * percent * 5.14 ) / ( (weight / 0.454) * rho ) ) * 1000 ;
@@ -1175,6 +1179,10 @@ const myexp = ((request, response) => {
              percent = 0.13;
         }else if(types ==='เครื่องดื่มอื่นๆ'){
              percent = 0.40;
+        }else if(types ==='สุราสี35'){
+             percent = 0.35 ;
+        }else if(types ==='สุราสี40'){
+             percent = 0.40 ;
         }else{
             percent =  0 ;
         }
@@ -1218,14 +1226,18 @@ const myexp = ((request, response) => {
         }
         // assign percent
         if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
-             percent = 0.05;
-        }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
-             percent = 0.13;
-        }else if(types ==='เครื่องดื่มอื่นๆ'){
-             percent = 0.40;
-        }else{
-            percent =  0 ;
-        }
+            percent = 0.05;
+       }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
+            percent = 0.13;
+       }else if(types ==='เครื่องดื่มอื่นๆ'){
+            percent = 0.40;
+       }else if(types ==='สุราสี35'){
+            percent = 0.35 ;
+       }else if(types ==='สุราสี40'){
+            percent = 0.40 ;
+       }else{
+           percent =  0 ;
+       }
 
         if( !time ){
             return agent.add(`ระบุจำนวนชั่วโมงที่ต้องการคำนวนได้เลยค่ะ`) ;
