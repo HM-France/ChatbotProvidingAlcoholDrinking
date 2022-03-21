@@ -1114,7 +1114,7 @@ const myexp = ((request, response) => {
     const measureAlcohalInBloodCalculated = async () => {
         agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
-
+        let rho , value , percent ;
         console.log('gender:',gender);
         console.log('weight:' , weight);
         console.log('types:' , types);
@@ -1124,7 +1124,7 @@ const myexp = ((request, response) => {
         console.log('percent : ',percent);
         console.log('-------------------');
 
-        let rho , value , percent ;
+        
         // assign rho value
         if( gender === "ชาย" ){
             rho = 0.73 ;
