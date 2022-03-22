@@ -1357,8 +1357,8 @@ const myexp = ((request, response) => {
                         },
                         {
                             type: "message",
-                            label: "ตัวเลือก",
-                            text: "ข้อความ"
+                            label: "ผลกระทบจากสุรา",
+                            text: "ผลกระทบจากสุรา"
                         },
                         {
                             type: "message",
