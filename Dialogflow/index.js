@@ -1343,7 +1343,7 @@ const myexp = ((request, response) => {
                     imageAspectRatio: "rectangle",
                     imageSize: "cover",
                     imageBackgroundColor: "#FFFFFF",
-                    title: "Menu",
+                    titl: "Menu",
                     text: "Please select",
                     defaultAction: {
                         type: "uri",
@@ -1352,29 +1352,19 @@ const myexp = ((request, response) => {
                     },
                     actions: [
                         {
-                          type: "message",
-                          label: "ตัวเลือก",
-                          text: "ข้อความ"                
+                          type: "postback",
+                          label: "Buy",
+                          data: "action=buy&itemid=123"
                         },
                         {
-                            type: "message",
-                            label: "ตัวเลือก",
-                            text: "ข้อความ"                
+                          type: "postback",
+                          label: "Add to cart",
+                          data: "action=add&itemid=123"
                         },
                         {
-                            type: "message",
-                            label: "ตัวเลือก",
-                            text: "ข้อความ"                
-                        },
-                        {
-                            type: "message",
-                            label: "ตัวเลือก",
-                            text: "ข้อความ"                
-                        },
-                        {
-                            type: "message",
-                            label: "ตัวเลือก",
-                            text: "ข้อความ"                
+                          type: "uri",
+                          label: "View detail",
+                          uri: "http://example.com/page/123"
                         }
                     ]
                 }
