@@ -1364,17 +1364,17 @@ const myexp = ((request, response) => {
                         {
                             type: "message",
                             label: "อาการคนเมาส",
-                            text: "อาการคนเมาสุรา"                
+                            text: "อาการคนเมาส"                
                         },
                         {
                             type: "message",
                             label: "อาการคนติดส",
-                            text: "อาการคนติดสุรา"                
+                            text: "อาการคนติดส"                
                         },
                         {
                             type: "message",
                             label: "อาการถอนพิษ",
-                            text: "อาการถอนพิษสุรา"                
+                            text: "อาการถอนพิษ"                
                         }
                     ]
                 }
