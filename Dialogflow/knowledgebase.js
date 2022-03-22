@@ -110,3 +110,5 @@ const Flex = () => {
         }
     })
 }
+
+module.exports = {Flex,MainMenu}
