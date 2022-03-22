@@ -1353,28 +1353,28 @@ const myexp = ((request, response) => {
                     actions: [
                         {
                           type: "message",
-                          label: "สุราคืออะไร",
-                          text: "สุราคืออะไร"                
+                          label: "ตัวเลือก",
+                          text: "ข้อความ"                
                         },
                         {
                             type: "message",
-                            label: "ร่างกายกำจัด",
-                            text: "ร่างกายกำจัด"                
+                            label: "ตัวเลือก",
+                            text: "ข้อความ"                
                         },
                         {
                             type: "message",
-                            label: "อาการคนเมาส",
-                            text: "อาการคนเมาส"                
+                            label: "ตัวเลือก",
+                            text: "ข้อความ"                
                         },
                         {
                             type: "message",
-                            label: "อาการคนติดส",
-                            text: "อาการคนติดส"                
+                            label: "ตัวเลือก",
+                            text: "ข้อความ"                
                         },
                         {
                             type: "message",
-                            label: "อาการถอนพิษ",
-                            text: "อาการถอนพิษ"                
+                            label: "ตัวเลือก",
+                            text: "ข้อความ"                
                         }
                     ]
                 }
