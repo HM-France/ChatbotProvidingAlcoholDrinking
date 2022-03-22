@@ -1352,8 +1352,8 @@ const myexp = ((request, response) => {
                     actions: [
                         {
                           type: "message",
-                          label: "ตัวเลือก",
-                          text: "ข้อความ"
+                          label: "เกี่ยวกับสุรา",
+                          text: "เกี่ยวกับสุรา"
                         },
                         {
                             type: "message",
