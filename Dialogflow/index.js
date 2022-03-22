@@ -1347,8 +1347,8 @@ const myexp = ((request, response) => {
                     text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
                     defaultAction: {
                         type: "message",
-                          label: "ตัวเลือก",
-                          text: "ข้อความ"
+                          label: "วิธีการใช้งาน",
+                          text: "วิธีการใช้งาน"
                     },
                     actions: [
                         {
