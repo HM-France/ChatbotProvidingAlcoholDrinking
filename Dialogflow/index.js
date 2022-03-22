@@ -1324,7 +1324,8 @@ const myexp = ((request, response) => {
     }
 
     const knowladgeSection = async () => {
-        agent.add("ฟังก์ชั่นนี้ยังไม่เปิดการใช้งาน ขออภัยค่ะ") ;
+        agent.add("ฟังก์ชั่นข้อมูลการเลิกเหล้า เป็นฟังก์ชั่นที่รวบรวมข้อมูลต่าง ๆ ที่เกี่ยวข้องกับการเลิกเหล้าไว้ด้วยกัน เพื่อให้คุณได้ทราบข้อเท็จจริงจากต่าง ๆ และนำไปประยุกต์ใช้ได้ค่ะ") ;
+        return agent.add(new Payload(`LINE` , knowladgeBase.MainMenu() , { sendAsMessage:true }));
     }
 
     const drinkingStandardData = async () => {
