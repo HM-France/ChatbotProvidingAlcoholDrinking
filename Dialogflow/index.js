@@ -1370,6 +1370,11 @@ const myexp = ((request, response) => {
                             type: "message",
                             label: "เบอร์ติดต่อฉุกเฉิน",
                             text: "เบอร์ติดต่อฉุกเฉิน"
+                        },
+                        {
+                            type: "message",
+                            label: "วิธีการใช้งาน",
+                            text: "วิธีการใช้งาน"
                         }
                     ]
                 }
