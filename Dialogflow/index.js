@@ -1343,7 +1343,7 @@ const myexp = ((request, response) => {
                     imageSize: "cover",
                     imageBackgroundColor: "#FFFFFF",
                     titl: "Menu",
-                    text: "Please select",
+                    text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
                     defaultAction: {
                         type: "message",
                           label: "ตัวเลือก",
