@@ -1362,8 +1362,13 @@ const myexp = ((request, response) => {
                         },
                         {
                             type: "message",
-                            label: "ตัวเลือก",
-                            text: "ข้อความ"
+                            label: "เกี่ยวกับการเลิกสุรา",
+                            text: "เกี่ยวกับการเลิกสุรา"
+                        },
+                        {
+                            type: "message",
+                            label: "เบอร์ติดต่อฉุกเฉิน",
+                            text: "เบอร์ติดต่อฉุกเฉิน"
                         }
                     ]
                 }
