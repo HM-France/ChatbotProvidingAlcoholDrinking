@@ -5,10 +5,10 @@ const { userDB } = require('../firebase');
 const  imageCarousels = require('./imageCarousels');
 const  knowladgeBase = require('./knowledgebase');
 
-// function delay(ms) {
-//     return new Promise(resolve => setTimeout(resolve, ms));
-//   }
-var delay = 2000;
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
 
 const myexp = ((request, response) => {
     //Create an instance
@@ -1058,12 +1058,17 @@ const myexp = ((request, response) => {
         if( !numberofDrinks ){
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
         }
-        setTimeout(function() {
+        
         console.log('รอครั้งที่1')  
+        setTimeout(() => {
         agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
-        }, delay);
+        }, 1000);
         console.log('รอครั้งที่2')
+
+        setTimeout(() => {
         agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
+        }, 1000);
+
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
         return agent.add(new Payload('LINE', {
             "type": "text",
