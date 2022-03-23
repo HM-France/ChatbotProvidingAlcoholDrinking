@@ -5,6 +5,10 @@ const { userDB } = require('../firebase');
 const  imageCarousels = require('./imageCarousels');
 const  knowladgeBase = require('./knowledgebase');
 
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
 const myexp = ((request, response) => {
     //Create an instance
     const agent = new WebhookClient({ request, response });
@@ -1054,8 +1058,9 @@ const myexp = ((request, response) => {
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
         }
         
-
+        await delay(2000);
         agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
+        await delay(2000);
         agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
         return agent.add(new Payload('LINE', {
@@ -1112,7 +1117,7 @@ const myexp = ((request, response) => {
     }
 
     const measureAlcohalInBloodCalculated = async () => {
-        setTimeout( agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`) , 1500); 
+        agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`); 
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
         let rho , value , percent ;
         console.log('gender:',gender);
@@ -1149,8 +1154,8 @@ const myexp = ((request, response) => {
         // Response back data
         value = ((((volume*numberofDrinks) / 29.574 ) * percent * 5.14 ) / ( (weight / 0.454) * rho ) ) * 1000 ;
         console.log("value :",value);
-        setTimeout( agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`), 1500); 
-        return setTimeout( agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้", "แก้ไขข้อมูลแอลกอฮอล์"])), 1500); 
+        agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`); 
+        return  agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้", "แก้ไขข้อมูลแอลกอฮอล์"]));
     }
 
     const alcoholComposing = async () => { //กรณีอยากรู้ปริมาณการขับออก
