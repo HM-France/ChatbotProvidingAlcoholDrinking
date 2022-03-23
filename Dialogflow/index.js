@@ -1061,10 +1061,7 @@ const myexp = ((request, response) => {
         await new Promise(resolve => setTimeout(resolve, 1000));
         agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
-<<<<<<< HEAD
-=======
-
->>>>>>> c0ad261f04544b01e7815391f87dbf44c69b6a34
+        
         return agent.add(new Payload('LINE', {
             "type": "text",
             "text": "ข้อมูลนี้ถูกต้องมั๊ยคะ",
