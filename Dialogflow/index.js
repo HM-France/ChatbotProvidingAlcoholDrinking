@@ -1060,16 +1060,13 @@ const myexp = ((request, response) => {
         }
         
         console.log('รอครั้งที่1')  
-        setTimeout(() => {
         agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
-        }, 1000);
+        await delay(1000);
         console.log('รอครั้งที่2')
-
-        setTimeout(() => {
         agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
-        }, 1000);
-
+        await delay(1000);
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
+        await delay(1000);
         return agent.add(new Payload('LINE', {
             "type": "text",
             "text": "ข้อมูลนี้ถูกต้องมั๊ยคะ",
