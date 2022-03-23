@@ -1366,19 +1366,13 @@ const myexp = ((request, response) => {
         agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`);
         agent.add(createQuickReply("น้องตั้งใจจะนำคุณไปสู่ขั้นตอนถัดไปนะคะ", ["กรอกข้อมูลของวันนี้"]));
     }
-    function respondSlowly( agent, msg, ms ){
-        return new Promise( resolve => {
-          setTimeout( () => {
-            agent.add( msg );
-            resolve();
-          }, ms );
-        });
-      }
-    const Test =  (agents) => {
-        agents.add("กำลังทดสอบ");
-        agents.add("Hello")
-        respondSlowly(agents,"TestSlow",3000)
-        return agents.add("สิ้นสุดการทดสอบ");
+    const wait = async (timeInSec) => new Promise((resolve) => setTimeout(resolve, timeInSec * 1000));
+
+    const Test = async () => {
+        agent.add("กำลังทดสอบ");
+        await wait(2)
+        agent.add("Hello")
+        agent.add("สิ้นสุดการทดสอบ");
     }
 
     // Run the proper function handler based on the matched Dialogflow intent name
