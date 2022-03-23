@@ -1374,7 +1374,7 @@ const myexp = ((request, response) => {
    
       const Test = async () => {
             agent.add("กำลังทดสอบ") ; 
-            return setInterval(function(){agent.add("Hello")},3000);
+            setInterval(function(){agent.add("Hello")},3000);
             agent.add("สิ้นสุดการทดสอบ");
       }
 
