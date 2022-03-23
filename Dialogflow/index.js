@@ -1387,7 +1387,7 @@ const myexp = ((request, response) => {
    
       const Test = async () => {
             agent.add("กำลังทดสอบ") ; 
-            return setInterval(function(){agent.add("Hello")},3000);
+            setInterval(function(){agent.add("Hello")},3000);
             agent.add("สิ้นสุดการทดสอบ");
       }
 
@@ -1431,7 +1431,7 @@ const myexp = ((request, response) => {
         intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
         intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
     intentMap.set('select_effect', knowladge_Effect) ;
-        intentMap.set('select_Kind', knowladge_Disease);
+        intentMap.set('select_Disease', knowladge_Disease);
             intentMap.set('select_neural', knowladge_Neural);
             intentMap.set('select_Cancer', knowladge_Cancer) ;
             intentMap.set('select_Chronic', knowladge_Chronic) ;
