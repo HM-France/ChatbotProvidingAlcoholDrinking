@@ -171,15 +171,14 @@ const AlcoholTreatment = () => {
             type: "carousel",
             columns: [
                 {
-                  thumbnailImageUrl: "https://example.com/bot/images/item1.jpg",
-                  imageBackgroundColor: "#FFFFFF",
-                  title: "this is menu",
-                  text: "description",
-                  defaultAction: {
-                      type: "uri",
-                      label: "View detail",
-                      uri: "http://example.com/page/123"
-                  },
+                    thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",
+                    imageBackgroundColor: "#FFFFFF",
+                    title: "วิธีการเลิกสุรา",
+                    text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
+                    defaultAction: {
+                      label: "วิธีการใช้งาน",
+                      text: "วิธีการใช้งาน"
+                    },
                   "actions": [
                       {
                           type: "postback",
@@ -199,15 +198,14 @@ const AlcoholTreatment = () => {
                   ]
                 },
                 {
-                  thumbnailImageUrl: "https://example.com/bot/images/item2.jpg",
-                  imageBackgroundColor: "#000000",
-                  title: "this is menu",
-                  text: "description",
-                  defaultAction: {
-                      type: "uri",
-                      label: "View detail",
-                      uri: "http://example.com/page/222"
-                  },
+                    thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",
+                    imageBackgroundColor: "#FFFFFF",
+                    title: "วิธีการเลิกสุรา",
+                    text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
+                    defaultAction: {
+                      label: "วิธีการใช้งาน",
+                      text: "วิธีการใช้งาน"
+                    },
                   actions: [
                       {
                           type: "postback",
