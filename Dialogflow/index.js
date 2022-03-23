@@ -2,12 +2,12 @@ const { generateKey } = require('crypto');
 const { WebhookClient, Payload } = require('dialogflow-fulfillment');
 const { ADDRGETNETWORKPARAMS } = require('dns');
 const { userDB } = require('../firebase');
-const  imageCarousels = require('./imageCarousels');
-const  knowladgeBase = require('./knowledgebase');
+const imageCarousels = require('./imageCarousels');
+const knowladgeBase = require('./knowledgebase');
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
+}
 
 const myexp = ((request, response) => {
     //Create an instance
@@ -110,7 +110,7 @@ const myexp = ((request, response) => {
                     }
                 ]
             }
-        } , { sendAsMessage: true }));
+        }, { sendAsMessage: true }));
     }
 
     const checkUserDrinking = async () => {
@@ -144,16 +144,16 @@ const myexp = ((request, response) => {
         ))
     }
 
-    const checkUserDrinkingIn3Month = async () =>{
+    const checkUserDrinkingIn3Month = async () => {
         return agent.add(createQuickReply(
             'ลองทบทวนดูนะคะว่า ในช่วง 3 เดือนที่ผ่านมานี้ คุณดื่มเครื่องดื่มแอลกอฮอล์บ้างไหม',
             ['ดื่ม', 'ไม่ได้ดื่ม']
         ));
     }
 
-    const riskAssessment_DrinkIn3Month = async () =>{
-        let {second, third, fourth, fifth, sixth, seventh } = agent.parameters;
-        if(!second){
+    const riskAssessment_DrinkIn3Month = async () => {
+        let { second, third, fourth, fifth, sixth, seventh } = agent.parameters;
+        if (!second) {
             return agent.add(createQuickReply(
                 'ลองทบทวนดูนะคะว่า ในช่วง 3 เดือนที่ผ่านมานี้ คุณดื่มเครื่องดื่มแอลกอฮอล์ เช่น เบียร์ สุรา ไวน์ บ่อยแค่ไหน',
                 ['ครั้งสองครั้ง', 'ทุกเดือน', 'ทุกสัปดาห์', 'ทุกวันหรือเกือบทุกวัน']
@@ -197,56 +197,56 @@ const myexp = ((request, response) => {
         if (fourth !== 0) {
             fourth++;
         }
-        var points =parseInt(second) + parseInt(third) + parseInt(fourth) + parseInt(fifth) + parseInt(sixth) +parseInt(seventh);
+        var points = parseInt(second) + parseInt(third) + parseInt(fourth) + parseInt(fifth) + parseInt(sixth) + parseInt(seventh);
         let ASSIST_STATUS = "";
         console.log('points :', points)
         console.log('ASSIST_STATUS : ', ASSIST_STATUS);
-        if ( points < 11 ){
-            ASSIST_STATUS = "ความเสี่ยงค่ำ" ;
-        }else if ( points > 10 && points < 27 ){
-            ASSIST_STATUS = "ความเสี่ยงปานกลาง" ;
-        }else{
-            ASSIST_STATUS = "ความเสี่ยงสูง" ;
+        if (points < 11) {
+            ASSIST_STATUS = "ความเสี่ยงค่ำ";
+        } else if (points > 10 && points < 27) {
+            ASSIST_STATUS = "ความเสี่ยงปานกลาง";
+        } else {
+            ASSIST_STATUS = "ความเสี่ยงสูง";
         }
         console.log('ASSIST_STATUS : ', ASSIST_STATUS);
         await userDB.setASSIST_STATUS(userId, ASSIST_STATUS);
         await userDB.setAssistPoint(userId, points);
         agent.add('เพื่อให้น้องตั้งใจให้คำแนะนำปริมาณการดื่มที่เหมาะสมแก่คุณได้');
-            agent.add('น้องตั้งใจอยากให้คุณนึกทบทวนการดื่มในช่วง 7 วันที่ผ่านมา');
-            agent.add('ทั้งรายละเอียดชนิดเครื่องดื่ม และปริมาณที่ดื่ม เพื่อนำมาหาค่าดื่มมาตรฐาน และให้คำแนะนำต่อไปค่ะ');
-            agent.add('แต่การให้คำแนะนำอาจมีความคลาดเคลื่อนได้ เนื่องจากปริมาณของแอลกอฮอล์ที่มีอยู่จริงในเครื่องดื่มแต่ละยี่ห้อนั้น อาจแตกต่างไปบ้างจากข้อมูลที่น้องตั้งใจมีอยู่นะคะ');
-            return agent.add(new Payload(
-                `LINE`,
-                {
-                    "type": "text",
-                    "text": "ก่อนอื่น คุณอยากรู้รายละเอียดเกี่ยวกับเพิ่มเติมเกี่ยวกับคำว่า “ดื่มมาตรฐาน” ไหมคะ",
-                    "quickReply": {
-                        "items": [
-                            {
-                                "type": "action",
-                                "action": {
-                                    "type": "message",
-                                    "text": `ข้อมูลเกี่ยวกับดื่มมาตรฐาน`,
-                                    "label": `อยากรู้`
-                                }
-                            },
-                            {
-                                "type": "action",
-                                "action": {
-                                    "type": "message",
-                                    "label": "ไม่ และกรอกข้อมูลการดื่ม",
-                                    "text": `กรอกข้อมูลของวันนี้`
-                                }
+        agent.add('น้องตั้งใจอยากให้คุณนึกทบทวนการดื่มในช่วง 7 วันที่ผ่านมา');
+        agent.add('ทั้งรายละเอียดชนิดเครื่องดื่ม และปริมาณที่ดื่ม เพื่อนำมาหาค่าดื่มมาตรฐาน และให้คำแนะนำต่อไปค่ะ');
+        agent.add('แต่การให้คำแนะนำอาจมีความคลาดเคลื่อนได้ เนื่องจากปริมาณของแอลกอฮอล์ที่มีอยู่จริงในเครื่องดื่มแต่ละยี่ห้อนั้น อาจแตกต่างไปบ้างจากข้อมูลที่น้องตั้งใจมีอยู่นะคะ');
+        return agent.add(new Payload(
+            `LINE`,
+            {
+                "type": "text",
+                "text": "ก่อนอื่น คุณอยากรู้รายละเอียดเกี่ยวกับเพิ่มเติมเกี่ยวกับคำว่า “ดื่มมาตรฐาน” ไหมคะ",
+                "quickReply": {
+                    "items": [
+                        {
+                            "type": "action",
+                            "action": {
+                                "type": "message",
+                                "text": `ข้อมูลเกี่ยวกับดื่มมาตรฐาน`,
+                                "label": `อยากรู้`
                             }
-                        ]
-                    },
+                        },
+                        {
+                            "type": "action",
+                            "action": {
+                                "type": "message",
+                                "label": "ไม่ และกรอกข้อมูลการดื่ม",
+                                "text": `กรอกข้อมูลของวันนี้`
+                            }
+                        }
+                    ]
                 },
-                { sendAsMessage: true }
-            ))
+            },
+            { sendAsMessage: true }
+        ))
     }
 
-    const riskAssessment_DontDrinkIn3Month = async () =>{
-        let {sixth, seventh } = agent.parameters;
+    const riskAssessment_DontDrinkIn3Month = async () => {
+        let { sixth, seventh } = agent.parameters;
         console.log('points :', points)
         console.log('ASSIST_STATUS : ', ASSIST_STATUS);
         if (!sixth) {
@@ -263,40 +263,40 @@ const myexp = ((request, response) => {
             ));
         }
 
-        var points = parseInt(sixth) +parseInt(seventh);
+        var points = parseInt(sixth) + parseInt(seventh);
         await userDB.setAssistPoint(userId, points);
         agent.add('เพื่อให้น้องตั้งใจให้คำแนะนำปริมาณการดื่มที่เหมาะสมแก่คุณได้');
-            agent.add('น้องตั้งใจอยากให้คุณนึกทบทวนการดื่มในช่วง 7 วันที่ผ่านมา');
-            agent.add('ทั้งรายละเอียดชนิดเครื่องดื่ม และปริมาณที่ดื่ม เพื่อนำมาหาค่าดื่มมาตรฐาน และให้คำแนะนำต่อไปค่ะ');
-            agent.add('แต่การให้คำแนะนำอาจมีความคลาดเคลื่อนได้ เนื่องจากปริมาณของแอลกอฮอล์ที่มีอยู่จริงในเครื่องดื่มแต่ละยี่ห้อนั้น อาจแตกต่างไปบ้างจากข้อมูลที่น้องตั้งใจมีอยู่นะคะ');
-            return agent.add(new Payload(
-                `LINE`,
-                {
-                    "type": "text",
-                    "text": "ก่อนอื่น คุณอยากรู้รายละเอียดเกี่ยวกับเพิ่มเติมเกี่ยวกับคำว่า “ดื่มมาตรฐาน” ไหมคะ",
-                    "quickReply": {
-                        "items": [
-                            {
-                                "type": "action",
-                                "action": {
-                                    "type": "message",
-                                    "text": `ข้อมูลเกี่ยวกับดื่มมาตรฐาน`,
-                                    "label": `อยากรู้`
-                                }
-                            },
-                            {
-                                "type": "action",
-                                "action": {
-                                    "type": "message",
-                                    "label": "ไม่ และกรอกข้อมูลการดื่ม",
-                                    "text": `กรอกข้อมูลของวันนี้`
-                                }
+        agent.add('น้องตั้งใจอยากให้คุณนึกทบทวนการดื่มในช่วง 7 วันที่ผ่านมา');
+        agent.add('ทั้งรายละเอียดชนิดเครื่องดื่ม และปริมาณที่ดื่ม เพื่อนำมาหาค่าดื่มมาตรฐาน และให้คำแนะนำต่อไปค่ะ');
+        agent.add('แต่การให้คำแนะนำอาจมีความคลาดเคลื่อนได้ เนื่องจากปริมาณของแอลกอฮอล์ที่มีอยู่จริงในเครื่องดื่มแต่ละยี่ห้อนั้น อาจแตกต่างไปบ้างจากข้อมูลที่น้องตั้งใจมีอยู่นะคะ');
+        return agent.add(new Payload(
+            `LINE`,
+            {
+                "type": "text",
+                "text": "ก่อนอื่น คุณอยากรู้รายละเอียดเกี่ยวกับเพิ่มเติมเกี่ยวกับคำว่า “ดื่มมาตรฐาน” ไหมคะ",
+                "quickReply": {
+                    "items": [
+                        {
+                            "type": "action",
+                            "action": {
+                                "type": "message",
+                                "text": `ข้อมูลเกี่ยวกับดื่มมาตรฐาน`,
+                                "label": `อยากรู้`
                             }
-                        ]
-                    },
+                        },
+                        {
+                            "type": "action",
+                            "action": {
+                                "type": "message",
+                                "label": "ไม่ และกรอกข้อมูลการดื่ม",
+                                "text": `กรอกข้อมูลของวันนี้`
+                            }
+                        }
+                    ]
                 },
-                { sendAsMessage: true }
-            ))
+            },
+            { sendAsMessage: true }
+        ))
     }
 
     const setDrinkingInWeekInputType = async () => {
@@ -415,25 +415,25 @@ const myexp = ((request, response) => {
     // }
 
     const setDrinkingInWeek_pick = async () => {
-        let { thisDay ,type, percent,container, volume, numberOfDrinks } = agent.parameters;
+        let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
         thisDay = parseInt(thisDay);
         const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
         var standardDrink;
 
-        console.log('this day:',thisDay);
-        console.log('type:' , type);
-        console.log('percent:' , percent);
-        console.log('container:' , container);
-        console.log('volume:' , volume);
-        console.log('number of drink:' , numberOfDrinks);
+        console.log('this day:', thisDay);
+        console.log('type:', type);
+        console.log('percent:', percent);
+        console.log('container:', container);
+        console.log('volume:', volume);
+        console.log('number of drink:', numberOfDrinks);
         console.log('-------------------');
 
         if (!type) {
             agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
-            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true })); 
-        }else{
-            if(type === 'สุราสี' || type === 'สุราขาว'){
-                if(!percent){
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+        } else {
+            if (type === 'สุราสี' || type === 'สุราขาว') {
+                if (!percent) {
                     return agent.add(new Payload(
                         `LINE`,
                         {
@@ -471,14 +471,14 @@ const myexp = ((request, response) => {
                         { sendAsMessage: true }
                     ))
                 }
-            }else{
-                if(!percent){
+            } else {
+                if (!percent) {
                     var aclPercent;
-                    if(type ==='ไวน์คูลเลอร์' || type ==='เบียร์'){
+                    if (type === 'ไวน์คูลเลอร์' || type === 'เบียร์') {
                         aclPercent = 5;
-                    }else if(type ==='ไวน์' || type ==='สุราพื้นเมือง'){
+                    } else if (type === 'ไวน์' || type === 'สุราพื้นเมือง') {
                         aclPercent = 13;
-                    }else if(type ==='เครื่องดื่มอื่นๆ'){
+                    } else if (type === 'เครื่องดื่มอื่นๆ') {
                         aclPercent = 40;
                     }
                     return agent.add(createQuickReply(
@@ -488,14 +488,14 @@ const myexp = ((request, response) => {
                 }
             }
         }
-        
+
         if (!container) {
             agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มในแต่ละวันได้ดีที่สุดนะคะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
         } else if (!numberOfDrinks) {
             return agent.add(`ดื่มประมาณกี่${container}คะ`);
         }
-        
+
         standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
         await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
             type, percent, container, volume, numberOfDrinks, standardDrink
@@ -643,21 +643,21 @@ const myexp = ((request, response) => {
         if (gender === 'หญิง' || age >= 66) {
             if (maxSdPoint > 3) {
                 result = 'เกิน';
-                console.log("result : ",result);
+                console.log("result : ", result);
                 await userDB.setDrinkingStandard(userId, result);
             } else {
                 result = 'ไม่เกิน';
-                console.log("result : ",result);
+                console.log("result : ", result);
                 await userDB.setDrinkingStandard(userId, result);
             }
         } else if (gender === 'ชาย') {
             if (maxSdPoint > 4) {
                 result = 'เกิน';
-                console.log("result : ",result);
+                console.log("result : ", result);
                 await userDB.setDrinkingStandard(userId, result);
             } else {
                 result = 'ไม่เกิน';
-                console.log("result : ",result);
+                console.log("result : ", result);
                 await userDB.setDrinkingStandard(userId, result);
             }
         }
@@ -694,7 +694,7 @@ const myexp = ((request, response) => {
         ))
     }
 
-    const riskAssessmentResultRisk = async () =>{
+    const riskAssessmentResultRisk = async () => {
         const { assistPoint } = await userDB.get(userId);
         const { profile: { gender, age } } = await userDB.get(userId);
         var resultWeek;
@@ -739,19 +739,19 @@ const myexp = ((request, response) => {
             }
         }
 
-        if(assistPoint <=10 ){
+        if (assistPoint <= 10) {
             resultRisk = 'ต่ำ';
-        }else if(10 < assistPoint <= 26){
+        } else if (10 < assistPoint <= 26) {
             resultRisk = 'สูง';
-        }else if(assistPoint >= 27){
+        } else if (assistPoint >= 27) {
             resultRisk = 'สูงมาก';
         }
 
-        if(resultWeek === 'ไม่เกิน' && resultDay ==='ไม่เกิน' && resultRisk ==='ต่ำ'){
+        if (resultWeek === 'ไม่เกิน' && resultDay === 'ไม่เกิน' && resultRisk === 'ต่ำ') {
             result = 'และ';
-        }else if(((resultWeek === 'เกิน' && resultDay ==='ไม่เกิน') || (resultWeek === 'ไม่เกิน' && resultDay ==='เกิน')) && resultRisk !=='ต่ำ'){
+        } else if (((resultWeek === 'เกิน' && resultDay === 'ไม่เกิน') || (resultWeek === 'ไม่เกิน' && resultDay === 'เกิน')) && resultRisk !== 'ต่ำ') {
             result = 'และ';
-        }else{
+        } else {
             result = 'แต่';
         }
 
@@ -792,276 +792,276 @@ const myexp = ((request, response) => {
     }
 
     const assessMotivationResult = async () => {
-        let {motivation} = agent.parameters;
+        let { motivation } = agent.parameters;
         console.log("motivation", motivation);
-        if(motivation === "ไม่เห็นปัญหา"){
+        if (motivation === "ไม่เห็นปัญหา") {
             agent.add("ตอนนี้ คุณยังไม่เห็นว่าการดื่มเช่นนี้จะก่อให้เกิดปัญหาใดๆ");
-            console.log("motivation : ",motivation);
+            console.log("motivation : ", motivation);
             await userDB.setMotivation(userId, motivation);
-        }else if(motivation === "ลังเล"){
+        } else if (motivation === "ลังเล") {
             agent.add("เหมือนว่าคุณเริ่มรู้สึกลังเลเกี่ยวกับการดื่ม คุณอาจกังวลถึงผลเสียที่อาจจะเกิดขึ้น หากคุณยังคงดื่มเช่นนี้ต่อไป หรือคุณอาจกำลังคิดว่า อะไรๆน่าจะดีขึ้นถ้าคุณหยุดดื่มได้");
-            console.log("motivation : ",motivation);
+            console.log("motivation : ", motivation);
             await userDB.setMotivation(userId, motivation);
-        }else if(motivation === "ตัดสินใจ"){
+        } else if (motivation === "ตัดสินใจ") {
             agent.add("เหมือนคุณตัดสินใจแล้วว่าคุณอยากที่จะปรับเปลี่ยนตัวเองเกี่ยวกับเรื่องการดื่ม");
-            console.log("motivation : ",motivation);
+            console.log("motivation : ", motivation);
             await userDB.setMotivation(userId, motivation);
-        }else if(motivation === "ลงมือ"){
+        } else if (motivation === "ลงมือ") {
             agent.add("เยี่ยมมากค่ะ คุณกำลังจะลงมือทำอย่างจริงจังแล้ว");
-            console.log("motivation : ",motivation);
+            console.log("motivation : ", motivation);
             await userDB.setMotivation(userId, motivation);
-        }else if(motivation === "ทำต่อเนื่อง"){
+        } else if (motivation === "ทำต่อเนื่อง") {
             agent.add("เยี่ยมมากค่ะ คุณลงมือเปลี่ยนแปลงตัวเองมาช่วงหนึ่งแล้ว");
-            console.log("motivation : ",motivation);
+            console.log("motivation : ", motivation);
             await userDB.setMotivation(userId, motivation);
-        }else{
+        } else {
             agent.add(`พบปัญหาในการแสดงผล | motivation : ${motivation}`);
         }
 
         agent.add("ถ้าน้องตั้งใจพูดถึงสิ่งต่อไปนี้ คุณคิดว่าเรื่องไหนที่จะเป็นเป้าหมายของคุณในการปรับเปลี่ยนพฤติกรรมการดื่มคะ");
-        
-        return agent.add(new Payload(`LINE` , imageCarousels.goal() , { sendAsMessage: true }
+
+        return agent.add(new Payload(`LINE`, imageCarousels.goal(), { sendAsMessage: true }
         ))
     }
 
     const assessGoal = async () => { // ขั้นตอนที่ 7 และ 8
-        let {goal} = agent.parameters ;
+        let { goal } = agent.parameters;
         await userDB.setGoal(userId, goal);
-        const { Motivation , ASSIST_STATUS , IsStandard , profile:{ age , gender } } = await userDB.get(userId);
+        const { Motivation, ASSIST_STATUS, IsStandard, profile: { age, gender } } = await userDB.get(userId);
 
-        console.log("Goal :",goal);
-        console.log("motivation: ",Motivation);
-        console.log("ASSIST_STATUS: ",ASSIST_STATUS);
-        console.log("IsStandard: ",IsStandard);
-        console.log("Gender :",gender);
-        console.log("Age :",age);
+        console.log("Goal :", goal);
+        console.log("motivation: ", Motivation);
+        console.log("ASSIST_STATUS: ", ASSIST_STATUS);
+        console.log("IsStandard: ", IsStandard);
+        console.log("Gender :", gender);
+        console.log("Age :", age);
         console.log("================");
-        
-        console.log("Enter assessGoal") ;
-        if ( ASSIST_STATUS === "ความเสี่ยงต่ำ" ){
-            if ( Motivation === "ไม่เห็นปัญหา" ){
-                if ( IsStandard === "ไม่เกิน" ) {
+
+        console.log("Enter assessGoal");
+        if (ASSIST_STATUS === "ความเสี่ยงต่ำ") {
+            if (Motivation === "ไม่เห็นปัญหา") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`ตอนนี้คุณมีความเห็นว่า การดื่มนั้นยังไม่ก่อให้เกิดปัญหาใด ๆ และก็ดูเหมือนว่าลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงขึ้นก็มีโอกาสที่จะเกิดปัญหาได้น้อยปริมาณการดื่มใน 7 วันที่ผ่านมานั้น ก็ไม่ได้เกินระดับที่แนะนำ`);
-                }else if ( IsStandard === 'เกิน' ) {
-                    agent.add(`ตอนนี้คุณมีความเห็นว่า การดื่มนั้นยังไม่ก่อให้เกิดปัญหาใด ๆ และก็ดูเหมือนว่าลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มชึ้นก็มีโอกาสที่จะเกิดปัญหาได้น้อย แต่ปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำ`);		
-                }else{
+                } else if (IsStandard === 'เกิน') {
+                    agent.add(`ตอนนี้คุณมีความเห็นว่า การดื่มนั้นยังไม่ก่อให้เกิดปัญหาใด ๆ และก็ดูเหมือนว่าลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มชึ้นก็มีโอกาสที่จะเกิดปัญหาได้น้อย แต่ปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำ`);
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ`);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ลังเล" ){
-                if ( IsStandard === "ไม่เกิน" ) {
-                    agent.add(`จากการประเมิน ลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มขึ้น ก็มีโอกาสที่จะเกิดปัญหาได้น้อย และปริมาณการดื่มใน 7 วันที่ผ่านมานั้น ก็ไม่ได้เกินระดับที่แนะนำแต่ดูเหมือนว่าคุณเริ่มเป็นห่วงปัญหาเรื่อง${Motivation} และการที่ยังคงดื่มอยู่ ก็อาจจะทำ${Motivation}นี้แย่ลง ซึ่งน้องตั้งใจหวังว่ามันอาจจะดีขึ้น ถ้าคุณหยุดดื่มได้`) ;
-                }else if ( IsStandard === 'เกิน' ) {
+            } else if (Motivation === "ลังเล") {
+                if (IsStandard === "ไม่เกิน") {
+                    agent.add(`จากการประเมิน ลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มขึ้น ก็มีโอกาสที่จะเกิดปัญหาได้น้อย และปริมาณการดื่มใน 7 วันที่ผ่านมานั้น ก็ไม่ได้เกินระดับที่แนะนำแต่ดูเหมือนว่าคุณเริ่มเป็นห่วงปัญหาเรื่อง${Motivation} และการที่ยังคงดื่มอยู่ ก็อาจจะทำ${Motivation}นี้แย่ลง ซึ่งน้องตั้งใจหวังว่ามันอาจจะดีขึ้น ถ้าคุณหยุดดื่มได้`);
+                } else if (IsStandard === 'เกิน') {
                     agent.add(`จากการประเมิน ลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มขึ้น ก็มีโอกาสที่จะเกิดปัญหาได้น้อย แต่ปริมาณการดื่มใน 7 วันที่ผ่านมานั้น สูงเกินกว่าระดับที่แนะนำ และดูเหมือนว่าคุณเริ่มเป็นห่วงปัญหาเรื่อง${Motivation} และการที่ยังคงดื่มอยู่ก็อาจจะทำให้ปัญหา${Motivation}นี้แย่ลง ซึ่งน้องตั้งใจหวังว่ามันอาจจะดีขึ้น ถ้าคุณหยุดดื่มได้`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ตัดสินใจ" ){
-                if ( IsStandard === "ไม่เกิน" ) {
-                    agent.add(`จากการประเมินลักษณะการดื่มของคุณในปัจจุบันนั้นหากไม่ได้รุนแรงเพิ่มขึ้นก็มีโอกาสที่จะเกิดปัญหาได้น้อยและปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนำ แต่เพราะเรื่อง${Motivation}ที่ทำให้คุณตัดสินใจได้ว่าคุณต้องปรับเปลี่ยนเรื่องการดื่มของตัวเอง`) ;
-                }else if ( IsStandard === 'เกิน' ) {
+            } else if (Motivation === "ตัดสินใจ") {
+                if (IsStandard === "ไม่เกิน") {
+                    agent.add(`จากการประเมินลักษณะการดื่มของคุณในปัจจุบันนั้นหากไม่ได้รุนแรงเพิ่มขึ้นก็มีโอกาสที่จะเกิดปัญหาได้น้อยและปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนำ แต่เพราะเรื่อง${Motivation}ที่ทำให้คุณตัดสินใจได้ว่าคุณต้องปรับเปลี่ยนเรื่องการดื่มของตัวเอง`);
+                } else if (IsStandard === 'เกิน') {
                     agent.add(`จากการประเมิน ลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มขึ้น ก็มีโอกาสที่จะเกิดปัญหาได้น้อยแต่ปริมาณการดื่มใน 7 วันที่ผ่านมานั้น สูงเกินกว่าระดับที่แนะนำ และอาจสัมพันธ์กับเรื่อง${Motivation} เพราะเรื่อง${Motivation}ที่ทำให้คุณตัดสินใจได้ว่าคุณต้องปรับเปลี่ยนเรื่องการดื่มของตัวเอง`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ลงมือ" ){
-                if ( IsStandard === "ไม่เกิน" ) {
-                    agent.add(`ตอนนี้คุณได้เริ่มลงมือเปลี่ยนแปลงตนเองแล้วเพราะเรื่อง${Motivation} แม้ว่าลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มขึ้น ก็มีโอกาสที่จะเกิดปัญหาได้น้อย รวมถึงปริมาณการดื่มใน 7 วันที่ผ่านมานั้น ก็ไม่ได้เกินระดับที่แนะนำ`) ;
-                }else if ( IsStandard === 'เกิน' ) {
+            } else if (Motivation === "ลงมือ") {
+                if (IsStandard === "ไม่เกิน") {
+                    agent.add(`ตอนนี้คุณได้เริ่มลงมือเปลี่ยนแปลงตนเองแล้วเพราะเรื่อง${Motivation} แม้ว่าลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มขึ้น ก็มีโอกาสที่จะเกิดปัญหาได้น้อย รวมถึงปริมาณการดื่มใน 7 วันที่ผ่านมานั้น ก็ไม่ได้เกินระดับที่แนะนำ`);
+                } else if (IsStandard === 'เกิน') {
                     agent.add(`ตอนนี้คุณได้เริ่มลงมือเปลี่ยนแปลงตนเองแล้ว เพราะเรื่อง${Motivation} ซึ่งน้องตั้งใจเห็นว่าดีมากเลยค่ะ เพราะปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำแม้ว่า ลักษณะการดื่มของคุณในปัจจุบันนั้นหากไม่ได้รุนแรงเพิ่มขึ้นก็มีโอกาสที่จะเกิดปัญหาได้น้อย`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ทำต่อเนื่อง" ){
-                if ( IsStandard === "ไม่เกิน" ) {
-                    agent.add(`ก่อนอื่นน้องตั้งใจขอชื่นชมที่คุณได้ตัดสินใจอย่างเด็ดขาดแล้ว โดยมีเรื่อง${Motivation}เป็นแรงผลักดัน แม้ว่าลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มขึ้นก็มีโอกาสที่จะเกิดปัญหาได้น้อยและปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนำ`) ;
-                }else if ( IsStandard === 'เกิน' ) {
+            } else if (Motivation === "ทำต่อเนื่อง") {
+                if (IsStandard === "ไม่เกิน") {
+                    agent.add(`ก่อนอื่นน้องตั้งใจขอชื่นชมที่คุณได้ตัดสินใจอย่างเด็ดขาดแล้ว โดยมีเรื่อง${Motivation}เป็นแรงผลักดัน แม้ว่าลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มขึ้นก็มีโอกาสที่จะเกิดปัญหาได้น้อยและปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนำ`);
+                } else if (IsStandard === 'เกิน') {
                     agent.add(`ก่อนอื่นน้องตั้งใจขอชื่นชมที่คุณได้ตัดสินใจอย่างเด็ดขาดแล้ว โดยมีเรื่อง${Motivation}เป็นแรงผลักดันแม้ว่า ลักษณะการดื่มของคุณในปัจจุบันนั้น หากไม่ได้รุนแรงเพิ่มขึ้นก็มีโอกาสที่จะเกิดปัญหาได้น้อย แต่ปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำ ซึ่งน้องตั้งใจอยากให้กำลังใจคุณและแนะนำให้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างนะคะ`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else{
+            } else {
                 console.log(`พบปัญหาค่า MOTIVATION มีสถานะไม่ปกติ : MOTIVATION = ${Motivation} `);
                 agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
             }
-        }else if ( ASSIST_STATUS === "ความเสี่ยงปานกลาง" ){
-            if ( Motivation === "ไม่เห็นปัญหา" ){
-                if ( IsStandard === "ไม่เกิน" ){
+        } else if (ASSIST_STATUS === "ความเสี่ยงปานกลาง") {
+            if (Motivation === "ไม่เห็นปัญหา") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`ตอนนี้คุณมีความเห็นว่า การดื่มนั้นยังไม่ก่อให้เกิดปัญหาใด ๆ และปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนํา แต่ดูเหมือนว่าลักษณะการดื่มของคุณมีความเสี่ยงที่จะเกิดปัญหา และหากดื่มเช่นนี้ต่อไป คุณอาจประสบปัญหาในอนาคตได้`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`แม้ว่าตอนนี้คุณมีความเห็นว่าการดื่มนั้นยังไม่ก่อให้เกิดปัญหาใด ๆ แต่ปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำและลักษณะการดื่มของคุณมีความเสี่ยงที่จะเกิดปัญหา และหากดื่มเช่นนี้ต่อไป คุณอาจประสบปัญหาในอนาคตได้`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ลังเล" ){
-                if ( IsStandard === "ไม่เกิน" ){
+            } else if (Motivation === "ลังเล") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`แม้ว่าปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนำแต่จากการประเมินลักษณะการดื่มของคุณ มีความเสี่ยงที่จะเกิดปัญหาและหากดื่มเช่นนี้ต่อไปคุณอาจประสบปัญหาในอนาคตได้และอาจทำให้คุณเริ่มเป็นห่วง ปัญหาเรื่อง${Motivation}และการที่ยังคงดื่มอยู่ ก็อาจจะทำให้ปัญหา${Motivation}นี้แย่ลง ซึ่งน้องตั้งใจหวังว่ามันอาจจะดีขึ้น ถ้าคุณหยุดดื่มได้`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`ลักษณะการดื่มของคุณมีความเสี่ยงที่จะเกิดปัญหา และหากดื่มเช่นนี้ต่อไปคุณอาจประสบปัญหาในอนาคตได้ และปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำซึ่งอาจทำให้คุณเริ่มเป็นห่วงปัญหาเรื่อง${Motivation}และการที่ยังคงดื่มอยู่ก็อาจจะทำให้ปัญหา${Motivation}นี้แย่ลง ซึ่งน้องตั้งใจหวังว่ามันอาจจะดีขึ้นถ้าคุณหยุดดื่มได้`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ตัดสินใจ" ){
-                if ( IsStandard === "ไม่เกิน" ){
+            } else if (Motivation === "ตัดสินใจ") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`น้องตั้งใจเห็นด้วยนะคะที่คุณตัดสินใจได้ว่าคุณต้องปรับเปลี่ยนเรื่องการดื่มของตัวเองเพราะเรื่อง${Motivation} แม้ว่าปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนำแต่จากการประเมินลักษณะการดื่มของคุณมีความเสี่ยงที่จะเกิดปัญหา และหากดื่มเช่นนี้ต่อไปคุณอาจประสบปัญหาในอนาคตได้`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`น้องตั้งใจเห็นด้วยนะคะที่คุณตัดสินใจได้ว่าคุณต้องปรับเปลี่ยนเรื่องการดื่มของตัวเองเพราะเรื่อง${Motivation} เพราะปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำและลักษณะการดื่มของคุณมีความเสี่ยงที่จะเกิดปัญหา และหากดื่มเช่นนี้ต่อไปคุณอาจประสบปัญหาในอนาคตได้`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ลงมือ" ){
-                if ( IsStandard === "ไม่เกิน" ){
+            } else if (Motivation === "ลงมือ") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`ตอนนี้คุณได้เริ่มลงมือเปลี่ยนแปลงตนเองแล้วเพราะเรื่อง${Motivation} น้องตั้งใจขอเป็นกำลังใจให้นะคะ แม้ว่าปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนำแต่จากการประเมินลักษณะการดื่มของคุณมีความเสี่ยงที่จะเกิดปัญหา และหากดื่มเช่นนี้ต่อไปคุณอาจประสบปัญหาในอนาคตได้`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`ตอนนี้คุณได้เริ่มลงมือเปลี่ยนแปลงตนเองแล้วเพราะเรื่อง${Motivation} น้องตั้งใจขอเป็นกำลังใจให้นะคะ ลักษณะการดื่มของคุณมีความเสี่ยงที่จะเกิดปัญหา และหากดื่มเช่นนี้ต่อไปคุณอาจประสบปัญหาในอนาคตได้ และปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำ`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ทำต่อเนื่อง" ){
-                if ( IsStandard === "ไม่เกิน" ){
+            } else if (Motivation === "ทำต่อเนื่อง") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`น้องตั้งใจขอเป็นกำลังใจให้คุณสามารถลดการดื่มให้ได้ต่อเนื่องนะคะ เพื่อให้เรื่อง${Motivation}ที่เป็นสาเหตุหลักที่ทำให้คุณตั้งใจเปลี่ยนแปลงตนเองนั้นดีขึ้นอย่างต่อเนื่อง และปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนำแต่จากการประเมินลักษณะการดื่มของคุณมีความเสี่ยงที่จะเกิดปัญหาและหากดื่มเช่นนี้ต่อไปคุณอาจประสบปัญหาในอนาคตได้`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`น้องตั้งใจขอเป็นกำลังใจให้คุณสามารถลดการดื่มให้ได้ต่อเนื่องนะคะ เพื่อให้เรื่อง${Motivation}ที่เป็นสาเหตุหลักที่ทำให้คุณตั้งใจเปลี่ยนแปลงตนเองนั้นดีขึ้นอย่างต่อเนื่อง เพราะลักษณะการดื่มของคุณมีความเสี่ยงที่จะเกิดปัญหาและหากดื่มเช่นนี้ต่อไปคุณอาจประสบปัญหาในอนาคตได้ แต่ปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำซึ่งน้องตั้งใจอยากให้กำลังใจคุณ และแนะนำให้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างค่ะ`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else{
+            } else {
                 console.log(`พบปัญหาค่า MOTIVATION มีสถานะไม่ปกติ : MOTIVATION = ${Motivation} `);
                 agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
             }
-        }else if ( ASSIST_STATUS === "ความเสี่ยงสูง" ){
-            if ( Motivation === "ไม่เห็นปัญหา" ){
-                if ( IsStandard === "ไม่เกิน" ){
+        } else if (ASSIST_STATUS === "ความเสี่ยงสูง") {
+            if (Motivation === "ไม่เห็นปัญหา") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`ตอนนี้คุณมีความเห็นว่าการดื่มนั้นยังไม่ก่อให้เกิดปัญหาใด ๆ และปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนำ แต่ดูเหมือนว่าลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่างๆอย่างมากหรืออาจกำลังมีภาวะติดสุรา ซึ่งน้องตั้งใจอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างนะคะ`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`ตอนนี้คุณมีความเห็นว่าการดื่มนั้นยังไม่ก่อให้เกิดปัญหาใดๆ แม้ว่าปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำ และลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่างๆอย่างมาก หรืออาจกำลังมีภาวะติดสุรา ซึ่งน้องตั้งใจอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างนะคะ`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ลังเล" ){
-                if ( IsStandard === "ไม่เกิน" ){
+            } else if (Motivation === "ลังเล") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`แม้ว่าปริมาณการดื่มใน 7 วันที่ผ่านมานั้น ก็ไม่ได้เกินระดับที่แนะนำแต่คุณกำลังคิดถึงปัญหาเรื่อง${Motivation}ที่อาจจะแย่ลงหากว่าคุณยังคงดื่ม และคุณกำลังคิดถึงการเปลี่ยนแปลงตัวเองอยู่ และปัญหา${Motivation}นี้อาจดีขึ้นเมื่อคุณหยุดดื่มได้ น้องตั้งใจเห็นด้วยและอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้าง เพราะลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่าง ๆ อย่างมากหรืออาจกำลังมีภาวะติดสุรา`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`คุณกำลังคิดถึงปัญหาเรื่อง${Motivation}ที่อาจจะแย่ลงหากว่าคุณยังคงดื่ม และคุณกำลังคิดถึงการเปลี่ยนแปลงตัวเองอยู่และปัญหา${Motivation}นี้อาจดีขึ้นเมื่อคุณหยุดดื่มได้ และปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนำ น้องตั้งใจเห็นด้วยและอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้าง เพราะลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่าง ๆ อย่างมากหรืออาจกำลังมีภาวะติดสุรา`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ตัดสินใจ" ){
-                if ( IsStandard === "ไม่เกิน" ){
+            } else if (Motivation === "ตัดสินใจ") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`น้องตั้งใจเห็นด้วยนะคะที่คุณตัดสินใจได้ว่าคุณต้องปรับเปลี่ยนเรื่องการดื่มของตัวเองเพราะเรื่อง${Motivation}เพราะลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่างๆอย่างมากหรืออาจกำลังมีภาวะติดสุรา แม้ว่าปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนํา ซึ่งน้องตั้งใจอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างนะคะ`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`น้องตั้งใจเห็นด้วยนะคะที่คุณตัดสินใจได้ว่าคุณต้องปรับเปลี่ยนเรื่องการดื่มของตัวเองเพราะเรื่อง${Motivation}เพราะลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่าง ๆ อย่างมากหรืออาจกำลังมีภาวะติดสุรา และปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนํา ซึ่งน้องตั้งใจอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างนะคะ`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ลงมือ" ){
-                if ( IsStandard === "ไม่เกิน" ){
+            } else if (Motivation === "ลงมือ") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`ตอนนี้คุณได้เริ่มลงมือเปลี่ยนแปลงตนเองแล้วเพราะเรื่อง${Motivation}น้องตั้งใจขอเป็นกำลังใจให้นะคะ แม้ว่าปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนํา แต่จากการประเมินลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่าง ๆ อย่างมากหรืออาจกำลังมีภาวะติดสุรา ซึ่งน้องตั้งใจอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างนะคะ`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`ตอนนี้คุณได้เริ่มลงมือเปลี่ยนแปลงตนเองแล้ว เพราะเรื่อง${Motivation}น้องตั้งใจขอเป็นกำลังใจให้นะคะ เพราะลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่าง ๆ อย่างมากหรืออาจกำลังมีภาวะติดสุราและปริมาณการดื่มใน 7 วันที่ผ่านมานั้นสูงเกินกว่าระดับที่แนะนํา ซึ่งน้องตั้งใจอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างนะคะ`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
-            }else if ( Motivation === "ทำต่อเนื่อง" ){
-                if ( IsStandard === "ไม่เกิน" ){
+            } else if (Motivation === "ทำต่อเนื่อง") {
+                if (IsStandard === "ไม่เกิน") {
                     agent.add(`น้องตั้งใจขอเป็นกำลังใจให้คุณสามารถลดการดื่มให้ได้ต่อเนื่องนะคะ เพื่อให้เรื่อง${Motivation}ที่เป็นสาเหตุหลักที่ทำให้คุณตั้งใจเปลี่ยนแปลงตนเองนั้นดีขึ้นอย่างต่อเนื่อง เพราะลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่าง ๆ อย่างมากหรืออาจกำลังมีภาวะติดสุรา แต่ปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนํา ซึ่งน้องตั้งใจอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างนะคะ`);
-                }else if ( IsStandard === "เกิน" ){
+                } else if (IsStandard === "เกิน") {
                     agent.add(`น้องตั้งใจขอเป็นกำลังใจให้คุณสามารถลดการดื่มให้ได้ต่อเนื่องนะคะ เพื่อให้เรื่อง${Motivation}ที่เป็นสาเหตุหลักที่ทำให้คุณตั้งใจเปลี่ยนแปลงตนเองนั้นดีขึ้นอย่างต่อเนื่อง เพราะลักษณะการดื่มของคุณตอนนี้เสี่ยงสูงที่จะเกิดปัญหาต่าง ๆ อย่างมากหรืออาจกำลังมีภาวะติดสุรา และปริมาณการดื่มใน 7 วันที่ผ่านมานั้นก็ไม่ได้เกินระดับที่แนะนํา ซึ่งน้องตั้งใจอยากให้คุณได้ปรึกษากับผู้เชี่ยวชาญของเราเพื่อดูว่าเราสามารถให้การช่วยเหลือคุณเพิ่มอย่างไรได้บ้างนะคะ`);
-                }else{
+                } else {
                     console.log(`พบปัญหาค่า IsStandard มีสถานะไม่ปกติ : IsStandard = ${IsStandard} `);
                     agent.add(`พบปัญหาระหว่างการประมวลผลคำ`);
                 }
             }
-        }else{
-            agent.add(`พบข้อผิดพลาดในการแสดงผลการสรุป`) ;
+        } else {
+            agent.add(`พบข้อผิดพลาดในการแสดงผลการสรุป`);
         }
-        
-        agent.add("น้องตั้งใจอยากจะขอแนะนำปริมาณการดื่มในหนึ่งสัปดาห์ และในหนึ่งวันที่คุณจะสามารถดื่มได้โดยที่ไม่เพิ่มความเสี่ยงต่อสุขภาพและสังคมของคุณนะคะ") ; 
-        agent.add(`จากข้อมูลของคุณนั้น คุณเป็นเพศ${gender} และคุณมีอายุ ${age} ปี น้องตั้งใจขอแนะนำดังนี้ค่ะ`) ;
-        
-        if( age > 65) {
-            if ( gender === "ชาย" ) { // 1A
-                agent.add("ในหนึ่งสัปดาห์ หากคุณดื่มเบียร์ ต้องดื่มไม่เกิน 7 กระป๋อง หรือ หากดื่มไวน์ต้องดื่มไม่เกิน 10 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 2 แก้ว") ;
-                agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 3 กระป๋อง หรือ หากดื่มไวน์ ต้องดื่มไม่เกิน 3 แก้ว หรือ หากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 1 แก้ว") ;
-                // แนบ Infographic
-            }else if ( gender === "หญิง" ) { // 1B
-                agent.add("ในหนึ่งสัปดาห์ หากคุณดื่มเบียร์ ต้องดื่มไม่เกิน 7 กระป๋อง หรือ หากดื่มไวน์ ต้องดื่มไม่เกิน 8 แก้ว หรือ หากดื่มสุราสี 35 ดีกรี ต้องดื่ืไม่เกิน 2 แก้ว") ;
+
+        agent.add("น้องตั้งใจอยากจะขอแนะนำปริมาณการดื่มในหนึ่งสัปดาห์ และในหนึ่งวันที่คุณจะสามารถดื่มได้โดยที่ไม่เพิ่มความเสี่ยงต่อสุขภาพและสังคมของคุณนะคะ");
+        agent.add(`จากข้อมูลของคุณนั้น คุณเป็นเพศ${gender} และคุณมีอายุ ${age} ปี น้องตั้งใจขอแนะนำดังนี้ค่ะ`);
+
+        if (age > 65) {
+            if (gender === "ชาย") { // 1A
+                agent.add("ในหนึ่งสัปดาห์ หากคุณดื่มเบียร์ ต้องดื่มไม่เกิน 7 กระป๋อง หรือ หากดื่มไวน์ต้องดื่มไม่เกิน 10 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 2 แก้ว");
                 agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 3 กระป๋อง หรือ หากดื่มไวน์ ต้องดื่มไม่เกิน 3 แก้ว หรือ หากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 1 แก้ว");
                 // แนบ Infographic
-            }else{
-                console.log("Gender value error : ",gender) ;
+            } else if (gender === "หญิง") { // 1B
+                agent.add("ในหนึ่งสัปดาห์ หากคุณดื่มเบียร์ ต้องดื่มไม่เกิน 7 กระป๋อง หรือ หากดื่มไวน์ ต้องดื่มไม่เกิน 8 แก้ว หรือ หากดื่มสุราสี 35 ดีกรี ต้องดื่ืไม่เกิน 2 แก้ว");
+                agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 3 กระป๋อง หรือ หากดื่มไวน์ ต้องดื่มไม่เกิน 3 แก้ว หรือ หากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 1 แก้ว");
+                // แนบ Infographic
+            } else {
+                console.log("Gender value error : ", gender);
             }
-        }else if( age <= 65 && age >= 20 ){
-            if ( gender === "ชาย" ) { // 1C
+        } else if (age <= 65 && age >= 20) {
+            if (gender === "ชาย") { // 1C
                 agent.add("ในหนึ่งสัปดาห์ หากคุณดื่มเบียร์ต้องดื่ไม่เกิน 15 กระป๋อง หรือ หากดื่มไวน์ต้องดื่มไม่เกิน 16 แก้ว หรือ หากดื่มสุราสี 35 ดีกรีต้องดื่มไม่เกิน 4 แก้ว");
-                agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 4 กระป๋อง หรือหากดื่มไวน์ต้องดื่มไม่เกิน 4 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่กิน 1 แก้ว") ;
+                agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 4 กระป๋อง หรือหากดื่มไวน์ต้องดื่มไม่เกิน 4 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่กิน 1 แก้ว");
                 // แนบ Infographic
-            }else if ( gender === "หญิง" ) { // 1D
-                agent.add("ในหนึ่งสัปดาห์ หากคุณดืมเบียร์ต้องดื่มไม่เกิน 7 กระป๋อง หรือหากดื่มไวน์ต้องดื่มไม่เกิน 8 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 2 แก้ว") ;
-                agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 3 กระป๋อง หรือหากดื่มไวน์ต้องดื่มไม่เกิน 3 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 1 แก้ว") ;
+            } else if (gender === "หญิง") { // 1D
+                agent.add("ในหนึ่งสัปดาห์ หากคุณดืมเบียร์ต้องดื่มไม่เกิน 7 กระป๋อง หรือหากดื่มไวน์ต้องดื่มไม่เกิน 8 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 2 แก้ว");
+                agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 3 กระป๋อง หรือหากดื่มไวน์ต้องดื่มไม่เกิน 3 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 1 แก้ว");
                 // แนบ Infographic
-            }else{
-                console.log("Gender value error : ",gender) ;
+            } else {
+                console.log("Gender value error : ", gender);
             }
-        }else if ( age < 20 ){ // 1E
-            agent.add("กฏหมายได้ห้ามขายเครื่องดื่มแอลกออฮอล์ให้้คุณ หากอายุของคุณต่ำกว่า 20 ปี ดังนั้นการดื่มไม่ว่าในปริมาณเท่าใดก็อาจยังไม่เหมาะสมนะคะ") ; 
-        }else{
-            console.log("age value error : ",age) ;
-        }  
+        } else if (age < 20) { // 1E
+            agent.add("กฏหมายได้ห้ามขายเครื่องดื่มแอลกออฮอล์ให้้คุณ หากอายุของคุณต่ำกว่า 20 ปี ดังนั้นการดื่มไม่ว่าในปริมาณเท่าใดก็อาจยังไม่เหมาะสมนะคะ");
+        } else {
+            console.log("age value error : ", age);
+        }
 
-        agent.add("อย่างไรก็ตาม คุณไม่ควรดื่มเครื่องดื่มแอลกออฮล์เลย หากคุณกำลังวางแผนหรือตั้งครรภ์อยู่ หรือมีประวัติติดแอลกอฮอล์หรือสารเสพติดชนิดอื่น หรือมีโรคตับหรือข้อห้ามอื่น ๆ ") ;
-        agent.add("หากคุณไม่สามารถควบคุมการดื่่มของคุณให้ต่ำกว่านะดับที่น้องตั้งใจบอกนี้ได้ คุณมีความเสี่ยงที่จะเกิดปัญหา หรือเสี่ยงที่จะติดแอลกอฮอล์ได้นะคะ") ;
+        agent.add("อย่างไรก็ตาม คุณไม่ควรดื่มเครื่องดื่มแอลกออฮล์เลย หากคุณกำลังวางแผนหรือตั้งครรภ์อยู่ หรือมีประวัติติดแอลกอฮอล์หรือสารเสพติดชนิดอื่น หรือมีโรคตับหรือข้อห้ามอื่น ๆ ");
+        agent.add("หากคุณไม่สามารถควบคุมการดื่่มของคุณให้ต่ำกว่านะดับที่น้องตั้งใจบอกนี้ได้ คุณมีความเสี่ยงที่จะเกิดปัญหา หรือเสี่ยงที่จะติดแอลกอฮอล์ได้นะคะ");
     }
 
     const measureAlcohalInBlood = async () => {
 
-        let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
+        let { gender, weight, types, container, numberofDrinks, volume } = agent.parameters;
 
-        console.log('gender:',gender);
-        console.log('weight:' , weight);
-        console.log('types:' , types);
-        console.log('container:' , container);      
-        console.log('number of drink:' , numberofDrinks);
-        console.log('volume:' , volume);
+        console.log('gender:', gender);
+        console.log('weight:', weight);
+        console.log('types:', types);
+        console.log('container:', container);
+        console.log('number of drink:', numberofDrinks);
+        console.log('volume:', volume);
         console.log('-------------------');
 
-        
 
-        if( !gender ){
+
+        if (!gender) {
             return agent.add(createQuickReply('ขอทราบเพศของคุณได้ไหมคะ?', ["ชาย", "หญิง"]));
         }
-        if( !weight ){
+        if (!weight) {
             return agent.add(`น้ำหนักเท่าไรคะ?`);
         }
-        if( !types ){
+        if (!types) {
             agent.add(`ดื่มอะไรมาหรอคะ?`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
         }
-        if( !container ){
+        if (!container) {
             agent.add(`เลือกภาชนะที่ใกล้เคียงที่สุดค่ะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[types], { sendAsMessage: true }));
         }
-        if( !numberofDrinks ){
+        if (!numberofDrinks) {
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
         }
 
         agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
         agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
-        
+
         return agent.add(new Payload('LINE', {
             "type": "text",
             "text": "ข้อมูลนี้ถูกต้องมั๊ยคะ",
@@ -1085,7 +1085,7 @@ const myexp = ((request, response) => {
                     }
                 ]
             },
-        } , { sendAsMessage: true }));
+        }, { sendAsMessage: true }));
     }
 
     const alcoholEdit = async () => {
@@ -1112,144 +1112,144 @@ const myexp = ((request, response) => {
                     }
                 ]
             },
-        } , { sendAsMessage: true }));
+        }, { sendAsMessage: true }));
     }
 
     const measureAlcohalInBloodCalculated = async () => {
-        agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`); 
-        let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
-        let rho , value , percent ;
-        console.log('gender:',gender);
-        console.log('weight:' , weight);
-        console.log('types:' , types);
-        console.log('container:' , container);      
-        console.log('number of drink:' , numberofDrinks);
-        console.log('volume:' , volume);
-        console.log('percent : ',percent);
+        agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
+        let { gender, weight, types, container, numberofDrinks, volume } = agent.parameters;
+        let rho, value, percent;
+        console.log('gender:', gender);
+        console.log('weight:', weight);
+        console.log('types:', types);
+        console.log('container:', container);
+        console.log('number of drink:', numberofDrinks);
+        console.log('volume:', volume);
+        console.log('percent : ', percent);
         console.log('-------------------');
 
-        
+
         // assign rho value
-        if( gender === "ชาย" ){
-            rho = 0.73 ;
-            console.log("assign Gender conplete : ",rho);
-        }else if( gender === "หญิง"){
-            rho = 0.66 ;
-            console.log("assign Gender conplete : ",rho);
+        if (gender === "ชาย") {
+            rho = 0.73;
+            console.log("assign Gender conplete : ", rho);
+        } else if (gender === "หญิง") {
+            rho = 0.66;
+            console.log("assign Gender conplete : ", rho);
         }
         // assign percent
-        if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
+        if (types === 'ไวน์คูลเลอร์' || types === 'เบียร์') {
             percent = 0.05;
-       }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
+        } else if (types === 'ไวน์' || types === 'สุราพื้นเมือง') {
             percent = 0.13;
-       }else if(types ==='เครื่องดื่มอื่นๆ' || types ==='สุราสี40'){
+        } else if (types === 'เครื่องดื่มอื่นๆ' || types === 'สุราสี40') {
             percent = 0.40;
-       }else if(types ==='สุราสี35'){
-            percent = 0.35 ;
-       }else{
-            percent =  0 ;
-       }
-       console.log('percent : ',percent);
+        } else if (types === 'สุราสี35') {
+            percent = 0.35;
+        } else {
+            percent = 0;
+        }
+        console.log('percent : ', percent);
         // Response back data
-        value = ((((volume*numberofDrinks) / 29.574 ) * percent * 5.14 ) / ( (weight / 0.454) * rho ) ) * 1000 ;
-        console.log("value :",value);
-        agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`); 
-        return  agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้", "แก้ไขข้อมูลแอลกอฮอล์"]));
+        value = ((((volume * numberofDrinks) / 29.574) * percent * 5.14) / ((weight / 0.454) * rho)) * 1000;
+        console.log("value :", value);
+        agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`);
+        return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้", "แก้ไขข้อมูลแอลกอฮอล์"]));
     }
 
     const alcoholComposing = async () => { //กรณีอยากรู้ปริมาณการขับออก
-        let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
-        console.log('gender:',gender);
-        console.log('weight:' , weight);
-        console.log('types:' , types);
-        console.log('container:' , container);      
-        console.log('number of drink:' , numberofDrinks);
-        console.log('volume:' , volume);
+        let { gender, weight, types, container, numberofDrinks, volume } = agent.parameters;
+        console.log('gender:', gender);
+        console.log('weight:', weight);
+        console.log('types:', types);
+        console.log('container:', container);
+        console.log('number of drink:', numberofDrinks);
+        console.log('volume:', volume);
         console.log('-------------------');
-        let rho , value , percent ;
+        let rho, value, percent;
         // assign rho value
-        if( gender === "ชาย" ){
-            rho = 0.68 ;
-            console.log("assign Gender conplete : ",rho);
-        }else if( gender === "หญิง"){
-            rho = 0.55 ;
-            console.log("assign Gender conplete : ",rho);
+        if (gender === "ชาย") {
+            rho = 0.68;
+            console.log("assign Gender conplete : ", rho);
+        } else if (gender === "หญิง") {
+            rho = 0.55;
+            console.log("assign Gender conplete : ", rho);
         }
         // assign percent
-        if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
-             percent = 0.05;
-        }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
-             percent = 0.13;
-        }else if(types ==='เครื่องดื่มอื่นๆ' || types ==='สุราสี40'){
-             percent = 0.40;
-        }else if(types ==='สุราสี35'){
-             percent = 0.35 ;
-        }else{
-            percent =  0 ;
+        if (types === 'ไวน์คูลเลอร์' || types === 'เบียร์') {
+            percent = 0.05;
+        } else if (types === 'ไวน์' || types === 'สุราพื้นเมือง') {
+            percent = 0.13;
+        } else if (types === 'เครื่องดื่มอื่นๆ' || types === 'สุราสี40') {
+            percent = 0.40;
+        } else if (types === 'สุราสี35') {
+            percent = 0.35;
+        } else {
+            percent = 0;
         }
-        value = ( (volume*numberofDrinks) * percent  * 0.79 ) ;
+        value = ((volume * numberofDrinks) * percent * 0.79);
         console.log(value);
-        let timeResult = value/7 ; 
+        let timeResult = value / 7;
         agent.add(`ถ้าคุณเป็นผู้${gender} น้ำหนัก ${weight} กก. ดื่ม${types} ปริมาณ ${numberofDrinks} ${container} ต้องใช้เวลาอย่างน้อย ${timeResult.toFixed(0)} ชั่วโมง แอลกอฮอล์ในร่างกายถึงจะถูกขับออกไปได้หมด`);
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าถ้าหากผ่านไปกี่ชั่วโมง แล้วระดับแอลกอฮอล์ในเลือดจะเหลือเท่าไร หากไม่มีการดื่มเพิ่มระหว่างนั้น', ["อยากรู้", "ไม่อยากรู้", "แก้ไขข้อมูลแอลกอฮอล์"]));
     }
 
     const NOalcoholComposing = async () => { //กรณีไม่อยากรู้ปริมาณการขับออก
-        let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
-        console.log('gender:',gender);
-        console.log('weight:' , weight);
-        console.log('types:' , types);
-        console.log('container:' , container);      
-        console.log('number of drink:' , numberofDrinks);
-        console.log('volume:' , volume);
+        let { gender, weight, types, container, numberofDrinks, volume } = agent.parameters;
+        console.log('gender:', gender);
+        console.log('weight:', weight);
+        console.log('types:', types);
+        console.log('container:', container);
+        console.log('number of drink:', numberofDrinks);
+        console.log('volume:', volume);
         console.log('-------------------');
 
         return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าถ้าหากผ่านไปกี่ชั่วโมง แล้วระดับแอลกอฮอล์ในเลือดจะเหลือเท่าไร หากไม่มีการดื่มเพิ่มระหว่างนั้น', ["อยากรู้", "ไม่อยากรู้", "แก้ไขข้อมูลแอลกอฮอล์"]));
     }
-    
-    const alcoholLessThan = async() => { //กรณีอยากรู้ เวลาลดลงของแอลกอฮอล์
-        let {gender,weight,types,container,numberofDrinks,volume,time} = agent.parameters;
-        console.log('gender:',gender);
-        console.log('weight:' , weight);
-        console.log('types:' , types);
-        console.log('container:' , container);      
-        console.log('number of drink:' , numberofDrinks);
-        console.log('volume:' , volume);
+
+    const alcoholLessThan = async () => { //กรณีอยากรู้ เวลาลดลงของแอลกอฮอล์
+        let { gender, weight, types, container, numberofDrinks, volume, time } = agent.parameters;
+        console.log('gender:', gender);
+        console.log('weight:', weight);
+        console.log('types:', types);
+        console.log('container:', container);
+        console.log('number of drink:', numberofDrinks);
+        console.log('volume:', volume);
         console.log('-------------------');
-        let rho , value , percent ;
+        let rho, value, percent;
         // assign rho value
-        if( gender === "ชาย" ){
-            rho = 0.73 ;
-            console.log("assign Gender conplete : ",rho);
-        }else if( gender === "หญิง"){
-            rho = 0.66 ;
-            console.log("assign Gender conplete : ",rho);
+        if (gender === "ชาย") {
+            rho = 0.73;
+            console.log("assign Gender conplete : ", rho);
+        } else if (gender === "หญิง") {
+            rho = 0.66;
+            console.log("assign Gender conplete : ", rho);
         }
         // assign percent
-        if(types ==='ไวน์คูลเลอร์' || types ==='เบียร์'){
+        if (types === 'ไวน์คูลเลอร์' || types === 'เบียร์') {
             percent = 0.05;
-       }else if(types ==='ไวน์' || types ==='สุราพื้นเมือง'){
+        } else if (types === 'ไวน์' || types === 'สุราพื้นเมือง') {
             percent = 0.13;
-       }else if(types ==='เครื่องดื่มอื่นๆ' || types ==='สุราสี40'){
+        } else if (types === 'เครื่องดื่มอื่นๆ' || types === 'สุราสี40') {
             percent = 0.40;
-       }else if(types ==='สุราสี35'){
-            percent = 0.35 ;
-       }else{
-            percent =  0 ;
-       }
-
-        if( !time ){
-            return agent.add(`ระบุจำนวนชั่วโมงที่ต้องการคำนวนได้เลยค่ะ`) ;
+        } else if (types === 'สุราสี35') {
+            percent = 0.35;
+        } else {
+            percent = 0;
         }
 
-        value = ((((volume*numberofDrinks) / 29.574 ) * percent * 5.14 ) / ( (weight / 0.454) * rho ) ) * 1000 ;
-        result = value - ( 0.015 * time * 1000 ) ;
+        if (!time) {
+            return agent.add(`ระบุจำนวนชั่วโมงที่ต้องการคำนวนได้เลยค่ะ`);
+        }
 
-        if( result < 0 ) // กำหนดค่า mg% ไม่ให้เกินจริง
+        value = ((((volume * numberofDrinks) / 29.574) * percent * 5.14) / ((weight / 0.454) * rho)) * 1000;
+        result = value - (0.015 * time * 1000);
+
+        if (result < 0) // กำหนดค่า mg% ไม่ให้เกินจริง
         {
-             result = 0 ;
+            result = 0;
         }
-        
+
         agent.add(`ถ้าหากข้อมูลการดื่มและข้อมูลผู้ดื่มเป็นไปตามที่แจ้งไว้ และเวลาไป ${time} ชั่วโมง ระดับแอลกอฮฮล์จะเหลืออยู่ ${result.toFixed(2)} มิลลิกรัมเปอร์เซ็น`);
         agent.add(`ตามกฏหมายแล้วหากคุณมีอายุเกิน 20 ปี และระดับแอลกอฮอล์ไม่เกินกว่า 50 มิลลิกรัมเปอร์เซ็นต์ จะถือว่าไม่ผิดกฏหมายถ้าคุณขับขี่ยานพาหนะ`)
         agent.add(`อย่างไรก็ตาม น้องตั้งใจย้ำนะคะ ว่าค่าที่น้องตั้งใจคำนวณให้นี้ เป็นค่าโดยประมาณเท่านั้น`);
@@ -1277,10 +1277,10 @@ const myexp = ((request, response) => {
                     }
                 ]
             },
-        } , { sendAsMessage: true }));
+        }, { sendAsMessage: true }));
     }
 
-    const recommendMore = async() => { //กรณีไม่อยากรู้ เวลาลดลงของแอลกอฮอล์
+    const recommendMore = async () => { //กรณีไม่อยากรู้ เวลาลดลงของแอลกอฮอล์
         agent.add(`อย่างไรก็ตาม น้องตั้งใจย้ำนะคะ ว่าค่าที่น้องตั้งใจคำนวณให้นี้ เป็นค่าโดยประมาณเท่านั้น`);
         agent.add(`ไม่สามารถนำมาใช้อ้างอิงทางกฎหมายได้ ดังนั้นถ้าต้องขับขี่ น้องตั้งใจว่าไม่ดื่มเลยจะดีที่สุดแน่นอนค่ะ`);
         agent.add(new Payload('LINE',
@@ -1295,94 +1295,102 @@ const myexp = ((request, response) => {
                     }
                 ]
             }
-        , { sendAsMessage: true }));
+            , { sendAsMessage: true }));
     }
 
     const DoSurvey = async () => {
         agent.add(`ขอบคุณที่ทดลองใช้น้องตั้งใจนะคะ น้องตั้งใจอยากจะขอรบกวนเวลาคุณไม่นาน เพื่อทำแบบสอบถามความพึงพอใจในการใช้งานน้องตั้งใจค่ะ`);
-        agent.add(new Payload('LINE', imageCarousels.Survey() , { sendAsMessage: true} ));
+        agent.add(new Payload('LINE', imageCarousels.Survey(), { sendAsMessage: true }));
     }
 
     const knowladgeSection = async () => {
-        agent.add("ฟังก์ชั่นข้อมูลการเลิกเหล้า เป็นฟังก์ชั่นที่รวบรวมข้อมูลต่าง ๆ ที่เกี่ยวข้องกับการเลิกเหล้าไว้ด้วยกัน เพื่อให้คุณได้ทราบข้อเท็จจริงจากต่าง ๆ และนำไปประยุกต์ใช้ได้ค่ะ") ;
-        return agent.add(new Payload(`LINE` , knowladgeBase.MainMenu() , { sendAsMessage:true }));
+        agent.add("ฟังก์ชั่นข้อมูลการเลิกเหล้า เป็นฟังก์ชั่นที่รวบรวมข้อมูลต่าง ๆ ที่เกี่ยวข้องกับการเลิกเหล้าไว้ด้วยกัน เพื่อให้คุณได้ทราบข้อเท็จจริงจากต่าง ๆ และนำไปประยุกต์ใช้ได้ค่ะ");
+        return agent.add(new Payload(`LINE`, knowladgeBase.MainMenu(), { sendAsMessage: true }));
     }
 
     const knowladge_IncludingAlcohol = async () => {
-        return agent.add(new Payload(`LINE` , knowladgeBase.IncludingAlcohol() , {sendAsMessage:true}));
+        return agent.add(new Payload(`LINE`, knowladgeBase.IncludingAlcohol(), { sendAsMessage: true }));
     }
 
-        const knowladge_WhatIsAlcohol = async () => {
-            agent.add("🍺 สุรา จัดเป็นสารเสพติดชนิดหนึ่ง เนื่องจากมีเอธิลแอลกอฮอล์เป็นส่วนผสม ซึ่งเอทิลแอกอฮอล์เป็นแอลกอฮอล์ที่ได้จากการแปรรูปจากพืชจำพวกแป้งและน้ำตาล เช่น อ้อย ข้าว ข้าวโพด มันสำปะหลัง") ;
-            agent.add("ฤทธิ์ในทางเสพติด คือ ออกฤทธิ์กดประสาท😵‍💫 มีการเสพติดทั้งร่างกายและจิตใจ🧠 ทั้งเบียร์และสุราเป็นเครื่องดื่มที่มีแอลกอฮอล์ มีคุณค่าทางอาการต่ำแต่มีแคลอรี่สูง");
-            agent.add("ปัจจุบันสุราเป็นสารเสพติดอีกชนิดหนึ่งที่มีผู้ใช้เกือบทุกกลุ่มวัยเพราะหาซื้อง่าย ใช้ในหลายโอกาสที่สำคัญ");
-            return agent.add("ซึ่งคนส่วนใหญ่ยังไม่ได้ตระหนักว่ามันคือ ❗️สารเสพติดที่อันตราย❗️ ทั้งจากตัวของมันเองและเป็นอันตรายในฐานะที่เป็นจุดเริ่มต้นที่นำไปสู่การเสพยาเสพติดอื่น ๆ ตามมา ซึ่งก่อให้เกิดผลเสียทั้งทางด้านร่างกาย จิตใจ อารมณ์และสังคม");
-        }
+    const knowladge_WhatIsAlcohol = async () => {
+        agent.add("🍺 สุรา จัดเป็นสารเสพติดชนิดหนึ่ง เนื่องจากมีเอธิลแอลกอฮอล์เป็นส่วนผสม ซึ่งเอทิลแอกอฮอล์เป็นแอลกอฮอล์ที่ได้จากการแปรรูปจากพืชจำพวกแป้งและน้ำตาล เช่น อ้อย ข้าว ข้าวโพด มันสำปะหลัง");
+        agent.add("ฤทธิ์ในทางเสพติด คือ ออกฤทธิ์กดประสาท😵‍💫 มีการเสพติดทั้งร่างกายและจิตใจ🧠 ทั้งเบียร์และสุราเป็นเครื่องดื่มที่มีแอลกอฮอล์ มีคุณค่าทางอาการต่ำแต่มีแคลอรี่สูง");
+        agent.add("ปัจจุบันสุราเป็นสารเสพติดอีกชนิดหนึ่งที่มีผู้ใช้เกือบทุกกลุ่มวัยเพราะหาซื้อง่าย ใช้ในหลายโอกาสที่สำคัญ");
+        return agent.add("ซึ่งคนส่วนใหญ่ยังไม่ได้ตระหนักว่ามันคือ ❗️สารเสพติดที่อันตราย❗️ ทั้งจากตัวของมันเองและเป็นอันตรายในฐานะที่เป็นจุดเริ่มต้นที่นำไปสู่การเสพยาเสพติดอื่น ๆ ตามมา ซึ่งก่อให้เกิดผลเสียทั้งทางด้านร่างกาย จิตใจ อารมณ์และสังคม");
+    }
 
-        const knowladge_Drunkenness = async () => {
-            agent.add("Infographic") ;
-        }
+    const knowladge_Drunkenness = async () => {
+        agent.add("Infographic");
+    }
 
-        const knowladge_AlcoholAddiction = async () => {
-            agent.add("Infographic") ;
-        }
+    const knowladge_AlcoholAddiction = async () => {
+        agent.add("Infographic");
+    }
 
-        const knowladge_WithdrawalkSymptoms = async () => {
-            agent.add("อาการถอนถอนพิษสุรา หรือที่เรียกว่า ‘อาการขาดสุรา’ เป็นอาการที่มักจะเกิดขึ้นกับผู้ที่ดื่มสุรามานานติดกันเป็นระยะเวลานาน ๆ หรือดื่มจนถึงขั้นอยู่ในอาการติดสุรา 🥴") ;
-            agent.add("โดยสำหรับผู้ที่ดื่มสุรามานานหรือผู้ที่ดื่มติดต่อกันมานานหลายวันแล้วทำการหยุดดื่มสุราลงหรือลดปริมาณลงอย่างกระทันหันจะก่อให้การตื่นตัวของระบบประสาทอัตโนมัติ");
-            agent.add("ซึ่งนำไปสู่อาการผิดปกติต่างๆ เช่น วิตกกังวล รู้สึกกระวนกระวาย มือสั่น ใจสั่น พูดเพ้อ สับสน ประสาทหลอนและเกิดอาหารชักในบางกรณี 🤮😵‍💫 ซึ่งโดยส่วนใหญ่แล้วในผู้ป่วยกลุ่มนี้จะมีอาการถอนเกิดขึ้นหลังหยุดดื่ม 2-3 วันจนถึง 1 สัปดาห์ขึ้นไป") ;
-            agent.add("สำหรับผู้ที่ดื่มจนถึงขั้นติดสุราโดยทั่วไปแล้วจะเกิดอาการถอนสุราภายใน 6-8 ชม. แรกหลังจากหยุดดื่ม และมีอาการผิดปกติต่างๆ เช่น มีอาการสั่น คลื่นไส้ อาเจียน เหงื่อแตก หัวใจเต้นเร็ว ความดันโลหิตสูง วิตกกังวล หงุดหงิดกระสับกระส่าย 😖😫");
-            agent.add("โดยอาการถอนมักจะรุนแรงที่สุดในช่วง 24-26 ชม. หลังจากที่ทำการหยุดดื่มและหลังจากนั้นอาการจะค่อยๆหายไปภายใน 3-4 วันและจะเรียกอาการช่วงนั้นว่า ‘การถอนสุราแบบธรรมดา’ 😮‍💨");
-        }
+    const knowladge_WithdrawalkSymptoms = async () => {
+        agent.add("อาการถอนถอนพิษสุรา หรือที่เรียกว่า ‘อาการขาดสุรา’ เป็นอาการที่มักจะเกิดขึ้นกับผู้ที่ดื่มสุรามานานติดกันเป็นระยะเวลานาน ๆ หรือดื่มจนถึงขั้นอยู่ในอาการติดสุรา 🥴");
+        agent.add("โดยสำหรับผู้ที่ดื่มสุรามานานหรือผู้ที่ดื่มติดต่อกันมานานหลายวันแล้วทำการหยุดดื่มสุราลงหรือลดปริมาณลงอย่างกระทันหันจะก่อให้การตื่นตัวของระบบประสาทอัตโนมัติ");
+        agent.add("ซึ่งนำไปสู่อาการผิดปกติต่างๆ เช่น วิตกกังวล รู้สึกกระวนกระวาย มือสั่น ใจสั่น พูดเพ้อ สับสน ประสาทหลอนและเกิดอาหารชักในบางกรณี 🤮😵‍💫 ซึ่งโดยส่วนใหญ่แล้วในผู้ป่วยกลุ่มนี้จะมีอาการถอนเกิดขึ้นหลังหยุดดื่ม 2-3 วันจนถึง 1 สัปดาห์ขึ้นไป");
+        agent.add("สำหรับผู้ที่ดื่มจนถึงขั้นติดสุราโดยทั่วไปแล้วจะเกิดอาการถอนสุราภายใน 6-8 ชม. แรกหลังจากหยุดดื่ม และมีอาการผิดปกติต่างๆ เช่น มีอาการสั่น คลื่นไส้ อาเจียน เหงื่อแตก หัวใจเต้นเร็ว ความดันโลหิตสูง วิตกกังวล หงุดหงิดกระสับกระส่าย 😖😫");
+        agent.add("โดยอาการถอนมักจะรุนแรงที่สุดในช่วง 24-26 ชม. หลังจากที่ทำการหยุดดื่มและหลังจากนั้นอาการจะค่อยๆหายไปภายใน 3-4 วันและจะเรียกอาการช่วงนั้นว่า ‘การถอนสุราแบบธรรมดา’ 😮‍💨");
+    }
 
     const knowladge_Effect = async () => {
-        return agent.add(new Payload(`LINE`, knowladgeBase.AlcoholEffect() , { sendAsMessage:true}));
+        return agent.add(new Payload(`LINE`, knowladgeBase.AlcoholEffect(), { sendAsMessage: true }));
     }
 
-        const knowladge_Disease = async() => {
-            agent.add("สุราหรือแอลกอฮอล์ เป็นสารเสพติดที่มีโทษเป็นอย่างมาก เมื่อดื่มแล้วจะทำให้เกิดผลเสียต่อร่างกายของผู้ดื่ม โทษของสุรานั้นอาจมีตั้งแต่ขั้นเบาไปจนถึงขั้นรุนแรง ซึ่งผลเสียของสุราแบ่งออกได้หลายด้านดังนี้") ;
-            return agent.add(new Payload(`LINE` , knowladgeBase.AlcoholIllness() , { sendAsMessage:true })) ;
-        }
+    const knowladge_Disease = async () => {
+        agent.add("สุราหรือแอลกอฮอล์ เป็นสารเสพติดที่มีโทษเป็นอย่างมาก เมื่อดื่มแล้วจะทำให้เกิดผลเสียต่อร่างกายของผู้ดื่ม โทษของสุรานั้นอาจมีตั้งแต่ขั้นเบาไปจนถึงขั้นรุนแรง ซึ่งผลเสียของสุราแบ่งออกได้หลายด้านดังนี้");
+        return agent.add(new Payload(`LINE`, knowladgeBase.AlcoholIllness(), { sendAsMessage: true }));
+    }
 
-            const knowladge_Neural = async() => {
-                agent.add("Infographic") ;
-            }
+    const knowladge_Neural = async () => {
+        agent.add("Infographic");
+    }
 
-            const knowladge_Cancer = async() => {
-                agent.add("Infographic") ;
-            }
+    const knowladge_Cancer = async () => {
+        agent.add("Infographic");
+    }
 
-            const knowladge_Chronic  = async() => {
-                agent.add("Infographic") ;
-            }
+    const knowladge_Chronic = async () => {
+        agent.add("Infographic");
+    }
 
-            const knowladge_Circulatory = async() => {
-                agent.add("Infographic") ;
-            }
+    const knowladge_Circulatory = async () => {
+        agent.add("Infographic");
+    }
 
-        
+
 
     const drinkingStandardData = async () => {
-        agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`) ;
-        agent.add(createQuickReply("น้องตั้งใจจะนำคุณไปสู่ขั้นตอนถัดไปนะคะ",["กรอกข้อมูลของวันนี้"]));
+        agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`);
+        agent.add(createQuickReply("น้องตั้งใจจะนำคุณไปสู่ขั้นตอนถัดไปนะคะ", ["กรอกข้อมูลของวันนี้"]));
     }
-   
-      const Test =  () => {
-             agent.add("กำลังทดสอบ") ; 
-             setTimeout(function(){agent.add("Hello")},3000);
-             agent.add("สิ้นสุดการทดสอบ");
+    function respondSlowly( agent, msg, ms ){
+        return new Promise( resolve => {
+          setTimeout( () => {
+            agent.add( msg );
+            resolve();
+          }, ms );
+        });
       }
+    const Test = async () => {
+        agent.add("กำลังทดสอบ");
+        agent.add("Hello")
+        await respondSlowly(agent,"TestSlow",3000)
+        agent.add("สิ้นสุดการทดสอบ");
+    }
 
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
     intentMap.set('check connect', checkConnect);
     intentMap.set('SET_USER_PROFILE', setUserProfile);
-    intentMap.set('SET_USER_PROFILE - next', SetUserPrepNext ) ;
+    intentMap.set('SET_USER_PROFILE - next', SetUserPrepNext);
     intentMap.set('EDIT_USER_PROFILE', setUserProfile);
     intentMap.set('RISK_ASSESSMENT', checkUserDrinking); //ถามคำถาม assit ข้อ 1
     intentMap.set('RISK_ASSESSMENT - yes', checkUserDrinkingIn3Month); //รับคำตอบข้อ 1 กรณีตอบว่าเคยดื่ม จะถามคำถามข้อ 2 ของ assist 
     intentMap.set('RISK_ASSESSMENT - drink in 3 month', riskAssessment_DrinkIn3Month);
-    intentMap.set('RISK_ASSESSMENT - dont drink in 3 month', riskAssessment_DontDrinkIn3Month); 
+    intentMap.set('RISK_ASSESSMENT - dont drink in 3 month', riskAssessment_DontDrinkIn3Month);
     intentMap.set('SET_DRINKING_IN_WEEK', setDrinkingInWeekInputType);
     // intentMap.set('SET_DRINKING_IN_WEEK -  fill alcohol', setDrinkingInWeek_fill);
     intentMap.set('SET_DRINKING_IN_WEEK - pick alcohol', setDrinkingInWeek_pick);
@@ -1394,12 +1402,12 @@ const myexp = ((request, response) => {
     intentMap.set('DRINK_STANDARD', drinkingStandardData);
     intentMap.set('ASSESS_MOTIVATION', assessMotivation);
     intentMap.set('ASSESS_MOTIVATION - result', assessMotivationResult);
-    intentMap.set('ASSESS_MOTIVATION - goal',assessGoal);
+    intentMap.set('ASSESS_MOTIVATION - goal', assessGoal);
     intentMap.set('Survey', DoSurvey);
     intentMap.set('ResponseTest', Test);
-    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST' , measureAlcohalInBlood);
-    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - yes',measureAlcohalInBloodCalculated);
-    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes',alcoholComposing);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST', measureAlcohalInBlood);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - yes', measureAlcohalInBloodCalculated);
+    intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes', alcoholComposing);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no', NOalcoholComposing);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - yes - yes', alcoholLessThan);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - yes', alcoholLessThan);
@@ -1408,16 +1416,16 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - edit', alcoholEdit);
     intentMap.set('knowladge', knowladgeSection);
     intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
-        intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
-        intentMap.set('select_drunkenness', knowladge_Drunkenness) ;
-        intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
-        intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
-    intentMap.set('select_effect', knowladge_Effect) ;
-        intentMap.set('select_Disease', knowladge_Disease);
-            intentMap.set('select_neural', knowladge_Neural);
-            intentMap.set('select_Cancer', knowladge_Cancer) ;
-            intentMap.set('select_Chronic', knowladge_Chronic) ;
-            intentMap.set('select_Circulatory', knowladge_Circulatory) ;
+    intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
+    intentMap.set('select_drunkenness', knowladge_Drunkenness);
+    intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
+    intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
+    intentMap.set('select_effect', knowladge_Effect);
+    intentMap.set('select_Disease', knowladge_Disease);
+    intentMap.set('select_neural', knowladge_Neural);
+    intentMap.set('select_Cancer', knowladge_Cancer);
+    intentMap.set('select_Chronic', knowladge_Chronic);
+    intentMap.set('select_Circulatory', knowladge_Circulatory);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
