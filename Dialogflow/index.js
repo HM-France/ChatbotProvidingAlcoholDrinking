@@ -1367,10 +1367,10 @@ const myexp = ((request, response) => {
         agent.add(createQuickReply("น้องตั้งใจจะนำคุณไปสู่ขั้นตอนถัดไปนะคะ",["กรอกข้อมูลของวันนี้"]));
     }
    
-      const Test = async () => {
-            agent.add("กำลังทดสอบ") ; 
-            setTimeout(function(){agent.add("Hello")},3000);
-            agent.add("สิ้นสุดการทดสอบ");
+      const Test =  () => {
+             agent.add("กำลังทดสอบ") ; 
+             setTimeout(function(){agent.add("Hello")},3000);
+             agent.add("สิ้นสุดการทดสอบ");
       }
 
     // Run the proper function handler based on the matched Dialogflow intent name
