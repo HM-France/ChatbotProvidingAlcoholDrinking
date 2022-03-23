@@ -984,7 +984,7 @@ const myexp = ((request, response) => {
         }else{
             agent.add(`พบข้อผิดพลาดในการแสดงผลการสรุป`) ;
         }
-
+        
         agent.add("น้องตั้งใจอยากจะขอแนะนำปริมาณการดื่มในหนึ่งสัปดาห์ และในหนึ่งวันที่คุณจะสามารถดื่มได้โดยที่ไม่เพิ่มความเสี่ยงต่อสุขภาพและสังคมของคุณนะคะ") ; 
         agent.add(`จากข้อมูลของคุณนั้น คุณเป็นเพศ${gender} และคุณมีอายุ ${age} ปี น้องตั้งใจขอแนะนำดังนี้ค่ะ`) ;
         
@@ -1112,7 +1112,7 @@ const myexp = ((request, response) => {
     }
 
     const measureAlcohalInBloodCalculated = async () => {
-        agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`);
+        setTimeout( agent.add(`ขอบคุณสำหรับข้อมูลค่ะ น้องตั้งใจขอเวลาคำนวณสักครู่นะคะ`) , 1500); 
         let {gender,weight,types,container,numberofDrinks,volume} = agent.parameters;
         let rho , value , percent ;
         console.log('gender:',gender);
@@ -1149,8 +1149,8 @@ const myexp = ((request, response) => {
         // Response back data
         value = ((((volume*numberofDrinks) / 29.574 ) * percent * 5.14 ) / ( (weight / 0.454) * rho ) ) * 1000 ;
         console.log("value :",value);
-        agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`);
-        return agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้", "แก้ไขข้อมูลแอลกอฮอล์"]));
+        setTimeout( agent.add(`จากการคำนวณถ้าคุณเป็นผู้${gender} มีน้ำหนัก  ${weight} กก. และดื่มเครื่องดื่มตามปริมาณดังกล่าว จะทำให้มีระดับแอลกอฮอล์ในเลือดอยู่ที่ประมาณ ${value.toFixed(2)} มิลลิกรัมเปอร์เซ็นต์ค่ะ`), 1500); 
+        return setTimeout( agent.add(createQuickReply('แล้วคุณอยากรู้ไหมคะ ว่าปริมาณแอลกอฮอล์ที่ดื่มเข้าไปนี้ ว่าต้องใช้เวลานานแค่ไหนร่างกายถึงจะขับออกไปได้หมด', ["อยากรู้", "ไม่อยากรู้", "แก้ไขข้อมูลแอลกอฮอล์"])), 1500); 
     }
 
     const alcoholComposing = async () => { //กรณีอยากรู้ปริมาณการขับออก
