@@ -9,19 +9,6 @@ function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-const delayReply = async (messages) => {
-    const delaytime = 2;
-    const messagesMapped = messages.map((message) => ({
-        type: "text",
-        text: message,
-      }));
-      for (let index = 0; index < messagesMapped.length; index++) {
-        if (index === 0) await agent.add([messagesMapped[index]]);
-        else await agent.add([messagesMapped[index]]);
-        await wait(delaytime);
-      }
-    };
-
 const myexp = ((request, response) => {
     //Create an instance
     const agent = new WebhookClient({ request, response });
@@ -1071,15 +1058,10 @@ const myexp = ((request, response) => {
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
         }
 
-        // agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
-        // agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
-        // console.log('Redirecting to : measureAlcohalInBloodCalculated');
-        await delayReply([
-            `น้องตั้งใจขอทบทวนข้อมูลนะคะ`,
-            `จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `
-        ]);
+        agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
+        agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
-
+        
         return agent.add(new Payload('LINE', {
             "type": "text",
             "text": "ข้อมูลนี้ถูกต้องมั๊ยคะ",
