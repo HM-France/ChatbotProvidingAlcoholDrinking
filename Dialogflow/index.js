@@ -1334,27 +1334,30 @@ const myexp = ((request, response) => {
         return agent.add(new Payload(`LINE`, knowladgeBase.AlcoholEffect(), { sendAsMessage: true }));
     }
 
-    const knowladge_Disease = async () => {
-        agent.add("สุราหรือแอลกอฮอล์ เป็นสารเสพติดที่มีโทษเป็นอย่างมาก เมื่อดื่มแล้วจะทำให้เกิดผลเสียต่อร่างกายของผู้ดื่ม โทษของสุรานั้นอาจมีตั้งแต่ขั้นเบาไปจนถึงขั้นรุนแรง ซึ่งผลเสียของสุราแบ่งออกได้หลายด้านดังนี้");
-        return agent.add(new Payload(`LINE`, knowladgeBase.AlcoholIllness(), { sendAsMessage: true }));
-    }
+        const knowladge_Disease = async () => {
+            agent.add("สุราหรือแอลกอฮอล์ เป็นสารเสพติดที่มีโทษเป็นอย่างมาก เมื่อดื่มแล้วจะทำให้เกิดผลเสียต่อร่างกายของผู้ดื่ม โทษของสุรานั้นอาจมีตั้งแต่ขั้นเบาไปจนถึงขั้นรุนแรง ซึ่งผลเสียของสุราแบ่งออกได้หลายด้านดังนี้");
+            return agent.add(new Payload(`LINE`, knowladgeBase.AlcoholIllness(), { sendAsMessage: true }));
+        }
 
-    const knowladge_Neural = async () => {
-        agent.add("Infographic knowladge_Neural");
-    }
+            const knowladge_Neural = async () => {
+                agent.add("Infographic knowladge_Neural");
+            }
 
-    const knowladge_Cancer = async () => {
-        agent.add("Infographic knowladge_Cancer");
-    }
+            const knowladge_Cancer = async () => {
+                agent.add("Infographic knowladge_Cancer");
+            }
 
-    const knowladge_Chronic = async () => {
-        agent.add("Infographic knowladge_Chronic");
-    }
+            const knowladge_Chronic = async () => {
+                agent.add("Infographic knowladge_Chronic");
+            }
 
-    const knowladge_Circulatory = async () => {
-        agent.add("Infographic knowladge_Circulatory");
-    }
+            const knowladge_Circulatory = async () => {
+                agent.add("Infographic knowladge_Circulatory");
+            }
 
+        const knowladge_etc = async () => {
+            agent.add("Infographic knowladge_etc");
+        }
 
 
     const drinkingStandardData = async () => {
@@ -1410,17 +1413,18 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - no', recommendMore);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - edit', alcoholEdit);
     intentMap.set('knowladge', knowladgeSection);
-    intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
-    intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
-    intentMap.set('select_drunkenness', knowladge_Drunkenness);
-    intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
-    intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
-    intentMap.set('select_effect', knowladge_Effect);
-    intentMap.set('select_Disease', knowladge_Disease);
-    intentMap.set('select_neural', knowladge_Neural);
-    intentMap.set('select_Cancer', knowladge_Cancer);
-    intentMap.set('select_Chronic', knowladge_Chronic);
-    intentMap.set('select_Circulatory', knowladge_Circulatory);
+        intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
+            intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
+            intentMap.set('select_drunkenness', knowladge_Drunkenness);
+            intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
+            intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
+        intentMap.set('select_effect', knowladge_Effect);
+            intentMap.set('select_Disease', knowladge_Disease);
+                intentMap.set('select_neural', knowladge_Neural);
+                intentMap.set('select_Cancer', knowladge_Cancer);
+                intentMap.set('select_Chronic', knowladge_Chronic);
+                intentMap.set('select_Circulatory', knowladge_Circulatory);
+            intentMap.set('select_etc', knowladge_etc);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
