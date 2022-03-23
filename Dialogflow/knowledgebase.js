@@ -1,3 +1,9 @@
+const { generateKey } = require('crypto');
+const { WebhookClient, Payload } = require('dialogflow-fulfillment');
+const { ADDRGETNETWORKPARAMS } = require('dns');
+const { userDB } = require('../firebase');
+const  imageCarousels = require('./imageCarousels');
+
 const MainMenu = () => {
     return({
         type: "template",
