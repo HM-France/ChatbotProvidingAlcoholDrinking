@@ -166,72 +166,64 @@ const AlcoholIllness = () => {
 const AlcoholTreatment = () => {
     return ({
         type: "template",
-        altText: "เกี่ยวกับการเลิกสุรา",
+        altText: "this is a carousel template",
         template: {
             type: "carousel",
             columns: [
                 {
                   thumbnailImageUrl: "https://example.com/bot/images/item1.jpg",
                   imageBackgroundColor: "#FFFFFF",
-                  title: "วิธีการเลิกสุรา",
-                  text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
+                  title: "this is menu",
+                  text: "description",
                   defaultAction: {
-                    label: "วิธีการใช้งาน",
-                    text: "วิธีการใช้งาน"
+                      type: "uri",
+                      label: "View detail",
+                      uri: "http://example.com/page/123"
                   },
                   "actions": [
-                    {
-                        type: "message",
-                        label: "q",
-                        text: "q"
-                    },
-                    {
-                          type: "message",
-                          label: "w",
-                          text: "w"
-                    },
-                    {
-                          type: "message",
-                          label: "e",
-                          text: "e"
-                    },
-                    {
-                          type: "message",
-                          label: "r",
-                          text: "r"
-                    }
+                      {
+                          type: "postback",
+                          label: "Buy",
+                          data: "action=buy&itemid=111"
+                      },
+                      {
+                          type: "postback",
+                          label: "Add to cart",
+                          data: "action=add&itemid=111"
+                      },
+                      {
+                          type: "uri",
+                          label: "View detail",
+                          uri: "http://example.com/page/111"
+                      }
                   ]
                 },
                 {
                   thumbnailImageUrl: "https://example.com/bot/images/item2.jpg",
                   imageBackgroundColor: "#000000",
-                  title: "วิธีช่วยคนให้เลิกสุรา",
-                  text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
+                  title: "this is menu",
+                  text: "description",
                   defaultAction: {
-                    label: "วิธีการใช้งาน",
-                    text: "วิธีการใช้งาน"
+                      type: "uri",
+                      label: "View detail",
+                      uri: "http://example.com/page/222"
                   },
                   actions: [
-                    {
-                        type: "message",
-                        label: "q",
-                        text: "q"
-                    },
-                    {
-                          type: "message",
-                          label: "w",
-                          text: "w"
-                    },
-                    {
-                          type: "message",
-                          label: "e",
-                          text: "e"
-                    },
-                    {
-                          type: "message",
-                          label: "r",
-                          text: "r"
-                    }
+                      {
+                          type: "postback",
+                          label: "Buy",
+                          data: "action=buy&itemid=222"
+                      },
+                      {
+                          type: "postback",
+                          label: "Add to cart",
+                          data: "action=add&itemid=222"
+                      },
+                      {
+                          type: "uri",
+                          label: "View detail",
+                          uri: "http://example.com/page/222"
+                      }
                   ]
                 }
             ],
