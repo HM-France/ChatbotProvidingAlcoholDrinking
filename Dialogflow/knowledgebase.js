@@ -3,6 +3,7 @@ const { WebhookClient, Payload } = require('dialogflow-fulfillment');
 const { ADDRGETNETWORKPARAMS } = require('dns');
 const { userDB } = require('../firebase');
 const  imageCarousels = require('./imageCarousels');
+const agent = new WebhookClient({ request, response });
 
 const MainMenu = () => {
     return({
