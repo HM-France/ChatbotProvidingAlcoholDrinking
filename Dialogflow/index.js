@@ -1349,7 +1349,7 @@ const myexp = ((request, response) => {
 
         const knowladge_Disease = async() => {
             agent.add("สุราหรือแอลกอฮอล์ เป็นสารเสพติดที่มีโทษเป็นอย่างมาก เมื่อดื่มแล้วจะทำให้เกิดผลเสียต่อร่างกายของผู้ดื่ม โทษของสุรานั้นอาจมีตั้งแต่ขั้นเบาไปจนถึงขั้นรุนแรง ซึ่งผลเสียของสุราแบ่งออกได้หลายด้านดังนี้") ;
-            return agent.add(new Payload(`LINE` , knowladgeBase.AlcoholIllness() , { sendAsMessage:true })) ;
+            //return agent.add(new Payload(`LINE` , knowladgeBase.AlcoholIllness() , { sendAsMessage:true })) ;
         }
 
             const knowladge_Neural = async() => {
