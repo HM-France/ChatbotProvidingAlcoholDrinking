@@ -1377,7 +1377,7 @@ const myexp = ((request, response) => {
    
       const Test = async () => {
             agent.add("กำลังทดสอบ") ; 
-            return agent.add(new Payload( `LINE`, knowladgeBase.Flex() , { sendAsMessage:true} ));
+            setInterval(agent.add("กำลังนับถอยหลัง"),3000);
             agent.add("สิ้นสุดการทดสอบ");
       }
 
