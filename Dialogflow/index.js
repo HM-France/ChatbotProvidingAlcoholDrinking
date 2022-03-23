@@ -5,10 +5,6 @@ const { userDB } = require('../firebase');
 const imageCarousels = require('./imageCarousels');
 const knowladgeBase = require('./knowledgebase');
 
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 const myexp = ((request, response) => {
     //Create an instance
     const agent = new WebhookClient({ request, response });
@@ -1061,7 +1057,6 @@ const myexp = ((request, response) => {
         agent.add(`น้องตั้งใจขอทบทวนข้อมูลนะคะ`);
         agent.add(`จากข้อมูลที่น้องตั้งใจได้รับมาคือ คุณเป็น ผู้${gender} น้ำหนัก ${weight} กิโลกรัม ดื่ม${types}ไปทั้งหมด ${numberofDrinks} ${container} โดยหนึ่ง${container}มีปริมาณ ${volume} มิลลิลิตร  `);
         console.log('Redirecting to : measureAlcohalInBloodCalculated');
-
         return agent.add(new Payload('LINE', {
             "type": "text",
             "text": "ข้อมูลนี้ถูกต้องมั๊ยคะ",
