@@ -9,15 +9,6 @@ function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  function respondSlowly( agent, msg, ms ){
-    return new Promise( resolve => {
-      setTimeout( () => {
-        agent.add( msg );
-        resolve();
-      }, ms );
-    });
-  }
-
 const myexp = ((request, response) => {
     //Create an instance
     const agent = new WebhookClient({ request, response });
