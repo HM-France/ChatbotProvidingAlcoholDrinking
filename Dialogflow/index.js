@@ -1374,11 +1374,11 @@ const myexp = ((request, response) => {
           }, ms );
         });
       }
-    const Test =  () => {
-        agent.add("กำลังทดสอบ");
-        agent.add("Hello")
-        respondSlowly(agent,"TestSlow",3000)
-        agent.add("สิ้นสุดการทดสอบ");
+    const Test =  (agents) => {
+        agents.add("กำลังทดสอบ");
+        agents.add("Hello")
+        respondSlowly(agents,"TestSlow",3000)
+        return agents.add("สิ้นสุดการทดสอบ");
     }
 
     // Run the proper function handler based on the matched Dialogflow intent name
