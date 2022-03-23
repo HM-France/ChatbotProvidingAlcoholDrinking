@@ -122,7 +122,7 @@ const AlcoholEffect = () => {
 const AlcoholIllness = () => {
     return({
         type: "template",
-        altText: "ผลกระทบจากสุรา",
+        altText: "โรคร้ายที่เกิดจากสุรา",
         template: {
             type: "buttons",
             thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",              
@@ -139,23 +139,13 @@ const AlcoholIllness = () => {
             actions: [
                 {
                   type: "message",
-                  label: "โรคทางประสาท",
-                  text: "ผลกระทบของสุราที่มีผลต่อประสาท"
+                  label: "โรคร้ายจากสุรา",
+                  text: "โรคร้ายที่เกิดจากการดื่มสุรา ?"
                 },
                 {
                     type: "message",
-                    label: "โรคมะเร็ง",
-                    text: "ผลกระทบของสุราที่มีผลต่อการก่อมะเร็ง"
-                },
-                {
-                    type: "message",
-                    label: "โรคเรื้อรัง",
-                    text: "ผลกระทบของสุราที่มีผลต่อการเกิดโรคเรื้อรัง"
-                },
-                {
-                    type: "message",
-                    label: "โรคทางระบบหลอดเลือดและหัวใจ",
-                    text: "ผลกระทบของสุราที่มีผลต่อระบบหลอดเลือดและหัวใจ"
+                    label: "ผลกระทบอื่นๆ",
+                    text: "ผลกระทบต่าง ๆ ของสุรา"
                 }
             ]
         }
