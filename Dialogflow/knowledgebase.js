@@ -225,7 +225,7 @@ const AlcoholTreatment = () => {
                       {
                           type: "message",
                           label: "เสี่ยงทำร้ายตัวเอง",
-                          text: "เมื่อเสี่ยงทำร้ายตัวเอง"
+                          text: "เสี่ยงทำร้ายตัวเอง"
                       },
                       {
                           type: "message",
