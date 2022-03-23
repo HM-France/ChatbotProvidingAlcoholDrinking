@@ -151,11 +151,6 @@ const AlcoholIllness = () => {
                     type: "message",
                     label: "โรคเรื้อรัง",
                     text: "โรคเรื้อรัง"
-                },
-                {
-                    type: "message",
-                    label: "โรคทางระบบหลอดเลือดและหัวใจ",
-                    text: "โรคทางระบบหลอดเลือดและหัวใจ"
                 }
             ]
         }
