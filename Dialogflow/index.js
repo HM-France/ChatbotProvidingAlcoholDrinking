@@ -1414,7 +1414,7 @@ const myexp = ((request, response) => {
         intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
         intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
     intentMap.set('select_effect', knowladge_Effect) ;
-        intentMap.set('select_Disease', knowladge_Disease);
+        intentMap.set('select_Kind', knowladge_Disease);
             intentMap.set('select_neural', knowladge_Neural);
             intentMap.set('select_Cancer', knowladge_Cancer) ;
             intentMap.set('select_Chronic', knowladge_Chronic) ;
