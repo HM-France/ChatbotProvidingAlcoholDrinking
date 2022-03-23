@@ -1340,7 +1340,7 @@ const myexp = ((request, response) => {
     }
 
     const knowladge_Drunkenness = async () => {
-        agent.add("Infographic ยังไม่สามารถใช้งานได้ในขณะนี้") ;
+        agent.add("Infographic") ;
     }
 
     const drinkingStandardData = async () => {
