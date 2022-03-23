@@ -1374,10 +1374,10 @@ const myexp = ((request, response) => {
           }, ms );
         });
       }
-    const Test = async () => {
+    const Test =  () => {
         agent.add("กำลังทดสอบ");
         agent.add("Hello")
-        await respondSlowly(agent,"TestSlow",3000)
+        respondSlowly(agent,"TestSlow",3000)
         agent.add("สิ้นสุดการทดสอบ");
     }
 
