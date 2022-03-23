@@ -232,4 +232,4 @@ const Flex = () => {
     })
 }
 
-module.exports = {Flex,MainMenu,IncludingAlcohol,AlcoholEffect}
+module.exports = {Flex,MainMenu,IncludingAlcohol,AlcoholEffect,AlcoholIllness}

@@ -1335,21 +1335,28 @@ const myexp = ((request, response) => {
         return agent.add(new Payload(`LINE`, knowladgeBase.AlcoholEffect() , { sendAsMessage:true}));
     }
 
-        const knowladge_Neural = async() => {
-            agent.add("Infographic") ;
+        const knowladge_Disease = async() => {
+            agent.add("สุราหรือแอลกอฮอล์ เป็นสารเสพติดที่มีโทษเป็นอย่างมาก เมื่อดื่มแล้วจะทำให้เกิดผลเสียต่อร่างกายของผู้ดื่ม โทษของสุรานั้นอาจมีตั้งแต่ขั้นเบาไปจนถึงขั้นรุนแรง ซึ่งผลเสียของสุราแบ่งออกได้หลายด้านดังนี้") ;
+            return agent.add(new Payload(`LINE` , knowladgeBase.AlcoholIllness() , { sendAsMessage:true })) ;
         }
 
-        const knowladge_Cancer = async() => {
-            agent.add("Infographic") ;
-        }
+            const knowladge_Neural = async() => {
+                agent.add("Infographic") ;
+            }
 
-        const knowladge_Chronic  = async() => {
-            agent.add("Infographic") ;
-        }
+            const knowladge_Cancer = async() => {
+                agent.add("Infographic") ;
+            }
 
-        const knowladge_Circulatory = async() => {
-            agent.add("Infographic") ;
-        }
+            const knowladge_Chronic  = async() => {
+                agent.add("Infographic") ;
+            }
+
+            const knowladge_Circulatory = async() => {
+                agent.add("Infographic") ;
+            }
+
+        
 
     const drinkingStandardData = async () => {
         agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`) ;
@@ -1397,15 +1404,16 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - edit', alcoholEdit);
     intentMap.set('knowladge', knowladgeSection);
     intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
-    intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
-    intentMap.set('select_drunkenness', knowladge_Drunkenness) ;
-    intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
-    intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
+        intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
+        intentMap.set('select_drunkenness', knowladge_Drunkenness) ;
+        intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
+        intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
     intentMap.set('select_effect', knowladge_Effect) ;
-    intentMap.set('select_neural', knowladge_Neural);
-    intentMap.set('select_Cancer', knowladge_Cancer) ;
-    intentMap.set('select_Chronic', knowladge_Chronic) ;
-    intentMap.set('select_Circulatory', knowladge_Circulatory) ;
+        intentMap.set('select_Disease', knowladge_Disease);
+            intentMap.set('select_neural', knowladge_Neural);
+            intentMap.set('select_Cancer', knowladge_Cancer) ;
+            intentMap.set('select_Chronic', knowladge_Chronic) ;
+            intentMap.set('select_Circulatory', knowladge_Circulatory) ;
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
