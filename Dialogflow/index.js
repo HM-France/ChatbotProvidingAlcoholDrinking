@@ -1340,19 +1340,19 @@ const myexp = ((request, response) => {
     }
 
     const knowladge_Neural = async () => {
-        agent.add("Infographic");
+        agent.add("Infographic knowladge_Neural");
     }
 
     const knowladge_Cancer = async () => {
-        agent.add("Infographic");
+        agent.add("Infographic knowladge_Cancer");
     }
 
     const knowladge_Chronic = async () => {
-        agent.add("Infographic");
+        agent.add("Infographic knowladge_Chronic");
     }
 
     const knowladge_Circulatory = async () => {
-        agent.add("Infographic");
+        agent.add("Infographic knowladge_Circulatory");
     }
 
 
