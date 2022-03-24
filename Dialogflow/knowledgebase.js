@@ -175,25 +175,25 @@ const AlcoholTreatment = () => {
                   title: "วิธีการเลิกสุรา",
                   text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
                   defaultAction: {
-                      type: "uri",
-                      label: "View detail",
-                      uri: "http://example.com/page/123"
+                    type: "message",
+                    label: "วิธีการใช้งาน",
+                    text: "วิธีการใช้งาน"
                   },
                   "actions": [
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "การเลิกสุราด้วยตัวเอง",
+                        text: "การเลิกสุราด้วยตัวเอง"
                       },
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "การเลิกสุรากับหมอ",
+                        text: "การเลิกสุรากับหมอ"
                       },
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "การป้องกันการกลับไปดื่มซ้ำ",
+                        text: "การป้องกันการกลับไปดื่มซ้ำ"
                       }
                   ]
                 },
@@ -203,9 +203,9 @@ const AlcoholTreatment = () => {
                   title: "วิธีช่วยคนให้เลิกสุรา",
                   text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
                   defaultAction: {
-                      type: "uri",
-                      label: "View detail",
-                      uri: "http://example.com/page/222"
+                    type: "message",
+                    label: "วิธีการใช้งาน",
+                    text: "วิธีการใช้งาน"
                   },
                   actions: [
                       {
@@ -231,9 +231,9 @@ const AlcoholTreatment = () => {
                   title: "วิธีช่วยคนให้เลิกสุรา",
                   text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
                   defaultAction: {
-                      type: "uri",
-                      label: "View detail",
-                      uri: "http://example.com/page/222"
+                    type: "message",
+                    label: "วิธีการใช้งาน",
+                    text: "วิธีการใช้งาน"
                   },
                   actions: [
                       {
