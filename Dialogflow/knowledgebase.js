@@ -194,11 +194,6 @@ const AlcoholTreatment = () => {
                         type: "message",
                         label: "วิธีการเลิกสุรา",
                         text: "วิธีการเลิกสุรา"
-                      },
-                      {
-                        type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
                       }
                   ]
                 },
@@ -218,6 +213,29 @@ const AlcoholTreatment = () => {
                         label: "วิธีการเลิกสุรา",
                         text: "วิธีการเลิกสุรา"
                       },
+                      {
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
+                      },
+                      {
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
+                      }
+                  ]
+                },
+                {
+                  thumbnailImageUrl: "https://example.com/bot/images/item2.jpg",
+                  imageBackgroundColor: "#000000",
+                  title: "วิธีช่วยคนให้เลิกสุรา",
+                  text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
+                  defaultAction: {
+                      type: "uri",
+                      label: "View detail",
+                      uri: "http://example.com/page/222"
+                  },
+                  actions: [
                       {
                         type: "message",
                         label: "วิธีการเลิกสุรา",
