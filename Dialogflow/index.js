@@ -309,8 +309,7 @@ const myexp = ((request, response) => {
 
         if (thisDay !== 0 && !user.drinkingInWeek[dayInWeek[thisDay - 1]]) {
             return agent.add(createQuickReply(`คุณยังไม่ได้ให้ข้อมูลของ${dayInWeek[thisDay - 1]}เลยนะคะ`, [
-                `กรอกข้อมูลของ${dayInWeek[thisDay - 1]}`
-            ]))
+                `กรอกข้อมูลของ${dayInWeek[thisDay - 1]}`,`${dayInWeek[thisDay - 1]}ไมได้ดื่มอะ`]))
         }
 
         return agent.add(createQuickReply(
