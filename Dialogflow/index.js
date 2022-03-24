@@ -1354,6 +1354,13 @@ const myexp = ((request, response) => {
         agent.add("Infographic");
     }
 
+        const knowladge_SelfTreatment = async () => {
+            agent.add("การดื่มสุราลดลง จะทำให้สุขภาพดีขึ้น ความเสี่ยงต่อการเกิดโรคต่างๆก็ลดลงตาม หรือโรคที่เป็นอยู่สามารถควบคุมได้ดีขึ้น และอาจเป็นอีกหนทางหนึ่งในการหยุดดื่มสุราอย่างเด็ดขาดต่อไป");
+            agent.add("อย่างไรก็ตาม พึงระลึกไว้เสมอว่า ไม่มีปริมาณการดื่มใดที่ไม่เสี่ยง และผู้ที่อยู่ในขั้นติดสุราแล้วมักจะไม่ประสบความสำเร็จในการลดปริมาณการดื่มลง") ;
+            agent.add("การหยุดดื่มสุราทั้งหมดจะทำให้ประสบความสำเร็จในการเลิกระยะยาวมากกว่า องค์การอนามัยโลกได้ทำการศึกษาปริมาณการดื่มสุราที่เป็นอันตราย ดังนั้น ผู้ที่ต้องการลดปริมาณการดื่มลง ควรลดปริมาณการดื่มให้ต่ำกว่าปริมาณการดื่มสุราที่เคยดื่ม");
+            agent.add("Information");
+        }
+
 
 
     const drinkingStandardData = async () => {
@@ -1420,6 +1427,20 @@ const myexp = ((request, response) => {
     intentMap.set('select_Cancer', knowladge_Cancer);
     intentMap.set('select_Chronic', knowladge_Chronic);
     intentMap.set('select_Circulatory', knowladge_Circulatory);
+    intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
+    intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
+    intentMap.set('select_drunkenness', knowladge_Drunkenness);
+    intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
+    intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
+    intentMap.set('select_effect', knowladge_Effect);
+    intentMap.set('select_Disease', knowladge_Disease);
+    intentMap.set('select_neural', knowladge_Neural);
+    intentMap.set('select_Cancer', knowladge_Cancer);
+    intentMap.set('select_Chronic', knowladge_Chronic);
+    intentMap.set('select_Circulatory', knowladge_Circulatory);
+    intentMap.set('select_etc', knowladge_etc);
+    intentMap.set('select_Treatment', knowladge_Treatment);
+    intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
