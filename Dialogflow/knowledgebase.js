@@ -172,8 +172,8 @@ const AlcoholTreatment = () => {
                 {
                   thumbnailImageUrl: "https://example.com/bot/images/item1.jpg",
                   imageBackgroundColor: "#FFFFFF",
-                  title: "this is menu",
-                  text: "description",
+                  title: "วิธีการเลิกสุรา",
+                  text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
                   defaultAction: {
                       type: "uri",
                       label: "View detail",
@@ -200,8 +200,9 @@ const AlcoholTreatment = () => {
                 {
                   thumbnailImageUrl: "https://example.com/bot/images/item2.jpg",
                   imageBackgroundColor: "#000000",
-                  title: "this is menu",
-                  text: "description",
+                  title: "วิธีช่วยคนให้เลิกสุรา",
+                  text: "                  text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
+                  ",
                   defaultAction: {
                       type: "uri",
                       label: "View detail",
