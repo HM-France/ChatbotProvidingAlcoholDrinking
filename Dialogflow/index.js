@@ -347,6 +347,7 @@ const myexp = ((request, response) => {
         console.log('-------------------');
 
         standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
+        console.log('standardDrink:',standardDrink);
         await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
             type, percent, container, volume, numberOfDrinks, standardDrink
         })
