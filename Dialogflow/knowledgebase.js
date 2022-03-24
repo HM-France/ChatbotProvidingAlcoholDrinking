@@ -201,8 +201,7 @@ const AlcoholTreatment = () => {
                   thumbnailImageUrl: "https://example.com/bot/images/item2.jpg",
                   imageBackgroundColor: "#000000",
                   title: "วิธีช่วยคนให้เลิกสุรา",
-                  text: "                  text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
-                  ",
+                  text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
                   defaultAction: {
                       type: "uri",
                       label: "View detail",
