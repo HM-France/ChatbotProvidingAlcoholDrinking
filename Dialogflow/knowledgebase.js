@@ -165,12 +165,12 @@ const AlcoholIllness = () => {
 const AlcoholTreatment = () => {
     return ({
         type: "template",
-        altText: "this is a carousel template",
+        altText: "เกี่ยวกับการเลิกสุรา",
         template: {
             type: "carousel",
             columns: [
                 {
-                  thumbnailImageUrl: "https://example.com/bot/images/item1.jpg",
+                  thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",
                   imageBackgroundColor: "#FFFFFF",
                   title: "วิธีการเลิกสุรา",
                   text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
@@ -198,7 +198,7 @@ const AlcoholTreatment = () => {
                   ]
                 },
                 {
-                  thumbnailImageUrl: "https://example.com/bot/images/item2.jpg",
+                  thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",
                   imageBackgroundColor: "#000000",
                   title: "วิธีช่วยคนให้เลิกสุรา",
                   text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
@@ -210,23 +210,23 @@ const AlcoholTreatment = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "ช่วยผู้ติดสุราได้อย่างไร",
+                        text: "ฉันจะช่วยผู้ติดสุราได้อย่างไร"
                       },
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "เสี่ยงทำร้ายตัวเอง",
+                        text: "เมื่อผู้ดื่มเสี่ยงต่อการทำร้ายตัวเอง"
                       },
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "ใครบ้างที่ควรพบแพทย์อย่างเร่งด่วน",
+                        text: "ใครบ้างที่ควรพบแพทย์อย่างเร่งด่วน"
                       }
                   ]
                 },
                 {
-                  thumbnailImageUrl: "https://example.com/bot/images/item2.jpg",
+                  thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",
                   imageBackgroundColor: "#000000",
                   title: "วิธีช่วยคนให้เลิกสุรา",
                   text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
@@ -238,18 +238,13 @@ const AlcoholTreatment = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "เทคนิคแก้อาการเมาค้าง",
+                        text: "เทคนิคแก้อาการเมาค้าง"
                       },
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
-                      },
-                      {
-                        type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "น้ำดื่มทางเลือก",
+                        text: "น้ำดื่มทางเลือก"
                       }
                   ]
                 }
