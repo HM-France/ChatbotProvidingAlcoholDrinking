@@ -238,8 +238,8 @@ const AlcoholTreatment = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "เทคนิคแก้เมาค้าง",
+                        text: "เทคนิคแก้เมาค้าง"
                       },
                       {
                         type: "message",
