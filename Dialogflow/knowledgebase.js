@@ -245,6 +245,11 @@ const AlcoholTreatment = () => {
                         type: "message",
                         label: "น้ำดื่มทางเลือก",
                         text: "น้ำดื่มทางเลือก"
+                      },
+                      {
+                        type: "message",
+                        label: "-",
+                        text: "-"
                       }
                   ]
                 }
