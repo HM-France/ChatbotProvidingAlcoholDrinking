@@ -318,96 +318,102 @@ const myexp = ((request, response) => {
         ));
     }
 
-    // const setDrinkingInWeek_fill = async () => {
-    //     let { thisDay ,type, percent, container, volume, numberOfDrinks } = agent.parameters;
-    //     thisDay = parseInt(thisDay);
-    //     const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
-    //     var standardDrink;
+    const setNoDrinkingInWeek = async () => {
+        let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
+        thisDay = parseInt(thisDay);
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
+        var standardDrink;
 
-    //     console.log('this day:',thisDay);
-    //     console.log('type:' , type);
-    //     console.log('percent:' , percent);
-    //     console.log('container:' , container);
-    //     console.log('volume:' , volume);
-    //     console.log('number of drink:' , numberOfDrinks);
-    //     console.log('-------------------');
+        console.log('this day:', thisDay);
+        console.log('type:', type);
+        console.log('percent:', percent);
+        console.log('container:', container);
+        console.log('volume:', volume);
+        console.log('number of drink:', numberOfDrinks);
+        console.log('-------------------');
 
-    //     if (!type) {
-    //         return agent.add(`กรุณาระบุเครื่องดื่มด้วยค่ะ`);
-    //     } else if (!percent) {
-    //         return agent.add(`${type}คุณดื่มมีแอลกอฮอล์กี่เปอร์เซ็นค่ะ`);
-    //     } else if (!container) {
-    //         agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มในแต่ละวันได้ดีที่สุดนะคะ`);
-    //         return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize.all, { sendAsMessage: true }));
-    //     } else if (!numberOfDrinks) {
-    //         return agent.add(`ดื่มประมาณกี่${container}คะ`);
-    //     }
-    //     standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
-    //     await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
-    //         type, percent, container, volume, numberOfDrinks, standardDrink
-    //     })
-    //     if (thisDay !== 6) {
-    //         agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent}% จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
-    //         return agent.add(new Payload(
-    //             `LINE`,
-    //             {
-    //                 "type": "text",
-    //                 "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
-    //                 "quickReply": {
-    //                     "items": [
-    //                         {
-    //                             "type": "action",
-    //                             "action": {
-    //                                 "type": "message",
-    //                                 "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
-    //                                 "label": `แก้ไขข้อมูล`
-    //                             }
-    //                         },
-    //                         {
-    //                             "type": "action",
-    //                             "action": {
-    //                                 "type": "message",
-    //                                 "label": "ไม่ ไปวันถัดไป",
-    //                                 "text": `กรอกข้อมูลของ${dayInWeek[thisDay + 1]}`
-    //                             }
-    //                         }
-    //                     ]
-    //                 },
-    //             },
-    //             { sendAsMessage: true }
-    //         ))
-    //     } else {
-    //         agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent} จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
-    //         return agent.add(new Payload(
-    //             `LINE`,
-    //             {
-    //                 "type": "text",
-    //                 "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
-    //                 "quickReply": {
-    //                     "items": [
-    //                         {
-    //                             "type": "action",
-    //                             "action": {
-    //                                 "type": "message",
-    //                                 "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
-    //                                 "label": `แก้ไขข้อมูล`
-    //                             }
-    //                         },
-    //                         {
-    //                             "type": "action",
-    //                             "action": {
-    //                                 "type": "message",
-    //                                 "label": "ไม่",
-    //                                 "text": `สรุปผลประเมินความเสี่ยง`
-    //                             }
-    //                         }
-    //                     ]
-    //                 },
-    //             },
-    //             { sendAsMessage: true }
-    //         ))
-    //     }
-    // }
+        if(!type){
+            type = 'ไม่ได้ดื่ม';
+        }
+        if (!percent) {
+            percent = '0';
+        }
+        if (!container) {
+            container = 'ไม่ได้ดื่ม';
+        }
+        if (!volume) {
+            volume = '0';
+        }
+        if (!numberOfDrinks){
+            numberOfDrinks = '0';
+        }
+
+        standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
+        await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
+            type, percent, container, volume, numberOfDrinks, standardDrink
+        })
+
+        if (thisDay !== 6) {
+            return agent.add(new Payload(
+                `LINE`,
+                {
+                    "type": "text",
+                    "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+                    "quickReply": {
+                        "items": [
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "label": `แก้ไขข้อมูล`
+                                }
+                            },
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "label": "ไม่ ไปวันถัดไป",
+                                    "text": `กรอกข้อมูลของ${dayInWeek[thisDay + 1]}`
+                                }
+                            }
+                        ]
+                    },
+                },
+                { sendAsMessage: true }
+            ))
+        } else {
+            return agent.add(new Payload(
+                `LINE`,
+                {
+                    "type": "text",
+                    "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+                    "quickReply": {
+                        "items": [
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "label": `แก้ไขข้อมูล`
+                                }
+                            },
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "label": "ไม่",
+                                    "text": `สรุปผลประเมินความเสี่ยง`
+                                }
+                            }
+                        ]
+                    },
+                },
+                { sendAsMessage: true }
+            ))
+        }
+
+    }
 
     const setDrinkingInWeek_pick = async () => {
         let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
@@ -1407,6 +1413,7 @@ const myexp = ((request, response) => {
     // intentMap.set('SET_DRINKING_IN_WEEK -  fill alcohol', setDrinkingInWeek_fill);
     intentMap.set('SET_DRINKING_IN_WEEK - pick alcohol', setDrinkingInWeek_pick);
     intentMap.set('SET_DRINKING_IN_WEEK - edit', setDrinkingInWeekInputType);
+    intentMap.set('SET_DRINKING_IN_WEEK - next',setNoDrinkingInWeek);
     intentMap.set('RISK_ASSESSMENT_RESULT', setDrinkingInWeekInputType);
     intentMap.set('RISK_ASSESSMENT_RESULT - week', riskAssessmentResultWeek);
     intentMap.set('RISK_ASSESSMENT_RESULT - day', riskAssessmentResultDay);
