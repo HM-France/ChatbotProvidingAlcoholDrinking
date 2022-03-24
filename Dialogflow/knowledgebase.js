@@ -194,6 +194,11 @@ const AlcoholTreatment = () => {
                         type: "message",
                         label: "วิธีการเลิกสุรา",
                         text: "วิธีการเลิกสุรา"
+                      },
+                      {
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       }
                   ]
                 },
@@ -208,6 +213,11 @@ const AlcoholTreatment = () => {
                       uri: "http://example.com/page/222"
                   },
                   actions: [
+                      {
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
+                      },
                       {
                         type: "message",
                         label: "วิธีการเลิกสุรา",
