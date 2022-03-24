@@ -324,14 +324,6 @@ const myexp = ((request, response) => {
         const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
         var standardDrink;
 
-        console.log('this day:', thisDay);
-        console.log('type:', type);
-        console.log('percent:', percent);
-        console.log('container:', container);
-        console.log('volume:', volume);
-        console.log('number of drink:', numberOfDrinks);
-        console.log('-------------------');
-
         if(!type){
             type = 'ไม่ได้ดื่ม';
         }
@@ -347,6 +339,14 @@ const myexp = ((request, response) => {
         if (!numberOfDrinks){
             numberOfDrinks = '0';
         }
+
+        console.log('this day:', thisDay);
+        console.log('type:', type);
+        console.log('percent:', percent);
+        console.log('container:', container);
+        console.log('volume:', volume);
+        console.log('number of drink:', numberOfDrinks);
+        console.log('-------------------');
 
         standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
         await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
