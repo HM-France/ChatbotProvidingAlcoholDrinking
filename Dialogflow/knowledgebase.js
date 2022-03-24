@@ -181,19 +181,19 @@ const AlcoholTreatment = () => {
                   },
                   "actions": [
                       {
-                          type: "postback",
-                          label: "Buy",
-                          data: "action=buy&itemid=111"
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       },
                       {
-                          type: "postback",
-                          label: "Add to cart",
-                          data: "action=add&itemid=111"
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       },
                       {
-                          type: "uri",
-                          label: "View detail",
-                          uri: "http://example.com/page/111"
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       }
                   ]
                 },
@@ -209,19 +209,19 @@ const AlcoholTreatment = () => {
                   },
                   actions: [
                       {
-                          type: "postback",
-                          label: "Buy",
-                          data: "action=buy&itemid=222"
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       },
                       {
-                          type: "postback",
-                          label: "Add to cart",
-                          data: "action=add&itemid=222"
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       },
                       {
-                          type: "uri",
-                          label: "View detail",
-                          uri: "http://example.com/page/222"
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       }
                   ]
                 }
