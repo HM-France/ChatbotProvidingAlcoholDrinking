@@ -1378,6 +1378,12 @@ const myexp = ((request, response) => {
                 agent.add("การบำบัดรักษาที่ได้ผลดีขึ้นอยู่กับหลายปัจจัย ได้แก่ ผู้ป่วยมีแรงจูงใจในการเลิกสุราโดยเด็ดขาด  ผู้ป่วยมารับการบำบัดรักษาอย่างต่อเนื่อง ครอบครัวให้การสนับสนุนและร่วมมือกับแพทย์ ไม่มีจิตเวชรุนแรงแทรกซ้อน เป็นต้น");
             }
 
+            const knowladge_Immunity = async () => {
+                agent.add("Infohraphic knowladge_Immunity");
+            }
+
+            
+
     const drinkingStandardData = async () => {
         agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`);
         agent.add(createQuickReply("น้องตั้งใจจะนำคุณไปสู่ขั้นตอนถัดไปนะคะ", ["กรอกข้อมูลของวันนี้"]));
@@ -1431,32 +1437,22 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - no', recommendMore);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - edit', alcoholEdit);
     intentMap.set('knowladge', knowladgeSection);
-    intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
-    intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
-    intentMap.set('select_drunkenness', knowladge_Drunkenness);
-    intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
-    intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
-    intentMap.set('select_effect', knowladge_Effect);
-    intentMap.set('select_Disease', knowladge_Disease);
-    intentMap.set('select_neural', knowladge_Neural);
-    intentMap.set('select_Cancer', knowladge_Cancer);
-    intentMap.set('select_Chronic', knowladge_Chronic);
-    intentMap.set('select_Circulatory', knowladge_Circulatory);
-    intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
-    intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
-    intentMap.set('select_drunkenness', knowladge_Drunkenness);
-    intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
-    intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
-    intentMap.set('select_effect', knowladge_Effect);
-    intentMap.set('select_Disease', knowladge_Disease);
-    intentMap.set('select_neural', knowladge_Neural);
-    intentMap.set('select_Cancer', knowladge_Cancer);
-    intentMap.set('select_Chronic', knowladge_Chronic);
-    intentMap.set('select_Circulatory', knowladge_Circulatory);
-    intentMap.set('select_etc', knowladge_etc);
-    intentMap.set('select_Treatment', knowladge_Treatment);
-    intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
-    intentMap.set('select_DoctorTreatment',knowladge_DoctorTreatment);
+        intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
+            intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
+            intentMap.set('select_drunkenness', knowladge_Drunkenness);
+            intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
+            intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
+        intentMap.set('select_effect', knowladge_Effect);
+            intentMap.set('select_Disease', knowladge_Disease);
+                intentMap.set('select_neural', knowladge_Neural);
+                intentMap.set('select_Cancer', knowladge_Cancer);
+                intentMap.set('select_Chronic', knowladge_Chronic);
+                intentMap.set('select_Circulatory', knowladge_Circulatory);
+            intentMap.set('select_etc', knowladge_etc);
+        intentMap.set('select_Treatment', knowladge_Treatment);
+            intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
+            intentMap.set('select_DoctorTreatment',knowladge_DoctorTreatment);
+            intentMap.set('select_Immunity',knowladge_Immunity);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
