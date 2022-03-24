@@ -182,17 +182,17 @@ const AlcoholTreatment = () => {
                   "actions": [
                       {
                         type: "message",
-                        label: "เลิกสุราด้วยตัวเอง",
+                        label: "การเลิกสุราด้วยตัวเอง",
                         text: "การเลิกสุราด้วยตัวเอง"
                       },
                       {
                         type: "message",
-                        label: "เลิกสุรากับหมอ",
+                        label: "การเลิกสุรากับหมอ",
                         text: "การเลิกสุรากับหมอ"
                       },
                       {
                         type: "message",
-                        label: "การป้องกันดื่มซ้ำ",
+                        label: "การป้องกันการกลับไปดื่มซ้ำ",
                         text: "การป้องกันการกลับไปดื่มซ้ำ"
                       }
                   ]
@@ -210,18 +210,18 @@ const AlcoholTreatment = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "-",
-                        text: "-"
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       },
                       {
                         type: "message",
-                        label: "-",
-                        text: "-"
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       },
                       {
                         type: "message",
-                        label: "-",
-                        text: "-"
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       }
                   ]
                 },
@@ -238,13 +238,18 @@ const AlcoholTreatment = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "-",
-                        text: "-"
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       },
                       {
                         type: "message",
-                        label: "-",
-                        text: "-"
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
+                      },
+                      {
+                        type: "message",
+                        label: "วิธีการเลิกสุรา",
+                        text: "วิธีการเลิกสุรา"
                       }
                   ]
                 }
