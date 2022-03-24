@@ -210,18 +210,18 @@ const AlcoholTreatment = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "วิธีช่วยผู้ติดสุรา",
-                        text: "ฉันจะช่วยผู้ติดสุราได้อย่างไร"
+                        label: "-",
+                        text: "-"
                       },
                       {
                         type: "message",
-                        label: "เสี่ยงทำร้ายตัวเอง",
-                        text: "เมื่อผู้ดื่มเสี่ยงต่อการทำร้ายตัวเอง"
+                        label: "-",
+                        text: "-"
                       },
                       {
                         type: "message",
-                        label: "ใครบ้างที่ควรพบแพทย์",
-                        text: "ใครบ้างที่ควรพบแพทย์อย่างเร่งด่วน"
+                        label: "-",
+                        text: "-"
                       }
                   ]
                 },
@@ -238,13 +238,13 @@ const AlcoholTreatment = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "เทคนิคแก้เมาค้าง",
-                        text: "เทคนิคแก้อาการเมาค้าง"
+                        label: "-",
+                        text: "-"
                       },
                       {
                         type: "message",
-                        label: "น้ำดื่มทางเลือก",
-                        text: "น้ำดื่มทางเลือก"
+                        label: "-",
+                        text: "-"
                       }
                   ]
                 }
