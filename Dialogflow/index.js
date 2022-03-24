@@ -1,6 +1,4 @@
-const { generateKey } = require('crypto');
 const { WebhookClient, Payload } = require('dialogflow-fulfillment');
-const { ADDRGETNETWORKPARAMS } = require('dns');
 const { userDB } = require('../firebase');
 const imageCarousels = require('./imageCarousels');
 const knowladgeBase = require('./knowledgebase');
@@ -1420,7 +1418,6 @@ const myexp = ((request, response) => {
     intentMap.set('RISK_ASSESSMENT - drink in 3 month', riskAssessment_DrinkIn3Month);
     intentMap.set('RISK_ASSESSMENT - dont drink in 3 month', riskAssessment_DontDrinkIn3Month);
     intentMap.set('SET_DRINKING_IN_WEEK', setDrinkingInWeekInputType);
-    // intentMap.set('SET_DRINKING_IN_WEEK -  fill alcohol', setDrinkingInWeek_fill);
     intentMap.set('SET_DRINKING_IN_WEEK - pick alcohol', setDrinkingInWeek_pick);
     intentMap.set('SET_DRINKING_IN_WEEK - edit', setDrinkingInWeekInputType);
     intentMap.set('SET_DRINKING_IN_WEEK - next',setNoDrinkingInWeek);
