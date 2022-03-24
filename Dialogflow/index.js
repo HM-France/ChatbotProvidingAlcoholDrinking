@@ -1376,9 +1376,19 @@ const myexp = ((request, response) => {
             }
 
             const knowladge_DoctorTreatment = async () => {
-                agent.add("In process");
+                agent.add("การบำบัดรักษาทางการแพทย์เพื่อเลิกสุราเป็นวิธีการที่มีส่วนช่วยส่งเสริมให้ผู้ป่วยประสบความสำเร็จมากขึ้น โดยขั้นตอนการบำบัดรักษามีทั้งหมด 4 ขั้นตอน ดังนี้");
+                agent.add("1. ขั้นเตรียมการบำบัด ในขั้นนี้แพทย์จะทำการตรวจประเมินสุขภาพ ให้ความรู้ จูงใจผู้ป่วยให้เลิกสุรา ทำความเข้าใจเกี่ยวกับการบำบัด");
+                agent.add("2. ขั้นถอนพิษสุรา ในขั้นนี้เป็นการช่วยผู้ป่วยหยุดสุราเบื้องต้น ช่วยบรรเทาอาการถอนโดยให้ยาชดเชย  และป้องกันอาการถอนรุนแรง ใช้เวลาประมาณ 1-2 สัปดาห์ ในบางรายแพทย์อาจจำเป็นต้องรับผู้ป่วยเข้าถอนพิษในโรงพยาบาล เพื่อติดตามอาการใกล้ชิด และให้ความช่วยเหลืออย่างทันท่วงที");
+                agent.add("3. ขั้นฟื้นฟูสมรรถภาพ ในขั้นนี้เป็นการช่วยให้ผู้ป่วยหยุดสุราต่อเนื่อง ช่วยให้ผู้ป่วยทนต่ออาการอยากสุราได้ ดำรงชีวิตโดยไม่กลับไปดื่มสุรา ปรับตัวกับครอบครัวและสิ่งแวดล้อมได้ อาจบำบัดเป็นแบบผู้ป่วยนอกหรือผู้ป่วยใน  ระยะเวลาประมาณ 4-6 เดือน");
+                agent.add("4. ขั้นติดตามผล  ในขั้นนี้เป็นการติดตามผลการบำบัดรักษาฟื้นฟู และช่วยเหลือให้ผู้ป่วยมีวิถีชีวิตปกติและหยุดสุราได้อย่างต่อเนื่อง ระยะเวลาประมาณ 1-2 ปี");
+                agent.add("การบำบัดรักษาที่ได้ผลดีขึ้นอยู่กับหลายปัจจัย ได้แก่ ผู้ป่วยมีแรงจูงใจในการเลิกสุราโดยเด็ดขาด  ผู้ป่วยมารับการบำบัดรักษาอย่างต่อเนื่อง ครอบครัวให้การสนับสนุนและร่วมมือกับแพทย์ ไม่มีจิตเวชรุนแรงแทรกซ้อน เป็นต้น");
             }
 
+            const knowladge_Immunity = async () => {
+                agent.add("Infohraphic knowladge_Immunity");
+            }
+
+            
 
     const drinkingStandardData = async () => {
         agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`);
@@ -1434,32 +1444,22 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - no', recommendMore);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - edit', alcoholEdit);
     intentMap.set('knowladge', knowladgeSection);
-    intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
-    intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
-    intentMap.set('select_drunkenness', knowladge_Drunkenness);
-    intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
-    intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
-    intentMap.set('select_effect', knowladge_Effect);
-    intentMap.set('select_Disease', knowladge_Disease);
-    intentMap.set('select_neural', knowladge_Neural);
-    intentMap.set('select_Cancer', knowladge_Cancer);
-    intentMap.set('select_Chronic', knowladge_Chronic);
-    intentMap.set('select_Circulatory', knowladge_Circulatory);
-    intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
-    intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
-    intentMap.set('select_drunkenness', knowladge_Drunkenness);
-    intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
-    intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
-    intentMap.set('select_effect', knowladge_Effect);
-    intentMap.set('select_Disease', knowladge_Disease);
-    intentMap.set('select_neural', knowladge_Neural);
-    intentMap.set('select_Cancer', knowladge_Cancer);
-    intentMap.set('select_Chronic', knowladge_Chronic);
-    intentMap.set('select_Circulatory', knowladge_Circulatory);
-    intentMap.set('select_etc', knowladge_etc);
-    intentMap.set('select_Treatment', knowladge_Treatment);
-    intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
-    intentMap.set('select_DoctorTreatment',knowladge_DoctorTreatment);
+        intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
+            intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
+            intentMap.set('select_drunkenness', knowladge_Drunkenness);
+            intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
+            intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
+        intentMap.set('select_effect', knowladge_Effect);
+            intentMap.set('select_Disease', knowladge_Disease);
+                intentMap.set('select_neural', knowladge_Neural);
+                intentMap.set('select_Cancer', knowladge_Cancer);
+                intentMap.set('select_Chronic', knowladge_Chronic);
+                intentMap.set('select_Circulatory', knowladge_Circulatory);
+            intentMap.set('select_etc', knowladge_etc);
+        intentMap.set('select_Treatment', knowladge_Treatment);
+            intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
+            intentMap.set('select_DoctorTreatment',knowladge_DoctorTreatment);
+            intentMap.set('select_Immunity',knowladge_Immunity);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
