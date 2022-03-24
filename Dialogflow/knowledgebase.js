@@ -228,7 +228,7 @@ const AlcoholTreatment = () => {
                 {
                   thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",
                   imageBackgroundColor: "#000000",
-                  title: "วิธีช่วยคนให้เลิกสุรา",
+                  title: "เทคนิคการเลิกสุรา",
                   text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
                   defaultAction: {
                     type: "message",
@@ -238,18 +238,13 @@ const AlcoholTreatment = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "เทคนิคแก้เมาค้าง",
+                        text: "เทคนิคแก้เมาค้าง"
                       },
                       {
                         type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
-                      },
-                      {
-                        type: "message",
-                        label: "วิธีการเลิกสุรา",
-                        text: "วิธีการเลิกสุรา"
+                        label: "น้ำดื่มทางเลือก",
+                        text: "น้ำดื่มทางเลือก"
                       }
                   ]
                 }
