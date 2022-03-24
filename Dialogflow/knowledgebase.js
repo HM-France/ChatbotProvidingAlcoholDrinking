@@ -210,8 +210,8 @@ const AlcoholTreatment = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "คุณจะช่วยผู้ติดสุราได้อย่างไร",
-                        text: "ฉันจะช่วยผู้ติดสุราได้อย่างไร"
+                        label: "การช่วยผู้ติดสุรา",
+                        text: "การช่วยผู้ติดสุรา"
                       },
                       {
                         type: "message",
