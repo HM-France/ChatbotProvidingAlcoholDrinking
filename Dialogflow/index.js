@@ -1469,6 +1469,10 @@ const myexp = ((request, response) => {
                 agent.add("Infohraphic knowladge_Immunity");
             }
 
+            const knowladge_AlternativeDrink = async () => {
+                
+            }
+
             
 
     const drinkingStandardData = async () => {
@@ -1542,6 +1546,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
             intentMap.set('select_DoctorTreatment',knowladge_DoctorTreatment);
             intentMap.set('select_Immunity',knowladge_Immunity);
+            intentMap.set('select_AlternativeDrink', knowladge_AlternativeDrink);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
