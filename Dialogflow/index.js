@@ -1367,11 +1367,11 @@ const myexp = ((request, response) => {
                       "type": "buttons",
                       "imageBackgroundColor": "#FFFFFF",
                       "title": "ข้อมูลโรคมะเร็งกับสุรา ฉบับละเอียด",
-                      "text": "หากคุณต้องการอ่านรายละเอียดเพิ่มเติมของโรคมะเร็งแต่ละชนิด สา",
+                      "text": "หากคุณต้องการอ่านรายละเอียดเพิ่มเติมของโรคมะเร็งแต่ละชนิด",
                       "actions": [
                         {
                           "type": "uri",
-                          "label": "✨ อ่านเพิ่มเติม ✨",
+                          "label": "✨ กดที่นี่ ✨",
                           "uri": "http://www.1413.in.th/categories/view/11"
                         }
                       ]
