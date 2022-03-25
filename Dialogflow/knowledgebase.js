@@ -167,8 +167,8 @@ const AlcoholEffect = () => {
                   actions: [
                       {
                         type: "message",
-                        label: "โรคทางระบบไหลเวียนเลือด",
-                        text: "โรคทางระบบไหลเวียนเลือด"
+                        label: "โรคทางระบบเลือด",
+                        text: "โรคทางระบบเลือด"
                       },
                       {
                         type: "message",
