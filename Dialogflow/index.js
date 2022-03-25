@@ -1404,8 +1404,10 @@ const myexp = ((request, response) => {
     }
     const Test = async (agents) => {
         await agents.add("กำลังทดสอบ");
-        await agents.add("Hello")
-        await respondSlowly(agents, "TestSlow", 3000)
+        agent.add(new Payload(`LINE` , {
+            "type": "text",
+            "text": "dwdwd\ndwdwd\ndwdw\n"
+         } , { sendAsMessage:true } )) ; 
         await agents.add("สิ้นสุดการทดสอบ");
     }
 
