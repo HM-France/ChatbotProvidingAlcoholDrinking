@@ -1334,7 +1334,7 @@ const myexp = ((request, response) => {
                     "originalContentUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F7%20%E0%B8%A5%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%93%E0%B8%B0%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%99%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B2.png?alt=media&token=a31e4a8c-8b87-48c9-a827-a66eb65d0fbd",
                     "previewImageUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F7%20%E0%B8%A5%E0%B8%B1%E0%B8%81%E0%B8%A9%E0%B8%93%E0%B8%B0%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%99%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B2.png?alt=media&token=a31e4a8c-8b87-48c9-a827-a66eb65d0fbd"
                   } , { sendAsMessage:true }));
-                agent.add("แต่อย่างไรก็ตามการที่จะยืนยันอย่างเป็นทางการได้ว่าใครเป็นผู้ติดสุราหรือไม่จะขึ้นอยู่กับดุลยพินิจของแพทย์นะคะ") ;
+                return agent.add("แต่อย่างไรก็ตามการที่จะยืนยันอย่างเป็นทางการได้ว่าใครเป็นผู้ติดสุราหรือไม่จะขึ้นอยู่กับดุลยพินิจของแพทย์นะคะ") ;
             }
 
             const knowladge_WithdrawalkSymptoms = async () => {
