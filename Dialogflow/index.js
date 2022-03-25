@@ -1423,11 +1423,16 @@ const myexp = ((request, response) => {
 
             const knowladge_etc = async () => {
                 agent.add("นอกจากสุราจะก่อให้เกิดผลกระทบทางด้านสุขภาพมากมายแล้ว สุรายังทำให้เกิดลกระทบต่าง ๆ นอกจากสุขภาพด้วยเช่นกัน") ;
-                return agent.add(new Payload(`LINE` , {
+                agent.add(new Payload(`LINE` , {
                     "type": "image",
                     "originalContentUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%9C%E0%B8%A5%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B8%9A%E0%B8%AD%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%86.png?alt=media&token=8d9e5071-5d4c-44cd-b9bf-40744f208121",
                     "previewImageUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%9C%E0%B8%A5%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B8%9A%E0%B8%AD%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%86.png?alt=media&token=8d9e5071-5d4c-44cd-b9bf-40744f208121"
                   } , { sendAsMessage:true }));
+                return agent.add("ดังนั้น ทางที่ดีที่สุดคือการไม่ดื่มแอลกออฮฮล์เลยค่ะ");
+            }
+
+            const knowladge_Disease = async () => {
+                return agent.add("Data select_Disease");
             }
 
         const knowladge_Treatment = async () => {
@@ -1521,6 +1526,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_Cancer', knowladge_Cancer);
             intentMap.set('select_Chronic', knowladge_Chronic);
             intentMap.set('select_Circulatory', knowladge_Circulatory);
+            intentMap.set('select_Disease', knowladge_Disease) ;
             intentMap.set('select_etc', knowladge_etc);
         intentMap.set('select_Treatment', knowladge_Treatment);
             intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
