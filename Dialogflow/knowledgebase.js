@@ -85,6 +85,7 @@ const IncludingAlcohol = () => {
       })
 }
 
+/*
 const AlcoholEffect = () => {
     return({
         type: "template",
@@ -116,6 +117,76 @@ const AlcoholEffect = () => {
             ]
         }
       })
+} */
+
+const AlcoholEffect = () => {
+    return ({
+        type: "template",
+        altText: "ผลกระทบของสุรา",
+        template: {
+            type: "carousel",
+            columns: [
+                {
+                  thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",
+                  imageBackgroundColor: "#FFFFFF",
+                  title: "โรคร้ายและผลของสุรา",
+                  text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
+                  defaultAction: {
+                    type: "message",
+                    label: "วิธีการใช้งาน",
+                    text: "วิธีการใช้งาน"
+                  },
+                  "actions": [
+                      {
+                        type: "message",
+                        label: "โรคทางประสาท",
+                        text: "โรคทางประสาท"
+                      },
+                      {
+                        type: "message",
+                        label: "โรคมะเร็ง",
+                        text: "โรคมะเร็ง"
+                      },
+                      {
+                        type: "message",
+                        label: "โรคเรื้อรัง",
+                        text: "โรคเรื้อรัง"
+                      }
+                  ]
+                },
+                {
+                  thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",
+                  imageBackgroundColor: "#000000",
+                  title: "โรคร้ายและผลของสุรา",
+                  text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
+                  defaultAction: {
+                    type: "message",
+                    label: "วิธีการใช้งาน",
+                    text: "วิธีการใช้งาน"
+                  },
+                  actions: [
+                      {
+                        type: "message",
+                        label: "โรคทางระบบเลือด",
+                        text: "โรคทางระบบเลือด"
+                      },
+                      {
+                        type: "message",
+                        label: "โรคทางสุขภาพอื่น ๆ",
+                        text: "โรคทางสุขภาพอื่น ๆ"
+                      },
+                      {
+                        type: "message",
+                        label: "ผลกระทบอื่น ๆ",
+                        text: "ผลกระทบอื่น ๆ"
+                      }
+                  ]
+                }
+            ],
+            imageAspectRatio: "rectangle",
+            imageSize: "cover"
+        }
+    })
 }
 
 
