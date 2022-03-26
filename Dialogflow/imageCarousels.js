@@ -1012,7 +1012,7 @@ const LocationAndMapData = () => {
                     "action": {
                       "type": "uri",
                       "uri": "https://sites.google.com/view/searchhospital/%E0%B8%AB%E0%B8%99%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B8%81?openExternalBrowser=1",
-                      "label": "แสดงสถานที่ตั้ง"
+                      "label": "กดเพื่อแสดงสถานที่ตั้ง"
                     },
                     "color": "#00cc00",
                     "style": "primary"
