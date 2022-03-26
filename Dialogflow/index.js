@@ -1469,6 +1469,10 @@ const myexp = ((request, response) => {
                 agent.add("Infohraphic knowladge_Immunity");
             }
 
+            const knowladge_Hangover = async () => {
+
+            }
+            
             const knowladge_AlternativeDrink = async () => {
                 agent.add("ในขณะที่คุณกำลังอยู่ในขั้นการเลิกดื่มสุรา หากคุณมีอากาอยากสุราคุณสามารถดื่มเครื่องดื่มเหล่านี้ได้ค่ะ ถึงแม้ว่าเครื่องดื่มเหล่านี้จะไม่ใช่แอลกอฮอล์แต่สามารถช่วยลดอาการอยากได้ อีกทั้งยังดีต่อสุขภาพอีกด้วยค่ะ ") ;
                 agent.add(new Payload(`LINE` , imageCarousels.AlternativeDrink() , { sendAsMessage:true }));
@@ -1547,6 +1551,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
             intentMap.set('select_DoctorTreatment',knowladge_DoctorTreatment);
             intentMap.set('select_Immunity',knowladge_Immunity);
+            intentMap.set('select_Hangover', knowladge_Hangover);
             intentMap.set('select_AlternativeDrink', knowladge_AlternativeDrink);
     agent.handleRequest(intentMap);
 });
