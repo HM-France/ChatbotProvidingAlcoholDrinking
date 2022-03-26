@@ -1256,6 +1256,69 @@ const FemaleInvestigators = () => {
       })
 }
 
+const EmergencyCall = () => {
+    return({
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%89%E0%B8%B8%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B4%E0%B8%99%2FE13_Emergency%20Call.png?alt=media&token=d84afdb4-ac10-417c-8278-cb12cda609b5",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1",
+                "gravity": "center"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "📞 รวมโทรศัพท์กรณีฉุกเฉิน",
+                    "size": "lg",
+                    "color": "#000000"
+                  }
+                ],
+                "position": "absolute",
+                "offsetBottom": "0px",
+                "offsetStart": "0px",
+                "offsetEnd": "0px",
+                "paddingAll": "20px",
+                "backgroundColor": "#ffffff",
+                "cornerRadius": "xl"
+              }
+            ],
+            "paddingAll": "0px"
+          },
+          "footer": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "กดเพื่อขยาย",
+                "color": "#ffffff",
+                "weight": "bold",
+                "align": "center",
+                "size": "md"
+              }
+            ],
+            "backgroundColor": "#0181FFFF"
+          },
+          "action": {
+            "type": "uri",
+            "label": "รวมโทรศัพท์กรณีฉุกเฉิน",
+            "uri": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%89%E0%B8%B8%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B4%E0%B8%99%2FE13_Emergency%20Call.png?alt=media&token=d84afdb4-ac10-417c-8278-cb12cda609b5"
+          }
+        }
+      })
+}
 
 const Flex = () => {
     return ({
@@ -1327,4 +1390,4 @@ const Flex = () => {
     })
 }
 
-module.exports = {Flex,MainMenu,IncludingAlcohol,AlcoholEffect,AlcoholIllness,AlcoholTreatment,Contact,HelpCenter,Housing,FemaleInvestigators}
+module.exports = {Flex,MainMenu,IncludingAlcohol,AlcoholEffect,AlcoholIllness,AlcoholTreatment,Contact,HelpCenter,Housing,FemaleInvestigators,EmergencyCall}
