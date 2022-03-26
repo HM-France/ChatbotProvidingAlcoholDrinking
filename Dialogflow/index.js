@@ -1,5 +1,6 @@
 // NTJ-TEST
 const { WebhookClient, Payload } = require('dialogflow-fulfillment');
+const { patch } = require('request');
 const { userDB } = require('../firebase');
 const imageCarousels = require('./imageCarousels');
 const knowladgeBase = require('./knowledgebase');
@@ -1495,7 +1496,9 @@ const myexp = ((request, response) => {
                 agent.add(new Payload(`LINE` , imageCarousels.AlternativeDrink() , { sendAsMessage:true }));
             }
 
-            
+        const knowladge_Contact = async () => {
+            agent.add("CONTACT");
+        }
 
     const knowladge_HowToUse = async () => {
         agent.add("วิธีการใช้งานน้องตั้งใจในส่วนของข้อมูลเลิกเหล้าค่ะ") ;
@@ -1505,6 +1508,7 @@ const myexp = ((request, response) => {
         agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`);
         agent.add(createQuickReply("น้องตั้งใจจะนำคุณไปสู่ขั้นตอนถัดไปนะคะ", ["กรอกข้อมูลของวันนี้"]));
     }
+
     function respondSlowly(agent, msg, ms) {
         return new Promise(resolve => {
             setTimeout(() => {
@@ -1514,12 +1518,26 @@ const myexp = ((request, response) => {
         });
     }
     const Test = async (agents) => {
-        await agents.add("กำลังทดสอบ");
-        agent.add(new Payload(`LINE` , {
-            "type": "text",
-            "text": "dwdwd\ndwdwd\ndwdw\n"
-         } , { sendAsMessage:true } )) ; 
-        await agents.add("สิ้นสุดการทดสอบ");
+        agents.add("กำลังทดสอบ");
+        
+        const payloadPic1 = {
+            "type": "image",
+            "originalContentUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%B2%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%87.png?alt=media&token=dde87ddd-0fd4-4ffd-a1a5-5ca192ff3b30",
+            "previewImageUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%B2%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%87.png?alt=media&token=dde87ddd-0fd4-4ffd-a1a5-5ca192ff3b30"
+          };
+
+        const payloadPic2 = {
+            "type": "image",
+            "originalContentUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%9C%E0%B8%A5%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B8%9A%E0%B8%AD%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%86.png?alt=media&token=8d9e5071-5d4c-44cd-b9bf-40744f208121",
+            "previewImageUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%9C%E0%B8%A5%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%97%E0%B8%9A%E0%B8%AD%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B9%86.png?alt=media&token=8d9e5071-5d4c-44cd-b9bf-40744f208121"
+          };
+
+        let payload = new Payload(`LINE`, payloadPic1 , { sendAsMessage:true } ) ;
+        let payload2 = new Payload(`LINE`, payloadPic2 , { sendAsMessage:true } ) ;
+
+        agent.add(payload);
+        agent.add(payload2);
+        agents.add("สิ้นสุดการทดสอบ");
     }
 
     // Run the proper function handler based on the matched Dialogflow intent name
@@ -1580,6 +1598,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_Hangover', knowladge_Hangover);
             intentMap.set('select_AlternativeDrink', knowladge_AlternativeDrink);
             intentMap.set('select_HowToUseTreatment', knowladge_HowToUse);
+        intentMap.set('select_Contact', knowladge_Contact);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
