@@ -1521,8 +1521,8 @@ const myexp = ((request, response) => {
             }, ms);
         });
     }
-    const Test = async (agents) => {
-        agents.add("กำลังทดสอบ");
+    const Test = async () => {
+        agent.add("กำลังทดสอบ");
         return agent.add(new Payload(`LINE` , {
             "type": "bubble",
             "styles": {
