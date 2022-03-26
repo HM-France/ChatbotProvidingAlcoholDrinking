@@ -466,7 +466,7 @@ const Contact = () => {
                 {
                   type: "message",
                   label: "ศูนย์พึ่งได้",
-                  text: "สุราคืออะไร ?"
+                  text: "ศูนย์พึ่งได้"
                 },
                 {
                     type: "message",
