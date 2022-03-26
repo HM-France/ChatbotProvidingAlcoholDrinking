@@ -1501,7 +1501,7 @@ const myexp = ((request, response) => {
         }
 
             const knowladge_HelpingCenter = async () => {
-                return agent.add(new Payload(`LINE` , knowladgeBase.knowladge_HelpingCenter() , { sendAsMessage:true } ));
+                return agent.add(new Payload(`LINE` , knowladgeBase.HelpingCenter() , { sendAsMessage:true } ));
             }
 
     const knowladge_HowToUse = async () => {
