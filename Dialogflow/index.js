@@ -1521,122 +1521,54 @@ const myexp = ((request, response) => {
         agent.add("กำลังทดสอบ");
         return agent.add(new Payload(`LINE` , {
             "type": "bubble",
-            "styles": {
-              "footer": {
-                "backgroundColor": "#42b3f4"
-              }
-            },
-            "header": {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "box",
-                  "layout": "baseline",
-                  "contents": [
-                    {
-                      "type": "icon",
-                      "size": "xxl",
-                      "url": "https://scontent.fbkk7-2.fna.fbcdn.net/v/t1.0-1/p200x200/22814542_1962234637127047_1607260544847069468_n.png?_nc_cat=0&oh=2a303227c24dfab9e71a405b6d594d50&oe=5BC3965D"
-                    }
-                  ]
-                },
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "flex": 5,
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "โรงพยาบาลอ่างทอง",
-                      "weight": "bold",
-                      "color": "#aaaaaa",
-                      "size": "md",
-                      "gravity": "top"
-                    },
-                    {
-                      "type": "text",
-                      "text": "ขอขอบพระคุณ",
-                      "weight": "bold",
-                      "color": "#aaaaaa",
-                      "size": "lg",
-                      "gravity": "top"
-                    }
-                  ]
-                }
-              ]
-            },
-            "hero": {
-              "type": "image",
-              "url": "https://scontent.fbkk7-2.fna.fbcdn.net/v/t1.0-9/35076722_2227987830551725_330757188106584064_n.jpg?_nc_cat=0&oh=0f5fa137c5bd65f109a40439afcd59eb&oe=5BB566B6",
-              "size": "full",
-              "aspectRatio": "16:9",
-              "aspectMode": "cover",
-              "action": {
-                "type": "uri",
-                "uri": "http://bit.ly/2JGBRKv"
-              }
-            },
             "body": {
               "type": "box",
               "layout": "vertical",
               "contents": [
                 {
-                  "type": "text",
-                  "margin": "sm",
-                  "text": "คุณกานต์สินี ไหลสงวนงาม",
-                  "weight": "bold",
-                  "size": "md",
-                  "wrap": true
+                  "type": "image",
+                  "url": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%89%E0%B8%B8%E0%B8%81%E0%B9%80%E0%B8%89%E0%B8%B4%E0%B8%99%2FE01_%E0%B8%A8%E0%B8%B9%E0%B8%99%E0%B8%A2%E0%B9%8C%E0%B8%9E%E0%B8%B6%E0%B9%88%E0%B8%87%E0%B9%84%E0%B8%94%E0%B9%89(%E0%B8%81%E0%B8%A3%E0%B8%B8%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%9E%E0%B8%AF).png?alt=media&token=c292dd21-4256-437d-951b-0da675ef5304",
+                  "size": "full",
+                  "aspectMode": "cover",
+                  "aspectRatio": "1:1",
+                  "gravity": "center"
                 },
                 {
                   "type": "box",
-                  "layout": "vertical",
-                  "margin": "xs",
+                  "layout": "horizontal",
                   "contents": [
                     {
-                      "type": "box",
-                      "layout": "baseline",
-                      "spacing": "sm",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": "บริจาคเงินจำนวน ๑๘๐,๐๐๐ บาท เพื่อซื้อครุภัณฑ์ทางการแพทย์ ใช้ในโรงพยาบาลอ่างทอง โดยมีนายแพทย์พงษ์นรินทร์ ชาติรังสรรค์ผู้อำนวยการโรงพยาบาลอ่างทอง เป็นผู้รับมอบ",
-                          "wrap": true,
-                          "color": "#666666",
-                          "size": "sm",
-                          "flex": 6
-                        }
-                      ]
+                      "type": "text",
+                      "text": "📞 ศูนย์พึ่งได้ ภาคกลาง",
+                      "size": "xl",
+                      "color": "#000000"
                     }
-                  ]
-                },
-                {
-                  "type": "text",
-                  "margin": "md",
-                  "text": "วันที่ 12 มิ.ย. 2561",
-                  "size": "sm",
-                  "color": "#adadad"
+                  ],
+                  "position": "absolute",
+                  "offsetBottom": "0px",
+                  "offsetStart": "0px",
+                  "offsetEnd": "0px",
+                  "paddingAll": "20px",
+                  "backgroundColor": "#ffffff",
+                  "cornerRadius": "xl"
                 }
-              ]
+              ],
+              "paddingAll": "0px"
             },
             "footer": {
               "type": "box",
               "layout": "vertical",
-              "spacing": "sm",
               "contents": [
                 {
-                  "type": "button",
-                  "style": "link",
-                  "color": "#FFFFFF",
-                  "height": "sm",
-                  "action": {
-                    "type": "uri",
-                    "label": "อ่านต่อ...",
-                    "uri": "http://bit.ly/2JGBRKv"
-                  }
+                  "type": "text",
+                  "text": "กดเพื่อขยาย",
+                  "color": "#ffffff",
+                  "weight": "bold",
+                  "align": "center",
+                  "size": "md"
                 }
-              ]
+              ],
+              "backgroundColor": "#0181FFFF"
             }
           } , { sendAsMessage:true }));
         agents.add("สิ้นสุดการทดสอบ");
