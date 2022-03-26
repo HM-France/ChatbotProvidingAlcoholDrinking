@@ -1497,8 +1497,12 @@ const myexp = ((request, response) => {
             }
 
         const knowladge_Contact = async () => {
-            agent.add(new Payload(`LINE` , knowladgeBase.Contact() , { sendAsMessage:true }));
+            return agent.add(new Payload(`LINE` , knowladgeBase.Contact() , { sendAsMessage:true }));
         }
+
+            const knowladge_HelpingCenter = async () => {
+                return agent.add(new Payload(`LINE` , knowladgeBase.knowladge_HelpingCenter() , { sendAsMessage:true } ));
+            }
 
     const knowladge_HowToUse = async () => {
         agent.add("วิธีการใช้งานน้องตั้งใจในส่วนของข้อมูลเลิกเหล้าค่ะ") ;
@@ -1599,6 +1603,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_AlternativeDrink', knowladge_AlternativeDrink);
             intentMap.set('select_HowToUseTreatment', knowladge_HowToUse);
         intentMap.set('select_Contact', knowladge_Contact);
+            intentMap.set('select_HelpingCenter', knowladge_HelpingCenter);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
