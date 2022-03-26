@@ -1523,7 +1523,7 @@ const myexp = ((request, response) => {
     }
     const Test = async (agents) => {
         agents.add("กำลังทดสอบ");
-        agent.add(new Payload(`LINE` , {
+        return agent.add(new Payload(`LINE` , {
             "type": "bubble",
             "styles": {
               "footer": {
