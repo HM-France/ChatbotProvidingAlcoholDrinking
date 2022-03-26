@@ -1509,9 +1509,9 @@ const myexp = ((request, response) => {
             }
 
             const knowladge_Housing = async () => {
-
+                return agent.add(new Payload(`LINE` , knowladgeBase.Housing() , { sendAsMessage:true }));
             }
-            
+
     const knowladge_HowToUse = async () => {
         agent.add("วิธีการใช้งานน้องตั้งใจในส่วนของข้อมูลเลิกเหล้าค่ะ") ;
     }
