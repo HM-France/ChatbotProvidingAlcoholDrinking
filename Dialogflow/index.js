@@ -1517,14 +1517,6 @@ const myexp = ((request, response) => {
         agent.add(createQuickReply("น้องตั้งใจจะนำคุณไปสู่ขั้นตอนถัดไปนะคะ", ["กรอกข้อมูลของวันนี้"]));
     }
 
-    function respondSlowly(agent, msg, ms) {
-        return new Promise(resolve => {
-            setTimeout(() => {
-                agent.add(msg);
-                resolve();
-            }, ms);
-        });
-    }
     const Test = async () => {
         agent.add("กำลังทดสอบ");
         return agent.add(new Payload(`LINE` , {
