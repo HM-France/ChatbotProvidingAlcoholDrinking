@@ -958,8 +958,82 @@ const Survey = () => {
       })
 }
 
+const LocationAndMapData = () => {
+    return({
+        "type": "flex",
+        "altText": "Flex Message",
+        "contents": {
+          "type": "bubble",
+          "hero": {
+            "type": "image",
+            "url": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FFindHospital.jpg?alt=media&token=f6faac87-d248-4682-96d2-cd8d199bb7c7",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover",
+            "action": {
+              "type": "uri",
+              "uri": "http://linecorp.com/"
+            }
+          },
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "ที่ตั้งสถานบำบัดที่รับบำบัด",
+                "wrap": true,
+                "weight": "bold",
+                "gravity": "center",
+                "size": "xl",
+                "align": "center"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "📌 เปิดแผนที่เพื่อแสดงที่ตั้งสถานบำบัดที่รับบำบัดและให้คำปรึกษาปัญหาการดื่มแอลกอฮอล์ภายในประเทศไทย 🇹🇭",
+                    "wrap": true
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "xxl",
+                "contents": [
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "uri",
+                      "uri": "https://sites.google.com/view/searchhospital/%E0%B8%AB%E0%B8%99%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B8%81?openExternalBrowser=1",
+                      "label": "แสดงสถานที่ตั้ง"
+                    },
+                    "color": "#00cc00",
+                    "style": "primary"
+                  },
+                  {
+                    "type": "text",
+                    "text": "เมื่อกดปุ่ม น้องตั้งใจจะนำพาคุณไปเว็บไซต์ภายนอก",
+                    "color": "#aaaaaa",
+                    "wrap": true,
+                    "margin": "lg",
+                    "size": "xs"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      })
+}
 
-module.exports = {goal,motivation,alcohol,Survey}
+module.exports = {goal,motivation,alcohol,Survey,LocationAndMapData}
 
 /*/ template
 {

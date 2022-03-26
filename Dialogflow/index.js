@@ -1520,6 +1520,10 @@ const myexp = ((request, response) => {
                 return agent.add(new Payload(`LINE` , knowladgeBase.EmergencyCall() , { sendAsMessage:true }));
             }
 
+    const LocationAndMap = async () => {
+        agent.add(new Payload(`LINE` , imageCarousels.LocationAndMapData() , { sendAsMessage:true }));
+    }
+
     const knowladge_HowToUse = async () => {
         agent.add("วิธีการใช้งานน้องตั้งใจในส่วนของข้อมูลเลิกเหล้าค่ะ") ;
     }
@@ -1597,6 +1601,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_Housing', knowladge_Housing);
             intentMap.set('select_FemaleInvestigators', knowladge_FemaleInvestigators);
             intentMap.set('select_EmergencyCall', knowladge_EmergencyCall);
+    intentMap.set('LocationAndMap', LocationAndMap);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
