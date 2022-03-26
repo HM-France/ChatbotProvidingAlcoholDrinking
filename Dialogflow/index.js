@@ -1469,6 +1469,18 @@ const myexp = ((request, response) => {
                 agent.add("Infohraphic knowladge_Immunity");
             }
 
+            const knowladge_Helping = async () => {
+                agent.add("Infohraphic knowladge_Helping");
+            }
+
+            const knowladge_RiskToSelfHarm = async () => {
+                agent.add("There's no knowladge_RiskToSelfHarm. Wait for data to display.");
+            }
+
+            const knowladge_RiskPerson = async () => {
+                agent.add("There's no knowladge_RiskPerson. Wait for data to display.");
+            }
+
             const knowladge_Hangover = async () => { // https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%B2%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%87.png?alt=media&token=dde87ddd-0fd4-4ffd-a1a5-5ca192ff3b30
                 agent.add("มีอาการเมาค้างทำยังไงดี ? น้องตั้งใจขอแนะนำ 8 เทคนิคแก้อาการเมาค้างค่ะ");
                 return agent.add(new Payload(`LINE` , {
@@ -1556,6 +1568,9 @@ const myexp = ((request, response) => {
             intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
             intentMap.set('select_DoctorTreatment',knowladge_DoctorTreatment);
             intentMap.set('select_Immunity',knowladge_Immunity);
+            intentMap.set('select_Helping', knowladge_Helping);
+            intentMap.set('select_RiskToSelfHarm', knowladge_RiskToSelfHarm);
+            intentMap.set('select_RiskPerson', knowladge_RiskPerson);
             intentMap.set('select_Hangover', knowladge_Hangover);
             intentMap.set('select_AlternativeDrink', knowladge_AlternativeDrink);
     agent.handleRequest(intentMap);
