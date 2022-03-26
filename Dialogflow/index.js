@@ -1561,6 +1561,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_drunkenness', knowladge_Drunkenness);
             intentMap.set('select_AlcoholAddiction', knowladge_AlcoholAddiction);
             intentMap.set('select_WithdrawalSymptoms', knowladge_WithdrawalkSymptoms);
+            intentMap.set('select_HowToUseIncludingAlcohol', knowladge_HowToUse);
         intentMap.set('select_effect', knowladge_Effect);
             intentMap.set('select_Neural', knowladge_Neural);
             intentMap.set('select_Cancer', knowladge_Cancer);
@@ -1568,6 +1569,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_Circulatory', knowladge_Circulatory);
             intentMap.set('select_Disease', knowladge_Disease) ;
             intentMap.set('select_etc', knowladge_etc);
+            intentMap.set('select_HowToUseEffect', knowladge_HowToUse);
         intentMap.set('select_Treatment', knowladge_Treatment);
             intentMap.set('select_SelfTreatment', knowladge_SelfTreatment);
             intentMap.set('select_DoctorTreatment',knowladge_DoctorTreatment);
@@ -1577,7 +1579,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_RiskPerson', knowladge_RiskPerson);
             intentMap.set('select_Hangover', knowladge_Hangover);
             intentMap.set('select_AlternativeDrink', knowladge_AlternativeDrink);
-            intentMap.set('select_HowToUse', knowladge_HowToUse);
+            intentMap.set('select_HowToUseTreatment', knowladge_HowToUse);
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
