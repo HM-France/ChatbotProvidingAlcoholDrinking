@@ -1523,7 +1523,123 @@ const myexp = ((request, response) => {
     }
     const Test = async (agents) => {
         agents.add("กำลังทดสอบ");
-        agent.add(new Image("1587","2245","https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%B2%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%87.png?alt=media&token=dde87ddd-0fd4-4ffd-a1a5-5ca192ff3b30"));
+        agent.add(new Payload(`LINE` , {
+            "type": "carousel",
+            "contents": [
+              {
+                "type": "bubble",
+                "direction": "ltr",
+                "header": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "เทคนิคการเลิกสุรา",
+                      "weight": "bold",
+                      "color": "#006697FF",
+                      "align": "center",
+                      "contents": []
+                    }
+                  ]
+                },
+                "hero": {
+                  "type": "image",
+                  "url": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/สาระความรู้/น้ำดื่มทางเลือก.png?alt=media&token=19e02022-46aa-410e-8912-12183874e055",
+                  "align": "center",
+                  "size": "full",
+                  "aspectRatio": "1.1:1",
+                  "aspectMode": "fit",
+                  "backgroundColor": "#D3D3D3FF",
+                  "action": {
+                    "type": "uri",
+                    "label": "กดที่นี่เพื่อขยาย",
+                    "uri": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/สาระความรู้/น้ำดื่มทางเลือก.png?alt=media&token=19e02022-46aa-410e-8912-12183874e055"
+                  }
+                },
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "น้ำดื่มทางเลือกสำหรับการเลิกสุรา",
+                      "weight": "bold",
+                      "color": "#000000FF",
+                      "align": "center",
+                      "contents": []
+                    }
+                  ]
+                },
+                "footer": {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "button",
+                      "action": {
+                        "type": "uri",
+                        "label": "กดที่นี่เพื่อขยายรูป",
+                        "uri": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/สาระความรู้/น้ำดื่มทางเลือก.png?alt=media&token=19e02022-46aa-410e-8912-12183874e055"
+                      },
+                      "color": "#0181FFFF",
+                      "style": "primary",
+                      "gravity": "center"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "bubble",
+                "direction": "ltr",
+                "header": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "เทคนิคการเลิกสุรา",
+                      "align": "center",
+                      "contents": []
+                    }
+                  ]
+                },
+                "hero": {
+                  "type": "image",
+                  "url": "https://vos.line-scdn.net/bot-designer-template-images/bot-designer-icon.png",
+                  "size": "full",
+                  "aspectRatio": "1.51:1",
+                  "aspectMode": "fit"
+                },
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "Body",
+                      "align": "center",
+                      "contents": []
+                    }
+                  ]
+                },
+                "footer": {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "button",
+                      "action": {
+                        "type": "uri",
+                        "label": "Button",
+                        "uri": "https://linecorp.com"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          } , { sendAsMessage:true }));
         agents.add("สิ้นสุดการทดสอบ");
     }
 
