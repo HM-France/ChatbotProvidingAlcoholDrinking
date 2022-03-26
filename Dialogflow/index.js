@@ -1469,10 +1469,15 @@ const myexp = ((request, response) => {
                 agent.add("Infohraphic knowladge_Immunity");
             }
 
-            const knowladge_Hangover = async () => {
-
+            const knowladge_Hangover = async () => { // https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%B2%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%87.png?alt=media&token=dde87ddd-0fd4-4ffd-a1a5-5ca192ff3b30
+                agent.add("มีอาการเมาค้างทำยังไงดี ? น้องตั้งใจขอแนะนำ 8 เทคนิคแก้อาการเมาค้างค่ะ");
+                return agent.add(new Payload(`LINE` , {
+                    "type": "image",
+                    "originalContentUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%B2%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%87.png?alt=media&token=dde87ddd-0fd4-4ffd-a1a5-5ca192ff3b30",
+                    "previewImageUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%B2%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B8%87.png?alt=media&token=dde87ddd-0fd4-4ffd-a1a5-5ca192ff3b30"
+                  } , { sendAsMessage:true }));
             }
-            
+
             const knowladge_AlternativeDrink = async () => {
                 agent.add("ในขณะที่คุณกำลังอยู่ในขั้นการเลิกดื่มสุรา หากคุณมีอากาอยากสุราคุณสามารถดื่มเครื่องดื่มเหล่านี้ได้ค่ะ ถึงแม้ว่าเครื่องดื่มเหล่านี้จะไม่ใช่แอลกอฮอล์แต่สามารถช่วยลดอาการอยากได้ อีกทั้งยังดีต่อสุขภาพอีกด้วยค่ะ ") ;
                 agent.add(new Payload(`LINE` , imageCarousels.AlternativeDrink() , { sendAsMessage:true }));
