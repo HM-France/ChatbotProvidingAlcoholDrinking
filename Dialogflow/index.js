@@ -1497,7 +1497,7 @@ const myexp = ((request, response) => {
             }
 
         const knowladge_Contact = async () => {
-            agent.add("CONTACT");
+            agent.add(new Payload(`LINE` , knowladgeBase.Contact() , { sendAsMessage:true }));
         }
 
     const knowladge_HowToUse = async () => {

@@ -445,6 +445,49 @@ const AlcoholTreatment = () => {
 }
 */
 
+const Contact = () => {
+    return({
+        type: "template",
+        altText: "เบอร์ติดต่อฉุกเฉิน",
+        template: {
+            type: "buttons",
+            thumbnailImageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2FDocument.jpg?alt=media&token=e9d7be53-561e-44c0-b7c2-4b8ae76164b0",              
+            imageAspectRatio: "rectangle",
+            imageSize: "cover",
+            imageBackgroundColor: "#FFFFFF",
+            title: "เบอร์โทรติดต่อฉุกเฉิน",
+            text: "เชิญเลือกหัวข้อที่สนใจได้เลยค่ะ",
+            defaultAction: {
+                type: "message",
+                  label: "วิธีการใช้งาน",
+                  text: "วิธีการใช้งาน"
+            },
+            actions: [
+                {
+                  type: "message",
+                  label: "ศูนย์พึ่งได้",
+                  text: "สุราคืออะไร ?"
+                },
+                {
+                    type: "message",
+                    label: "บ้านพักเด็กและครอบครัว",
+                    text: "บ้านพักเด็กและครอบครัว"
+                },
+                {
+                    type: "message",
+                    label: "สถานีตำรวจที่มีพนักงานหญิง",
+                    text: "สถานีตำรวจที่มีพนักงานสอบสวนหญิง"
+                },
+                {
+                    type: "message",
+                    label: "รวมโทรศัพท์กรณีฉุกเฉิน",
+                    text: "รวมโทรศัพท์กรณีฉุกเฉิน"
+                }
+            ]
+        }
+      })
+}
+
 const Flex = () => {
     return ({
         type: "template",
@@ -515,4 +558,4 @@ const Flex = () => {
     })
 }
 
-module.exports = {Flex,MainMenu,IncludingAlcohol,AlcoholEffect,AlcoholIllness,AlcoholTreatment}
+module.exports = {Flex,MainMenu,IncludingAlcohol,AlcoholEffect,AlcoholIllness,AlcoholTreatment,Contact}
