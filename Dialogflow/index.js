@@ -231,15 +231,7 @@ const myexp = ((request, response) => {
                             "action": {
                                 "type": "message",
                                 "label": "ไม่ และกรอกข้อมูลการดื่ม",
-                                "text": `กรอกข้อมูลของวันนี้`
-                            }
-                        },
-                        {
-                            "type": "action",
-                            "action": {
-                                "type": "message",
-                                "label": "กรอกข้อมูลการดื่มแบบ3วัน",
-                                "text": `กรอกข้อมูลของวันนี้`
+                                "text": `กรอกข้อมูลการดื่ม`
                             }
                         }
                     ]
@@ -293,23 +285,46 @@ const myexp = ((request, response) => {
                             "action": {
                                 "type": "message",
                                 "label": "ไม่ และกรอกข้อมูลการดื่ม",
-                                "text": `กรอกข้อมูลของวันนี้`
+                                "text": `กรอกข้อมูลการดื่ม`
                             }
-                        },
-                        {
-                            "type": "action",
-                            "action": {
-                                "type": "message",
-                                "label": "กรอกข้อมูลการดื่มแบบ3วัน",
-                                "text": `กรอกข้อมูลของวันนี้`
-                            }
-                        }                  
+                        }                 
                     ]
                 },
             },
             { sendAsMessage: true }
         ))
     }
+
+    const pickTypeDay_or_Week = async () => {
+        agent.add('เลือกรูปแบบการกรอกข้อมูลได้เลยค่ะ');
+        return agent.add(new Payload(
+            `LINE`,
+            {
+                "quickReply": {
+                    "items": [
+                        {
+                            "type": "action",
+                            "action": {
+                                "type": "message",
+                                "text": `กรอกข้อมูลการดื่มแบบ3วัน`,
+                                "label": `กรอกข้อมูลของวันนี้`
+                            }
+                        },
+                        {
+                            "type": "action",
+                            "action": {
+                                "type": "message",
+                                "label": `กรอกข้อมูลการดื่มแบบ7วัน`,
+                                "text": `กรอกข้อมูลของวันนี้`
+                            }
+                        }                 
+                    ]
+                },
+            },
+            { sendAsMessage: true }
+        ))
+    }
+    
 
     const setDrinkingInWeekInputType = async () => {
         let { thisDay } = agent.parameters;
@@ -1564,6 +1579,7 @@ const myexp = ((request, response) => {
     intentMap.set('RISK_ASSESSMENT - yes', checkUserDrinkingIn3Month); //รับคำตอบข้อ 1 กรณีตอบว่าเคยดื่ม จะถามคำถามข้อ 2 ของ assist 
     intentMap.set('RISK_ASSESSMENT - drink in 3 month', riskAssessment_DrinkIn3Month);
     intentMap.set('RISK_ASSESSMENT - dont drink in 3 month', riskAssessment_DontDrinkIn3Month);
+    intentMap.set('PICK_DAY_OR_WEEK',pickTypeDay_or_Week);
     intentMap.set('SET_DRINKING_IN_WEEK', setDrinkingInWeekInputType);
     intentMap.set('SET_DRINKING_IN_WEEK - pick alcohol', setDrinkingInWeek_pick);
     intentMap.set('SET_DRINKING_IN_WEEK - edit', setDrinkingInWeekInputType);
