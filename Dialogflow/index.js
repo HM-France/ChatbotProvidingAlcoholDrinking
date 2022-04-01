@@ -326,6 +326,275 @@ const myexp = ((request, response) => {
         ))
     }
     
+    const setDrinkingInDayInputType = async () => {
+        let { thisDay } = agent.parameters;
+        const user = await userDB.get(userId);
+        thisDay = parseInt(thisDay);
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+
+        if (dayInWeek[thisDay] === 'วันนี้') {
+            agent.add('หากคุณรู้ปริมาณความเข้มข้นของแอลกอฮอล์ของเครื่องดื่มที่คุณดื่มในแต่ละวันแล้ว คุณสามารถเลือกกำหนดเองได้เลยค่ะ เพื่อความถูกต้องแม่นยำมากที่สุด');
+            agent.add('การระบุความเข้มข้นนั้นให้พิมพ์เฉพาะตัวเลข และจุดทศนิยม ถ้ามีนะคะ เช่น หากฉลากระบุว่า “ALC 8.0% VOL” ให้พิมพ์ว่า “8.0” ค่ะ');
+            agent.add('หากคุณไม่สามารถระบุความเข้มข้นได้ น้องตั้งใจก็มีรายชื่อเครื่องดื่มชนิดต่างๆ ให้คุณเลือกได้ค่ะ');
+        }
+
+        if (thisDay !== 0 && !user.drinkingInWeek[dayInWeek[thisDay - 1]]) {
+            return agent.add(createQuickReply(`คุณยังไม่ได้ให้ข้อมูลของ${dayInWeek[thisDay - 1]}เลยนะคะ`, [
+                `กรอกข้อมูลของ${dayInWeek[thisDay - 1]}`]))
+        }
+
+        return agent.add(createQuickReply(
+            `${dayInWeek[thisDay]}คุณดื่มอะไรคะ หากว่าดื่มหลายชนิด ให้เลือกเครื่องดื่มที่ดื่มปริมาณมากที่สุดมาเพียงชนิดเดียวค่ะ`,
+            ["ขอเลือกจากเมนู", `${dayInWeek[thisDay]}ไม่ได้ดื่ม`]
+        ));
+    }
+
+    const setNoDrinkingInDay = async () => {
+        let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
+        thisDay = parseInt(thisDay);
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        var standardDrink;
+
+        if(!type){
+            type = 'ไม่ได้ดื่ม';
+        }
+        if (!percent) {
+            percent = '0';
+        }
+        if (!container) {
+            container = 'ไม่ได้ดื่ม';
+        }
+        if (!volume) {
+            volume = '0';
+        }
+        if (!numberOfDrinks){
+            numberOfDrinks = '0';
+        }
+
+        console.log('this day:', thisDay);
+        console.log('type:', type);
+        console.log('percent:', percent);
+        console.log('container:', container);
+        console.log('volume:', volume);
+        console.log('number of drink:', numberOfDrinks);
+        console.log('-------------------');
+
+        standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
+        console.log('standardDrink:',standardDrink);
+        await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
+            type, percent, container, volume, numberOfDrinks, standardDrink
+        })
+
+        if (thisDay !== 6) {
+            return agent.add(new Payload(
+                `LINE`,
+                {
+                    "type": "text",
+                    "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+                    "quickReply": {
+                        "items": [
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "label": `แก้ไขข้อมูล`
+                                }
+                            },
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "label": "ไม่ ไปวันถัดไป",
+                                    "text": `กรอกข้อมูลของ${dayInWeek[thisDay + 1]}`
+                                }
+                            }
+                        ]
+                    },
+                },
+                { sendAsMessage: true }
+            ))
+        } else {
+            return agent.add(new Payload(
+                `LINE`,
+                {
+                    "type": "text",
+                    "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+                    "quickReply": {
+                        "items": [
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "label": `แก้ไขข้อมูล`
+                                }
+                            },
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "label": "ไม่",
+                                    "text": `สรุปผลประเมินความเสี่ยง`
+                                }
+                            }
+                        ]
+                    },
+                },
+                { sendAsMessage: true }
+            ))
+        }
+
+    }
+
+    const setDrinkingInDay_pick = async () => {
+        let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
+        thisDay = parseInt(thisDay);
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        var standardDrink;
+
+        console.log('this day:', thisDay);
+        console.log('type:', type);
+        console.log('percent:', percent);
+        console.log('container:', container);
+        console.log('volume:', volume);
+        console.log('number of drink:', numberOfDrinks);
+        console.log('-------------------');
+
+        if (!type) {
+            agent.add(`กรุณาเลือกเครื่องดื่มด้วยค่ะ`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+        } else {
+            if (type === 'สุราสี' || type === 'สุราขาว') {
+                if (!percent) {
+                    return agent.add(new Payload(
+                        `LINE`,
+                        {
+                            type: "text",
+                            text: `คุณรู้ปริมาณความเข้มข้นของแอลกอฮอล์ของ${type}ที่คุณดื่มไหมค่ะ ว่าเป็นแบบ 35 ดีกรี หรือ 40 ดีกรี`,
+                            quickReply: {
+                                items: [
+                                    {
+                                        type: "action",
+                                        action: {
+                                            type: "message",
+                                            label: '35 ดีกรี',
+                                            text: '35 ดีกรี'
+                                        }
+                                    },
+                                    {
+                                        type: "action",
+                                        action: {
+                                            type: "message",
+                                            label: '40 ดีกรี',
+                                            text: '40 ดีกรี'
+                                        }
+                                    },
+                                    {
+                                        type: "action",
+                                        action: {
+                                            type: "message",
+                                            label: 'ไม่ทราบ ขอใช้ค่าเฉลี่ย',
+                                            text: 'ค่าเฉลี่ย 37 ดีกรี'
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        { sendAsMessage: true }
+                    ))
+                }
+            } else {
+                if (!percent) {
+                    var aclPercent;
+                    if (type === 'ไวน์คูลเลอร์' || type === 'เบียร์') {
+                        aclPercent = 5;
+                    } else if (type === 'ไวน์' || type === 'สุราพื้นเมือง') {
+                        aclPercent = 13;
+                    } else if (type === 'เครื่องดื่มอื่นๆ') {
+                        aclPercent = 40;
+                    }
+                    return agent.add(createQuickReply(
+                        `ค่าความเข้มข้นของ${type}ที่คุณดื่ม`,
+                        [`${aclPercent}%`]
+                    ));
+                }
+            }
+        }
+
+        if (!container) {
+            agent.add(`น้องตั้งใจขอแนะนำให้คุณเลือกภาชนะที่มีขนาดใกล้เคียงที่สุดเพื่อกะปริมาณการดื่มในแต่ละวันได้ดีที่สุดนะคะ`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[type], { sendAsMessage: true }));
+        } else if (!numberOfDrinks) {
+            return agent.add(`ดื่มประมาณกี่${container}คะ`);
+        }
+
+        standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
+        await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
+            type, percent, container, volume, numberOfDrinks, standardDrink
+        })
+        if (thisDay !== 6) {
+            agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent}% จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
+            return agent.add(new Payload(
+                `LINE`,
+                {
+                    "type": "text",
+                    "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+                    "quickReply": {
+                        "items": [
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "label": `แก้ไขข้อมูล`
+                                }
+                            },
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "label": "ไม่ ไปวันถัดไป",
+                                    "text": `กรอกข้อมูลของ${dayInWeek[thisDay + 1]}`
+                                }
+                            }
+                        ]
+                    },
+                },
+                { sendAsMessage: true }
+            ))
+        } else {
+            agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent} จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
+            return agent.add(new Payload(
+                `LINE`,
+                {
+                    "type": "text",
+                    "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+                    "quickReply": {
+                        "items": [
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "label": `แก้ไขข้อมูล`
+                                }
+                            },
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "label": "ไม่",
+                                    "text": `สรุปผลประเมินความเสี่ยง`
+                                }
+                            }
+                        ]
+                    },
+                },
+                { sendAsMessage: true }
+            ))
+        }
+    }
 
     const setDrinkingInWeekInputType = async () => {
         let { thisDay } = agent.parameters;
@@ -1581,6 +1850,10 @@ const myexp = ((request, response) => {
     intentMap.set('RISK_ASSESSMENT - drink in 3 month', riskAssessment_DrinkIn3Month);
     intentMap.set('RISK_ASSESSMENT - dont drink in 3 month', riskAssessment_DontDrinkIn3Month);
     intentMap.set('PICK_DAY_OR_WEEK',pickTypeDay_or_Week);
+    intentMap.set('SET_DRINKING_IN_DAY',setDrinkingInDayInputType);
+    intentMap.set('SET_DRINKING_IN_DAY - edit',setDrinkingInDayInputType);
+    intentMap.set('SET_DRINKING_IN_DAY - next',setNoDrinkingInDay);
+    intentMap.set('SET_DRINKING_IN_DAY - pick alcohol',setDrinkingInDay_pick);
     intentMap.set('SET_DRINKING_IN_WEEK', setDrinkingInWeekInputType);
     intentMap.set('SET_DRINKING_IN_WEEK - pick alcohol', setDrinkingInWeek_pick);
     intentMap.set('SET_DRINKING_IN_WEEK - edit', setDrinkingInWeekInputType);
