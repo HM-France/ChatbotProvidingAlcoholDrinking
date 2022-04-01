@@ -330,7 +330,7 @@ const myexp = ((request, response) => {
         let { thisDay } = agent.parameters;
         const user = await userDB.get(userId);
         thisDay = parseInt(thisDay);
-        let dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         console.log('this day :', thisDay);
 
         if (dayInWeek[thisDay] === 'วันนี้') {
@@ -353,7 +353,7 @@ const myexp = ((request, response) => {
     const setNoDrinkingInDay = async () => {
         let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
         thisDay = parseInt(thisDay);
-        let dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         var standardDrink;
 
         if(!type){
@@ -451,7 +451,7 @@ const myexp = ((request, response) => {
     const setDrinkingInDay_pick = async () => {
         let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
         thisDay = parseInt(thisDay);
-        let dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         var standardDrink;
 
         console.log('this day:', thisDay);
@@ -601,7 +601,7 @@ const myexp = ((request, response) => {
         let { thisDay } = agent.parameters;
         const user = await userDB.get(userId);
         thisDay = parseInt(thisDay);
-        let dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
 
         if (dayInWeek[thisDay] === 'วันนี้') {
             agent.add('หากคุณรู้ปริมาณความเข้มข้นของแอลกอฮอล์ของเครื่องดื่มที่คุณดื่มในแต่ละวันแล้ว คุณสามารถเลือกกำหนดเองได้เลยค่ะ เพื่อความถูกต้องแม่นยำมากที่สุด');
@@ -623,7 +623,7 @@ const myexp = ((request, response) => {
     const setNoDrinkingInWeek = async () => {
         let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
         thisDay = parseInt(thisDay);
-        let dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
         var standardDrink;
 
         if(!type){
@@ -721,7 +721,7 @@ const myexp = ((request, response) => {
     const setDrinkingInWeek_pick = async () => {
         let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
         thisDay = parseInt(thisDay);
-        let dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
         var standardDrink;
 
         console.log('this day:', thisDay);
