@@ -331,7 +331,8 @@ const myexp = ((request, response) => {
         const user = await userDB.get(userId);
         thisDay = parseInt(thisDay);
         const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
-
+        console.log('this day :', thisDay);
+        
         if (dayInWeek[thisDay] === 'วันนี้') {
             agent.add('หากคุณรู้ปริมาณความเข้มข้นของแอลกอฮอล์ของเครื่องดื่มที่คุณดื่มในแต่ละวันแล้ว คุณสามารถเลือกกำหนดเองได้เลยค่ะ เพื่อความถูกต้องแม่นยำมากที่สุด');
             agent.add('การระบุความเข้มข้นนั้นให้พิมพ์เฉพาะตัวเลข และจุดทศนิยม ถ้ามีนะคะ เช่น หากฉลากระบุว่า “ALC 8.0% VOL” ให้พิมพ์ว่า “8.0” ค่ะ');
