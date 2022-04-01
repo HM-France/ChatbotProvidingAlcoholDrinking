@@ -230,8 +230,16 @@ const myexp = ((request, response) => {
                             "type": "action",
                             "action": {
                                 "type": "message",
-                                "label": "ไม่ และกรอกข้อมูลการดื่ม",
+                                "label": "ไม่ และกรอกข้อมูลการดื่มแบบ 7 วัน",
                                 "text": `กรอกข้อมูลของวันนี้`
+                            }
+                        },
+                        {
+                            "type": "action",
+                            "action": {
+                                "type": "message",
+                                "label": "ไม่ และกรอกข้อมูลการดื่มแบบ 3 วัน",
+                                "text": `กรอกข้อมูลของ3 วันนี้`
                             }
                         }
                     ]
