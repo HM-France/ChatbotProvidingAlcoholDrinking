@@ -296,10 +296,11 @@ const myexp = ((request, response) => {
     }
 
     const pickTypeDay_or_Week = async () => {
-        agent.add('เลือกรูปแบบการกรอกข้อมูลได้เลยค่ะ');
         return agent.add(new Payload(
             `LINE`,
             {
+                "type": "text",
+                "text": "เลือกรูปแบบการกรอกข้อมูลได้เลยค่ะ",
                 "quickReply": {
                     "items": [
                         {
