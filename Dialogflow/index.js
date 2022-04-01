@@ -1861,6 +1861,7 @@ const myexp = ((request, response) => {
     intentMap.set('SET_DRINKING_IN_WEEK - edit', setDrinkingInWeekInputType);
     intentMap.set('SET_DRINKING_IN_WEEK - next',setNoDrinkingInWeek);
     intentMap.set('RISK_ASSESSMENT_RESULT', setDrinkingInWeekInputType);
+    intentMap.set('RISK_ASSESSMENT_RESULT', setDrinkingInDayInputType);
     intentMap.set('RISK_ASSESSMENT_RESULT - week', riskAssessmentResultWeek);
     intentMap.set('RISK_ASSESSMENT_RESULT - day', riskAssessmentResultDay);
     intentMap.set('RISK_ASSESSMENT_RESULT - risk', riskAssessmentResultRisk);
