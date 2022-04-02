@@ -4,32 +4,6 @@ const bodyParser = require('body-parser')
 // const {WebhookClient,Payload} = require('dialogflow-fulfillment')
 const dialog = require('./Dialogflow');
 
-const http = require('http')
-
-function startKeepAlive() {
-    setInterval(function() {
-        let options = {
-            host: 'ntj-test.herokuapp.com',
-            post: 80,
-            path: '/'
-        };
-        http.get(options, function(response) {
-            response.no('data',function(chunk) {
-                try {
-                    // optional logging... disable after ti's working
-                    console.log("HEROKU RESPONSE: " + chunk);
-                } catch (err) {
-                    console.log(err.message);
-                }
-            });
-        }).on('error', function(err) {
-            console.log("Error: " + err.message);
-        });
-    }, 20 * 60 * 1000);
-}
-
-startKeepAlive();
-
 const app = express();
 const line= require('./line')
 app.use(bodyParser.json());
