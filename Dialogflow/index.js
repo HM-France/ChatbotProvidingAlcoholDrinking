@@ -1770,10 +1770,16 @@ const myexp = ((request, response) => {
             }
 
             const knowladge_Immunity = async () => {
-                agent.add("Infohraphic knowladge_Immunity");
+                agent.add("ถึงแม้จะเลิกดื่มสุราไปแล้วก็ยังมีโอกาสกลับมาติดสุราได้อีก นัองตั้งใจจึงขอแนะนำข้อมูลต่อไปนี้เพื่อป้องกันไม่ให้กลับไปดื่มอีกค่ะ")
+                return agent.add(new Payload(`LINE` , {
+                    "type": "image",
+                    "originalContentUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%9B%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%8B%E0%B9%89%E0%B8%B3.png?alt=media&token=15f2c86b-448d-4ce7-9dd8-fadfd569a9e2",
+                    "previewImageUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B9%84%E0%B8%9B%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%8B%E0%B9%89%E0%B8%B3.png?alt=media&token=15f2c86b-448d-4ce7-9dd8-fadfd569a9e2"
+                  } , { sendAsMessage:true }));
             }
 
             const knowladge_Helping = async () => {
+                agent.add("เมื่อผู้ดื่มมีอาการขาดสุราควรอย่างไร น้องตั้งใจขอแนะนำดังนี้ค่ะ")
                 return agent.add(new Payload(`LINE` , {
                     "type": "image",
                     "originalContentUrl": "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%8A%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B9%80%E0%B8%AB%E0%B8%A5%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B2%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%82%E0%B8%B2%E0%B8%94%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B2.png?alt=media&token=4294a5a0-812a-4c54-a74f-236d6a775264",
@@ -1790,9 +1796,6 @@ const myexp = ((request, response) => {
                   } , { sendAsMessage:true }));
             }
 
-            const knowladge_RiskPerson = async () => {
-                agent.add("There's no knowladge_RiskPerson. Wait for data to display.");
-            }
 
             const knowladge_Hangover = async () => {
                 agent.add("มีอาการเมาค้างทำยังไงดี ? น้องตั้งใจขอแนะนำ 8 เทคนิคแก้อาการเมาค้างค่ะ");
@@ -1918,7 +1921,6 @@ const myexp = ((request, response) => {
             intentMap.set('select_Immunity',knowladge_Immunity);
             intentMap.set('select_Helping', knowladge_Helping);
             intentMap.set('select_RiskToSelfHarm', knowladge_RiskToSelfHarm);
-            intentMap.set('select_RiskPerson', knowladge_RiskPerson);
             intentMap.set('select_Hangover', knowladge_Hangover);
             intentMap.set('select_AlternativeDrink', knowladge_AlternativeDrink);
             intentMap.set('select_HowToUseTreatment', knowladge_HowToUse);
