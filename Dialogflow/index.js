@@ -1827,9 +1827,15 @@ const myexp = ((request, response) => {
         agent.add(new Payload(`LINE` , imageCarousels.LocationAndMapData() , { sendAsMessage:true }));
     }
 
+    const Contact = async () => {
+        agent.add("Waiting for content");
+    }
+
     const knowladge_HowToUse = async () => {
         agent.add("วิธีการใช้งานน้องตั้งใจในส่วนของข้อมูลเลิกเหล้าค่ะ") ;
     }
+
+
 
     const drinkingStandardData = async () => {
         agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`);
@@ -1840,6 +1846,8 @@ const myexp = ((request, response) => {
         agent.add("กำลังทดสอบ");
         agents.add("สิ้นสุดการทดสอบ");
     }
+
+
 
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
@@ -1911,6 +1919,7 @@ const myexp = ((request, response) => {
             intentMap.set('select_FemaleInvestigators', knowladge_FemaleInvestigators);
             intentMap.set('select_EmergencyCall', knowladge_EmergencyCall);
     intentMap.set('LocationAndMap', LocationAndMap);
+    intentMap.set('contact', Contact)
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
