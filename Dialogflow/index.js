@@ -330,30 +330,30 @@ const myexp = ((request, response) => {
         let { thisDay } = agent.parameters;
         const user = await userDB.get(userId);
         thisDay = parseInt(thisDay);
-        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        const threeDayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         console.log('this day :', thisDay);
 
-        if (dayInWeek[thisDay] === 'วันนี้') {
+        if (threeDayInWeek[thisDay] === 'วันนี้') {
             agent.add('3วัน .หากคุณรู้ปริมาณความเข้มข้นของแอลกอฮอล์ของเครื่องดื่มที่คุณดื่มในแต่ละวันแล้ว คุณสามารถเลือกกำหนดเองได้เลยค่ะ เพื่อความถูกต้องแม่นยำมากที่สุด');
             agent.add('การระบุความเข้มข้นนั้นให้พิมพ์เฉพาะตัวเลข และจุดทศนิยม ถ้ามีนะคะ เช่น หากฉลากระบุว่า “ALC 8.0% VOL” ให้พิมพ์ว่า “8.0” ค่ะ');
             agent.add('หากคุณไม่สามารถระบุความเข้มข้นได้ น้องตั้งใจก็มีรายชื่อเครื่องดื่มชนิดต่างๆ ให้คุณเลือกได้ค่ะ');
         }
 
-        if (thisDay !== 0 && !user.drinkingInWeek[dayInWeek[thisDay - 1]]) {
-            return agent.add(createQuickReply(`คุณยังไม่ได้ให้ข้อมูลของ${dayInWeek[thisDay - 1]}เลยนะคะ`, [
-                `กรอกข้อมูลของ${dayInWeek[thisDay - 1]}`]))
+        if (thisDay !== 0 && !user.drinkingInWeek[threeDayInWeek[thisDay - 1]]) {
+            return agent.add(createQuickReply(`คุณยังไม่ได้ให้ข้อมูลของ${threeDayInWeek[thisDay - 1]}เลยนะคะ`, [
+                `กรอกข้อมูลของ${threeDayInWeek[thisDay - 1]}`]))
         }
 
         return agent.add(createQuickReply(
-            `${dayInWeek[thisDay]}คุณดื่มอะไรคะ หากว่าดื่มหลายชนิด ให้เลือกเครื่องดื่มที่ดื่มปริมาณมากที่สุดมาเพียงชนิดเดียวค่ะ`,
-            ["ขอเลือกจากเมนู", `${dayInWeek[thisDay]}ไม่ได้ดื่ม`]
+            `${threeDayInWeek[thisDay]}คุณดื่มอะไรคะ หากว่าดื่มหลายชนิด ให้เลือกเครื่องดื่มที่ดื่มปริมาณมากที่สุดมาเพียงชนิดเดียวค่ะ`,
+            ["ขอเลือกจากเมนู", `${threeDayInWeek[thisDay]}ไม่ได้ดื่ม`]
         ));
     }
 
     const setNoDrinkingInDay = async () => {
         let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
         thisDay = parseInt(thisDay);
-        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        const threeDayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         var standardDrink;
 
         if(!type){
@@ -382,7 +382,7 @@ const myexp = ((request, response) => {
 
         standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
         console.log('standardDrink:',standardDrink);
-        await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
+        await userDB.setDrinkingInWeek(userId, threeDayInWeek[thisDay], {
             type, percent, container, volume, numberOfDrinks, standardDrink
         })
 
@@ -398,7 +398,7 @@ const myexp = ((request, response) => {
                                 "type": "action",
                                 "action": {
                                     "type": "message",
-                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "text": `แก้ไขข้อมูลของ${threeDayInWeek[thisDay]}`,
                                     "label": `แก้ไขข้อมูล`
                                 }
                             },
@@ -407,7 +407,7 @@ const myexp = ((request, response) => {
                                 "action": {
                                     "type": "message",
                                     "label": "ไม่ ไปวันถัดไป",
-                                    "text": `กรอกข้อมูลของ${dayInWeek[thisDay + 1]}`
+                                    "text": `กรอกข้อมูลของ${threeDayInWeek[thisDay + 1]}`
                                 }
                             }
                         ]
@@ -427,7 +427,7 @@ const myexp = ((request, response) => {
                                 "type": "action",
                                 "action": {
                                     "type": "message",
-                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "text": `แก้ไขข้อมูลของ${threeDayInWeek[thisDay]}`,
                                     "label": `แก้ไขข้อมูล`
                                 }
                             },
@@ -452,7 +452,7 @@ const myexp = ((request, response) => {
         let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
         console.log('this day:', thisDay);
         thisDay = parseInt(thisDay);
-        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        const threeDayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         var standardDrink;
 
         console.log('this day:', thisDay);
@@ -532,11 +532,11 @@ const myexp = ((request, response) => {
         }
 
         standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
-        await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
+        await userDB.setDrinkingInWeek(userId, threeDayInWeek[thisDay], {
             type, percent, container, volume, numberOfDrinks, standardDrink
         })
         if (thisDay !== 2) {
-            agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent}% จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
+            agent.add(`${threeDayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent}% จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
             return agent.add(new Payload(
                 `LINE`,
                 {
@@ -548,7 +548,7 @@ const myexp = ((request, response) => {
                                 "type": "action",
                                 "action": {
                                     "type": "message",
-                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "text": `แก้ไขข้อมูลของ${threeDayInWeek[thisDay]}`,
                                     "label": `แก้ไขข้อมูล`
                                 }
                             },
@@ -557,7 +557,7 @@ const myexp = ((request, response) => {
                                 "action": {
                                     "type": "message",
                                     "label": "ไม่ ไปวันถัดไป",
-                                    "text": `กรอกข้อมูลของ${dayInWeek[thisDay + 1]}`
+                                    "text": `กรอกข้อมูลของ${threeDayInWeek[thisDay + 1]}`
                                 }
                             }
                         ]
@@ -566,7 +566,7 @@ const myexp = ((request, response) => {
                 { sendAsMessage: true }
             ))
         } else {
-            agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent} จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
+            agent.add(`${threeDayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent} จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
             return agent.add(new Payload(
                 `LINE`,
                 {
@@ -578,7 +578,7 @@ const myexp = ((request, response) => {
                                 "type": "action",
                                 "action": {
                                     "type": "message",
-                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "text": `แก้ไขข้อมูลของ${threeDayInWeek[thisDay]}`,
                                     "label": `แก้ไขข้อมูล`
                                 }
                             },
