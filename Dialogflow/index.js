@@ -231,7 +231,7 @@ const myexp = ((request, response) => {
                             "action": {
                                 "type": "message",
                                 "label": "ไม่ และกรอกข้อมูลการดื่ม",
-                                "text": `กรอกข้อมูลการดื่ม`
+                                "text": `กรอกข้อมูลวันนี้`
                             }
                         }
                     ]
