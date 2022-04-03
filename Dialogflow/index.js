@@ -631,13 +631,13 @@ const myexp = ((request, response) => {
         var { drinkingInWeek } = await userDB.get(userId);
         var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)];
 
-        
-        var maxSdPoint = Math.max(...sdPoint);
+        var maxSdPoint = -1 ;
+        //var maxSdPoint = Math.max(...sdPoint);
         for (var i = 0; i <= 2; i++) {
             console.log("SDpoint : ", i) ;
             console.log("Sdpoint value :", sdPoint[i]);
             
-            if (maxSdPoint = sdPoint[i]) {
+            if (maxSdPoint < sdPoint[i]) {
                 console.log("Max SDpoint array is : ", i) ;
                 console.log("Maxx Sdpoint value is :", sdPoint[i]);
                 maxDay = day[i];
