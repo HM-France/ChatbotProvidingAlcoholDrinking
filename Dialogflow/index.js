@@ -634,8 +634,8 @@ const myexp = ((request, response) => {
         var maxSdPoint = Math.max(...sdPoint);
         for (var i = 0; i <= 2; i++) {
             if (maxSdPoint = sdPoint[i]) {
-                print("SDpoint : ", i) ;
-                print("Sdpoint value :", sdPoint[i]);
+                console.log("SDpoint : ", i) ;
+                console.log("Sdpoint value :", sdPoint[i]);
                 maxDay = day[i];
                 break;
             }
