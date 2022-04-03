@@ -630,7 +630,7 @@ const myexp = ((request, response) => {
         const { profile: { gender, age } } = await userDB.get(userId);
         var { drinkingInWeek } = await userDB.get(userId);
         var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)];
-
+        console.log("sdPoint: ", sdPoint);
         // var maxSdPoint = -1 ;
         // for (var i = 0; i <= 2; i++) {
         //     console.log("SDpoint : ", i) ;
@@ -648,7 +648,6 @@ const myexp = ((request, response) => {
         console.log("maxSdPoint: ", maxSdPoint);
         for (var i = 0; i <= 2; i++) {
             if (maxSdPoint = sdPoint[i]) {
-                console.log("SDpoint : ", i) ;
                 console.log("Sdpoint value :", sdPoint[i]);
                 maxDay = day[i];
                 console.log("day: ", day[i]);
