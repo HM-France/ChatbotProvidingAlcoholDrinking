@@ -355,7 +355,7 @@ const myexp = ((request, response) => {
             type, percent, container, volume, numberOfDrinks, standardDrink
         })
 
-        if (thisDay !== 3) {
+        if (thisDay !== 2) {
             return agent.add(new Payload(
                 `LINE`,
                 {
@@ -503,7 +503,7 @@ const myexp = ((request, response) => {
         await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
             type, percent, container, volume, numberOfDrinks, standardDrink
         })
-        if (thisDay !== 3) {
+        if (thisDay !== 2) {
             agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent}% จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
             return agent.add(new Payload(
                 `LINE`,
@@ -701,13 +701,11 @@ const myexp = ((request, response) => {
         var resultRisk;
         var result;
 
-        const day = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
+        const day = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         var { drinkingInWeek } = await userDB.get(userId);
-        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)
-            , parseFloat(drinkingInWeek[day[3]].standardDrink), parseFloat(drinkingInWeek[day[4]].standardDrink), parseFloat(drinkingInWeek[day[5]].standardDrink)
-            , parseFloat(drinkingInWeek[day[6]].standardDrink)];
+        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)];
 
-        var sumSdPoint = (sdPoint[0] + sdPoint[1] + sdPoint[2] + sdPoint[2] + sdPoint[3] + sdPoint[4] + sdPoint[5] + sdPoint[6]).toFixed(1);
+        var sumSdPoint = (sdPoint[0] + sdPoint[1] + sdPoint[2]).toFixed(1);
         var maxSdPoint = Math.max(...sdPoint);
 
         if (gender === 'หญิง' || age >= 66) {
