@@ -329,6 +329,7 @@ const myexp = ((request, response) => {
     const setDrinkingInDayInputType = async () => {
         let { thisDay } = agent.parameters;
         const user = await userDB.get(userId);
+        console.log('this day :', thisDay);
         thisDay = parseInt(thisDay);
         const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         console.log('this day :', thisDay);
