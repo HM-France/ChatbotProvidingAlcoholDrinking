@@ -1549,7 +1549,7 @@ const myexp = ((request, response) => {
     }
 
     const Contact = async () => {
-        agent.add(new Payload(`LINE`, {
+        return agent.add(new Payload(`LINE`, {
             "type": "uri",
             "label": "ติดต่อนักบำบัด",
             "uri": "tel:1413"
