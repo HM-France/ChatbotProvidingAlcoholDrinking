@@ -1549,7 +1549,11 @@ const myexp = ((request, response) => {
     }
 
     const Contact = async () => {
-        agent.add("Waiting for content");
+        return agent.add(new Payload(`LINE`, {
+            "type": "uri",
+            "label": "ติดต่อนักบำบัด",
+            "uri": "tel:1413"
+        } , {sendAsMessage:true}));
     }
 
     const knowladge_HowToUse = async () => {
