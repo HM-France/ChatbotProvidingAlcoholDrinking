@@ -1,3 +1,106 @@
+const newContainer = () => {
+    return ({
+        type: {
+            all: {
+                type: "template",
+                altText: "เลือกภาชนะที่คุณมักจะดื่ม",
+                template: {
+                    type: "image_carousel",
+                    columns: [
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B8%82%E0%B8%A7%E0%B8%94_%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B9%8B%E0%B8%AD%E0%B8%87%20330%20ml..png?alt=media&token=e2e05c92-f2f7-4b8a-8602-c3898826e870",
+                            action: {
+                                type: "message",
+                                label: "ขวด/กระป๋อง 300ml",
+                                text: "ขวด/กระป๋อง 300ml"
+                            }
+                        },
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B8%82%E0%B8%A7%E0%B8%94_%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B9%8B%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A5%E0%B9%87%E0%B8%81%20250%20ml..png?alt=media&token=53d6cbdf-6193-489e-abd3-b556404e9101",
+                            action: {
+                                type: "message",
+                                label: "ขวด/กระป๋องเล็ก 250ml",
+                                text: "ขวด/กระป๋องเล็ก 250ml"
+                            }
+                        },
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B8%82%E0%B8%A7%E0%B8%94_%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%9B%E0%B9%8B%E0%B8%AD%E0%B8%87%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%20500%20ml..png?alt=media&token=bbc7facc-6028-4892-bf83-19501b25f71c",
+                            action: {
+                                type: "message",
+                                label: "ขวด/กระป๋องใหญ่ 500ml",
+                                text: "ขวด/กระป๋องใหญ่ 500ml"
+                            }
+                        },
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B8%82%E0%B8%A7%E0%B8%94_%E0%B9%80%E0%B8%AB%E0%B8%A2%E0%B8%B7%E0%B8%AD%E0%B8%81.png?alt=media&token=aaff3d29-ac00-495d-82b5-85a123746918",
+                            action: {
+                                type: "message",
+                                label: "ขวด/เหยือก 1L",
+                                text: "ขวด/เหยือก 1000ml"
+                            }
+                        },
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B8%82%E0%B8%A7%E0%B8%94%E0%B9%80%E0%B8%A5%E0%B9%87%E0%B8%81_%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%A7%E0%B9%84%E0%B8%A7%E0%B8%99%E0%B9%8C%20125%20ml..png?alt=media&token=ba9a989f-4eff-4bff-baa6-2e0944005660",
+                            action: {
+                                type: "message",
+                                label: "ขวดเล็ก/แก้วไวน์ 125ml",
+                                text: "ขวดเล็ก/แก้วไวน์ 125ml"
+                            }
+                        },
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B8%82%E0%B8%A7%E0%B8%94%E0%B9%81%E0%B8%9A%E0%B8%99%20400%20ml..png?alt=media&token=c10c1d35-ddce-4d80-9c4a-58a863b9d564",
+                            action: {
+                                type: "message",
+                                label: "ขวดแบน 400ml",
+                                text: "ขวดแบน 400ml"
+                            }
+                        },
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B8%82%E0%B8%A7%E0%B8%94%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%20640%20ml..png?alt=media&token=ab0811d0-f40f-41b3-a1e2-5a2e303d7d13",
+                            action: {
+                                type: "message",
+                                label: "ขวดใหญ่ 640ml",
+                                text: "ขวดใหญ่ 640ml"
+                            }
+                        },
+                        {
+                            imageUrl: "", //รอแก้
+                            action: {
+                                type: "message",
+                                label: "ขวดใหญ่ 750ml",
+                                text: "ขวดใหญ่ 750ml"
+                            }
+                        },
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B8%9D%E0%B8%B2%2015%20ml..png?alt=media&token=ced50737-aebd-45ec-b07a-4a2d8a239268",
+                            action: {
+                                type: "message",
+                                label: "ฝา 15ml",
+                                text: "ฝา 15ml"
+                            }
+                        },
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B9%80%E0%B8%9B%E0%B9%8A%E0%B8%81%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%A7%20shot%2050%20ml.%20.png?alt=media&token=a1d604f4-0e83-484a-97ab-ab2da65bfcf0",
+                            action: {
+                                type: "message",
+                                label: "เป๊ก/แก้ว 50ml",
+                                text: "เป๊ก/แก้ว 50ml"
+                            }
+                        },
+                        {
+                            imageUrl: "https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%AA%E0%B8%B8%E0%B8%94%2F%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%A7%20165%20ml..png?alt=media&token=d8f9d41e-554b-4872-93c6-de6c33e805ad",
+                            action: {
+                                type: "message",
+                                label: "แก้ว 165ml",
+                                text: "แก้ว 165ml"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    })
+}
 const alcohol = () => {
     return ({
         types: {
@@ -1033,7 +1136,7 @@ const LocationAndMapData = () => {
       })
 }
 
-module.exports = {goal,motivation,alcohol,Survey,LocationAndMapData}
+module.exports = {goal,motivation,alcohol,Survey,LocationAndMapData,newContainer}
 
 /*/ template
 {
