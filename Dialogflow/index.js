@@ -1548,14 +1548,6 @@ const myexp = ((request, response) => {
         agent.add(new Payload(`LINE` , imageCarousels.LocationAndMapData() , { sendAsMessage:true }));
     }
 
-    const Contact = async () => {
-        return agent.add(new Payload(`LINE`, {
-            "type": "uri",
-            "label": "ติดต่อนักบำบัด",
-            "uri": "tel:1413"
-        } , {sendAsMessage:true}));
-    }
-
     const knowladge_HowToUse = async () => {
         agent.add("วิธีการใช้งานน้องตั้งใจในส่วนของข้อมูลเลิกเหล้าค่ะ") ;
     }
