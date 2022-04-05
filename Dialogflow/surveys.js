@@ -1,4 +1,4 @@
-const Survey = () => {
+const Prep = () => {
     return ({
         "type": "flex",
         "altText": "Flex Message",
@@ -302,4 +302,4 @@ const level = () => {
       })
 }
 
-module.exports = {Survey,level}
+module.exports = {Prep,level}

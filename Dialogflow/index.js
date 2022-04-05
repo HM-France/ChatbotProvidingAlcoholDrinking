@@ -4,7 +4,7 @@ const { patch } = require('request');
 const { userDB } = require('../firebase');
 const imageCarousels = require('./imageCarousels');
 const knowladgeBase = require('./knowledgebase');
-const { Survey } = require('./surveys');
+const surveyForm = require('./surveys') ;
 
 const myexp = ((request, response) => {
     //Create an instance
@@ -1554,8 +1554,7 @@ const myexp = ((request, response) => {
     }
 
     const DoSurvey = async () => {
-        agent.add(`ขอบคุณที่ทดลองใช้น้องตั้งใจนะคะ น้องตั้งใจอยากจะขอรบกวนเวลาคุณไม่นาน เพื่อทำแบบสอบถามความพึงพอใจในการใช้งานน้องตั้งใจค่ะ`);
-        return agent.add(new Payload('LINE', Survey.Survey() , { sendAsMessage: true }));
+        return agent.add(new Payload(`LINE`, surveyForm.Prep() , { sendAsMessage: true }));
     }
 
     const Test = async () => {
