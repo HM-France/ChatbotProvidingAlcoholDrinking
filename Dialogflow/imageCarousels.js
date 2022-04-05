@@ -1108,4 +1108,4 @@ const LocationAndMapData = () => {
       })
 }
 
-module.exports = {goal,motivation,alcohol,Survey,LocationAndMapData,newContainer}
+module.exports = {goal,motivation,alcohol,LocationAndMapData,newContainer}
