@@ -280,7 +280,7 @@ const myexp = ((request, response) => {
                 },
             },
             { sendAsMessage: true }
-        ))
+        ));
     }
 
     const riskAssessment_DontDrinkIn3Month = async () => {
