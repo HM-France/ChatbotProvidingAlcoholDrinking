@@ -446,6 +446,11 @@ const myexp = ((request, response) => {
         if (!type) {
             agent.add(`เลือกประเภทเครื่องดื่มที่คุณดื่มใน${dayInWeek[thisDay]}ค่ะ`);
             return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+        } else if (!container) {
+            agent.add(`โปรดเลือกลักษณะหน่วยของภาชนะ 🥛 ที่คุณจะใช้ในการบันทึกข้อมูลการดื่มของ${dayInWeek[thisDay]}ค่ะ`);
+            return agent.add(new Payload('LINE', imageCarousels.newContainer().type.all, { sendAsMessage: true }));
+        } else if (!numberOfDrinks) {
+            return agent.add(`โปรดระบุจำนวน ${container} ที่ดื่มค่ะ ให้กรอกเฉพาะตัวเลขเท่านั้น\nเช่น 3 คือ 3 แก้ว หรือ 1.5 คือ หนึ่งแก้วครึ่ง หรือ 0.3 คือ หนึ่งในสามของแก้วค่ะ`);
         }
         if (!percent) {
             if (type === 'ไวน์คูลเลอร์' || type === 'เบียร์') {
@@ -461,14 +466,6 @@ const myexp = ((request, response) => {
             }
             return console.log('percent : ', percent);
         }
-            
-        if (!container) {
-            agent.add(`โปรดเลือกลักษณะหน่วยของภาชนะ 🥛 ที่คุณจะใช้ในการบันทึกข้อมูลการดื่มของ${dayInWeek[thisDay]}ค่ะ`);
-            return agent.add(new Payload('LINE', imageCarousels.newContainer().type.all, { sendAsMessage: true }));
-        } else if (!numberOfDrinks) {
-            return agent.add(`โปรดระบุจำนวน ${container} ที่ดื่มค่ะ ให้กรอกเฉพาะตัวเลขเท่านั้น\nเช่น 3 คือ 3 แก้ว หรือ 1.5 คือ หนึ่งแก้วครึ่ง หรือ 0.3 คือ หนึ่งในสามของแก้วค่ะ`);
-        }
-
         standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
         await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
             type, percent, container, volume, numberOfDrinks, standardDrink
