@@ -56,7 +56,7 @@ const myexp = ((request, response) => {
         let { age, gender, workStatus, education, salary, useWith } = agent.parameters;
         agent.add(new Payload('LINE', {
                 "type": "text",
-                "text": "ขอให้ตอบคำถามโดยกรอกเป็นตัวเลข ที่อาจมีจุดทศนิยม และไม่ต้องใส่หน่วย\n\nหรือกดเลือกจากตัวเลือกที่น้องตั้งใจมีให้ค่ะ\n"
+                "text": "ขอให้ตอบคำถามโดยกรอกเป็นตัวเลข ที่อาจมีจุดทศนิยม และไม่ต้องใส่หน่วย\n\nหรือกดเลือกจากตัวเลือกที่น้องตั้งใจมีให้ค่ะ"
             }, { sendAsMessage:true }));
         if (!age) {
             return agent.add('ปีนี้คุณอายุเท่าไหร่แล้วคะ');
@@ -107,7 +107,7 @@ const myexp = ((request, response) => {
         await userDB.setProfile(userId, { age, gender, workStatus, education, salary, useWith });
         return agent.add(new Payload('LINE', {
             "type": "text",
-            "text": "ขอบคุณค่ะ 🙇🏽‍♀️\n\nคุณสามารถเลือกสิ่งที่คุณสนใจตามเมนูด้านล่างได้เอง หรือจะให้น้องตั้งใจได้พูดคุยเพื่อประเมินความเสี่ยงจากการดื่มต่อก็ได้ค่ะ\n",
+            "text": "ขอบคุณค่ะ 🙇🏽‍♀️\n\nคุณสามารถเลือกสิ่งที่คุณสนใจตามเมนูด้านล่างได้เอง หรือจะให้น้องตั้งใจได้พูดคุยเพื่อประเมินความเสี่ยงจากการดื่มต่อก็ได้ค่ะ",
             "quickReply": {
                 "items": [
                     {
