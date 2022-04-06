@@ -54,8 +54,8 @@ const myexp = ((request, response) => {
 
     const setUserProfile = async () => {
         let { age, gender, workStatus, education, salary, useWith } = agent.parameters;
-        agent.add("ขอให้ตอบคำถามโดยกรอกเป็นตัวเลข ที่อาจมีจุดทศนิยม และไม่ต้องใส่หน่วย\n\nหรือกดเลือกจากตัวเลือกที่น้องตั้งใจมีให้ค่ะ");
         if (!age) {
+            agent.add("ขอให้ตอบคำถามโดยกรอกเป็นตัวเลข ที่อาจมีจุดทศนิยม และไม่ต้องใส่หน่วย\n\nหรือกดเลือกจากตัวเลือกที่น้องตั้งใจมีให้ค่ะ");
             return agent.add('ปีนี้คุณอายุเท่าไหร่แล้วคะ');
         } else if (!gender) {
             return agent.add(createQuickReply(
