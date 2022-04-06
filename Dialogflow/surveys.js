@@ -12,7 +12,7 @@ const Prep = () => {
             "aspectMode": "cover",
             "action": {
               "type": "uri",
-              "uri": "http://linecorp.com/"
+              "uri": "https://forms.gle/h76ETgDCsWnaTwYv5?openExternalBrowser=1"
             }
           },
           "body": {
@@ -49,17 +49,28 @@ const Prep = () => {
                 "contents": [
                   {
                     "type": "button",
-                    "action": {
-                      "type": "message",
-                      "label": "เริ่มต้นทำแบบสอบถาม",
-                      "text": "เริ่มทำแบบสอบถาม"
-                    },
                     "color": "#00cc00",
-                    "style": "primary"
+                    "style": "primary",
+                    "action": {
+                      "type": "uri",
+                      "label": "เริ่มต้นทำแบบสอบถาม",
+                      "uri": "https://forms.gle/h76ETgDCsWnaTwYv5?openExternalBrowser=1",
+                      "altUri": {
+                        "desktop": "https://forms.gle/h76ETgDCsWnaTwYv5?openExternalBrowser=1"
+                      }
+                    }
                   }
                 ]
               }
             ]
+          },
+          "action": {
+            "type": "uri",
+            "label": "เริ่มต้นทำแบบสอบถาม",
+            "uri": "https://forms.gle/h76ETgDCsWnaTwYv5?openExternalBrowser=1",
+            "altUri": {
+              "desktop": "https://forms.gle/h76ETgDCsWnaTwYv5?openExternalBrowser=1"
+            }
           }
         }
       })
