@@ -1047,7 +1047,7 @@ const LocationAndMapData = () => {
             "aspectMode": "cover",
             "action": {
               "type": "uri",
-              "uri": "http://linecorp.com/"
+              "uri": "https://sites.google.com/view/searchhospital/%E0%B8%AB%E0%B8%99%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B8%81?openExternalBrowser=1"
             }
           },
           "body": {
