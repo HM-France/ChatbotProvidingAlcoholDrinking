@@ -54,10 +54,10 @@ const myexp = ((request, response) => {
 
     const setUserProfile = async () => {
         let { age, gender, workStatus, education, salary, useWith } = agent.parameters;
-        // agent.add(new Payload(`LINE`, {
-        //         "type": "text",
-        //         "text": "ขอให้ตอบคำถามโดยกรอกเป็นตัวเลข ที่อาจมีจุดทศนิยม และไม่ต้องใส่หน่วย\n\nหรือกดเลือกจากตัวเลือกที่น้องตั้งใจมีให้ค่ะ"
-        //     }, { sendAsMessage:true }));
+        agent.add(new Payload(`LINE`, {
+                "type": "text",
+                "text": "ขอให้ตอบคำถามโดยกรอกเป็นตัวเลข ที่อาจมีจุดทศนิยม และไม่ต้องใส่หน่วย\n\nหรือกดเลือกจากตัวเลือกที่น้องตั้งใจมีให้ค่ะ"
+            }));
         if (!age) {
             return agent.add('ปีนี้คุณอายุเท่าไหร่แล้วคะ');
         } else if (!gender) {
