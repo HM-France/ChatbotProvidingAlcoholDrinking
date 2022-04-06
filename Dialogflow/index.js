@@ -4,6 +4,7 @@ const { patch } = require('request');
 const { userDB } = require('../firebase');
 const imageCarousels = require('./imageCarousels');
 const knowladgeBase = require('./knowledgebase');
+const surveyForm = require('./surveys') ;
 
 const myexp = ((request, response) => {
     //Create an instance
@@ -1311,11 +1312,6 @@ const myexp = ((request, response) => {
             , { sendAsMessage: true }));
     }
 
-    const DoSurvey = async () => {
-        agent.add(`ขอบคุณที่ทดลองใช้น้องตั้งใจนะคะ น้องตั้งใจอยากจะขอรบกวนเวลาคุณไม่นาน เพื่อทำแบบสอบถามความพึงพอใจในการใช้งานน้องตั้งใจค่ะ`);
-        agent.add(new Payload('LINE', imageCarousels.Survey(), { sendAsMessage: true }));
-    }
-
     const knowladgeSection = async () => {
         agent.add("ฟังก์ชั่นข้อมูลการเลิกเหล้า เป็นฟังก์ชั่นที่รวบรวมข้อมูลต่าง ๆ ที่เกี่ยวข้องกับการเลิกเหล้าไว้ด้วยกัน เพื่อให้คุณได้ทราบข้อเท็จจริงจากต่าง ๆ และนำไปประยุกต์ใช้ได้ค่ะ");
         return agent.add(new Payload(`LINE`, knowladgeBase.MainMenu(), { sendAsMessage: true }));
@@ -1548,23 +1544,17 @@ const myexp = ((request, response) => {
         agent.add(new Payload(`LINE` , imageCarousels.LocationAndMapData() , { sendAsMessage:true }));
     }
 
-    const Contact = async () => {
-        return agent.add(new Payload(`LINE`, {
-            "type": "uri",
-            "label": "ติดต่อนักบำบัด",
-            "uri": "tel:1413"
-        } , {sendAsMessage:true}));
-    }
-
     const knowladge_HowToUse = async () => {
         agent.add("วิธีการใช้งานน้องตั้งใจในส่วนของข้อมูลเลิกเหล้าค่ะ") ;
     }
 
-
-
     const drinkingStandardData = async () => {
         agent.add(`ดื่มมาตรฐาน หรือ Standard Drink เป็นหน่วยมาตรฐานของเครื่องดื่มที่มีแอลกอฮอล์บริสุทธิ์ผสมอยู่ 10 กรัม ตามนิยามที่ใช้ในประเทศไทย เพราะเครื่องดื่มแอลกอฮอล์แต่ละชนิด จะมีแอลกอฮอล์บริสุทธิ์ผสมอยู่ไม่เท่ากัน ขึ้นอยู่กับจำนวนเปอร์เซนต์ของแอลกอฮอล์ในเครื่องดื่มนั้น หากคุณดื่มเครื่องดื่มแอลกอฮอล์ปริมาณ 1 ดื่มมาตรฐาน ตับของคุณจะต้องใช้เวลาถึง 1 ชั่วโมง จึงจะกำจัดพิษแอลกอฮอล์นั้นออกจากร่างกายได้`);
         agent.add(createQuickReply("น้องตั้งใจจะนำคุณไปสู่ขั้นตอนถัดไปนะคะ", ["กรอกข้อมูลของวันนี้"]));
+    }
+
+    const DoSurvey = async () => {
+        return agent.add(new Payload(`LINE`, surveyForm.Prep() , { sendAsMessage: true }));
     }
 
     const Test = async () => {
@@ -1637,7 +1627,6 @@ const myexp = ((request, response) => {
             intentMap.set('select_FemaleInvestigators', knowladge_FemaleInvestigators);
             intentMap.set('select_EmergencyCall', knowladge_EmergencyCall);
     intentMap.set('LocationAndMap', LocationAndMap);
-    intentMap.set('contact', Contact)
     agent.handleRequest(intentMap);
 });
 module.exports = myexp
