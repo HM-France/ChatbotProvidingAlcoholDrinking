@@ -430,7 +430,7 @@ const myexp = ((request, response) => {
     }
 
     const setDrinkingInWeek_pick = async () => {
-        let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
+        let { thisDay, type, container, numberOfDrinks, percent, volume } = agent.parameters;
         thisDay = parseInt(thisDay);
         const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         var standardDrink;
