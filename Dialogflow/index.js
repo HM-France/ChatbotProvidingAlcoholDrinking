@@ -57,13 +57,13 @@ const myexp = ((request, response) => {
         agent.add(new Payload(`LINE`, {
                 "type": "text",
                 "text": "ขอให้ตอบคำถามโดยกรอกเป็นตัวเลข ที่อาจมีจุดทศนิยม และไม่ต้องใส่หน่วย\n\nหรือกดเลือกจากตัวเลือกที่น้องตั้งใจมีให้ค่ะ"
-            }))
+            }, { sendAsMessage:true }));
         if (!age) {
             return agent.add('ปีนี้คุณอายุเท่าไหร่แล้วคะ');
         } else if (!gender) {
             return agent.add(createQuickReply(
                 'คุณเป็นผู้ชาย 🧑🏽หรือผู้หญิง 👧🏽 คะ',
-                ["ผู้ชาย 🧑🏽", "ผู้หญิง 👧🏽"]
+                ["ผู้ชาย", "ผู้หญิง"]
             ));
         } else if (!workStatus) {
             return agent.add(createQuickReply(
