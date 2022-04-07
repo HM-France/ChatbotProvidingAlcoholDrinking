@@ -714,7 +714,7 @@ const myexp = ((request, response) => {
         var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)];
 
         var maxSdPoint = Math.max(...sdPoint);
-        for (var i = 0; i <= 6; i++) {
+        for (var i = 0; i <= 2; i++) {
             if (maxSdPoint = sdPoint[i]) {
                 maxDay = day[i];
                 break;
