@@ -313,11 +313,11 @@ const myexp = ((request, response) => {
         let { thisDay } = agent.parameters;
         const user = await userDB.get(userId);
         thisDay = parseInt(thisDay);
-        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
-        const emojiday = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣'];
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        const emojiday = ['1️⃣','2️⃣','3️⃣'];
 
         if (dayInWeek[thisDay] === 'วันนี้') {
-            agent.add("ขอให้คุณเลือกชนิดเครื่องดื่ม🥂🍷🍾ตามรายการที่จะให้มาด้านล่าง ซึ่งจะถามเรียงวันย้อนหลัง 🔙 กลับไป 7️⃣ วันนะคะ\nหากไม่มีเครื่องดื่มที่ต้องการ ให้เลือกชนิดเครื่องดื่มที่ดูใกล้เคียงที่สุดแทน\nและหากดื่มหลายอย่าง ขอให้เลือกเครื่องดื่มที่มักดื่มเป็นหลักมาเพียงอย่างเดียว\nแต่หากคุณไม่ได้ดื่มในวันนั้นๆ ขอให้เลือกตัวเลือกที่ระบุว่า “ไม่ได้ดื่ม” ค่ะ\nเริ่มบันทึกข้อมูลการดื่มของวันนี้  🚩นะคะ");
+            agent.add("ขอให้คุณเลือกชนิดเครื่องดื่ม🥂🍷🍾ตามรายการที่จะให้มาด้านล่าง ซึ่งจะถามเรียงวันย้อนหลัง 🔙 กลับไป 3️⃣ วันนะคะ\nหากไม่มีเครื่องดื่มที่ต้องการ ให้เลือกชนิดเครื่องดื่มที่ดูใกล้เคียงที่สุดแทน\nและหากดื่มหลายอย่าง ขอให้เลือกเครื่องดื่มที่มักดื่มเป็นหลักมาเพียงอย่างเดียว\nแต่หากคุณไม่ได้ดื่มในวันนั้นๆ ขอให้เลือกตัวเลือกที่ระบุว่า “ไม่ได้ดื่ม” ค่ะ\nเริ่มบันทึกข้อมูลการดื่มของวันนี้  🚩นะคะ");
         }
 
         if (thisDay !== 0 && !user.drinkingInWeek[dayInWeek[thisDay - 1]]) {
@@ -334,7 +334,7 @@ const myexp = ((request, response) => {
     const setNoDrinkingInWeek = async () => {
         let { thisDay, type, container, volume, numberOfDrinks } = agent.parameters;
         thisDay = parseInt(thisDay);
-        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         var standardDrink , percent ;
 
         if(!type){
@@ -367,7 +367,7 @@ const myexp = ((request, response) => {
             type, percent, container, volume, numberOfDrinks, standardDrink
         })
 
-        if (thisDay < 6) {
+        if (thisDay !== 2) {
             return agent.add(new Payload(
                 `LINE`,
                 {
@@ -428,7 +428,7 @@ const myexp = ((request, response) => {
         }
 
     }
-
+/*
     const setDrinkingInWeek_pick = async () => {
         let { thisDay, type, container, numberOfDrinks , volume } = agent.parameters;
         thisDay = parseInt(thisDay);
@@ -540,8 +540,8 @@ const myexp = ((request, response) => {
                 { sendAsMessage: true }
             ))
         }
-    }
-/* //สำหรับ 3 วัน 
+    }*/
+ //สำหรับ 3 วัน 
     const setDrinkingInWeek_pick = async () => {
         let { thisDay, type, container, numberOfDrinks, percent, volume } = agent.parameters;
         thisDay = parseInt(thisDay);
@@ -646,19 +646,17 @@ const myexp = ((request, response) => {
             ))
         }
     }
-*/
+
 
     const riskAssessmentResultWeek = async () => {
         const { assistPoint } = await userDB.get(userId);
         const { profile: { gender, age } } = await userDB.get(userId);
         var result;
 
-        const day = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
+        const day = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
         var { drinkingInWeek } = await userDB.get(userId);
-        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)
-            , parseFloat(drinkingInWeek[day[3]].standardDrink), parseFloat(drinkingInWeek[day[4]].standardDrink), parseFloat(drinkingInWeek[day[5]].standardDrink)
-            , parseFloat(drinkingInWeek[day[6]].standardDrink)];
-        var sumSdPoint = (sdPoint[0] + sdPoint[1] + sdPoint[2] + sdPoint[2] + sdPoint[3] + sdPoint[4] + sdPoint[5] + sdPoint[6]).toFixed(1);
+        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)];
+        var sumSdPoint = (sdPoint[0] + sdPoint[1] + sdPoint[2]).toFixed(1);
 
         agent.add('ขอบคุณที่ตอบคำถามนะคะ🙇🏽‍♀️');
 
@@ -676,7 +674,7 @@ const myexp = ((request, response) => {
             }
         }
 
-        agent.add(`จากข้อมูลที่ได้ น้องตั้งใจขอสรุปว่า ใน7️⃣วันที่ผ่านมานี้ คุณดื่มมาแล้วเป็นจำนวน ${sumSdPoint} ดื่มมาตรฐาน ซึ่ง${result}ปริมาณที่แนะนำว่าสามารถดื่มได้ใน 3 วันค่ะ`);
+        agent.add(`จากข้อมูลที่ได้ น้องตั้งใจขอสรุปว่า ใน3️⃣วันที่ผ่านมานี้ คุณดื่มมาแล้วเป็นจำนวน ${sumSdPoint} ดื่มมาตรฐาน ซึ่ง${result}ปริมาณที่แนะนำว่าสามารถดื่มได้ใน 3 วันค่ะ`);
         return agent.add(new Payload(
             `LINE`,
             {
@@ -713,9 +711,7 @@ const myexp = ((request, response) => {
         var result;
         const { profile: { gender, age } } = await userDB.get(userId);
         var { drinkingInWeek } = await userDB.get(userId);
-        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)
-            , parseFloat(drinkingInWeek[day[3]].standardDrink), parseFloat(drinkingInWeek[day[4]].standardDrink), parseFloat(drinkingInWeek[day[5]].standardDrink)
-            , parseFloat(drinkingInWeek[day[6]].standardDrink)];
+        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)];
 
         var maxSdPoint = Math.max(...sdPoint);
         for (var i = 0; i <= 6; i++) {
