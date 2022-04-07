@@ -480,7 +480,7 @@ const myexp = ((request, response) => {
         await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
             type, percent, container, volume, numberOfDrinks, standardDrink
         })
-        if (thisDay !== 6) {
+        if (thisDay < 6) {
             agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent}% จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
             return agent.add(new Payload(
                 `LINE`,
