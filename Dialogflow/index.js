@@ -653,10 +653,12 @@ const myexp = ((request, response) => {
         const { profile: { gender, age } } = await userDB.get(userId);
         var result;
 
-        const day = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        const day = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
         var { drinkingInWeek } = await userDB.get(userId);
-        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)];
-        var sumSdPoint = (sdPoint[0] + sdPoint[1] + sdPoint[2]).toFixed(1);
+        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)
+            , parseFloat(drinkingInWeek[day[3]].standardDrink), parseFloat(drinkingInWeek[day[4]].standardDrink), parseFloat(drinkingInWeek[day[5]].standardDrink)
+            , parseFloat(drinkingInWeek[day[6]].standardDrink)];
+        var sumSdPoint = (sdPoint[0] + sdPoint[1] + sdPoint[2] + sdPoint[2] + sdPoint[3] + sdPoint[4] + sdPoint[5] + sdPoint[6]).toFixed(1);
 
         agent.add('ขอบคุณที่ตอบคำถามนะคะ🙇🏽‍♀️');
 
@@ -674,7 +676,7 @@ const myexp = ((request, response) => {
             }
         }
 
-        agent.add(`จากข้อมูลที่ได้ น้องตั้งใจขอสรุปว่า ใน3️⃣วันที่ผ่านมานี้ คุณดื่มมาแล้วเป็นจำนวน ${sumSdPoint} ดื่มมาตรฐาน ซึ่ง${result}ปริมาณที่แนะนำว่าสามารถดื่มได้ใน 3 วันค่ะ`);
+        agent.add(`จากข้อมูลที่ได้ น้องตั้งใจขอสรุปว่า ใน7️⃣วันที่ผ่านมานี้ คุณดื่มมาแล้วเป็นจำนวน ${sumSdPoint} ดื่มมาตรฐาน ซึ่ง${result}ปริมาณที่แนะนำว่าสามารถดื่มได้ใน 3 วันค่ะ`);
         return agent.add(new Payload(
             `LINE`,
             {
