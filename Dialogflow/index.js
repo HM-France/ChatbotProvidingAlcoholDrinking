@@ -429,6 +429,113 @@ const myexp = ((request, response) => {
 
     }
 
+    
+    const setDrinkingInWeek_pick = async () => {
+        let { thisDay, type, container, numberOfDrinks, percent, volume } = agent.parameters;
+        thisDay = parseInt(thisDay);
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        var standardDrink;
+        console.log('this day:', thisDay);
+        console.log('type:', type);
+        console.log('percent:', percent);
+        console.log('container:', container);
+        console.log('volume:', volume);
+        console.log('number of drink:', numberOfDrinks);
+        console.log('-------------------');
+
+        if (!type) {
+            agent.add(`เลือกประเภทเครื่องดื่มที่คุณดื่มใน${dayInWeek[thisDay]}ค่ะ`);
+            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+        } 
+        if (!container) {
+            agent.add(`โปรดเลือกลักษณะหน่วยของภาชนะ 🥛 ที่คุณจะใช้ในการบันทึกข้อมูลการดื่มของ${dayInWeek[thisDay]}ค่ะ`);
+            return agent.add(new Payload('LINE', imageCarousels.newContainer().type.all, { sendAsMessage: true }));
+        } 
+        if (!numberOfDrinks) {
+            return agent.add(`โปรดระบุจำนวน ${container} ที่ดื่มค่ะ ให้กรอกเฉพาะตัวเลขเท่านั้น\nเช่น 3 คือ 3 แก้ว หรือ 1.5 คือ หนึ่งแก้วครึ่ง หรือ 0.3 คือ หนึ่งในสามของแก้วค่ะ`);
+        }
+        if (!percent) {
+            if (type === 'ไวน์คูลเลอร์' || type === 'เบียร์') {
+                percent = 0.5;
+            } else if (type === 'ไวน์' || type === 'สุราพื้นเมือง') {
+                percent = 0.13;
+            } else if (type === 'เครื่องดื่มอื่นๆ'|| type === 'สุราสี40' || type === 'สุราขาว') {
+                percent = 0.40;
+            } else if (type === 'สุราสี35') {
+                percent = 0.35;
+            } else {
+                percent = 0;
+            }
+            return console.log('percent : ', percent);
+        }
+
+        standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
+        await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
+            type, percent, container, volume, numberOfDrinks, standardDrink
+        })
+        if (thisDay !== 6) {
+            agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent}% จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
+            return agent.add(new Payload(
+                `LINE`,
+                {
+                    "type": "text",
+                    "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+                    "quickReply": {
+                        "items": [
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "label": `แก้ไขข้อมูล`
+                                }
+                            },
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "label": "ไม่ ไปวันถัดไป",
+                                    "text": `กรอกข้อมูลของ${dayInWeek[thisDay + 1]}`
+                                }
+                            }
+                        ]
+                    },
+                },
+                { sendAsMessage: true }
+            ))
+        } else {
+            agent.add(`${dayInWeek[thisDay]} คุณดื่ม${type}ที่มีแอลกอฮอล์ ${percent} จำนวน ${numberOfDrinks} ${container} ที่มีปริมาตร${container}ละ ${volume} มิลลิลิตร`);
+            return agent.add(new Payload(
+                `LINE`,
+                {
+                    "type": "text",
+                    "text": "คุณต้องการแก้ไขข้อมูลมั้ยคะ",
+                    "quickReply": {
+                        "items": [
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "text": `แก้ไขข้อมูลของ${dayInWeek[thisDay]}`,
+                                    "label": `แก้ไขข้อมูล`
+                                }
+                            },
+                            {
+                                "type": "action",
+                                "action": {
+                                    "type": "message",
+                                    "label": "ไม่",
+                                    "text": `สรุปผลประเมินความเสี่ยง`
+                                }
+                            }
+                        ]
+                    },
+                },
+                { sendAsMessage: true }
+            ))
+        }
+    }
+/* //สำหรับ 3 วัน 
     const setDrinkingInWeek_pick = async () => {
         let { thisDay, type, container, numberOfDrinks, percent, volume } = agent.parameters;
         thisDay = parseInt(thisDay);
@@ -533,6 +640,7 @@ const myexp = ((request, response) => {
             ))
         }
     }
+*/
 
     const riskAssessmentResultWeek = async () => {
         const { assistPoint } = await userDB.get(userId);
