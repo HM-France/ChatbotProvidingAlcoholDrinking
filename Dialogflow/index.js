@@ -454,19 +454,20 @@ const myexp = ((request, response) => {
         if (!numberOfDrinks) {
             return agent.add(`โปรดระบุจำนวน ${container} ที่ดื่มค่ะ ให้กรอกเฉพาะตัวเลขเท่านั้น\nเช่น 3 คือ 3 แก้ว หรือ 1.5 คือ หนึ่งแก้วครึ่ง หรือ 0.3 คือ หนึ่งในสามของแก้วค่ะ`);
         }
-        if (!percent) {
-            if (type === 'ไวน์คูลเลอร์' || type === 'เบียร์') {
-                return percent = 0.5;
-            } else if (type === 'ไวน์' || type === 'สุราพื้นเมือง') {
-                return percent = 0.13;
-            } else if (type === 'เครื่องดื่มอื่นๆ'|| type === 'สุราสี40' || type === 'สุราขาว') {
-                return percent = 0.40;
-            } else if (type === 'สุราสี35') {
-                return percent = 0.35;
-            } else {
-                return percent = 0;
-            }
+        
+        // assign percent
+        if (type === 'ไวน์คูลเลอร์' || type === 'เบียร์') {
+            return percent = 0.5;
+        } else if (type === 'ไวน์' || type === 'สุราพื้นเมือง') {
+            return percent = 0.13;
+        } else if (type === 'เครื่องดื่มอื่นๆ'|| type === 'สุราสี40' || type === 'สุราขาว') {
+            return percent = 0.40;
+        } else if (type === 'สุราสี35') {
+            return percent = 0.35;
+        } else {
+            return percent = 0;
         }
+
 
         standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
         await userDB.setDrinkingInWeek(userId, dayInWeek[thisDay], {
