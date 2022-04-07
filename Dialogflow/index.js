@@ -429,7 +429,6 @@ const myexp = ((request, response) => {
 
     }
 
-    
     const setDrinkingInWeek_pick = async () => {
         let { thisDay, type, container, numberOfDrinks , volume } = agent.parameters;
         thisDay = parseInt(thisDay);
@@ -741,23 +740,29 @@ const myexp = ((request, response) => {
 
         if (gender === 'หญิง' || age >= 66) {
             if (maxSdPoint > 3) {
+                result = 'เกิน';
+                await userDB.setDrinkingStandard(userId, result);
                 result = 'เกิน 😱🙅🙅‍♂️';
                 console.log("result : ", result);
-                await userDB.setDrinkingStandard(userId, result);
+                
             } else {
+                result = 'ไม่เกิน';
+                await userDB.setDrinkingStandard(userId, result);
                 result = 'ไม่เกิน 😋';
                 console.log("result : ", result);
-                await userDB.setDrinkingStandard(userId, result);
             }
         } else if (gender === 'ชาย') {
             if (maxSdPoint > 4) {
+                result = 'เกิน';
+                await userDB.setDrinkingStandard(userId, result);
                 result = 'เกิน 😱🙅🙅‍♂️';
                 console.log("result : ", result);
-                await userDB.setDrinkingStandard(userId, result);
+                
             } else {
+                result = 'ไม่เกิน';
+                await userDB.setDrinkingStandard(userId, result);
                 result = 'ไม่เกิน 😋';
                 console.log("result : ", result);
-                await userDB.setDrinkingStandard(userId, result);
             }
         }
 
