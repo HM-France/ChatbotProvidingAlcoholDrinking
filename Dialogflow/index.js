@@ -37,7 +37,7 @@ const myexp = ((request, response) => {
             "type": "image",
             "originalContentUrl": link,
             "previewImageUrl": link
-        } , { sendAsMessage });
+        } , { sendAsMessage:true });
     }
 
     const calculateStandardDrink = (percent, volume, numberOfDrinks) => ((((percent / 100) * 0.79 * volume) / 10) * numberOfDrinks).toFixed(1);
