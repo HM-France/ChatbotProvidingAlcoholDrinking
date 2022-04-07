@@ -332,10 +332,10 @@ const myexp = ((request, response) => {
     }
 
     const setNoDrinkingInWeek = async () => {
-        let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
+        let { thisDay, type, container, volume, numberOfDrinks } = agent.parameters;
         thisDay = parseInt(thisDay);
         const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
-        var standardDrink;
+        var standardDrink , percent ;
 
         if(!type){
             type = 'ไม่ได้ดื่ม';
@@ -713,29 +713,14 @@ const myexp = ((request, response) => {
         var result;
         const { profile: { gender, age } } = await userDB.get(userId);
         var { drinkingInWeek } = await userDB.get(userId);
-        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)];
-        console.log("sdPoint: ", sdPoint);
-        // var maxSdPoint = -1 ;
-        // for (var i = 0; i <= 2; i++) {
-        //     console.log("SDpoint : ", i) ;
-        //     console.log("Sdpoint value :", sdPoint[i]);
-            
-        //     if (maxSdPoint < sdPoint[i]) {
-        //         console.log("Max SDpoint array is : ", i) ;
-        //         console.log("Maxx Sdpoint value is :", sdPoint[i]);
-        //         maxDay = day[i];
-        //         break;
-        //     }
-        // }
+        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)
+            , parseFloat(drinkingInWeek[day[3]].standardDrink), parseFloat(drinkingInWeek[day[4]].standardDrink), parseFloat(drinkingInWeek[day[5]].standardDrink)
+            , parseFloat(drinkingInWeek[day[6]].standardDrink)];
 
         var maxSdPoint = Math.max(...sdPoint);
-        console.log("maxSdPoint: ", maxSdPoint);
-        for (var i = 0; i <= 2; i++) {
-            console.log("I: ", i);
-            if (maxSdPoint <= sdPoint[i]) {
-                console.log("Sdpoint value :", sdPoint[i]);
+        for (var i = 0; i <= 6; i++) {
+            if (maxSdPoint = sdPoint[i]) {
                 maxDay = day[i];
-                console.log("day: ", day[i]);
                 break;
             }
         }
