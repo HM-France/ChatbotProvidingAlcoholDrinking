@@ -434,7 +434,7 @@ const myexp = ((request, response) => {
         let { thisDay, type, container, numberOfDrinks , volume } = agent.parameters;
         thisDay = parseInt(thisDay);
         const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
-        var standardDrink , percent = '' ;
+        var standardDrink , percent ;
         console.log('this day:', thisDay);
         console.log('type:', type);
         console.log('percent:', percent);
@@ -456,17 +456,24 @@ const myexp = ((request, response) => {
         }
         
         // assign percent
+        console.log("Enter in assign percent");
         if (type === 'ไวน์คูลเลอร์' || type === 'เบียร์') {
-            return percent = 0.5;
+            percent = 0.5;
+            console.log("assign done");
         } else if (type === 'ไวน์' || type === 'สุราพื้นเมือง') {
-            return percent = 0.13;
+            percent = 0.13;
+            console.log("assign done");
         } else if (type === 'เครื่องดื่มอื่นๆ'|| type === 'สุราสี40' || type === 'สุราขาว') {
-            return percent = 0.40;
+            percent = 0.40;
+            console.log("assign done");
         } else if (type === 'สุราสี35') {
-            return percent = 0.35;
+            percent = 0.35;
+            console.log("assign done");
         } else {
-            return percent = 0;
+            percent = 0;
+            console.log("assign done");
         }
+        console.log("End of assign percent");
 
 
         standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
