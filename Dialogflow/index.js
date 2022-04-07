@@ -334,7 +334,7 @@ const myexp = ((request, response) => {
     const setNoDrinkingInWeek = async () => {
         let { thisDay, type, percent, container, volume, numberOfDrinks } = agent.parameters;
         thisDay = parseInt(thisDay);
-        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน'];
+        const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
         var standardDrink;
 
         if(!type){
@@ -367,7 +367,7 @@ const myexp = ((request, response) => {
             type, percent, container, volume, numberOfDrinks, standardDrink
         })
 
-        if (thisDay !== 2) {
+        if (thisDay < 6) {
             return agent.add(new Payload(
                 `LINE`,
                 {
