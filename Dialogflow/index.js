@@ -434,7 +434,7 @@ const myexp = ((request, response) => {
         let { thisDay, type, container, numberOfDrinks , volume } = agent.parameters;
         thisDay = parseInt(thisDay);
         const dayInWeek = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
-        var standardDrink , percent = 0 ;
+        var standardDrink , percent = null ;
         console.log('this day:', thisDay);
         console.log('type:', type);
         console.log('percent:', percent);
