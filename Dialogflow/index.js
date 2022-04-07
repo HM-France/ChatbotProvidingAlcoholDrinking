@@ -456,17 +456,16 @@ const myexp = ((request, response) => {
         }
         if (!percent) {
             if (type === 'ไวน์คูลเลอร์' || type === 'เบียร์') {
-                percent = 0.5;
+                return percent = 0.5;
             } else if (type === 'ไวน์' || type === 'สุราพื้นเมือง') {
-                percent = 0.13;
+                return percent = 0.13;
             } else if (type === 'เครื่องดื่มอื่นๆ'|| type === 'สุราสี40' || type === 'สุราขาว') {
-                percent = 0.40;
+                return percent = 0.40;
             } else if (type === 'สุราสี35') {
-                percent = 0.35;
+                return percent = 0.35;
             } else {
-                percent = 0;
+                return percent = 0;
             }
-            return console.log('percent : ', percent);
         }
 
         standardDrink = calculateStandardDrink(percent, volume, numberOfDrinks);
