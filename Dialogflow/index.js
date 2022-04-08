@@ -1636,8 +1636,8 @@ const myexp = ((request, response) => {
 
     const Test = async () => {
         agent.add("กำลังทดสอบ");
-        agent.add(createImage("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B9%80%E0%B8%AB%E0%B8%A2%E0%B8%B7%E0%B8%AD%E0%B8%811000%E0%B8%A1%E0%B8%A5.png?alt=media&token=1e9c1d08-802d-479d-aae7-9b304f6e15dc"));
-        agent.add(createImage("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B9%80%E0%B8%AB%E0%B8%A2%E0%B8%B7%E0%B8%AD%E0%B8%811000%E0%B8%A1%E0%B8%A5.png?alt=media&token=1e9c1d08-802d-479d-aae7-9b304f6e15dc"));
+        agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B9%80%E0%B8%AB%E0%B8%A2%E0%B8%B7%E0%B8%AD%E0%B8%811000%E0%B8%A1%E0%B8%A5.png?alt=media&token=1e9c1d08-802d-479d-aae7-9b304f6e15dc"));
+        agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%88%E0%B8%B8%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%2F%E0%B9%80%E0%B8%AB%E0%B8%A2%E0%B8%B7%E0%B8%AD%E0%B8%811000%E0%B8%A1%E0%B8%A5.png?alt=media&token=1e9c1d08-802d-479d-aae7-9b304f6e15dc"));
         agent.add("สิ้นสุดการทดสอบ");
     }
 
