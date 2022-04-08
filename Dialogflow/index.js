@@ -1,5 +1,5 @@
 // NTJ-TEST
-const { WebhookClient, Payload } = require('dialogflow-fulfillment');
+const { WebhookClient, Payload , Image } = require('dialogflow-fulfillment');
 const { patch } = require('request');
 const { userDB } = require('../firebase');
 const imageCarousels = require('./imageCarousels');
