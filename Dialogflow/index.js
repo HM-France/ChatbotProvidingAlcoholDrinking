@@ -1148,11 +1148,11 @@ const myexp = ((request, response) => {
         }
         if (!types) {
             agent.add(`ดื่มอะไรมาหรอคะ?`);
-            return agent.add(new Payload('LINE', imageCarousels.alcohol().types.all, { sendAsMessage: true }));
+            return agent.add(new Payload('LINE', imageCarousels.newContainer() , { sendAsMessage: true }));
         }
         if (!container) {
             agent.add(`เลือกภาชนะที่ใกล้เคียงที่สุดค่ะ`);
-            return agent.add(new Payload('LINE', imageCarousels.alcohol().containerSize[types], { sendAsMessage: true }));
+            return agent.add(new Payload('LINE', imageCarousels.newContainer() , { sendAsMessage: true }));
         }
         if (!numberofDrinks) {
             return agent.add(`ดื่มไปปริมาณกี่${container}คะ?`);
