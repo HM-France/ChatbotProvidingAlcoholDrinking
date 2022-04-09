@@ -40,7 +40,7 @@ const myexp = ((request, response) => {
         } , { sendAsMessage:true });
     }
 
-    const calculateStandardDrink = (percent, volume, numberOfDrinks) => ((((percent / 100) * 0.79 * volume) / 10) * numberOfDrinks).toFixed(1);
+    const calculateStandardDrink = (percent, volume, numberOfDrinks) => (((percent * 0.79 * volume) / 10) * numberOfDrinks).toFixed(1);
 
     const limitDrink = (gender, percent, volume, phase) => {
         var genderPoint;
