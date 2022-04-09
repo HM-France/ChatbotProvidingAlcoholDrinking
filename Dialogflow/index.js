@@ -717,7 +717,7 @@ const myexp = ((request, response) => {
 
     const riskAssessmentResultDay = async () => {
         const day = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
-        var maxDay = '';
+        var maxDay = ''; 
         var result;
         const { profile: { gender, age } } = await userDB.get(userId);
         var { drinkingInWeek } = await userDB.get(userId);
