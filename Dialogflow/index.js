@@ -576,7 +576,7 @@ const myexp = ((request, response) => {
         }
 
         if (type === 'ไวน์คูลเลอร์' || type === 'เบียร์') {
-            percent = 0.5;
+            percent = 0.05;
         } else if (type === 'ไวน์' || type === 'สุราพื้นเมือง') {
             percent = 0.13;
         } else if (type === 'เครื่องดื่มอื่นๆ'|| type === 'สุราสี40' || type === 'สุราขาว') {
@@ -684,7 +684,7 @@ const myexp = ((request, response) => {
             }
         }
 
-        agent.add(`จากข้อมูลที่ได้ น้องตั้งใจขอสรุปว่า ใน7️⃣วันที่ผ่านมานี้ คุณดื่มมาแล้วเป็นจำนวน ${sumSdPoint} ดื่มมาตรฐาน ซึ่ง${result}ปริมาณที่แนะนำว่าสามารถดื่มได้ใน 3 วันค่ะ`);
+        agent.add(`จากข้อมูลที่ได้ น้องตั้งใจขอสรุปว่า ใน7️⃣วันที่ผ่านมานี้ คุณดื่มมาแล้วเป็นจำนวน ${sumSdPoint} ดื่มมาตรฐาน ซึ่ง${result}ปริมาณที่แนะนำว่าสามารถดื่มได้ใน 7 วันค่ะ`);
         return agent.add(new Payload(
             `LINE`,
             {
@@ -724,13 +724,16 @@ const myexp = ((request, response) => {
         var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)
             , parseFloat(drinkingInWeek[day[3]].standardDrink), parseFloat(drinkingInWeek[day[4]].standardDrink), parseFloat(drinkingInWeek[day[5]].standardDrink)
             , parseFloat(drinkingInWeek[day[6]].standardDrink)];
+        console.log("SDPOINT : ",sdPoint);
         var maxSdPoint = Math.max(...sdPoint);
+        console.log("MaxSDpoint :",maxSdPoint);
         for (var i = 0; i <= 6; i++) {
             if (maxSdPoint = sdPoint[i]) {
                 maxDay = day[i];
                 break;
             }
         }
+        console.log("MaxDay : ",maxDay);
 
         if (gender === 'หญิง' || age >= 66) {
             if (maxSdPoint > 3) {
@@ -761,7 +764,7 @@ const myexp = ((request, response) => {
         }
 
 
-        agent.add(`ในช่วง3วันที่ผ่านมานี้ วันที่คุณดื่มหนักที่สุดคือ${maxDay} ซึ่ง${result}ปริมาณที่แนะนำว่าสามารถดื่มได้ต่อวันค่ะ`)
+        agent.add(`ในช่วง 7 วันที่ผ่านมานี้ วันที่คุณดื่มหนักที่สุดคือ${maxDay} ซึ่ง${result}ปริมาณที่แนะนำว่าสามารถดื่มได้ต่อวันค่ะ`)
         return agent.add(new Payload(
             `LINE`,
             {
