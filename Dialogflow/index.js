@@ -863,7 +863,7 @@ const myexp = ((request, response) => {
                             "type": "action",
                             "action": {
                                 "type": "message",
-                                "text": `ข้อมูลของการดื่มที่ปลอดภัย`,
+                                "text": `ข้อมูลของการดื่มที่ปลอดภัยใน1วัน`,
                                 "label": `อยากรู้`
                             }
                         },
