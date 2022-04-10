@@ -911,7 +911,7 @@ const myexp = ((request, response) => {
     }
 
     const riskAssessmentResultRisk = async () => {
-        const { assistPoint } = await userDB.get(userId);
+        const { assistPoint , ASSIST_STATUS } = await userDB.get(userId);
         const { profile: { gender, age } } = await userDB.get(userId);
         var resultWeek;
         var resultDay;
@@ -941,6 +941,7 @@ const myexp = ((request, response) => {
             }
         }
 
+    
         if (gender === 'หญิง' || age >= 66) {
             if (maxSdPoint > 3) {
                 resultDay = 'เกิน 😱🙅🙅‍♂️';
@@ -955,6 +956,7 @@ const myexp = ((request, response) => {
             }
         }
 
+        console.log("assisPoint : ",assistPoint);
         if (assistPoint <= 10) {
             resultRisk = 'ต่ำ 🤗';
         } else if (10 < assistPoint && assistPoint <= 26) {
