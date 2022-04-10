@@ -221,9 +221,6 @@ const myexp = ((request, response) => {
             fourth++;
         }
         
-        for ( var i = 0 ; i <= 6 ; i++) {
-            console.log("Points = ",points[i]);
-        }
 
         var points = parseInt(second) + parseInt(third) + parseInt(fourth) + parseInt(fifth) + parseInt(sixth) + parseInt(seventh);
         let ASSIST_STATUS = "";
