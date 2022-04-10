@@ -2002,6 +2002,7 @@ const myexp = ((request, response) => {
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - compose - no - no', recommendMore);
     intentMap.set('MEASURE_ALCOHAL_IN_BLOOD_TEST - edit', alcoholEdit);
     intentMap.set('knowladge', knowladgeSection);
+        intentMap.set('knowladge_HowToUse', knowladge_HowToUse);
         intentMap.set('select_IncludingAlcohol', knowladge_IncludingAlcohol);
             intentMap.set('select_WhatIsAlcohol', knowladge_WhatIsAlcohol);
             intentMap.set('select_drunkenness', knowladge_Drunkenness);
