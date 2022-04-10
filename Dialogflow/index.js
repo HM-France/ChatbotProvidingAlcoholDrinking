@@ -815,7 +815,7 @@ const myexp = ((request, response) => {
             console.log("Loop : ",i);
             console.log("SdPoint compare : ",sdPoint[i]);
             console.log("maxSdpoint : ",maxSdPoint);
-            if (maxSdPoint = sdPoint[i]) {
+            if (maxSdPoint == sdPoint[i]) {
                 maxDay = day[i];
                 break;
             }
