@@ -974,6 +974,21 @@ const myexp = ((request, response) => {
         ))
     }
 
+    const safeDrinking7days = async () => {
+        // ข้อมูลการดื่ม7วัน
+        return agent.add("ข้อมูลการดื่ม7วัน");
+    }
+    
+    const safeDrinking1day = async () => {
+        //ข้อมูลการดื่ม1วัน
+        return agent.add("ข้อมูลการดื่ม1วัน");
+    }
+
+    const safeDrinkingRisk = async () => {
+        //ข้อมูลการดื่มที่เสี่ยงต่ำ เสี่ยงปานกลาง และเสี่ยงสูง 
+        return agent.add("ข้อมูลการดื่มที่เสี่ยงต่ำ เสี่ยงปานกลาง และเสี่ยงสูง");
+    }
+
     const assessMotivation = async () => {
         agent.add(`ต่อไปเป็นคำถามเพื่อ 👩‍⚕️วัดแรงจูงใจ 👨‍⚕️ ในการปรับเปลี่ยนการดื่มแอลกอฮอล์ของคุณนะคะ\nจากข้อความทั้ง 5️⃣ ด้านล่างนี้ ข้อความไหน ตรงกับใจ ❤️ของคุณมากที่สุดคะ`);
         return agent.add(new Payload('LINE', imageCarousels.motivation(), { sendAsMessage: true }));
@@ -1762,9 +1777,12 @@ const myexp = ((request, response) => {
     intentMap.set('SET_DRINKING_IN_WEEK - next',setNoDrinkingInWeek);
     intentMap.set('RISK_ASSESSMENT_RESULT', setDrinkingInWeekInputType);
     intentMap.set('RISK_ASSESSMENT_RESULT - week', riskAssessmentResultWeek);
+    intentMap.set('RISK_ASSESSMENT_RESULT - week -  safe drinking',safeDrinking7days);
     //intentMap.set('RISK_ASSESSMENT_RESULT - day - Info', riskAssessmentResultDayInfo);
     intentMap.set('RISK_ASSESSMENT_RESULT - day', riskAssessmentResultDay);
+    intentMap.set('RISK_ASSESSMENT_RESULT - day - safe drinking',safeDrinking1day);
     intentMap.set('RISK_ASSESSMENT_RESULT - risk', riskAssessmentResultRisk);
+    intentMap.set('RISK_ASSESSMENT_RESULT - risk - safe drinking',safeDrinkingRisk);
     intentMap.set('DRINK_STANDARD', drinkingStandardData);
     intentMap.set('ASSESS_MOTIVATION', assessMotivation);
     intentMap.set('ASSESS_MOTIVATION - result', assessMotivationResult);
