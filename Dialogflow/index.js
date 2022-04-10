@@ -268,8 +268,7 @@ const myexp = ((request, response) => {
     const riskAssessment_DontDrinkIn3Month = async () => {
         let { sixth, seventh } = agent.parameters;
         console.log('points :', points)
-        console.log('ASSIST_STATUS : ', ASSIST_STATUS);
-        
+
         if (!sixth) {
             return agent.add(createQuickReply(
                 '👥เพื่อน ญาติ หรือคนอื่นๆ เคยแสดงความกังวล หรือตักเตือนคุณ เกี่ยวกับการดื่มของคุณบ้างไหม 😩',
@@ -285,6 +284,18 @@ const myexp = ((request, response) => {
         }
 
         var points = parseInt(sixth) + parseInt(seventh);
+        let ASSIST_STATUS = "";
+        console.log('points :', points)
+        console.log('ASSIST_STATUS : ', ASSIST_STATUS);
+        if (points < 11) {
+            ASSIST_STATUS = "ความเสี่ยงค่ำ";
+        } else if (points > 10 && points < 27) {
+            ASSIST_STATUS = "ความเสี่ยงปานกลาง";
+        } else {
+            ASSIST_STATUS = "ความเสี่ยงสูง";
+        }
+        console.log('ASSIST_STATUS : ', ASSIST_STATUS);
+        await userDB.setASSIST_STATUS(userId, ASSIST_STATUS);
         await userDB.setAssistPoint(userId, points);
         agent.add('ต่อไปเป็นคำถามลักษณะการดื่มย้อนหลัง 7️⃣ วัน\nเพื่อให้คำแนะนำปริมาณการดื่มที่เหมาะสมกับคุณ\nก่อนจะไปคำถามต่อไป น้องตั้งใจขอแนะนำให้คุณรู้จักคำว่า\nดื่มมาตรฐาน🍺 ก่อนนะคะ');
         return agent.add(new Payload(
