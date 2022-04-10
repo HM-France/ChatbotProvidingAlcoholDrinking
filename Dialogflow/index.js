@@ -714,8 +714,12 @@ const myexp = ((request, response) => {
             { sendAsMessage: true }
         ))
     }
+    /*
+    const riskAssessmentResultDayInfo = async () => {
+        agent.add("น้องตั้งใจขอแนะนำปริมาณการดื่มที่ปลอดภัยใน 1 สัปดาหืให้คุณได้ทราบค่ะ");
+        agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20week.png?alt=media&token=b30b9689-a8e9-452f-8384-368a19b9c356"));
+        agent.add("แต่อย่างไรก็ตาม น้องตั้งใจแนะนำว่าคุณไม่ควรดื่มเลยจะดีที่สุดค่ะ");
 
-    const riskAssessmentResultDay = async () => {
         const day = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
         var maxDay = ''; 
         var result;
@@ -777,6 +781,89 @@ const myexp = ((request, response) => {
                             "action": {
                                 "type": "message",
                                 "text": `ข้อมูลของการดื่มที่ปลอดภัยใน1วัน`,
+                                "label": `อยากรู้`
+                            }
+                        },
+                        {
+                            "type": "action",
+                            "action": {
+                                "type": "message",
+                                "label": "ไว้ก่อน",
+                                "text": `ไว้ก่อน`
+                            }
+                        }
+                    ]
+                },
+            },
+            { sendAsMessage: true }
+        ))
+    }
+*/
+    const riskAssessmentResultDay = async () => {
+        const day = ['วันนี้', 'เมื่อวาน', 'เมื่อวานซืน', 'เมื่อ 4 วันที่แล้ว', 'เมื่อ 5 วันที่แล้ว', 'เมื่อ 6 วันที่แล้ว', 'เมื่อ 7 วันที่แล้ว'];
+        var maxDay = ''; 
+        var result;
+        const { profile: { gender, age } } = await userDB.get(userId);
+        var { drinkingInWeek } = await userDB.get(userId);
+        var sdPoint = [parseFloat(drinkingInWeek[day[0]].standardDrink), parseFloat(drinkingInWeek[day[1]].standardDrink), parseFloat(drinkingInWeek[day[2]].standardDrink)
+            , parseFloat(drinkingInWeek[day[3]].standardDrink), parseFloat(drinkingInWeek[day[4]].standardDrink), parseFloat(drinkingInWeek[day[5]].standardDrink)
+            , parseFloat(drinkingInWeek[day[6]].standardDrink)];
+        console.log("SDPOINT : ",sdPoint);
+        var maxSdPoint = Math.max(...sdPoint);
+        console.log("MaxSDpoint :",maxSdPoint);
+        for (var i = 0; i <= 6; i++) {
+            console.log("Loop : ",i);
+            console.log("SdPoint compare : ",sdPoint[i]);
+            console.log("maxSdpoint : ",maxSdPoint);
+            if (maxSdPoint == sdPoint[i]) {
+                maxDay = day[i];
+                break;
+            }
+        }
+        console.log("MaxDay : ",maxDay);
+
+        if (gender === 'หญิง' || age >= 66) {
+            if (maxSdPoint > 3) {
+                result = 'เกิน';
+                await userDB.setDrinkingStandard(userId, result);
+                result = 'เกิน 😱🙅🙅‍♂️';
+                console.log("result : ", result);
+                
+            } else {
+                result = 'ไม่เกิน';
+                await userDB.setDrinkingStandard(userId, result);
+                result = 'ไม่เกิน 😋';
+                console.log("result : ", result);
+            }
+        } else if (gender === 'ชาย') {
+            if (maxSdPoint > 4) {
+                result = 'เกิน';
+                await userDB.setDrinkingStandard(userId, result);
+                result = 'เกิน 😱🙅🙅‍♂️';
+                console.log("result : ", result);
+                
+            } else {
+                result = 'ไม่เกิน';
+                await userDB.setDrinkingStandard(userId, result);
+                result = 'ไม่เกิน 😋';
+                console.log("result : ", result);
+            }
+        }
+
+
+        agent.add(`ในช่วง 7 วันที่ผ่านมานี้ วันที่คุณดื่มหนักที่สุดคือ${maxDay} ซึ่ง${result}ปริมาณที่แนะนำว่าสามารถดื่มได้ต่อวันค่ะ`)
+        return agent.add(new Payload(
+            `LINE`,
+            {
+                "type": "text",
+                "text": "คุณอยากรู้รายละเอียดของระดับการการดื่มที่ปลอดภัยภายในหนึ่งวันไหมคะ",
+                "quickReply": {
+                    "items": [
+                        {
+                            "type": "action",
+                            "action": {
+                                "type": "message",
+                                "text": `ข้อมูลของการดื่มที่ปลอดภัย`,
                                 "label": `อยากรู้`
                             }
                         },
@@ -1675,6 +1762,7 @@ const myexp = ((request, response) => {
     intentMap.set('SET_DRINKING_IN_WEEK - next',setNoDrinkingInWeek);
     intentMap.set('RISK_ASSESSMENT_RESULT', setDrinkingInWeekInputType);
     intentMap.set('RISK_ASSESSMENT_RESULT - week', riskAssessmentResultWeek);
+    //intentMap.set('RISK_ASSESSMENT_RESULT - day - Info', riskAssessmentResultDayInfo);
     intentMap.set('RISK_ASSESSMENT_RESULT - day', riskAssessmentResultDay);
     intentMap.set('RISK_ASSESSMENT_RESULT - risk', riskAssessmentResultRisk);
     intentMap.set('DRINK_STANDARD', drinkingStandardData);
