@@ -696,7 +696,7 @@ const myexp = ((request, response) => {
                             "type": "action",
                             "action": {
                                 "type": "message",
-                                "text": `ข้อมูลของการดื่มที่ปลอดภัย`,
+                                "text": `ข้อมูลของการดื่มที่ปลอดภัยใน7วัน`,
                                 "label": `อยากรู้`
                             }
                         },
@@ -776,7 +776,7 @@ const myexp = ((request, response) => {
                             "type": "action",
                             "action": {
                                 "type": "message",
-                                "text": `ข้อมูลของการดื่มที่ปลอดภัย`,
+                                "text": `ข้อมูลของการดื่มที่ปลอดภัยใน1วัน`,
                                 "label": `อยากรู้`
                             }
                         },
