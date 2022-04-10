@@ -1138,9 +1138,11 @@ const myexp = ((request, response) => {
             }
         }
 
+        console.log("assispoint : ",assistPoint);
+
         if (assistPoint <= 10) {
             resultRisk = 'ต่ำ 🤗';
-        } else if (10 < assistPoint <= 26) {
+        } else if (10 < assistPoint && assistPoint <= 26) {
             resultRisk = 'ปานกลาง 😧';
         } else if (assistPoint >= 27) {
             resultRisk = 'สูง 🤢';
