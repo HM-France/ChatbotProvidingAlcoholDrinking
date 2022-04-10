@@ -267,8 +267,10 @@ const myexp = ((request, response) => {
 
     const riskAssessment_DontDrinkIn3Month = async () => {
         let { sixth, seventh } = agent.parameters;
+        let ASSIST_STATUS = "";
         console.log('points :', points)
         console.log('ASSIST_STATUS : ', ASSIST_STATUS);
+
         if (!sixth) {
             return agent.add(createQuickReply(
                 '👥เพื่อน ญาติ หรือคนอื่นๆ เคยแสดงความกังวล หรือตักเตือนคุณ เกี่ยวกับการดื่มของคุณบ้างไหม 😩',
@@ -286,6 +288,20 @@ const myexp = ((request, response) => {
         var points = parseInt(sixth) + parseInt(seventh);
         await userDB.setAssistPoint(userId, points);
         agent.add('ต่อไปเป็นคำถามลักษณะการดื่มย้อนหลัง 7️⃣ วัน\nเพื่อให้คำแนะนำปริมาณการดื่มที่เหมาะสมกับคุณ\nก่อนจะไปคำถามต่อไป น้องตั้งใจขอแนะนำให้คุณรู้จักคำว่า\nดื่มมาตรฐาน🍺 ก่อนนะคะ');
+
+        var points = parseInt(sixth) + parseInt(seventh);
+        
+        if (points < 11) {
+            ASSIST_STATUS = "ความเสี่ยงค่ำ";
+        } else if (points > 10 && points < 27) {
+            ASSIST_STATUS = "ความเสี่ยงปานกลาง";
+        } else {
+            ASSIST_STATUS = "ความเสี่ยงสูง";
+        }
+        console.log('ASSIST_STATUS : ', ASSIST_STATUS);
+        await userDB.setASSIST_STATUS(userId, ASSIST_STATUS);
+        await userDB.setAssistPoint(userId, points);
+
         return agent.add(new Payload(
             `LINE`,
             {
@@ -976,12 +992,14 @@ const myexp = ((request, response) => {
 
     const safeDrinking7days = async () => {
         // ข้อมูลการดื่ม7วัน
-        return agent.add("ข้อมูลการดื่ม7วัน");
+        agent.add("น้องตั้งใจขอแนะนำวิธีการดื่มที่ปลอดภัยใน 7 วัน ดังนี้ค่ะ");
+        return agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20week.png?alt=media&token=b30b9689-a8e9-452f-8384-368a19b9c356"));
     }
     
     const safeDrinking1day = async () => {
         //ข้อมูลการดื่ม1วัน
-        return agent.add("ข้อมูลการดื่ม1วัน");
+        agent.add("น้องตั้งใจขอแนะนำวิธีการดื่มที่ปลอดภัยใน 1 วัน ดังนี้ค่ะ");
+        return agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20day.png?alt=media&token=f9f995db-ee86-4768-8f74-2c00aca33e53"));
     }
 
     const safeDrinkingRisk = async () => {
@@ -1197,15 +1215,15 @@ const myexp = ((request, response) => {
         if (age > 65) {
             if (gender === "ชาย") { // 1A
                 agent.add("ในหนึ่งสัปดาห์ หากคุณดื่มเบียร์ ต้องดื่มไม่เกิน 7 กระป๋อง หรือ หากดื่มไวน์ต้องดื่มไม่เกิน 10 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 2 แก้ว");
-                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20week.png?alt=media&token=b30b9689-a8e9-452f-8384-368a19b9c356"));
+                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2-%E0%B8%8A%E0%B8%B2%E0%B8%A2.png?alt=media&token=6a7ae3bf-4ee9-46d0-8134-b6974850da04"));
                 agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 3 กระป๋อง หรือ หากดื่มไวน์ ต้องดื่มไม่เกิน 3 แก้ว หรือ หากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 1 แก้ว");
-                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20day.png?alt=media&token=f9f995db-ee86-4768-8f74-2c00aca33e53"));
+                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2-%E0%B8%8A%E0%B8%B2%E0%B8%A2.png?alt=media&token=6a7ae3bf-4ee9-46d0-8134-b6974850da04"));
                 // แนบ Infographic
             } else if (gender === "หญิง") { // 1B
                 agent.add("ในหนึ่งสัปดาห์ หากคุณดื่มเบียร์ ต้องดื่มไม่เกิน 7 กระป๋อง หรือ หากดื่มไวน์ ต้องดื่มไม่เกิน 8 แก้ว หรือ หากดื่มสุราสี 35 ดีกรี ต้องดื่ืไม่เกิน 2 แก้ว");
-                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20week.png?alt=media&token=b30b9689-a8e9-452f-8384-368a19b9c356"));
+                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2-%E0%B8%AB%E0%B8%8D%E0%B8%B4%E0%B8%87.png?alt=media&token=304c999f-c340-429b-9e1c-48d3b36834c7"));
                 agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 3 กระป๋อง หรือ หากดื่มไวน์ ต้องดื่มไม่เกิน 3 แก้ว หรือ หากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 1 แก้ว");
-                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20day.png?alt=media&token=f9f995db-ee86-4768-8f74-2c00aca33e53"));
+                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2-%E0%B8%AB%E0%B8%8D%E0%B8%B4%E0%B8%87.png?alt=media&token=304c999f-c340-429b-9e1c-48d3b36834c7"));
                 // แนบ Infographic
             } else {
                 console.log("Gender value error : ", gender);
@@ -1213,15 +1231,15 @@ const myexp = ((request, response) => {
         } else if (age <= 65 && age >= 20) {
             if (gender === "ชาย") { // 1C
                 agent.add("ในหนึ่งสัปดาห์ หากคุณดื่มเบียร์ต้องดื่ไม่เกิน 15 กระป๋อง หรือ หากดื่มไวน์ต้องดื่มไม่เกิน 16 แก้ว หรือ หากดื่มสุราสี 35 ดีกรีต้องดื่มไม่เกิน 4 แก้ว");
-                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20week.png?alt=media&token=b30b9689-a8e9-452f-8384-368a19b9c356"));
+                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2-%E0%B8%8A%E0%B8%B2%E0%B8%A2.png?alt=media&token=6a7ae3bf-4ee9-46d0-8134-b6974850da04"));
                 agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 4 กระป๋อง หรือหากดื่มไวน์ต้องดื่มไม่เกิน 4 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่กิน 1 แก้ว");
-                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20day.png?alt=media&token=f9f995db-ee86-4768-8f74-2c00aca33e53"));
+                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2-%E0%B8%8A%E0%B8%B2%E0%B8%A2.png?alt=media&token=6a7ae3bf-4ee9-46d0-8134-b6974850da04"));
                 // แนบ Infographic
             } else if (gender === "หญิง") { // 1D
                 agent.add("ในหนึ่งสัปดาห์ หากคุณดืมเบียร์ต้องดื่มไม่เกิน 7 กระป๋อง หรือหากดื่มไวน์ต้องดื่มไม่เกิน 8 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 2 แก้ว");
-                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20week.png?alt=media&token=b30b9689-a8e9-452f-8384-368a19b9c356"));
+                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2-%E0%B8%AB%E0%B8%8D%E0%B8%B4%E0%B8%87.png?alt=media&token=304c999f-c340-429b-9e1c-48d3b36834c7"));
                 agent.add("และในหนึ่งวัน คุณดื่มเบียร์ได้ไม่เกิน 3 กระป๋อง หรือหากดื่มไวน์ต้องดื่มไม่เกิน 3 แก้ว หรือหากดื่มสุราสี 35 ดีกรี ต้องดื่มไม่เกิน 1 แก้ว");
-                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2%201%20day.png?alt=media&token=f9f995db-ee86-4768-8f74-2c00aca33e53"));
+                agent.add(new Image("https://firebasestorage.googleapis.com/v0/b/nong-tung-jai-68673.appspot.com/o/%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B8%B0%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%B9%E0%B9%89%2F%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%94%E0%B8%B7%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A5%E0%B8%AD%E0%B8%94%E0%B8%A0%E0%B8%B1%E0%B8%A2-%E0%B8%AB%E0%B8%8D%E0%B8%B4%E0%B8%87.png?alt=media&token=304c999f-c340-429b-9e1c-48d3b36834c7"));
                 // แนบ Infographic
             } else {
                 console.log("Gender value error : ", gender);
