@@ -900,7 +900,7 @@ const myexp = ((request, response) => {
                             "action": {
                                 "type": "message",
                                 "label": "ไว้ก่อน",
-                                "text": `ไว้ก่อน`
+                                "text": `ต่อไป`
                             }
                         }
                     ]
@@ -1072,7 +1072,7 @@ const myexp = ((request, response) => {
                             "action": {
                                 "type": "message",
                                 "label": "ไว้ก่อน",
-                                "text": `ไว้ก่อน`
+                                "text": `ต่อไป`
                             }
                         }
                     ]
