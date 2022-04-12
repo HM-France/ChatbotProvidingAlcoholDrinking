@@ -1990,7 +1990,9 @@ const myexp = ((request, response) => {
     //intentMap.set('RISK_ASSESSMENT_RESULT - day - Info', riskAssessmentResultDayInfo);
     intentMap.set('RISK_ASSESSMENT_RESULT - day', riskAssessmentResultDay);
     intentMap.set('RISK_ASSESSMENT_RESULT - day - safe drinking',safeDrinking1day);
+    intentMap.set('RISK_ASSESSMENT_RESULT - day - safe drinking -',safeDrinking1day);
     intentMap.set('RISK_ASSESSMENT_RESULT - risk', riskAssessmentResultRisk);
+    intentMap.set('RISK_ASSESSMENT_RESULT - risk -', riskAssessmentResultRisk);
     // intentMap.set('RISK_ASSESSMENT_RESULT - risk - safe drinking',safeDrinkingRisk);
     intentMap.set('DRINK_STANDARD', drinkingStandardData);
     intentMap.set('ASSESS_MOTIVATION', assessMotivation);
