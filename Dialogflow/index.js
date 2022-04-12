@@ -911,7 +911,7 @@ const myexp = ((request, response) => {
     }
 
     const riskAssessmentResultRisk = async () => {
-        const { assistPoint , ASSIST_STATUS } = await userDB.get(userId);
+        const { assistPoint } = await userDB.get(userId);
         const { profile: { gender, age } } = await userDB.get(userId);
         var resultWeek;
         var resultDay;
